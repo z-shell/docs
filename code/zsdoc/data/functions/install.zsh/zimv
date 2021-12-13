@@ -1,0 +1,3 @@
+local dir
+if [[ $1 = (-d|--dir) ]] { dir=$2; shift 2; }
+zicp --mv ${dir:+--dir} $dir "$@"

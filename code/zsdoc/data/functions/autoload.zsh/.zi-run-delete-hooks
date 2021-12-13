@@ -1,0 +1,17 @@
+if [[ -n ${ICE[atdelete]} ]]; then
+  .zi-countdown "atdelete" && ( (( ${+ICE[nocd]} == 0 )) && \
+      { builtin cd -q "$5" && eval "${ICE[atdelete]}"; ((1)); } || \
+      eval "${ICE[atdelete]}" )
+fi
+
+local -a arr
+local key
+reply=(
+  ${(on)ZI_EXTS2[(I)zi hook:atdelete-pre <->]}
+  ${(on)ZI_EXTS[(I)z-annex hook:atdelete-<-> <->]}
+  ${(on)ZI_EXTS2[(I)zi hook:atdelete-post <->]}
+)
+for key in "${reply[@]}"; do
+  arr=( "${(Q)${(z@)ZI_EXTS[$key]:-$ZI_EXTS2[$key]}[@]}" )
+  "${arr[5]}" "$1" "$2" $3 "$4" "$5" "${${key##(zi|z-annex) hook:}%% <->}" delete:TODO
+done

@@ -1,0 +1,6 @@
+# FUNCTION: .zi-update-or-status-all [[[
+# Updates (git pull) or does `git status` for all existing plugins.
+# This includes also plugins that are not loaded into Zsh (but exist
+# on disk). Also updates (i.e. redownloads) snippets.
+#
+# User-action entry point.

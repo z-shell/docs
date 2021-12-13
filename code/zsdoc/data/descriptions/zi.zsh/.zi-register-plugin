@@ -1,0 +1,4 @@
+# FUNCTION: .zi-register-plugin. [[[
+# Adds the plugin to ZI_REGISTERED_PLUGINS array and to the
+# zsh_loaded_plugins array (managed according to the plugin standard:
+# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard).

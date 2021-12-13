@@ -1,0 +1,4 @@
+# FUNCTION: .zi-format-parameter [[[
+# Creates one column text that lists global parameters that changed when the given plugin was loaded.
+#
+# $1 - user/plugin (i.e. uspl2 format of plugin-spec)

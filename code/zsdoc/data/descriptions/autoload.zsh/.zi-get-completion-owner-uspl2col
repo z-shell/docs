@@ -1,0 +1,6 @@
+# FUNCTION: .zi-get-completion-owner-uspl2col [[[
+# For shortening of code - returns colorized plugin name
+# that owns given completion.
+#
+# $1 - absolute path to completion file (in COMPLETIONS_DIR)
+# $2 - readlink command (":" or "readlink")

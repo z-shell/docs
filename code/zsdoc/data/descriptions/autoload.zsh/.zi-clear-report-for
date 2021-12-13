@@ -1,0 +1,5 @@
+# FUNCTION: .zi-clear-report-for [[[
+# Clears all report data for given user/plugin. This is done by resetting all related global ZI_* hashes.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - (optional) plugin (only when $1 - i.e. user - given)

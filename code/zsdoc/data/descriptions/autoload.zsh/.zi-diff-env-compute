@@ -1,0 +1,5 @@
+# FUNCTION: .zi-diff-env-compute [[[
+# Computes ZI_PATH, ZI_FPATH that hold (f)path components
+# added by plugin. Uses data gathered earlier by .zi-diff-env().
+#
+# $1 - user/plugin

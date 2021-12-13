@@ -1,0 +1,6 @@
+.zi-exists-physically-message
+|-- zi.zsh/.zi-any-to-pid
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message
+
+3 directories, 0 files

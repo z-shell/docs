@@ -1,0 +1,8 @@
+# FUNCTION: .zi-show-completions [[[
+# Display installed (enabled and disabled), completions. Detect
+# stray and improper ones.
+#
+# Completions live even when plugin isn't loaded - if they are
+# installed and enabled.
+#
+# User-action entry point.

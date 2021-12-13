@@ -1,0 +1,4 @@
+# FUNCTION: .zi-show-registered-plugins [[[
+# Lists loaded plugins (subcommands list, loaded).
+#
+# User-action entry point.

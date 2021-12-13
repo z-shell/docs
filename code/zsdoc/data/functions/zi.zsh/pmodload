@@ -1,0 +1,15 @@
+local -A ices
+(( ${+ICE} )) && ices=( "${(kv)ICE[@]}" teleid '' )
+local -A ICE ZI_ICE
+ICE=( "${(kv)ices[@]}" ) ZI_ICE=( "${(kv)ices[@]}" )
+while (( $# )); do
+  ICE[teleid]="PZT::modules/$1${ICE[svn]-/init.zsh}"
+  ZI_ICE[teleid]="PZT::modules/$1${ICE[svn]-/init.zsh}"
+  if zstyle -t ":prezto:module:$1" loaded 'yes' 'no'; then
+    shift
+    continue
+  else
+    [[ -z ${ZI_SNIPPETS[PZT::modules/$1${ICE[svn]-/init.zsh}]} && -z ${ZI_SNIPPETS[https://github.com/sorin-ionescu/prezto/trunk/modules/$1${ICE[svn]-/init.zsh}]} ]] && .zi-load-snippet PZT::modules/"$1${ICE[svn]-/init.zsh}"
+    shift
+  fi
+done

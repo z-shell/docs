@@ -1,0 +1,2 @@
+.zi-any-to-user-plugin "$1" "$2"
+[[ "${reply[-2]}" = "%" ]] && REPLY="${reply[-2]}${reply[-1]}" || REPLY="${reply[-2]}${${reply[-2]:#(%|/)*}:+/}${reply[-1]//---//}"

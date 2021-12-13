@@ -1,0 +1,6 @@
+# ]]]
+# FUNCTION: .zi-forget-completion [[[
+# Implements alternation of Zsh state so that already initialized
+# completion stops being visible to Zsh.
+#
+# $1 - completion function name, e.g. "_cp"; can also be "cp"

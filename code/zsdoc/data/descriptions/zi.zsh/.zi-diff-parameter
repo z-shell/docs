@@ -1,0 +1,6 @@
+# FUNCTION: .zi-diff-parameter. [[[
+# Implements detection of change in any parameter's existence and type.
+# Performs data gathering, computation is done in *-compute().
+#
+# $1 - user/plugin (i.e. uspl2 format)
+# $2 - command, can be "begin" or "end"

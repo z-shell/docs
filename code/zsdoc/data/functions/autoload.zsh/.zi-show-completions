@@ -1,0 +1,61 @@
+builtin setopt localoptions nullglob extendedglob nokshglob noksharrays
+local count="${1:-3}"
+typeset -a completions
+completions=( "${ZI[COMPLETIONS_DIR]}"/_[^_.]*~*.zwc "${ZI[COMPLETIONS_DIR]}"/[^_.]*~*.zwc )
+
+local cpath c o s group
+.zi-prepare-readlink
+local rdlink="$REPLY"
+float flmax=${#completions} flcur=0
+typeset -F1 flper
+local -A owner_to_group
+local -a packs splitted
+integer disabled unknown stray
+for cpath in "${completions[@]}"; do
+  c="${cpath:t}"
+  [[ "${c#_}" = "${c}" ]] && disabled=1 || disabled=0
+  c="${c#_}"
+  .zi-get-completion-owner "$cpath" "$rdlink"
+  [[ "$REPLY" = "[unknown]" ]] && unknown=1 || unknown=0
+  o="$REPLY"
+  stray=0
+  if (( unknown == 0 )); then
+    [[ ! -f "$cpath" ]] && stray=1
+  fi
+  s=$(( 1*disabled + 2*unknown + 4*stray ))
+  owner_to_group[${o}--$s]+="$c;"
+  group="${owner_to_group[${o}--$s]%;}"
+  splitted=( "${(s:;:)group}" )
+  if [[ "${#splitted}" -ge "$count" ]]; then
+    packs+=( "${(q)group//;/, } ${(q)o} ${(q)s}" )
+    unset "owner_to_group[${o}--$s]"
+  fi
+  (( ++ flcur ))
+  flper=$(( flcur / flmax * 100 ))
+  builtin print -u 2 -n -- "\r${flper}% "
+done
+for o in "${(k)owner_to_group[@]}"; do
+  group="${owner_to_group[$o]%;}"
+  s="${o##*--}"
+  o="${o%--*}"
+  packs+=( "${(q)group//;/, } ${(q)o} ${(q)s}" )
+done
+packs=( "${(on)packs[@]}" )
+
+builtin print -u 2
+integer longest=0
+local -a unpacked
+for c in "${packs[@]}"; do
+  unpacked=( "${(Q@)${(z@)c}}" )
+  [[ "${#unpacked[1]}" -gt "$longest" ]] && longest="${#unpacked[1]}"
+done
+for c in "${packs[@]}"; do
+  unpacked=( "${(Q@)${(z@)c}}" )
+  .zi-any-colorify-as-uspl2 "$unpacked[2]"
+  builtin print -n "${(r:longest+1:: :)unpacked[1]} $REPLY"
+
+  (( unpacked[3] & 0x1 )) && builtin print -n " ${ZI[col-error]}[disabled]${ZI[col-rst]}"
+  (( unpacked[3] & 0x2 )) && builtin print -n " ${ZI[col-error]}[unknown file, clean with cclear]${ZI[col-rst]}"
+  (( unpacked[3] & 0x4 )) && builtin print -n " ${ZI[col-error]}[stray, clean with cclear]${ZI[col-rst]}"
+  builtin print
+done

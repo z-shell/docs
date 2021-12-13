@@ -1,0 +1,3 @@
+# FUNCTION: .zi-tmp-subst-off. [[[
+# Turn off temporary substituting of functions completely for a given mode ("load", "light",
+# "light-b" (i.e. the `trackbinds' mode) or "compdef").

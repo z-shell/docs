@@ -1,0 +1,107 @@
+emulate -LR zsh
+builtin setopt extendedglob warncreateglobal typesetsilent noshortloops
+
+is-at-least 5.3 && \
+.zi-add-report "${ZI[CUR_USPL2]}" "Bindkey ${(j: :)${(q+)@}}" || .zi-add-report "${ZI[CUR_USPL2]}" "Bindkey ${(j: :)${(q)@}}"
+typeset -a pos
+pos=( "$@" )
+local -A opts
+zparseopts -A opts -D ${(s::):-lLdDAmrsevaR} M: N:
+
+if (( ${#opts} == 0 || ( ${#opts} == 1 && ${+opts[-M]} ) || ( ${#opts} == 1 && ${+opts[-R]} ) || ( ${#opts} == 1 && ${+opts[-s]} ) || ( ${#opts} <= 2 && ${+opts[-M]} && ${+opts[-s]} ) || ( ${#opts} <= 2 && ${+opts[-M]} && ${+opts[-R]} ) )); then
+  local string="${(q)1}" widget="${(q)2}"
+  local quoted
+
+  if [[ -n ${ICE[bindmap]} && ${ZI_CUR_BIND_MAP[empty]} -eq 1 ]]; then
+    local -a pairs
+    pairs=( "${(@s,;,)ICE[bindmap]}" )
+    if [[ -n ${(M)pairs:#*\\(#e)} ]] {
+      local prev
+      pairs=( ${pairs[@]//(#b)((*)\\(#e)|(*))/${match[3]:+${prev:+$prev\;}}${match[3]}${${prev::=${match[2]:+${prev:+$prev\;}}${match[2]}}:+}} )
+    }
+    pairs=( "${(@)${(@)${(@s:->:)pairs}##[[:space:]]##}%%[[:space:]]##}" )
+    ZI_CUR_BIND_MAP=( empty 0 )
+    (( ${#pairs} > 1 && ${#pairs[@]} % 2 == 0 )) && ZI_CUR_BIND_MAP+=( "${pairs[@]}" )
+  fi
+
+  local bmap_val="${ZI_CUR_BIND_MAP[${1}]}"
+  if (( !ZI_CUR_BIND_MAP[empty] )) {
+    [[ -z $bmap_val ]] && bmap_val="${ZI_CUR_BIND_MAP[${(qqq)1}]}"
+    [[ -z $bmap_val ]] && bmap_val="${ZI_CUR_BIND_MAP[${(qqq)${(Q)1}}]}"
+    [[ -z $bmap_val ]] && { bmap_val="${ZI_CUR_BIND_MAP[!${(qqq)1}]}"; integer val=1; }
+    [[ -z $bmap_val ]] && bmap_val="${ZI_CUR_BIND_MAP[!${(qqq)${(Q)1}}]}"
+  }
+  if [[ -n $bmap_val ]]; then
+    string="${(q)bmap_val}"
+    if (( val )) {
+      [[ ${pos[1]} = "-M" ]] && pos[4]="$bmap_val" || pos[2]="$bmap_val"
+    } else {
+      [[ ${pos[1]} = "-M" ]] && pos[3]="${(Q)bmap_val}" || pos[1]="${(Q)bmap_val}"
+    }
+    .zi-add-report "${ZI[CUR_USPL2]}" ":::Bindkey: combination <$1> changed to <$bmap_val>${${(M)bmap_val:#hold}:+, i.e. ${ZI[col-error]}unmapped${ZI[col-rst]}}"
+    ((1))
+  elif [[ ( -n ${bmap_val::=${ZI_CUR_BIND_MAP[UPAR]}} && -n ${${ZI[UPAR]}[(r);:${(q)1};:]} ) || \
+  ( -n ${bmap_val::=${ZI_CUR_BIND_MAP[DOWNAR]}} && -n ${${ZI[DOWNAR]}[(r);:${(q)1};:]} ) || \
+  ( -n ${bmap_val::=${ZI_CUR_BIND_MAP[RIGHTAR]}} && -n ${${ZI[RIGHTAR]}[(r);:${(q)1};:]} ) || \
+  ( -n ${bmap_val::=${ZI_CUR_BIND_MAP[LEFTAR]}} && -n ${${ZI[LEFTAR]}[(r);:${(q)1};:]} )
+  ]]; then
+    string="${(q)bmap_val}"
+    if (( val )) {
+      [[ ${pos[1]} = "-M" ]] && pos[4]="$bmap_val" || pos[2]="$bmap_val"
+    } else {
+      [[ ${pos[1]} = "-M" ]] && pos[3]="${(Q)bmap_val}" || pos[1]="${(Q)bmap_val}"
+    }
+    .zi-add-report "${ZI[CUR_USPL2]}" ":::Bindkey: combination <$1> recognized as cursor-key and changed to <${bmap_val}>${${(M)bmap_val:#hold}:+, i.e. ${ZI[col-error]}unmapped${ZI[col-rst]}}"
+  fi
+  [[ $bmap_val = hold ]] && return 0
+
+  local prev="${(q)${(s: :)$(builtin bindkey ${(Q)string})}[-1]#undefined-key}"
+if (( ${+opts[-M]} )); then
+    local Mopt=-M
+    local Marg="${opts[-M]}"
+    Mopt="${(q)Mopt}"
+    Marg="${(q)Marg}"
+    quoted="$string $widget $prev $Mopt $Marg"
+  else
+    quoted="$string $widget $prev"
+  fi
+  if (( ${+opts[-R]} )); then
+    local Ropt=-R
+    Ropt="${(q)Ropt}"
+    if (( ${+opts[-M]} )); then
+      quoted="$quoted $Ropt"
+    else
+      local space=_
+      space="${(q)space}"
+      quoted="$quoted $space $space $Ropt"
+    fi
+  fi
+  quoted="${(q)quoted}"
+  [[ -n ${ZI[CUR_USPL2]} ]] && ZI[BINDKEYS__${ZI[CUR_USPL2]}]+="$quoted "
+  [[ ${ZI[DTRACE]} = 1 ]] && ZI[BINDKEYS___dtrace/_dtrace]+="$quoted "
+else
+  if [[ ${#opts} -eq 1 && ${+opts[-A]} = 1 && ${#pos} = 3 && ${pos[-1]} = main && ${pos[-2]} != -A ]]; then
+    (( ZI[BINDKEY_MAIN_IDX] = ${ZI[BINDKEY_MAIN_IDX]:-0} + 1 ))
+    local pname="${ZI[CUR_PLUGIN]:-_dtrace}"
+    local name="${(q)pname}-main-${ZI[BINDKEY_MAIN_IDX]}"
+    builtin bindkey -N "$name" main
+    local keys=_ widget=_ prev= optA=-A mapname="${name}" optR=_
+    local quoted="${(q)keys} ${(q)widget} ${(q)prev} ${(q)optA} ${(q)mapname} ${(q)optR}"
+    quoted="${(q)quoted}"
+    [[ -n ${ZI[CUR_USPL2]} ]] && ZI[BINDKEYS__${ZI[CUR_USPL2]}]+="$quoted "
+    [[ ${ZI[DTRACE]} = 1 ]] && ZI[BINDKEYS___dtrace/_dtrace]+="$quoted "
+    .zi-add-report "${ZI[CUR_USPL2]}" "Warning: keymap \`main' copied to \`${name}' because of \`${pos[-2]}' substitution"
+  elif [[ ${#opts} -eq 1 && ${+opts[-N]} = 1 ]]; then
+    local Nopt=-N
+    local Narg="${opts[-N]}"
+    local keys=_ widget=_ prev= optN=-N mapname="${Narg}" optR=_
+    local quoted="${(q)keys} ${(q)widget} ${(q)prev} ${(q)optN} ${(q)mapname} ${(q)optR}"
+    quoted="${(q)quoted}"
+    [[ -n ${ZI[CUR_USPL2]} ]] && ZI[BINDKEYS__${ZI[CUR_USPL2]}]+="$quoted "
+    [[ ${ZI[DTRACE]} = 1 ]] && ZI[BINDKEYS___dtrace/_dtrace]+="$quoted "
+  else
+    .zi-add-report "${ZI[CUR_USPL2]}" "Warning: last bindkey used non-typical options: ${(kv)opts[*]}"
+  fi
+fi
+builtin bindkey "${pos[@]}"
+return $?

@@ -1,0 +1,74 @@
+integer ___ret="${${ZI[lro-data]%:*}##*:}"
+[[ $1 = following ]] && sched +1 'ZI[lro-data]="$_:$?:${options[printexitvalue]}"; @zi-scheduler following "${ZI[lro-data]%:*:*}"'
+[[ -n $1 && $1 != (following*|burst) ]] && { local THEFD="$1"; zle -F "$THEFD"; exec {THEFD}<&-; }
+[[ $1 = burst ]] && local -h EPOCHSECONDS=$(( EPOCHSECONDS+10000 ))
+ZI[START_TIME]="${ZI[START_TIME]:-$EPOCHREALTIME}"
+
+integer ___t=EPOCHSECONDS ___i correct
+local -a match mbegin mend reply
+local MATCH REPLY AFD; integer MBEGIN MEND
+
+[[ -o ksharrays ]] && correct=1
+
+if [[ -n $1 ]] {
+  if [[ ${#ZI_RUN} -le 1 || $1 = following ]]  {
+    () {
+      builtin emulate -L zsh
+      builtin setopt extendedglob
+      integer ___idx1 ___idx2
+      local ___ar2 ___ar3 ___ar4 ___ar5
+      for (( ___idx1 = 0; ___idx1 <= 4; ___idx1 ++ )) {
+        for (( ___idx2 = 1; ___idx2 <= (___idx >= 4 ? 1 : 3); ___idx2 ++ )) {
+          ___i=2
+          ZI_TASKS=( ${ZI_TASKS[@]/(#b)([0-9]##)+([0-9]##)+([1-3])(*)/${ZI_TASKS[
+          $(( (___ar2=${match[2]}+1) ? (
+            (___ar3=${(M)match[3]%[1-3]}) ? (
+            (___ar4=___idx1+1) ? (
+            (___ar5=___idx2) ? (
+      (${match[1]}+${match[2]}) <= $___t ?
+      zi_scheduler_add(___i++) : ___i++ )
+            : 1 )
+            : 1 )
+            : 1 )
+            : 1  ))]}} )
+          ZI_TASKS=( "<no-data>" ${ZI_TASKS[@]:#<no-data>} )
+        }
+      }
+    }
+  }
+} else {
+  add-zsh-hook -d -- precmd @zi-scheduler
+  add-zsh-hook -- chpwd @zi-scheduler
+  () {
+    builtin emulate -L zsh
+    builtin setopt extendedglob
+    ZI_TASKS=( ${ZI_TASKS[@]/(#b)([0-9]##)(*)/$(( ${match[1]} <= 1 ? ${match[1]} : ___t ))${match[2]}} )
+  }
+  sched +1 'ZI[lro-data]="$_:$?:${options[printexitvalue]}"; @zi-scheduler following ${ZI[lro-data]%:*:*}'
+
+  AFD=13371337
+  exec {AFD}< <(LANG=C command sleep 0.002; builtin print run;)
+  command true
+  zle -F "$AFD" @zi-scheduler
+}
+
+local ___task ___idx=0 ___count=0 ___idx2
+for ___task ( "${ZI_RUN[@]}" ) {
+  .zi-run-task 1 "${(@z)___task}" && ZI_TASKS+=( "$___task" )
+  if [[ $(( ++___idx, ___count += ${${REPLY:+1}:-0} )) -gt 0 && $1 != burst ]] {
+    AFD=13371337
+    exec {AFD}< <(LANG=C command sleep 0.0002; builtin print run;)
+    command true
+    zle -F "$AFD" @zi-scheduler
+    break
+  }
+}
+for (( ___idx2=1; ___idx2 <= ___idx; ++ ___idx2 )) {
+  .zi-run-task 2 "${(@z)ZI_RUN[___idx2-correct]}"
+}
+for (( ___idx2=1; ___idx2 <= ___idx; ++ ___idx2 )) {
+  .zi-run-task 3 "${(@z)ZI_RUN[___idx2-correct]}"
+}
+ZI_RUN[1-correct,___idx-correct]=()
+
+[[ ${ZI[lro-data]##*:} = on ]] && return 0 || return ___ret

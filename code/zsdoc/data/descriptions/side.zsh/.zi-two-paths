@@ -1,0 +1,3 @@
+# FUNCTION: .zi-two-paths [[[
+# Obtains a snippet URL without specification if it is an SVN URL (points to directory) or regular URL (points to file),
+# returns 2 possible paths for further examination

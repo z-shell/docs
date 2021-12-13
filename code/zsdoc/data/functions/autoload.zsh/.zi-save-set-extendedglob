@@ -1,0 +1,2 @@
+[[ -o "extendedglob" ]] && ZI[EXTENDED_GLOB]="1" || ZI[EXTENDED_GLOB]="0"
+builtin setopt extendedglob

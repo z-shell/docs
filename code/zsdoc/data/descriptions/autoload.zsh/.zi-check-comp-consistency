@@ -1,0 +1,8 @@
+# FUNCTION: .zi-check-comp-consistency [[[
+# ❮ ZI ❯ creates symlink for each installed completion.
+# This function checks whether given completion (i.e.
+# file like "_mkdir") is indeed a symlink. Backup file
+# is a completion that is disabled - has the leading "_" removed.
+#
+# $1 - path to completion within plugin's directory
+# $2 - path to backup file within plugin's directory

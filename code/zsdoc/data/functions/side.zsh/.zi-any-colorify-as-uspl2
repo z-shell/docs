@@ -1,0 +1,22 @@
+.zi-any-to-user-plugin "$1" "$2"
+local user="${reply[-2]}" plugin="${reply[-1]}"
+if [[ "$user" = "%" ]] {
+  .zi-any-to-pid "" $plugin
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--plugins--/OMZP::}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--plugins/OMZP}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--lib--/OMZL::}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--lib/OMZL}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--themes--/OMZT::}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--themes/OMZT}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk--/OMZ::}"
+  REPLY="${REPLY/https--github.com--(robbyrussell--oh-my-zsh|ohmyzsh--ohmyzsh)--trunk/OMZ}"
+  REPLY="${REPLY/https--github.com--sorin-ionescu--prezto--trunk--modules--/PZTM::}"
+  REPLY="${REPLY/https--github.com--sorin-ionescu--prezto--trunk--modules/PZTM}"
+  REPLY="${REPLY/https--github.com--sorin-ionescu--prezto--trunk--/PZT::}"
+  REPLY="${REPLY/https--github.com--sorin-ionescu--prezto--trunk/PZT}"
+  REPLY="${REPLY/(#b)%([A-Z]##)(#c0,1)(*)/%$ZI[col-uname]$match[1]$ZI[col-pname]$match[2]$ZI[col-rst]}"
+} elif [[ $user == http(|s): ]] {
+  REPLY="${ZI[col-ice]}${user}/${plugin}${ZI[col-rst]}"
+} else {
+  REPLY="${user:+${ZI[col-uname]}${user}${ZI[col-rst]}/}${ZI[col-pname]}${plugin}${ZI[col-rst]}"
+}

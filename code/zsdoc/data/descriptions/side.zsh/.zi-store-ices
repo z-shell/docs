@@ -1,0 +1,9 @@
+# FUNCTION: .zi-store-ices [[[
+# Saves ice mods in given hash onto disk.
+#
+# $1 - directory where to create / delete files
+# $2 - name of hash that holds values
+# $3 - additional keys of hash to store, space separated
+# $4 - additional keys of hash to store, empty-meaningful ices, space separated
+# $5 - the URL, if applicable
+# $6 - the mode (1 - svn, 0 - single file), if applicable

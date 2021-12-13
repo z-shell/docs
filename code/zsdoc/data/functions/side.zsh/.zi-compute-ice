@@ -1,0 +1,116 @@
+emulate -LR zsh
+setopt extendedglob typesetsilent warncreateglobal noshortloops
+
+local ___URL="${1%/}" ___pack="$2" ___is_snippet=0
+local ___var_name1="${3:-ZI_ICE}" ___var_name2="${4:-local_dir}" ___var_name3="${5:-filename}" ___var_name4="${6:-is_snippet}"
+local -a ice_order nval_ices
+ice_order=(
+${(s.|.)ZI[ice-list]}
+${(@)${(@Akons:|:)${ZI_EXTS[ice-mods]//\'\'/}}/(#s)<->-/}
+)
+nval_ices=(
+${(s.|.)ZI[nval-ice-list]}
+${(@)${(@)${(@Akons:|:)ZI_EXTS[ice-mods]}:#*\'\'*}/(#s)<->-/}
+svn
+)
+___URL="${${___URL#"${___URL%%[! $'\t']*}"}%/}"
+.zi-two-paths "$___URL"
+local ___s_path="${reply[-4]}" ___s_svn="${reply[-3]}" ___path="${reply[-2]}" ___filename="${reply[-1]}" ___local_dir
+if [[ -d "$___s_path" || -d "$___path" ]]; then
+  ___is_snippet=1
+else
+.zi-any-to-user-plugin "$___URL" ""
+local ___user="${reply[-2]}" ___plugin="${reply[-1]}"
+___s_path="" ___filename=""
+[[ "$___user" = "%" ]] && ___path="$___plugin" || ___path="${ZI[PLUGINS_DIR]}/${___user:+${___user}---}${___plugin//\//---}"
+.zi-exists-physically-message "$___user" "$___plugin" || return 1
+fi
+[[ $___pack = pack* ]] && (( ${#ICE} > 0 )) && .zi-pack-ice "${___user-$___URL}" "$___plugin"
+local -A ___sice
+local -a ___tmp
+___tmp=( "${(z@)ZI_SICE[${___user-$___URL}${${___user:#(%|/)*}:+/}$___plugin]}" )
+(( ${#___tmp[@]} > 1 && ${#___tmp[@]} % 2 == 0 )) && ___sice=( "${(Q)___tmp[@]}" )
+
+if [[ "${+___sice[svn]}" = "1" || -n "$___s_svn" ]]; then
+  if (( !___is_snippet && ${+___sice[svn]} == 1 )); then
+    builtin print -r -- "The \`svn' ice is given, but the argument ($___URL) is a plugin"
+    builtin print -r -- "(\`svn' can be used only with snippets)"
+    return 1
+  elif (( !___is_snippet )); then
+    builtin print -r -- "Undefined behavior #1 occurred, please report at https://github.com/z-shell/zi/issues"
+    return 1
+  fi
+  if [[ -e "$___s_path" && -n "$___s_svn" ]]; then
+    ___sice[svn]=""
+    ___local_dir="$___s_path"
+  else
+    [[ ! -e "$___path" ]] && { builtin print -r -- "No such snippet, looked at paths (1): $___s_path, and: $___path"; return 1; }
+    unset '___sice[svn]'
+    ___local_dir="$___path"
+  fi
+else
+  if [[ -e "$___path" ]]; then
+    unset '___sice[svn]'
+    ___local_dir="$___path"
+  else
+    builtin print -r -- "No such snippet, looked at paths (2): $___s_path, and: $___path"
+    return 1
+  fi
+fi
+
+local ___zi_path="$___local_dir/._zi"
+if [[ ! -d $___zi_path && -d $___local_dir/._zplugin ]]; then
+  (
+  builtin print -Pr -- "${ZI[col-pre]}UPGRADING THE DIRECTORY STRUCTURE" "FOR THE ZPLUGIN -> ZI RENAME…%f"
+  builtin cd -q ${ZI[PLUGINS_DIR]} || return 1
+  autoload -Uz zmv
+  ( zmv -W '**/._zplugin' '**/._zi' ) &>/dev/null
+  builtin cd -q ${ZI[SNIPPETS_DIR]} || return 1
+  ( zmv -W '**/._zplugin' '**/._zi' ) &>/dev/null
+  builtin print -Pr -- "${ZI[col-obj]}THE UPGRADE SUCCEDED!%f"
+  ) || builtin print -Pr -- "${ZI[col-error]}THE UPGRADE FAILED!%f"
+fi
+if [[ ! -d $___zi_path && -d $___local_dir/._zinit ]]; then
+  (
+    builtin print -Pr -- "${ZI[col-pre]}UPGRADING THE DIRECTORY STRUCTURE" "FOR THE ZI -> ZI RENAME…%f"
+    builtin cd -q ${ZI[PLUGINS_DIR]} || return 1
+    autoload -Uz zmv
+    ( zmv -W '**/.zinit' '**/._zi' ) &>/dev/null
+    builtin cd -q ${ZI[SNIPPETS_DIR]} || return 1
+    ( zmv -W '**/._zinit' '**/._zi' ) &>/dev/null
+    builtin print -Pr -- "${ZI[col-obj]}THE UPGRADE SUCCEDED!%f"
+  ) || builtin print -Pr -- "${ZI[col-error]}THE UPGRADE FAILED!%f"
+fi
+local -A ___mdata
+local ___key
+{ for ___key in mode url is_release is_release{2..5} ${ice_order[@]}; do
+  [[ -f "$___zi_path/$___key" ]] && ___mdata[$___key]="$(<$___zi_path/$___key)"
+done
+  [[ "${___mdata[mode]}" = "1" ]] && ___mdata[svn]=""
+} 2>/dev/null
+for ___key in ${ice_order[@]}; do
+  [[ $___key == (no|)compile ]] && continue
+  (( 0 == ${+ICE[no$___key]} && 0 == ${+___sice[no$___key]} )) && continue
+  (( 1 == ${+ICE[$___key]} && 0 == ${+ICE[no$___key]} && 1 == ${+___sice[no$___key]} )) && continue
+  if [[ "$___key" = "svn" ]]; then
+    command builtin print -r -- "0" >| "$___zi_path/mode"
+    ___mdata[mode]=0
+  else
+    command rm -f -- "$___zi_path/$___key"
+  fi
+  unset "___mdata[$___key]" "___sice[$___key]" "ICE[$___key]"
+done
+local -A ___MY_ICE
+for ___key in mode url is_release is_release{2..5} ${ice_order[@]}; do
+  (( ${+___sice[$___key]} + ${${${___pack:#pack-nf*}:+${+___mdata[$___key]}}:-0} )) && ___MY_ICE[$___key]="${___sice[$___key]-${___mdata[$___key]}}"
+done
+___key=teleid; [[ "$___pack" = pack-nftid ]] && {
+  (( ${+___sice[$___key]} + ${+___mdata[$___key]} )) && ___MY_ICE[$___key]="${___sice[$___key]-${___mdata[$___key]}}"
+}
+
+: ${(PA)___var_name1::="${(kv)___MY_ICE[@]}"}
+: ${(P)___var_name2::=$___local_dir}
+: ${(P)___var_name3::=$___filename}
+: ${(P)___var_name4::=$___is_snippet}
+
+return 0

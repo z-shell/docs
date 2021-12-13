@@ -1,0 +1,10 @@
+# FUNCTION: .zi-get-completion-owner [[[
+# Returns "user---plugin" string (uspl1 format) of plugin that owns given completion.
+#
+# Both :A and readlink will be used, then readlink's output if results differ. Readlink might not be available.
+#
+# :A will read the link "twice" and give the final repository
+# directory, possibly without username in the uspl format; readlink will read the link "once"
+#
+# $1 - absolute path to completion file (in COMPLETIONS_DIR)
+# $2 - readlink command (":" or "readlink")

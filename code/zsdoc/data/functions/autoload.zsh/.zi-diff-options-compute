@@ -1,0 +1,16 @@
+local uspl2="$1"
+builtin setopt localoptions extendedglob nokshglob noksharrays
+[[ "${ZI[OPTIONS_BEFORE__$uspl2]}" != *[$'! \t']* || "${ZI[OPTIONS_AFTER__$uspl2]}" != *[$'! \t']* ]] && return 1
+typeset -A opts_before opts_after opts
+opts_before=( "${(z)ZI[OPTIONS_BEFORE__$uspl2]}" )
+opts_after=( "${(z)ZI[OPTIONS_AFTER__$uspl2]}" )
+opts=( )
+local key
+for key in "${(k)opts_before[@]}"; do
+if [[ "${opts_before[$key]}" != "${opts_after[$key]}" ]]; then
+  opts[$key]="${opts_before[$key]}"
+fi
+done
+local IFS=" "
+ZI[OPTIONS__$uspl2]="${(kv)opts[@]}"
+return 0

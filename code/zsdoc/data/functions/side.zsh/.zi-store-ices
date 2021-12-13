@@ -1,0 +1,28 @@
+local ___pfx="$1" ___ice_var="$2" ___add_ices="$3" ___add_ices2="$4" url="$5" mode="$6"
+local -a ice_order nval_ices
+ice_order=(
+  ${(s.|.)ZI[ice-list]}
+  ${(@)${(@Akons:|:)${ZI_EXTS[ice-mods]//\'\'/}}/(#s)<->-/}
+)
+nval_ices=(
+${(s.|.)ZI[nval-ice-list]}
+${(@)${(@)${(@Akons:|:)ZI_EXTS[ice-mods]}:#*\'\'*}/(#s)<->-/}
+svn
+)
+command mkdir -p "$___pfx"
+local ___key ___var_name
+for ___key in ${ice_order[@]:#(${(~j:|:)nval_ices[@]})} ${(s: :)___add_ices[@]}; do
+  ___var_name="${___ice_var}[$___key]"
+  (( ${(P)+___var_name} )) && builtin print -r -- "${(P)___var_name}" >| "$___pfx"/"$___key"
+done
+for ___key in ${nval_ices[@]} ${(s: :)___add_ices2[@]}; do
+  ___var_name="${___ice_var}[$___key]"
+  if (( ${(P)+___var_name} )) {
+    builtin print -r -- "${(P)___var_name}" >| "$___pfx"/"$___key"
+  } else {
+    command rm -f "$___pfx"/"$___key"
+  }
+done
+for ___key in url mode; do
+  [[ -n "${(P)___key}" ]] && builtin print -r -- "${(P)___key}" >| "$___pfx"/"$___key"
+done

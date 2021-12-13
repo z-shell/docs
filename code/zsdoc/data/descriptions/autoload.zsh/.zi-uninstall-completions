@@ -1,0 +1,6 @@
+# FUNCTION: .zi-uninstall-completions [[[
+# Removes all completions of given plugin from Zshell (i.e. from FPATH).
+# The FPATH is typically `~/.zi/completions/'.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - plugin (only when $1 - i.e. user - given)

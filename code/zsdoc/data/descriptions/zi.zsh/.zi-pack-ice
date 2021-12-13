@@ -1,0 +1,4 @@
+# FUNCTION: .zi-pack-ice. [[[
+# Remembers all ice-mods, assigns them to concrete plugin. Ice spec is in general forgotten for
+# second-next command (that's why it's called "ice" - it melts), however they glue to the object (plugin
+# or snippet) mentioned in the next command – for later use with e.g. `zi update ...'.
