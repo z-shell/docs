@@ -1,7 +1,8 @@
 ---
 name: ZI Code Documentation
+
 on: 
-#  workflow_dispatch:
+  workflow_dispatch:
 #  schedule:
 #  - cron: "30 4 * * 4"
 
