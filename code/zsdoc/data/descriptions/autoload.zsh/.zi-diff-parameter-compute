@@ -1,6 +1,0 @@
-# FUNCTION: .zi-diff-parameter-compute [[[
-# Computes ZI_PARAMETERS_PRE, ZI_PARAMETERS_POST that hold
-# parameters created or changed (their type) by plugin. Uses
-# data gathered earlier by .zi-diff-parameter().
-#
-# $1 - user/plugin

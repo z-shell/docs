@@ -1,3 +1,0 @@
-# FUNCTION: .zi-unregister-plugin [[[
-# Removes the plugin from ZI_REGISTERED_PLUGINS array and from the
-# zsh_loaded_plugins array (managed according to the plugin standard)

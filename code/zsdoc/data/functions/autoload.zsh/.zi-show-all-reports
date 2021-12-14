@@ -1,5 +1,0 @@
-local i
-for i in "${ZI_REGISTERED_PLUGINS[@]}"; do
-  [[ "$i" = "_local/zi" ]] && continue
-  .zi-show-report "$i"
-done

@@ -1,6 +1,0 @@
-# FUNCTION: .zi-recently [[[
-# Shows plugins that obtained commits in specified past time.
-#
-# User-action entry point.
-#
-# $1 - time spec, e.g. "1 week"

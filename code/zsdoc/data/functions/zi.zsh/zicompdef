@@ -1,1 +1,0 @@
-ZI_COMPDEF_REPLAY+=( "${(j: :)${(q)@}}" );

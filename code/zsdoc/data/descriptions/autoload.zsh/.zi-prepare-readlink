@@ -1,4 +1,0 @@
-# FUNCTION: .zi-prepare-readlink [[[
-# Prepares readlink command, used for establishing completion's owner.
-#
-# $REPLY = ":" or "readlink"

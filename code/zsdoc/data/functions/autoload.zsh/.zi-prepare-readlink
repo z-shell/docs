@@ -1,4 +1,0 @@
-REPLY=":"
-if type readlink 2>/dev/null 1>&2; then
-REPLY="readlink"
-fi

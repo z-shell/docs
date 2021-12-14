@@ -1,6 +1,0 @@
-# FUNCTION: .zi-any-to-uspl2 [[[
-# Converts given plugin-spec to format that's used in keys for hash tables.
-# So basically, creates string "user/plugin" (this format is called: uspl2).
-#
-# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
-# $2 - (optional) plugin (only when $1 - i.e. user - given)

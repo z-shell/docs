@@ -1,8 +1,0 @@
-# FUNCTION: .zi-mirror-using-svn [[[
-# Used to clone subdirectories from Github. If in update mode (see $2), then invokes `svn update',
-# in normal mode invokes `svn checkout --non-interactive -q <URL>'. In test mode only
-# compares remote and local revision and outputs true if update is needed.
-#
-# $1 - URL
-# $2 - mode, "" - normal, "-u" - update, "-t" - test
-# $3 - subdirectory (not path) with working copy, needed for -t and -u

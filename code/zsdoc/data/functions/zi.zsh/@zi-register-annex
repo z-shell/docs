@@ -1,8 +1,0 @@
-local name="$1" type="$2" handler="$3" helphandler="$4" icemods="$5" key="z-annex ${(q)2}"
-ZI_EXTS[seqno]=$(( ${ZI_EXTS[seqno]:-0} + 1 ))
-ZI_EXTS[$key${${(M)type#hook:}:+ ${ZI_EXTS[seqno]}}]="${ZI_EXTS[seqno]} z-annex-data: ${(q)name} ${(q)type} ${(q)handler} ${(q)helphandler} ${(q)icemods}"
-() {
-  emulate -LR zsh -o extendedglob
-  integer index="${type##[%a-zA-Z:_!-]##}"
-  ZI_EXTS[ice-mods]="${ZI_EXTS[ice-mods]}${icemods:+|}${(j:|:)${(@)${(@s:|:)icemods}/(#b)(#s)(?)/$index-$match[1]}}"
-}

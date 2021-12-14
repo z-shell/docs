@@ -16,12 +16,13 @@ adoc: clone zi/zi.zsh zi/lib/zsh/side.zsh zi/lib/zsh/install.zsh zi/lib/zsh/auto
 	zi/lib/zsh/autoload.zsh \
 	zi/lib/zsh/additional.zsh
 	@mkdir -p zsdoc/asciidoc
-	mv -v zsdoc/*.adoc zsdoc/asciidoc/
+	cp -vf zsdoc/*.adoc zsdoc/asciidoc/
 
 clean:
-	rm -vrf zi
+	rm -rf zi
+	rm -vf zsdoc/*.adoc
 
 distclean: clean
-	rm -vrf zsdoc/data
+	rm -rf zsdoc/data
 
 .PHONY: all clean clone man pdf html adoc

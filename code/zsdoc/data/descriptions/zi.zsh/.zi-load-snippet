@@ -1,4 +1,0 @@
-# FUNCTION: .zi-load-snippet. [[[
-# Implements the exposed-to-user action of loading a snippet.
-#
-# $1 - url (can be local, absolute path).

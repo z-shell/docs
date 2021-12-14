@@ -1,4 +1,0 @@
-# FUNCTION: zi-turbo. [[[
-# With zi-turbo first argument is a wait time and suffix, i.e. "0a".
-# Anything that doesn't match will be passed as if it were an ice mod.
-# Default ices depth'3' and lucid, allowed values [0-9][a-d].

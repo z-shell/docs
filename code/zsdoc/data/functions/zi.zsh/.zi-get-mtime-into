@@ -1,7 +1,0 @@
-if (( ZI[HAVE_ZSTAT] )) {
-  local -a arr
-  { zstat +mtime -A arr "$1"; } 2>/dev/null
-  : ${(P)2::="${arr[1]}"}
-} else {
-  { : ${(P)2::="$(stat -c %Y "$1")"}; } 2>/dev/null
-}

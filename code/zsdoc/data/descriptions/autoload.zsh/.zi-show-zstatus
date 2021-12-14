@@ -1,5 +1,0 @@
-# FUNCTION: .zi-show-zstatus [[[
-# Shows ❮ ZI ❯ status, i.e. number of loaded plugins,
-# of available completions, etc.
-#
-# User-action entry point.

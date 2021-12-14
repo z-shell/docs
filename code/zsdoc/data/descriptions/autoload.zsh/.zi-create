@@ -1,7 +1,0 @@
-# FUNCTION: .zi-create [[[
-# Creates a plugin, also on Github (if not "_local/name" plugin).
-#
-# User-action entry point.
-#
-# $1 - (optional) plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
-# $2 - (optional) plugin (only when $1 - i.e. user - given)
