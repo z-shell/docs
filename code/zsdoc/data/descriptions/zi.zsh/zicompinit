@@ -1,0 +1,5 @@
+# ]]]
+# FUNCTION: zicompinit. [[[
+# A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+# It runs `autoload compinit; compinit' and respects
+# ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].

@@ -1,0 +1,7 @@
+if [[ $LANG == (#i)*utf-8* ]]; then
+  ch=$1
+else
+  ch=-
+fi
+
+REPLY=$ZI[col-$2]${(pl:COLUMNS-1::$ch:):-}$ZI[col-rst]

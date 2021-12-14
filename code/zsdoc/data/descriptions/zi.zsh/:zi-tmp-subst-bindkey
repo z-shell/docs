@@ -1,0 +1,4 @@
+# FUNCTION: :zi-tmp-subst-bindkey. [[[
+# Function defined to hijack plugin's calls to the `bindkey' builtin.
+#
+# The hijacking is to gather report data (which is used in unload).

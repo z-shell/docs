@@ -1,0 +1,25 @@
+# Copyright (c) 2016-2020 Sebastian Gniazdowski and contributors.
+# Copyright (c) 2021 Salvydas Lukosius and Z-Shell ZI contributors.
+
+# FUNCTION: :zi-tmp-subst-source [[[
+# ]]]
+# FUNCTION: .zi-service [[[
+# Handles given service, i.e. obtains lock, runs it, or waits if no lock
+#
+# $1 - type "p" or "s" (plugin or snippet)
+# $2 - mode - for plugin (light or load)
+# $3 - id - URL or plugin ID or alias name (from id-as'') # ]]]
+# FUNCTION: .zi-wrap-track-functions [[[ # ]]]
+
+#
+# Dtrace
+#
+
+# FUNCTION: .zi-debug-start [[[
+# Starts Dtrace, i.e. session tracking for changes in Zsh state. # ]]]
+# FUNCTION: .zi-debug-stop [[[
+# Stops Dtrace, i.e. session tracking for changes in Zsh state. # ]]]
+# FUNCTION: .zi-clear-debug-report [[[
+# Forgets dtrace repport gathered up to this moment. # ]]]
+# FUNCTION: .zi-debug-unload [[[
+# Reverts changes detected by dtrace run. # ]]]

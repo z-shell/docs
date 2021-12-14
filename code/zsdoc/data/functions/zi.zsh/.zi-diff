@@ -1,0 +1,4 @@
+.zi-diff-functions "$1" "$2"
+.zi-diff-options "$1" "$2"
+.zi-diff-env "$1" "$2"
+.zi-diff-parameter "$1" "$2"

@@ -1,0 +1,4 @@
+# FUNCTION: :zi-tmp-subst-alias. [[[
+# Function defined to hijack plugin's calls to the `alias' builtin.
+#
+# The hijacking is to gather report data (which is used in unload).

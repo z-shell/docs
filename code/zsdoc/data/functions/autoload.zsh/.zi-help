@@ -1,0 +1,31 @@
+  builtin print -r -- "${ZI[col-p]}❮ ZI ❯ Usage${ZI[col-rst]}:
+»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
+❯ analytics                     – ❮ ZI ❯ Analytics
+❯ control                       – ❮ ZI ❯ Control options
+❯ self-update                   – ❮ ZI ❯ Self update and compile
+❯ compinit                      – Refresh completions
+❯ cdreplay [-q]                 – Replay compdefs (to be done after compinit), -q – quiet
+❯ cdclear  [-q]                 – Clear compdef replay list, -q – quiet
+❯ bindkeys                      – Lists bindkeys
+❯ module                        – Manage zpmod (binary Zsh module), see \`zi module help'
+❯ env-whitelist [-v|-h] {env..} – Specify names or paterns of variables left unchanged during an unload. -v – verbose
+❯ man                           – Manual
+❯ help                          – Help
+»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»
+${ZI[col-p]}Available sub-commands${ZI[col-rst]}:"
+  integer idx
+  local type key
+  local -a arr
+  for type in subcommand hook; do
+    for (( idx=1; idx <= ZI_EXTS[seqno]; ++ idx )); do
+      key="${(k)ZI_EXTS[(r)$idx *]}"
+      [[ -z "$key" || "$key" != "z-annex $type:"* ]] && continue
+      arr=( "${(Q)${(z@)ZI_EXTS[$key]}[@]}" )
+      (( ${+functions[${arr[6]}]} )) && { "${arr[6]}"; ((1)); } || \
+        { builtin print -rl -- "(Couldn't find the help-handler \`${arr[6]}' of the z-annex \`${arr[3]}')"; }
+    done
+  done
+local -a ice_order
+ice_order=( ${${(s.|.)ZI[ice-list]}:#teleid} ${(@)${(@)${(@Akons:|:u)${ZI_EXTS[ice-mods]//\'\'/}}/(#s)<->-/}:#(.*|dynamic-unscope)} )
+  builtin print -r -- "${ZI[col-p]}Available ice-modifiers:${ZI[col-rst]}
+${ice_order[*]}"

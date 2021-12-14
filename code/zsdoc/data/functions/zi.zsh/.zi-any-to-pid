@@ -1,0 +1,21 @@
+emulate -LR zsh
+builtin setopt extendedglob typesetsilent noshortloops rcquotes ${${${+REPLY}:#0}:+warncreateglobal}
+
+1=${~1} 2=${~2}
+if [[ -n $2 ]] {
+if [[ $1 == (%|/)* || ( -z $1 && $2 == /* ) ]] {
+  .zi-util-shands-path $1${${(M)1#(%/?|%[^/]|/?)}:+/}$2
+  REPLY=${${REPLY:#%*}:+%}$REPLY
+} else {
+  REPLY=$1${1:+/}$2
+}
+  return 0
+}
+if [[ $1 = (%|/|\~)* ]] {
+  .zi-util-shands-path $1
+  REPLY=${${REPLY:#%*}:+%}$REPLY
+  return 0
+}
+REPLY=${1//---//}
+
+return 0

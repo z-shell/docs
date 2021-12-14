@@ -1,0 +1,314 @@
+# Copyright (c) 2016-2020 Sebastian Gniazdowski and contributors.
+# Copyright (c) 2021 Salvydas Lukosius and Z-Shell ZI contributors.
+
+#
+# Main state variables.
+#
+# Rename snippets URL -> NAME.
+# Compatibility for previous versions.
+
+#
+# Common needed values.
+#
+
+# ICES Listset"
+
+# BIN_DIR setup.
+# Check if ZI[BIN_DIR] is established correctly.
+
+# HOME_DIR setup.
+
+# ❮ ZI ❯ Home directories setup.
+#is-at-least 5.4 && ZI[NEW_AUTOLOAD]=2
+
+# Parameters - temporary substituting of functions. [[[
+# ]]]
+# Parameters - ICE. [[[
+# ]]]
+# Initiate. [[[
+
+# Terminal color codes.
+
+# List of hooks.
+
+# ]]]
+
+#
+# Temporary substituting of functions-related functions.
+#
+
+# FUNCTION: :zi-reload-and-run. [[[
+# Marks given function ($3) for autoloading, and executes it triggering the load.
+# $1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
+# because using that on older Zsh versions causes problems with traps.
+#
+# So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".
+#
+# $1 - FPATH dedicated to function
+# $2 - autoload options
+# $3 - function name (one that needs autoloading)
+#
+# Author: Bart Schaefer # ]]]
+# FUNCTION: :zi-tmp-subst-autoload. [[[
+# Function defined to hijack plugin's calls to the `autoload' builtin.
+#
+# The hijacking is not only to gather report data, but also to.
+# run custom `autoload' function, that doesn't need FPATH. # ]]]
+# FUNCTION: :zi-tmp-subst-bindkey. [[[
+# Function defined to hijack plugin's calls to the `bindkey' builtin.
+#
+# The hijacking is to gather report data (which is used in unload). # ]]]
+# FUNCTION: :zi-tmp-subst-zstyle. [[[
+# Function defined to hijack plugin's calls to the `zstyle' builtin.
+#
+# The hijacking is to gather report data (which is used in unload). # ]]]
+# FUNCTION: :zi-tmp-subst-alias. [[[
+# Function defined to hijack plugin's calls to the `alias' builtin.
+#
+# The hijacking is to gather report data (which is used in unload). # ]]]
+# FUNCTION: :zi-tmp-subst-zle. [[[.
+# Function defined to hijack plugin's calls to the `zle' builtin.
+#
+# The hijacking is to gather report data (which is used in unload). # ]]]
+# FUNCTION: :zi-tmp-subst-compdef. [[[
+# Function defined to hijack plugin's calls to the `compdef' function.
+# The hijacking is not only for reporting, but also to save compdef
+# calls so that `compinit' can be called after loading plugins. # ]]]
+# FUNCTION: .zi-tmp-subst-on. [[[
+# Turn on temporary substituting of functions of builtins and functions according to passed
+# mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
+# to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls. # ]]]
+# FUNCTION: .zi-tmp-subst-off. [[[
+# Turn off temporary substituting of functions completely for a given mode ("load", "light",
+# "light-b" (i.e. the `trackbinds' mode) or "compdef"). # ]]]
+# FUNCTION: pmodload. [[[
+# {function:pmodload} Compatibility with Prezto. Calls can be recursive. # ]]]
+
+#
+# Diff functions.
+#
+
+# FUNCTION: .zi-diff-functions. [[[
+# Implements detection of newly created functions. Performs data gathering, computation is done in *-compute().
+#
+# $1 - user/plugin (i.e. uspl2 format)
+# $2 - command, can be "begin" or "end" # ]]]
+# FUNCTION: .zi-diff-options. [[[
+# Implements detection of change in option state. Performs data gathering, computation is done in *-compute().
+#
+# $1 - user/plugin (i.e. uspl2 format)
+# $2 - command, can be "begin" or "end" # ]]]
+# FUNCTION: .zi-diff-env. [[[
+# Implements detection of change in PATH and FPATH.
+#
+# $1 - user/plugin (i.e. uspl2 format)
+# $2 - command, can be "begin" or "end" # ]]]
+# FUNCTION: .zi-diff-parameter. [[[
+# Implements detection of change in any parameter's existence and type.
+# Performs data gathering, computation is done in *-compute().
+#
+# $1 - user/plugin (i.e. uspl2 format)
+# $2 - command, can be "begin" or "end" # ]]]
+# FUNCTION: .zi-diff. [[[
+# Performs diff actions of all types # ]]]
+
+#
+# Utility functions.
+#
+
+# FUNCTION: .zi-get-mtime-into. [[[ # ]]]
+# FUNCTION: .zi-any-to-user-plugin. [[[
+# Allows elastic plugin-spec across the code.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - plugin (only when $1 - i.e. user - given)
+#
+# Returns user and plugin in $reply.
+# # ]]]
+# FUNCTION: .zi-any-to-pid. [[[ # ]]]
+# FUNCTION: .zi-util-shands-path. [[[
+# Replaces parts of path with %HOME, etc. # ]]]
+# FUNCTION: .zi-find-other-matches. [[[
+# Plugin's main source file is in general `name.plugin.zsh'. However,
+# there can be different conventions, if that file is not found, then
+# this functions examines other conventions in the most sane order. # ]]]
+# FUNCTION: .zi-register-plugin. [[[
+# Adds the plugin to ZI_REGISTERED_PLUGINS array and to the
+# zsh_loaded_plugins array (managed according to the plugin standard:
+# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard). # ]]]
+# FUNCTION: .zi-get-object-path. [[[ # ]]]
+# FUNCTION: @zi-substitute. [[[ # ]]]
+# FUNCTION: @zi-register-annex. [[[
+# Registers the z-annex inside ZI – i.e. an ZI extension # ]]]
+# FUNCTION: @zi-register-hook. [[[
+# Registers the z-annex inside ZI – i.e. an ZI extension # ]]]
+# FUNCTION: @zsh-plugin-run-on-update. [[[
+# The Plugin Standard required mechanism, see:
+# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard # ]]]
+# FUNCTION: @zsh-plugin-run-on-update. [[[
+# The Plugin Standard required mechanism # ]]]
+
+#
+# Remaining functions.
+#
+
+# FUNCTION: .zi-prepare-home. [[[
+# Creates all directories needed by ZI, first checks if they already exist. # ]]]
+# FUNCTION: .zi-load-object. [[[ # ]]]
+# FUNCTION:.zi-set-m-func() [[[
+# Sets and withdraws the temporary, atclone/atpull time function `m`. # ]]]
+# FUNCTION: .zi-load-snippet. [[[
+# Implements the exposed-to-user action of loading a snippet.
+#
+# $1 - url (can be local, absolute path). # ]]]
+# FUNCTION: .zi-load. [[[
+# Implements the exposed-to-user action of loading a plugin.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - plugin name, if the third format is used # ]]]
+# FUNCTION: .zi-load-plugin. [[[
+# Lower-level function for loading a plugin.
+#
+# $1 - user
+# $2 - plugin
+# $3 - mode (light or load) # ]]]
+# FUNCTION: .zi-compdef-replay. [[[
+# Runs gathered compdef calls. This allows to run `compinit' after loading plugins. # ]]]
+# FUNCTION: .zi-compdef-clear. [[[
+# Implements user-exposed functionality to clear gathered compdefs. # ]]]
+# FUNCTION: .zi-add-report. [[[
+# Adds a report line for given plugin.
+#
+# $1 - uspl2, i.e. user/plugin
+# $2, ... - the text # ]]]
+# FUNCTION: .zi-add-fpath. [[[ # ]]]
+# FUNCTION: .zi-run. [[[
+# Run code inside plugin's folder
+# It uses the `correct' parameter from upper's scope zi(). # ]]]
+# FUNCTION: +zi-deploy-message. [[[
+# Deploys a sub-prompt message to be displayed OR a `zle
+# .reset-prompt' call to be invoked # ]]]
+# FUNCTION: .zi-formatter-pid. [[[ # ]]]
+# FUNCTION: .zi-formatter-bar. [[[ # ]]]
+# FUNCTION: .zi-formatter-th-bar. [[[
+# FUNCTION: .zi-formatter-bar-util. [[[ # ]]]
+# FUNCTION: .zi-formatter-url. [[[ # ]]]
+# FUNCTION: +zi-message-formatter [[[ # ]]]
+# FUNCTION: +zi-message. [[[ # ]]]
+# FUNCTION: +zi-prehelp-usage-message. [[[
+# ]]]
+# FUNCTION: +zi-parse-opts. [[[ # ]]]
+
+#
+# Ice support.
+#
+
+# FUNCTION: .zi-ice. [[[
+# Parses ICE specification, puts the result into ICE global hash. The ice-spec is valid for
+# next command only (i.e. it "melts"), but it can then stick to plugin and activate e.g. at update. # ]]]
+# FUNCTION: .zi-pack-ice. [[[
+# Remembers all ice-mods, assigns them to concrete plugin. Ice spec is in general forgotten for
+# second-next command (that's why it's called "ice" - it melts), however they glue to the object (plugin
+# or snippet) mentioned in the next command – for later use with e.g. `zi update ...'. # ]]]
+# FUNCTION: .zi-load-ices. [[[ # ]]]
+# FUNCTION: .zi-setup-params. [[[ # ]]]
+
+#
+# Turbo.
+#
+
+# FUNCTION: .zi-run-task. [[[
+# A backend, worker function of .zi-scheduler. It obtains the tasks
+# index and a few of its properties (like the type: plugin, snippet,
+# service plugin, service snippet) and executes it first checking for
+# additional conditions (like non-numeric wait'' ice).
+#
+# $1 - the pass number, either 1st or 2nd pass
+# $2 - the time assigned to the task
+# $3 - type: plugin, snippet, service plugin, service snippet
+# $4 - task's index in the ZI[WAIT_ICE_...] fields
+# $5 - mode: load or light
+# $6 - the plugin-spec or snippet URL or alias name (from id-as'') # ]]]
+
+# FUNCTION: .zi-submit-turbo. [[[
+# If `zi load`, `zi light` or `zi snippet`  will be
+# preceded with `wait', `load', `unload' or `on-update-of`/`subscribe'
+# ice-mods then the plugin or snipped is to be loaded in turbo-mode,
+# and this function adds it to internal data structures, so that
+# @zi-scheduler can run (load, unload) this as a task. # ]]]
+# FUNCTION: -zi_scheduler_add_sh. [[[
+# Copies task into ZI_RUN array, called when a task timeouts.
+# A small function ran from pattern in /-substitution as a math
+# function. # ]]]
+# FUNCTION: @zi-scheduler. [[[
+# Searches for timeout tasks, executes them. There's an array of tasks
+# waiting for execution, this scheduler manages them, detects which ones
+# should be run at current moment, decides to remove (or not) them from
+# the array after execution.
+#
+# $1 - if "following", then it is non-first (second and more)
+#      invocation of the scheduler; this results in chain of `sched'
+#      invocations that results in repetitive @zi-scheduler activity.
+#
+#      if "burst", then all tasks are marked timeout and executed one
+#      by one; this is handy if e.g. a docker image starts up and
+#      needs to install all turbo-mode plugins without any hesitation
+#      (delay), i.e. "burst" allows to run package installations from
+#      script, not from prompt.
+# # ]]]
+
+#
+# Exposed functions.
+#
+
+# FUNCTION: zi. [[[
+# Main function directly exposed to user, obtains subcommand and its arguments, has completion. # ]]]
+# FUNCTION: zicdreplay. [[[
+# A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+# It works like `zi cdreplay', which cannot be invoked from such hook ices.
+# ]]]
+# FUNCTION: zicdclear. [[[
+# A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.
+# ]]]
+# FUNCTION: zicompinit. [[[
+# A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+# It runs `autoload compinit; compinit' and respects
+# ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].
+# ]]]
+# FUNCTION: zicompdef. [[[
+# Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode). An utility functton of an undefined use case.
+# ]]]
+# FUNCTION: @autoload. [[[ # ]]]
+# FUNCTION: zi-turbo. [[[
+# With zi-turbo first argument is a wait time and suffix, i.e. "0a".
+# Anything that doesn't match will be passed as if it were an ice mod.
+# Default ices depth'3' and lucid, allowed values [0-9][a-d].
+# ]]]
+# Compatibility functions. [[[
+#zinit() { zi "$@"; }
+
+#
+# Source-executed code.
+#  # zsh/datetime required for wait/load/unload ice-mods
+
+# code. [[[
+
+# Remember source's timestamps for the automatic-reload feature.
+
+# Simulate existence of _local/zi plugin. This will allow to cuninstall of its completion
+
+# Inform Prezto that the compdef function is available.
+
+# Colorize completions for commands unload, report, creinstall, cuninstall.
+# ]]]
+# module recompilation for the project rename. [[[
+  # Don't trust access times and verify hard stored values. # ]]]
+
+# !atpull-pre.
+# !atpull-post.
+# e-!atpull-pre.
+# no-e-!atpull-post.
+# atpull-post.
+# !atclone-pre.
+# !atclone-post.
+# atclone-post.

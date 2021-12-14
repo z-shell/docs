@@ -1,0 +1,4 @@
+# FUNCTION: .zi-self-update [[[
+# Updates ❮ ZI ❯ code (does a git pull).
+#
+# User-action entry point.

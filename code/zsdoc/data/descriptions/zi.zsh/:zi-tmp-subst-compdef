@@ -1,0 +1,4 @@
+# FUNCTION: :zi-tmp-subst-compdef. [[[
+# Function defined to hijack plugin's calls to the `compdef' function.
+# The hijacking is not only for reporting, but also to save compdef
+# calls so that `compinit' can be called after loading plugins.

@@ -1,0 +1,29 @@
+local uspl2="$1" infoc="${ZI[col-info]}" k
+builtin setopt localoptions extendedglob nokshglob noksharrays
+REPLY=""
+[[ "${ZI[PARAMETERS_PRE__$uspl2]}" != *[$'! \t']* || "${ZI[PARAMETERS_POST__$uspl2]}" != *[$'! \t']* ]] && return 0
+typeset -A elem_pre elem_post
+elem_pre=( "${(z)ZI[PARAMETERS_PRE__$uspl2]}" )
+elem_post=( "${(z)ZI[PARAMETERS_POST__$uspl2]}" )
+integer longest=0 vlongest1=0 vlongest2=0
+local v1 v2
+for k in "${(k)elem_post[@]}"; do
+  k="${(Q)k}"
+  [[ "${#k}" -gt "$longest" ]] && longest="${#k}"
+  v1="${(Q)elem_pre[$k]}"
+  v2="${(Q)elem_post[$k]}"
+  [[ "${#v1}" -gt "$vlongest1" ]] && vlongest1="${#v1}"
+  [[ "${#v2}" -gt "$vlongest2" ]] && vlongest2="${#v2}"
+done
+local answer="" k
+for k in "${(k)elem_post[@]}"; do
+  v1="${(Q)elem_pre[$k]}"
+  v2="${(Q)elem_post[$k]}"
+  k="${(Q)k}"
+  k="${(r:longest+1:: :)k}"
+  v1="${(l:vlongest1+1:: :)v1}"
+  v2="${(r:vlongest2+1:: :)v2}"
+  answer+="$k ${infoc}[$v1 -> $v2]${ZI[col-rst]}"$'\n'
+done
+[[ -n "$answer" ]] && REPLY="$answer"
+return 0

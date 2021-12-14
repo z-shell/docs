@@ -1,0 +1,5 @@
+emulate -LR zsh
+setopt extendedglob warncreateglobal typesetsilent noshortloops
+[[ $1 == % ]] && local id_as=%$2 || local id_as=$1${1:+/}$2
+.zi-get-object-path snippet "$id_as" || .zi-get-object-path plugin "$id_as"
+return $(( 1 - reply[3] ))

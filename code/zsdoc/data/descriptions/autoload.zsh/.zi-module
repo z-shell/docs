@@ -1,0 +1,4 @@
+# FUNCTION: .zi-module [[[
+# Function that has sub-commands passed as long-options (with two dashes, --).
+# It's an attempt to plugin only this one function into `zi' function
+# defined in zi.zsh, to not make this file longer than it's needed.

@@ -1,0 +1,45 @@
+local ___pass="$1" ___t="$2" ___tpe="$3" ___idx="$4" ___mode="$5" ___id="${(Q)6}" ___opt="${(Q)7}" ___action ___s=1 ___retval=0
+
+local -A ICE ZI_ICE
+ICE=( "${(@Q)${(z@)ZI[WAIT_ICE_${___idx}]}}" )
+ZI_ICE=( "${(kv)ICE[@]}" )
+
+local ___id_as=${ICE[id-as]:-$___id}
+
+if [[ $___pass = 1 && ${${ICE[wait]#\!}%%[^0-9]([^0-9]|)([^0-9]|)([^0-9]|)} = <-> ]]; then
+  ___action="${(M)ICE[wait]#\!}load"
+elif [[ $___pass = 1 && -n ${ICE[wait]#\!} ]] && { eval "${ICE[wait]#\!}" || [[ $(( ___s=0 )) = 1 ]]; }; then
+  ___action="${(M)ICE[wait]#\!}load"
+elif [[ -n ${ICE[load]#\!} && -n $(( ___s=0 )) && $___pass = 3 && -z ${ZI_REGISTERED_PLUGINS[(r)$___id_as]} ]] && eval "${ICE[load]#\!}"; then
+  ___action="${(M)ICE[load]#\!}load"
+elif [[ -n ${ICE[unload]#\!} && -n $(( ___s=0 )) && $___pass = 2 && -n ${ZI_REGISTERED_PLUGINS[(r)$___id_as]} ]] && eval "${ICE[unload]#\!}"; then
+  ___action="${(M)ICE[unload]#\!}remove"
+elif [[ -n ${ICE[subscribe]#\!} && -n $(( ___s=0 )) && $___pass = 3 ]] && \
+  { local -a fts_arr
+  eval "fts_arr=( ${ICE[subscribe]}(DNms-$(( EPOCHSECONDS - ZI[fts-${ICE[subscribe]}] ))) ); (( \${#fts_arr} ))" && \
+    { ZI[fts-${ICE[subscribe]}]="$EPOCHSECONDS"; ___s=${+ICE[once]}; } || \
+    (( 0 ))
+  }
+then
+  ___action="${(M)ICE[subscribe]#\!}load"
+fi
+
+if [[ $___action = *load ]]; then
+  if [[ $___tpe = p ]]; then
+    .zi-load "${(@)=___id}" "" "$___mode"; (( ___retval += $? ))
+  elif [[ $___tpe = s ]]; then
+    .zi-load-snippet $___opt "$___id"; (( ___retval += $? ))
+  elif [[ $___tpe = p1 || $___tpe = s1 ]]; then
+    (( ${+functions[.zi-service]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/additional.zsh"
+    zpty -b "${___id//\//:} / ${ICE[service]}" '.zi-service '"${(M)___tpe#?}"' "$___mode" "$___id"'
+  fi
+  (( ${+ICE[silent]} == 0 && ${+ICE[lucid]} == 0 && ___retval == 0 )) && zle && zle -M "Loaded $___id"
+elif [[ $___action = *remove ]]; then
+  (( ${+functions[.zi-confirm]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/autoload.zsh" || return 1
+  [[ $___tpe = p ]] && .zi-unload "$___id_as" "" -q
+  (( ${+ICE[silent]} == 0 && ${+ICE[lucid]} == 0 && ___retval == 0 )) && zle && zle -M "Unloaded $___id_as"
+fi
+
+[[ ${REPLY::=$___action} = \!* ]] && zle && zle .reset-prompt
+
+return ___s

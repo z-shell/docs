@@ -1,0 +1,4 @@
+# FUNCTION: .zi-download-snippet [[[
+# Downloads snippet – either a file – with curl, wget, lftp or lynx, or a directory,
+# with Subversion – when svn-ICE is active. Github supports Subversion protocol and allows
+# to clone subdirectories. This is used to provide a layer of support for Oh-My-Zsh and Prezto.

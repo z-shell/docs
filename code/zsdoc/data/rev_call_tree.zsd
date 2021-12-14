@@ -1,0 +1,8 @@
+autoload.zsh/.zi-clear-report-for:  additional.zsh/.zi-clear-debug-report
+autoload.zsh/.zi-unload:  additional.zsh/.zi-debug-unload
+zi.zsh/+zi-message:  additional.zsh/:zi-tmp-subst-source  additional.zsh/.zi-debug-start  additional.zsh/.zi-debug-unload
+zi.zsh/.zi-diff:  additional.zsh/.zi-debug-start  additional.zsh/.zi-debug-stop
+zi.zsh/.zi-load:  additional.zsh/.zi-service
+zi.zsh/.zi-load-snippet:  additional.zsh/.zi-service
+zi.zsh/.zi-tmp-subst-off:  additional.zsh/.zi-debug-stop
+zi.zsh/.zi-tmp-subst-on:  additional.zsh/.zi-debug-start

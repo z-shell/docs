@@ -1,0 +1,7 @@
+.zi-install-completions
+|-- side.zsh/.zi-any-colorify-as-uspl2
+|-- side.zsh/.zi-exists-physically-message
+|-- zi.zsh/+zi-message
+`-- zi.zsh/.zi-any-to-user-plugin
+
+4 directories, 0 files

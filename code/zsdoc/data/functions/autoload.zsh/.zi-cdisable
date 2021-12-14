@@ -1,0 +1,27 @@
+local c="$1"
+c="${c#_}"
+local cfile="${ZI[COMPLETIONS_DIR]}/_${c}"
+local bkpfile="${cfile:h}/$c"
+
+if [[ ! -e "$cfile" && ! -e "$bkpfile" ]]; then
+  builtin print "${ZI[col-error]}No such completion \`$c'${ZI[col-rst]}"
+  return 1
+fi
+if [[ ! -e "$cfile" ]]; then
+  builtin print "Completion ${ZI[col-info]}$c${ZI[col-rst]} already disabled"
+  .zi-check-comp-consistency "$cfile" "$bkpfile" 0
+  return 1
+fi
+if [[ -e "$bkpfile" ]]; then
+  builtin print "${ZI[col-error]}Warning: completion's backup file \`${bkpfile:t}' already exists, will overwrite${ZI[col-rst]}"
+  .zi-check-comp-consistency "$cfile" "$bkpfile" 1
+  command rm -f "$bkpfile"
+else
+  .zi-check-comp-consistency "$cfile" "$bkpfile" 0
+fi
+command mv "$cfile" "$bkpfile"
+.zi-prepare-readlink
+.zi-get-completion-owner-uspl2col "$bkpfile" "$REPLY"
+builtin print "Disabled ${ZI[col-info]}$c${ZI[col-rst]} completion belonging to $REPLY"
+
+return 0

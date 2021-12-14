@@ -1,0 +1,2 @@
+# FUNCTION: .zi-clear-debug-report [[[
+# Forgets dtrace repport gathered up to this moment.

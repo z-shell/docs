@@ -1,0 +1,11 @@
+local cfile="$1" bkpfile="$2"
+integer error="$3"
+if [[ -e "$bkpfile" && ! -L "$bkpfile" ]]; then
+  builtin print "${ZI[col-error]}Warning: completion's backup file \`${bkpfile:t}' isn't a symlink${ZI[col-rst]}"
+  error=1
+fi
+if [[ -e "$cfile" && ! -L "$cfile" ]]; then
+  builtin print "${ZI[col-error]}Warning: completion file \`${cfile:t}' isn't a symlink${ZI[col-rst]}"
+  error=1
+fi
+(( error )) && builtin print "${ZI[col-error]}Manual edit of ${ZI[COMPLETIONS_DIR]} occured?${ZI[col-rst]}"

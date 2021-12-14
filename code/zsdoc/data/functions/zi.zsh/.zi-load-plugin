@@ -1,0 +1,107 @@
+local ___user="$1" ___plugin="$2" ___id_as="$3" ___mode="$4" ___rst="$5" ___correct=0 ___retval=0
+local ___pbase="${${___plugin:t}%(.plugin.zsh|.zsh|.git)}" ___key
+builtin set --
+[[ -o ksharrays ]] && ___correct=1
+[[ -n ${ICE[(i)(\!|)(sh|bash|ksh|csh)]}${ICE[opts]} ]] && {
+  local -a ___precm
+  ___precm=(
+    emulate
+    ${${(M)${ICE[(i)(\!|)(sh|bash|ksh|csh)]}#\!}:+-R}
+    ${${${ICE[(i)(\!|)(sh|bash|ksh|csh)]}#\!}:-zsh}
+    ${${ICE[(i)(\!|)bash]}:+-${(s: :):-o noshglob -o braceexpand -o kshglob}}
+    ${(s: :):-${${:-${(@s: :):--o}" "${(s: :)^ICE[opts]}}:#-o }}
+    -c
+  )
+}
+[[ -z ${ICE[subst]} ]] && local ___builtin=builtin
+[[ ${ICE[as]} = null || ${+ICE[null]} -eq 1 || ${+ICE[binary]} -eq 1 ]] && ICE[pick]="${ICE[pick]:-/dev/null}"
+if [[ -n ${ICE[autoload]} ]] {
+  :zi-tmp-subst-autoload -Uz \
+    ${(s: :)${${${(s.;.)ICE[autoload]#[\!\#]}#[\!\#]}//(#b)((*)(->|=>|→)(*)|(*))/${match[2]:+$match[2] -S $match[4]}${match[5]:+${match[5]} -S ${match[5]}}}} \
+    ${${(M)ICE[autoload]:#*(->|=>|→)*}:+-C} ${${(M)ICE[autoload]#(?\!|\!)}:+-C} ${${(M)ICE[autoload]#(?\#|\#)}:+-I}
+}
+if [[ ${ICE[as]} = command ]]; then
+  [[ ${+ICE[pick]} = 1 && -z ${ICE[pick]} ]] && ICE[pick]="${___id_as:t}"
+  reply=()
+  if [[ -n ${ICE[pick]} && ${ICE[pick]} != /dev/null ]]; then
+    reply=( ${(M)~ICE[pick]##/*}(DN) $___pdir_path/${~ICE[pick]}(DN) )
+    [[ -n ${reply[1-correct]} ]] && ___pdir_path="${reply[1-correct]:h}"
+  fi
+  [[ -z ${path[(er)$___pdir_path]} ]] && {
+    [[ $___mode != light ]] && .zi-diff-env "${ZI[CUR_USPL2]}" begin
+    path=( "${___pdir_path%/}" ${path[@]} )
+    [[ $___mode != light ]] && .zi-diff-env "${ZI[CUR_USPL2]}" end
+    .zi-add-report "${ZI[CUR_USPL2]}" "$ZI[col-info2]$___pdir_path$ZI[col-rst] added to \$PATH"
+  }
+  [[ -n ${reply[1-correct]} && ! -x ${reply[1-correct]} ]] && command chmod a+x ${reply[@]}
+  [[ ${ICE[atinit]} = '!'* || -n ${ICE[src]} || -n ${ICE[multisrc]} || ${ICE[atload][1]} = "!" ]] && {
+    if [[ ${ZI[TMP_SUBST]} = inactive ]]; then
+      (( ${+functions[compdef]} )) && ZI[bkp-compdef]="${functions[compdef]}" || builtin unset "ZI[bkp-compdef]"
+      functions[compdef]=':zi-tmp-subst-compdef "$@";'
+      ZI[TMP_SUBST]=1
+    else
+      (( ++ ZI[TMP_SUBST] ))
+    fi
+  }
+  local ZERO
+  [[ $ICE[atinit] = '!'* ]] && { local ___oldcd="$PWD"; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "${${${(M)___user:#%}:+$___plugin}:-${ZI[PLUGINS_DIR]}/${___id_as//\//---}}"; } && eval "${ICE[atinit#!]}"; ((1)); } || eval "${ICE[atinit]#!}"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }
+  [[ -n ${ICE[src]} ]] && { ZERO="${${(M)ICE[src]##/*}:-$___pdir_orig/${ICE[src]}}"; (( ${+ICE[silent]} )) && { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; } 2>/dev/null 1>&2; (( ___retval += $? )); ((1)); } || { ((1)); { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; }; (( ___retval += $? )); }; }
+  [[ -n ${ICE[multisrc]} ]] && { local ___oldcd="$PWD"; () { setopt localoptions noautopushd; builtin cd -q "$___pdir_orig"; }; eval "reply=(${ICE[multisrc]})"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; local ___fname; for ___fname in "${reply[@]}"; do ZERO="${${(M)___fname:#/*}:-$___pdir_orig/$___fname}"; (( ${+ICE[silent]} )) && { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; } 2>/dev/null 1>&2; (( ___retval += $? )); ((1)); } || { ((1)); { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; }; (( ___retval += $? )); }; done; }
+  reply=( ${(on)ZI_EXTS[(I)z-annex hook:\\\!atload-<-> <->]} )
+  for ___key in "${reply[@]}"; do
+    ___arr=( "${(Q)${(z@)ZI_EXTS[$___key]}[@]}" )
+    "${___arr[5]}" plugin "$___user" "$___plugin" "$___id_as" "$___pdir_orig" \!atload
+  done
+  if [[ -n ${ICE[wrap]} ]] {
+    (( ${+functions[.zi-service]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/additional.zsh"
+    .zi-wrap-functions "$___user" "$___plugin" "$___id_as"
+  }
+  [[ ${ICE[atload][1]} = "!" ]] && { .zi-add-report "$___id_as" "Note: Starting to track the atload'!…' ice…"; ZERO="$___pdir_orig/-atload-"; local ___oldcd="$PWD"; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "$___pdir_orig"; } && builtin eval "${ICE[atload]#\!}"; } || eval "${ICE[atload]#\!}"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }
+  [[ -n ${ICE[src]} || -n ${ICE[multisrc]} || ${ICE[atload][1]} = "!" ]] && {
+    (( -- ZI[TMP_SUBST] == 0 )) && { ZI[TMP_SUBST]=inactive; builtin setopt noaliases; (( ${+ZI[bkp-compdef]} )) && functions[compdef]="${ZI[bkp-compdef]}" || unfunction compdef; (( ZI[ALIASES_OPT] )) && builtin setopt aliases; }
+  }
+elif [[ ${ICE[as]} = completion ]]; then
+  ((1))
+else
+  if [[ -n ${ICE[pick]} ]]; then
+    [[ ${ICE[pick]} = /dev/null ]] && reply=( /dev/null ) || reply=( ${(M)~ICE[pick]##/*}(DN) $___pdir_path/${~ICE[pick]}(DN) )
+  elif [[ -e $___pdir_path/$___pbase.plugin.zsh ]]; then
+    reply=( "$___pdir_path/$___pbase".plugin.zsh )
+  else
+    .zi-find-other-matches "$___pdir_path" "$___pbase"
+  fi
+  local ___fname="${reply[1-correct]:t}"
+  ___pdir_path="${reply[1-correct]:h}"
+  .zi-add-report "${ZI[CUR_USPL2]}" "Source $___fname ${${${(M)___mode:#light}:+(no reporting)}:-$ZI[col-info2](reporting enabled)$ZI[col-rst]}"
+  [[ $___mode != light(|-b) ]] && .zi-diff "${ZI[CUR_USPL2]}" begin
+  .zi-tmp-subst-on "${___mode:-load}"
+  (( ${+ICE[blockf]} )) && { local -a fpath_bkp; fpath_bkp=( "${fpath[@]}" ); }
+  local ZERO="$___pdir_path/$___fname"
+  (( ${+ICE[aliases]} )) || builtin setopt noaliases
+  [[ $ICE[atinit] = '!'* ]] && { local ___oldcd="$PWD"; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "${${${(M)___user:#%}:+$___plugin}:-${ZI[PLUGINS_DIR]}/${___id_as//\//---}}"; } && eval "${ICE[atinit]#!}"; ((1)); } || eval "${ICE[atinit]#1}"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }
+  (( ${+ICE[silent]} )) && { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; } 2>/dev/null 1>&2; (( ___retval += $? )); ((1)); } || { ((1)); { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; }; (( ___retval += $? )); }
+  [[ -n ${ICE[src]} ]] && { ZERO="${${(M)ICE[src]##/*}:-$___pdir_orig/${ICE[src]}}"; (( ${+ICE[silent]} )) && { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; } 2>/dev/null 1>&2; (( ___retval += $? )); ((1)); } || { ((1)); { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; }; (( ___retval += $? )); }; }
+  [[ -n ${ICE[multisrc]} ]] && { local ___oldcd="$PWD"; () { setopt localoptions noautopushd; builtin cd -q "$___pdir_orig"; }; eval "reply=(${ICE[multisrc]})"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; for ___fname in "${reply[@]}"; do ZERO="${${(M)___fname:#/*}:-$___pdir_orig/$___fname}"; (( ${+ICE[silent]} )) && { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; } 2>/dev/null 1>&2; (( ___retval += $? )); ((1)); } || { { [[ -n $___precm ]] && { builtin ${___precm[@]} 'source "$ZERO"'; ((1)); } || { ((1)); $___builtin source "$ZERO"; }; }; (( ___retval += $? )); } done; }
+  reply=( ${(on)ZI_EXTS[(I)z-annex hook:\\\!atload-<-> <->]} )
+  for ___key in "${reply[@]}"; do
+    ___arr=( "${(Q)${(z@)ZI_EXTS[$___key]}[@]}" )
+    "${___arr[5]}" plugin "$___user" "$___plugin" "$___id_as" "$___pdir_orig" \!atload
+  done
+  if [[ -n ${ICE[wrap]} ]] {
+    (( ${+functions[.zi-service]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/additional.zsh"
+    .zi-wrap-functions "$___user" "$___plugin" "$___id_as"
+  }
+  [[ ${ICE[atload][1]} = "!" ]] && { .zi-add-report "$___id_as" "Note: Starting to track the atload'!…' ice…"; ZERO="$___pdir_orig/-atload-"; local ___oldcd="$PWD"; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "$___pdir_orig"; } && builtin eval "${ICE[atload]#\!}"; ((1)); } || eval "${ICE[atload]#\!}"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }
+  (( ZI[ALIASES_OPT] )) && builtin setopt aliases
+  (( ${+ICE[blockf]} )) && { fpath=( "${fpath_bkp[@]}" ); }
+  .zi-tmp-subst-off "${___mode:-load}"
+  [[ $___mode != light(|-b) ]] && .zi-diff "${ZI[CUR_USPL2]}" end
+fi
+[[ ${+ICE[atload]} = 1 && ${ICE[atload][1]} != "!" ]] && { ZERO="$___pdir_orig/-atload-"; local ___oldcd="$PWD"; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "$___pdir_orig"; } && builtin eval "${ICE[atload]}"; ((1)); } || eval "${ICE[atload]}"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }
+reply=( ${(on)ZI_EXTS[(I)z-annex hook:atload-<-> <->]} )
+for ___key in "${reply[@]}"; do
+  ___arr=( "${(Q)${(z@)ZI_EXTS[$___key]}[@]}" )
+  "${___arr[5]}" plugin "$___user" "$___plugin" "$___id_as" "$___pdir_orig" atload
+done
+(( ___rst )) && { builtin print; zle .reset-prompt; }
+return ___retval

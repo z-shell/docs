@@ -1,0 +1,5 @@
+builtin print "Recorded compdefs:"
+local cdf
+for cdf in "${ZI_COMPDEF_REPLAY[@]}"; do
+builtin print "compdef ${(Q)cdf}"
+done

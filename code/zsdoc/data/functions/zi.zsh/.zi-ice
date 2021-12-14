@@ -1,0 +1,12 @@
+builtin setopt localoptions noksharrays extendedglob warncreateglobal typesetsilent noshortloops
+integer retval
+  local bit exts="${(j:|:)${(@)${(@Akons:|:)${ZI_EXTS[ice-mods]//\'\'/}}/(#s)<->-/}}"
+  for bit; do
+  [[ $bit = (#b)(--|)(${~ZI[ice-list]}${~exts})(*) ]] && ZI_ICES[${match[2]}]+="${ZI_ICES[${match[2]}]:+;}${match[3]#(:|=)}" || break
+    retval+=1
+  done
+  [[ ${ZI_ICES[as]} = program ]] && ZI_ICES[as]=command
+  [[ -n ${ZI_ICES[on-update-of]} ]] && ZI_ICES[subscribe]="${ZI_ICES[subscribe]:-${ZI_ICES[on-update-of]}}"
+  [[ -n ${ZI_ICES[pick]} ]] && ZI_ICES[pick]="${ZI_ICES[pick]//\$ZPFX/${ZPFX%/}}"
+
+return retval

@@ -1,0 +1,39 @@
+builtin setopt localoptions nullglob extendedglob nokshglob noksharrays
+
+typeset -a plugin_paths
+plugin_paths=( "${ZI[PLUGINS_DIR]}"/*(DN) )
+integer longest=0
+typeset -a completions
+local pp
+for pp in "${plugin_paths[@]}"; do
+  completions=( "$pp"/**/_[^_.]*~*(*.zwc|*.html|*.txt|*.png|*.jpg|*.jpeg|*.js|*.md|*.yml|*.ri|_zsh_highlight*|/zsdoc/*|*.ps1)(DN^/) )
+  if [[ "${#completions[@]}" -gt 0 ]]; then
+    local pd="${pp:t}"
+    [[ "${#pd}" -gt "$longest" ]] && longest="${#pd}"
+  fi
+done
+builtin print "${ZI[col-info]}[+]${ZI[col-rst]} is installed, ${ZI[col-p]}[-]${ZI[col-rst]} uninstalled, ${ZI[col-error]}[+-]${ZI[col-rst]} partially installed"
+
+local c
+for pp in "${plugin_paths[@]}"; do
+  completions=( "$pp"/**/_[^_.]*~*(*.zwc|*.html|*.txt|*.png|*.jpg|*.jpeg|*.js|*.md|*.yml|*.ri|_zsh_highlight*|/zsdoc/*|*.ps1)(DN^/) )
+  if [[ "${#completions[@]}" -gt 0 ]]; then
+    completions=( "${completions[@]:t}" )
+    integer all_installed="${#completions[@]}"
+    for c in "${completions[@]}"; do
+      if [[ -e "${ZI[COMPLETIONS_DIR]}/$c" || -e "${ZI[COMPLETIONS_DIR]}/${c#_}" ]]; then
+        (( all_installed -- ))
+      fi
+    done
+    if [[ "$all_installed" -eq "${#completions[@]}" ]]; then
+      builtin print -n "${ZI[col-p]}[-]${ZI[col-rst]} "
+    elif [[ "$all_installed" -eq "0" ]]; then
+      builtin print -n "${ZI[col-info]}[+]${ZI[col-rst]} "
+    else
+      builtin print -n "${ZI[col-error]}[+-]${ZI[col-rst]} "
+    fi
+    .zi-any-colorify-as-uspl2 "${pp:t}"
+    integer adjust_ec=$(( ${#ZI[col-rst]} * 2 + ${#ZI[col-uname]} + ${#ZI[col-pname]} ))
+    builtin print "${(r:longest+adjust_ec:: :)REPLY} ${(j:, :)completions}"
+  fi
+done

@@ -1,0 +1,7 @@
+.zi-first
+|-- zi.zsh/.zi-any-to-pid
+|-- zi.zsh/.zi-any-to-user-plugin
+|-- zi.zsh/.zi-find-other-matches
+`-- zi.zsh/.zi-get-object-path
+
+4 directories, 0 files

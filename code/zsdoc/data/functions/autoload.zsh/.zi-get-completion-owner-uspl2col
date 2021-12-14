@@ -1,0 +1,2 @@
+.zi-get-completion-owner "$1" "$2"
+.zi-any-colorify-as-uspl2 "$REPLY"

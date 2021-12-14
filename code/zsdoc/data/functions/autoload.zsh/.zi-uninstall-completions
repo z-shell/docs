@@ -1,0 +1,39 @@
+builtin emulate -LR zsh
+builtin setopt nullglob extendedglob warncreateglobal typesetsilent noshortloops
+typeset -a completions symlinked backup_comps
+local c cfile bkpfile
+integer action global_action=0
+.zi-get-path "$1" "$2"
+[[ -e $REPLY ]] && {
+  completions=( $REPLY/**/_[^_.]*~*(*.zwc|*.html|*.txt|*.png|*.jpg|*.jpeg|*.js|*.md|*.yml|*.ri|_zsh_highlight*|/zsdoc/*|*.ps1)(DN) )
+} || {
+  builtin print "No completions found for \`$1${${1:#(%|/)*}:+${2:+/}}$2'"
+  return 1
+}
+symlinked=( ${ZI[COMPLETIONS_DIR]}/_[^_.]*~*.zwc )
+backup_comps=( ${ZI[COMPLETIONS_DIR]}/[^_.]*~*.zwc )
+(( ${+functions[.zi-forget-completion]} )) || builtin source ${ZI[BIN_DIR]}"/lib/zsh/install.zsh"
+for c in ${completions[@]}; do
+  action=0
+  cfile=${c:t}
+  bkpfile=${cfile#_}
+  if [[ -n ${symlinked[(r)*/$cfile]} ]]; then
+    command rm -f ${ZI[COMPLETIONS_DIR]}/$cfile
+    action=1
+  fi
+  if [[ -n ${backup_comps[(r)*/$bkpfile]} ]]; then
+    command rm -f ${ZI[COMPLETIONS_DIR]}/$bkpfile
+    action=1
+  fi
+  if (( action )); then
+    +zi-message "{info}Uninstalling completion \`{file}$cfile{info}'{…}{rst}"
+    .zi-forget-completion "$cfile"
+    (( global_action ++ ))
+  else
+    +zi-message "{info}Completion \`{file}$cfile{info}' not installed.{rst}"
+  fi
+done
+if (( global_action > 0 )); then
+  +zi-message "{info}Uninstalled {num}$global_action{info} completions.{rst}"
+fi
+.zi-compinit >/dev/null

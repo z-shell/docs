@@ -1,0 +1,22 @@
+local id_as="$1" ___key ___path
+local -a ice_order
+ice_order=(
+  ${(As:|:)ZI[ice-list]}
+  ${(@)${(A@kons:|:)${ZI_EXTS[ice-mods]//\'\'/}}/(#s)<->-/}
+)
+___path="${ZI[PLUGINS_DIR]}/${id_as//\//---}"/._zi
+if [[ ! -d $___path ]] {
+  if ! .zi-get-object-path snippet "${id_as//\//---}"; then
+    return 1
+  fi
+  ___path="$REPLY"/._zi
+}
+for ___key ( "${ice_order[@]}" ) {
+  (( ${+ICE[$___key]} )) && [[ ${ICE[$___key]} != +* ]] && continue
+  [[ -e $___path/$___key ]] && ICE[$___key]="$(<$___path/$___key)"
+}
+[[ -n ${ICE[on-update-of]} ]] && ICE[subscribe]="${ICE[subscribe]:-${ICE[on-update-of]}}"
+[[ ${ICE[as]} = program ]] && ICE[as]=command
+[[ -n ${ICE[pick]} ]] && ICE[pick]="${ICE[pick]//\$ZPFX/${ZPFX%/}}"
+
+return 0

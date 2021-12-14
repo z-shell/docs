@@ -1,0 +1,3 @@
+# FUNCTION: @zsh-plugin-run-on-update. [[[
+# The Plugin Standard required mechanism, see:
+# https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard

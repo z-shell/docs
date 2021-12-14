@@ -1,0 +1,6 @@
+.zi-any-to-user-plugin "$1" "$2"
+local user="${reply[-2]}" plugin="${reply[-1]}"
+.zi-exists-physically-message "$user" "$plugin" || return 1
+(
+  builtin cd -q "${ZI[PLUGINS_DIR]}/${user:+${user}---}${plugin//\//---}" && command git log -p --graph --decorate --date=relative -C -M
+)

@@ -1,0 +1,16 @@
+local quiet="$1"
+typeset -a pos
+if [[ ${+functions[compdef]} = 0 ]]; then
+  +zi-message "{u-warn}Error{b-warn}:{rst} The {func}compinit{rst}" \
+    "function hasn't been loaded, cannot do {it}{cmd}compdef replay{rst}."
+  return 1
+fi
+local cdf
+for cdf in "${ZI_COMPDEF_REPLAY[@]}"; do
+  pos=( "${(z)cdf}" )
+  [[ ${#pos[@]} = 1 && -z ${pos[-1]} ]] && continue
+  pos=( "${(Q)pos[@]}" )
+  [[ $quiet = -q ]] || +zi-message "Running compdef: {cmd}${pos[*]}{rst}"
+  compdef "${pos[@]}"
+done
+return 0

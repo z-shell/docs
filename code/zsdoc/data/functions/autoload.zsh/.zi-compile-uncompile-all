@@ -1,0 +1,19 @@
+builtin setopt localoptions nullglob
+
+local compile="$1"
+typeset -a plugins
+plugins=( "${ZI[PLUGINS_DIR]}"/*(DN) )
+
+local p user plugin
+for p in "${plugins[@]}"; do
+  [[ "${p:t}" = "custom" || "${p:t}" = "_local---zi" ]] && continue
+  .zi-any-to-user-plugin "${p:t}"
+  user="${reply[-2]}" plugin="${reply[-1]}"
+  .zi-any-colorify-as-uspl2 "$user" "$plugin"
+  builtin print -r -- "$REPLY:"
+  if [[ "$compile" = "1" ]]; then
+    .zi-compile-plugin "$user" "$plugin"
+  else
+    .zi-uncompile-plugin "$user" "$plugin" "1"
+  fi
+done

@@ -1,0 +1,16 @@
+local uspl2="$1"
+builtin setopt localoptions extendedglob nokshglob noksharrays
+[[ "${ZI[FUNCTIONS_BEFORE__$uspl2]}" != *[$'! \t']* || "${ZI[FUNCTIONS_AFTER__$uspl2]}" != *[$'! \t']* ]] && return 1
+typeset -A func
+local i
+for i in "${(z)ZI[FUNCTIONS_AFTER__$uspl2]}"; do
+  func[$i]=1
+done
+for i in "${(z)ZI[FUNCTIONS_BEFORE__$uspl2]}"; do
+  func[$i]=0
+done
+ZI[FUNCTIONS__$uspl2]=""
+for i in "${(onk)func[@]}"; do
+  [[ "${func[$i]}" = "1" ]] && ZI[FUNCTIONS__$uspl2]+="$i "
+done
+return 0

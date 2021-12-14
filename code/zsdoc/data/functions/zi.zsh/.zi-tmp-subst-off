@@ -1,0 +1,17 @@
+builtin setopt localoptions noerrreturn noerrexit extendedglob warncreateglobal typesetsilent noshortloops unset noaliases
+local mode="$1"
+[[ ${ZI[TMP_SUBST]} = inactive || ${ZI[TMP_SUBST]} != $mode ]] && return 0
+ZI[TMP_SUBST]=inactive
+if [[ $mode != compdef ]]; then
+  (( ${+ZI[bkp-autoload]} )) && functions[autoload]="${ZI[bkp-autoload]}" || unfunction autoload
+fi
+(( ${+ZI[bkp-compdef]} )) && functions[compdef]="${ZI[bkp-compdef]}" || unfunction compdef
+(( ${+ZI[bkp-source]} )) && functions[source]="${ZI[bkp-source]}" || unfunction source 2>/dev/null
+(( ${+ZI[bkp-.]} )) && functions[.]="${ZI[bkp-.]}" || unfunction . 2> /dev/null
+[[ ( $mode = light && ${+ICE[trackbinds]} -eq 0 ) || $mode = compdef ]] && return 0
+(( ${+ZI[bkp-bindkey]} )) && functions[bindkey]="${ZI[bkp-bindkey]}" || unfunction bindkey
+[[ $mode = light-b || ( $mode = light && ${+ICE[trackbinds]} -eq 1 ) ]] && return 0
+(( ${+ZI[bkp-zstyle]} )) && functions[zstyle]="${ZI[bkp-zstyle]}" || unfunction zstyle
+(( ${+ZI[bkp-alias]} )) && functions[alias]="${ZI[bkp-alias]}" || unfunction alias
+(( ${+ZI[bkp-zle]} )) && functions[zle]="${ZI[bkp-zle]}" || unfunction zle
+return 0

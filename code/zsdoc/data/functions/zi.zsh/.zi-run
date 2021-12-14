@@ -1,0 +1,24 @@
+if [[ $1 = (-l|--last) ]]; then
+  { set -- "${ZI[last-run-plugin]:-$(<${ZI[BIN_DIR]}/last-run-object.txt)}" "${@[2-correct,-1]}"; } &>/dev/null
+  [[ -z $1 ]] && { +zi-message "{u-warn}Error{b-warn}:{rst} No recent plugin-ID saved on the disk yet, please specify" \
+  "it as the first argument, i.e.{ehi}: {cmd}zi run {pid}usr/plg{slight} {…}the code to run{…} "; return 1; }
+else
+  integer ___nolast=1
+fi
+.zi-any-to-user-plugin "$1" ""
+local ___id_as="$1" ___user="${reply[-2]}" ___plugin="${reply[-1]}" ___oldpwd="$PWD"
+() {
+  emulate -LR zsh
+  builtin cd &>/dev/null -q ${${${(M)___user:#%}:+$___plugin}:-${ZI[PLUGINS_DIR]}/${___id_as//\//---}} || {
+    .zi-get-object-path snippet "$___id_as"
+    builtin cd &>/dev/null -q $REPLY
+  }
+}
+if (( $? == 0 )); then
+  (( ___nolast )) && { builtin print -r "$1" >| ${ZI[BIN_DIR]}/last-run-object.txt; }
+  ZI[last-run-plugin]="$1"
+  eval "${@[2-correct,-1]}"
+  () { setopt localoptions noautopushd; builtin cd -q "$___oldpwd"; }
+else
+  +zi-message "{u-warn}Error{b-warn}:{rst} no such plugin or snippet."
+fi
