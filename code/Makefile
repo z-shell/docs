@@ -1,7 +1,7 @@
 all: clone zi/zi.zsh.zwc zi/lib/zsh/side.zsh.zwc zi/lib/zsh/install.zsh.zwc zi/lib/zsh/autoload.zsh.zwc
 
 clone: clean
-	command git clone --depth 1 --branch main https://github.com/z-shell/zi
+	git clone --depth 1 --branch main https://github.com/z-shell/zi
 
 %.zwc: %
 	zi/lib/zcompile $<
@@ -31,6 +31,8 @@ html:
 
 clean:
 	rm -vrf zi
+
+distclean: clean
 	rm -vrf zsdoc/data
 
 .PHONY: all clean clone man pdf html adoc
