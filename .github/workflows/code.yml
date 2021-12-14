@@ -1,5 +1,5 @@
 ---
-name: ZI Code Documentation
+name: Code Documentation
 on: 
   workflow_dispatch:
   schedule:
