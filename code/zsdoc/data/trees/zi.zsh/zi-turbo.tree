@@ -1,11 +1,14 @@
 zi-turbo
 `-- zi
+    |-- +zi-message
+    |-- +zi-prehelp-usage-message
+    |   `-- +zi-message
     |-- autoload.zsh/.zi-analytics-menu
     |-- autoload.zsh/.zi-cdisable
     |-- autoload.zsh/.zi-cenable
     |-- autoload.zsh/.zi-clear-completions
-    |-- autoload.zsh/.zi-compiled
     |-- autoload.zsh/.zi-compile-uncompile-all
+    |-- autoload.zsh/.zi-compiled
     |-- autoload.zsh/.zi-control-menu
     |-- autoload.zsh/.zi-help
     |-- autoload.zsh/.zi-list-bindkeys
@@ -31,9 +34,6 @@ zi-turbo
     |-- install.zsh/.zi-compile-plugin
     |-- install.zsh/.zi-compinit
     |-- install.zsh/.zi-forget-completion
-    |-- install.zsh/.zi-install-completions
-    |-- +zi-message
-    `-- +zi-prehelp-usage-message
-        `-- +zi-message
+    `-- install.zsh/.zi-install-completions
 
 36 directories, 0 files

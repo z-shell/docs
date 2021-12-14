@@ -1,6 +1,6 @@
 .zi-update-snippet
-|-- zi.zsh/.zi-get-object-path
 |-- zi.zsh/+zi-message
+|-- zi.zsh/.zi-get-object-path
 `-- zi.zsh/.zi-pack-ice
 
 3 directories, 0 files

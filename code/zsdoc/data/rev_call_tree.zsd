@@ -46,12 +46,12 @@ side.zsh/.zi-exists-physically-message:  autoload.zsh/.zi-update-or-status  auto
 side.zsh/.zi-first:  autoload.zsh/.zi-glance  autoload.zsh/.zi-stress
 side.zsh/.zi-store-ices:  autoload.zsh/.zi-update-or-status
 side.zsh/.zi-two-paths:  autoload.zsh/.zi-update-or-status
-zi.zsh/.zi-any-to-user-plugin:  autoload.zsh/.zi-unregister-plugin  autoload.zsh/.zi-any-to-uspl2  autoload.zsh/.zi-find-completions-of-plugin  autoload.zsh/.zi-unload  autoload.zsh/.zi-show-report  autoload.zsh/.zi-update-or-status  autoload.zsh/.zi-update-or-status-all  autoload.zsh/.zi-update-all-parallel  autoload.zsh/.zi-compiled  autoload.zsh/.zi-compile-uncompile-all  autoload.zsh/.zi-uncompile-plugin  autoload.zsh/.zi-delete  autoload.zsh/.zi-changes  autoload.zsh/.zi-create  autoload.zsh/.zi-glance  autoload.zsh/.zi-stress
 zi.zsh/+zi-deploy-message:  autoload.zsh/.zi-recall
+zi.zsh/+zi-message:  autoload.zsh/.zi-uninstall-completions  autoload.zsh/.zi-self-update  autoload.zsh/.zi-update-or-status  autoload.zsh/.zi-update-or-status-all  autoload.zsh/.zi-update-all-parallel  autoload.zsh/.zi-wait-for-update-jobs  autoload.zsh/.zi-show-zstatus  autoload.zsh/.zi-cd  autoload.zsh/.zi-build-module
+zi.zsh/+zi-prehelp-usage-message:  autoload.zsh/.zi-delete
+zi.zsh/.zi-any-to-user-plugin:  autoload.zsh/.zi-unregister-plugin  autoload.zsh/.zi-any-to-uspl2  autoload.zsh/.zi-find-completions-of-plugin  autoload.zsh/.zi-unload  autoload.zsh/.zi-show-report  autoload.zsh/.zi-update-or-status  autoload.zsh/.zi-update-or-status-all  autoload.zsh/.zi-update-all-parallel  autoload.zsh/.zi-compiled  autoload.zsh/.zi-compile-uncompile-all  autoload.zsh/.zi-uncompile-plugin  autoload.zsh/.zi-delete  autoload.zsh/.zi-changes  autoload.zsh/.zi-create  autoload.zsh/.zi-glance  autoload.zsh/.zi-stress
 zi.zsh/.zi-get-mtime-into:  autoload.zsh/.zi-self-update  autoload.zsh/.zi-update-or-status-all
 zi.zsh/.zi-get-object-path:  autoload.zsh/.zi-get-path
-zi.zsh/+zi-message:  autoload.zsh/.zi-uninstall-completions  autoload.zsh/.zi-self-update  autoload.zsh/.zi-update-or-status  autoload.zsh/.zi-update-or-status-all  autoload.zsh/.zi-update-all-parallel  autoload.zsh/.zi-wait-for-update-jobs  autoload.zsh/.zi-show-zstatus  autoload.zsh/.zi-cd  autoload.zsh/.zi-build-module
 zi.zsh/.zi-parse-opts:  autoload.zsh/.zi-delete
-zi.zsh/+zi-prehelp-usage-message:  autoload.zsh/.zi-delete
 zi.zsh/.zi-set-m-func:  autoload.zsh/.zi-update-or-status
 zi.zsh/@zi-substitute:  autoload.zsh/.zi-at-eval

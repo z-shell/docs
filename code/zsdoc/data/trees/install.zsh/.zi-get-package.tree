@@ -1,7 +1,7 @@
 .zi-get-package
-|-- ziextract
-|   `-- zi.zsh/+zi-message
 |-- zi.zsh/+zi-message
-`-- zi.zsh/@zi-substitute
+|-- zi.zsh/@zi-substitute
+`-- ziextract
+    `-- zi.zsh/+zi-message
 
 4 directories, 0 files

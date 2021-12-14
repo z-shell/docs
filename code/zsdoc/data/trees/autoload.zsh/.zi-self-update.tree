@@ -1,5 +1,5 @@
 .zi-self-update
-|-- zi.zsh/.zi-get-mtime-into
-`-- zi.zsh/+zi-message
+|-- zi.zsh/+zi-message
+`-- zi.zsh/.zi-get-mtime-into
 
 2 directories, 0 files

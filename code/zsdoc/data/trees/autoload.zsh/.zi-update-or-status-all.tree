@@ -1,8 +1,8 @@
 .zi-update-or-status-all
 |-- install.zsh/.zi-compinit
 |-- side.zsh/.zi-any-colorify-as-uspl2
+|-- zi.zsh/+zi-message
 |-- zi.zsh/.zi-any-to-user-plugin
-|-- zi.zsh/.zi-get-mtime-into
-`-- zi.zsh/+zi-message
+`-- zi.zsh/.zi-get-mtime-into
 
 5 directories, 0 files

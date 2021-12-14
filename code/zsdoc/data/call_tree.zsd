@@ -7,8 +7,8 @@ autoload.zsh/.zi-cenable: autoload.zsh/.zi-check-comp-consistency  autoload.zsh/
 autoload.zsh/.zi-changes: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-exists-physically-message
 autoload.zsh/.zi-clear-completions: autoload.zsh/.zi-prepare-readlink  autoload.zsh/.zi-get-completion-owner  side.zsh/.zi-any-colorify-as-uspl2
 autoload.zsh/.zi-clear-report-for: autoload.zsh/.zi-any-to-uspl2
-autoload.zsh/.zi-compiled: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2
 autoload.zsh/.zi-compile-uncompile-all: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  install.zsh/.zi-compile-plugin  autoload.zsh/.zi-uncompile-plugin
+autoload.zsh/.zi-compiled: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2
 autoload.zsh/.zi-create: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  side.zsh/.zi-exists-physically
 autoload.zsh/.zi-delete: zi.zsh/.zi-parse-opts  zi.zsh/+zi-prehelp-usage-message  autoload.zsh/.zi-confirm  side.zsh/.zi-compute-ice  zi.zsh/.zi-any-to-user-plugin
 autoload.zsh/.zi-edit: side.zsh/.zi-compute-ice

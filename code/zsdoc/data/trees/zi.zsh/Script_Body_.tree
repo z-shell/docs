@@ -1,8 +1,8 @@
 Script_Body_
+|-- +zi-message
+|-- @zi-register-hook
 |-- add-zsh-hook
 |-- autoload.zsh/.zi-module
-|-- is-at-least
-|-- +zi-message
-`-- @zi-register-hook
+`-- is-at-least
 
 5 directories, 0 files

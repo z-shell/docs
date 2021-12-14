@@ -1,6 +1,6 @@
 .zi-load
+|-- +zi-deploy-message
 |-- install.zsh/.zi-get-package
-|-- install.zsh/.zi-setup-plugin-dir
-`-- +zi-deploy-message
+`-- install.zsh/.zi-setup-plugin-dir
 
 3 directories, 0 files

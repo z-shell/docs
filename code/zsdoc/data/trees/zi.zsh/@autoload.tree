@@ -1,6 +1,6 @@
 @autoload
 `-- :zi-tmp-subst-autoload
-    |-- is-at-least
-    `-- +zi-message
+    |-- +zi-message
+    `-- is-at-least
 
 3 directories, 0 files

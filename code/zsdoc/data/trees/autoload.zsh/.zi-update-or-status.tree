@@ -7,8 +7,8 @@
 |-- side.zsh/.zi-exists-physically-message
 |-- side.zsh/.zi-store-ices
 |-- side.zsh/.zi-two-paths
-|-- zi.zsh/.zi-any-to-user-plugin
 |-- zi.zsh/+zi-message
+|-- zi.zsh/.zi-any-to-user-plugin
 `-- zi.zsh/.zi-set-m-func
 
 11 directories, 0 files
