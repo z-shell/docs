@@ -38,7 +38,7 @@ jobs:
       - name: Upload code.tar.gz
         uses: actions/upload-artifact@v2
         with:
-          name: Upload Code documentation artifact
+          name: code documentation
           path: code.tar.gz
       #      - name: Check if update required for zsdoc
       #        run: |
