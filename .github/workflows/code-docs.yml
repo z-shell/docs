@@ -1,9 +1,9 @@
 ---
 name: ZI Code Documentation
 on: 
-  workflow_dispatch:
-  schedule:
-  - cron: "30 4 * * 4"
+#  workflow_dispatch:
+#  schedule:
+#  - cron: "30 4 * * 4"
 
 jobs:
   doxygen:
