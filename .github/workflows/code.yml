@@ -25,17 +25,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Clone repository
-        run: |
-          git clone https://github.com/z-shell/zi.git zi
-      - name: Parse scripts and generate Asciidoc documents
-        run: |
-          make -C zi/docs doc
-      - name: Generate PDF from Asciidoc documents
-        run: |
-          make -C code adoc
-          make -C code pdf
-          make -C code clean
+      - name: Generate Asciidoc
+        run: make -C zi/docs doc
+      - name: Generate PDF
+        run: make -C code/zsdoc pdf
+      - name: Cleanup
+        run: make -C code clean
       - name: Tar Code documentation
         run: tar cvzf code.tar.gz code
       - name: Upload code.tar.gz
@@ -60,7 +55,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Code Documentation Update"
-          branch: code-docs
+          branch: main
           # See https://git-scm.com/docs/git-commit#_options
           commit_options: '--no-verify --signoff'
           # See the `pathspec`-documentation for git
