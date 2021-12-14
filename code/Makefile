@@ -7,6 +7,7 @@ clone: clean
 	zi/lib/zcompile $<
 
 adoc: clone zi/zi.zsh zi/lib/zsh/side.zsh zi/lib/zsh/install.zsh zi/lib/zsh/autoload.zsh
+	rm -vrf zsdoc/data
 	rm -vrf zsdoc/asciidoc/*.adoc
 	zsd -v --scomm --cignore "(\#*FUNCTION:*{{{*|\#[[:space:]]#}}}*)" \
 	zi/zi.zsh \
@@ -15,7 +16,6 @@ adoc: clone zi/zi.zsh zi/lib/zsh/side.zsh zi/lib/zsh/install.zsh zi/lib/zsh/auto
 	zi/lib/zsh/autoload.zsh
 	@mkdir -p zsdoc/asciidoc
 	mv -v zsdoc/*.adoc zsdoc/asciidoc/
-	printf "Last update: [$(date '+%m/%d/%Y %H:%M:%S')]\n" >asciidoc.log
 
 man:
 	rm -vrf zsdoc/man
