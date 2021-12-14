@@ -1,0 +1,15 @@
+typeset -a tmp
+local IFS=" "
+[[ $2 = begin ]] && {
+{ [[ -z ${ZI[PATH_BEFORE__$uspl2]} ]] && tmp=( "${(q)path[@]}" )
+  ZI[PATH_BEFORE__$1]="${tmp[*]}"
+  }
+  { [[ -z ${ZI[FPATH_BEFORE__$uspl2]} ]] && tmp=( "${(q)fpath[@]}" )
+    ZI[FPATH_BEFORE__$1]="${tmp[*]}"
+  }
+} || {
+  tmp=( "${(q)path[@]}" )
+  ZI[PATH_AFTER__$1]+=" ${tmp[*]}"
+  tmp=( "${(q)fpath[@]}" )
+  ZI[FPATH_AFTER__$1]+=" ${tmp[*]}"
+}

@@ -1,0 +1,2 @@
+# FUNCTION: .zi-restore-extendedglob [[[
+# Restores extendedglob-option from state saved earlier.

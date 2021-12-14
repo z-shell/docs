@@ -1,0 +1,7 @@
+# FUNCTION: .zi-setup-plugin-dir [[[
+# Clones given plugin into PLUGIN_DIR. Supports multiple
+# sites (respecting `from' and `proto' ice modifiers).
+# Invokes compilation of plugin's main file.
+#
+# $1 - user
+# $2 - plugin

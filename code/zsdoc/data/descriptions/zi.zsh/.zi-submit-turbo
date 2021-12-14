@@ -1,0 +1,6 @@
+# FUNCTION: .zi-submit-turbo. [[[
+# If `zi load`, `zi light` or `zi snippet`  will be
+# preceded with `wait', `load', `unload' or `on-update-of`/`subscribe'
+# ice-mods then the plugin or snipped is to be loaded in turbo-mode,
+# and this function adds it to internal data structures, so that
+# @zi-scheduler can run (load, unload) this as a task.

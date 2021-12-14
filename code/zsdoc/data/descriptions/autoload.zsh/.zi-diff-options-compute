@@ -1,0 +1,5 @@
+# FUNCTION: .zi-diff-options-compute [[[
+# Computes OPTIONS that holds options changed by plugin.
+# Uses data gathered earlier by .zi-diff-options().
+#
+# $1 - user/plugin

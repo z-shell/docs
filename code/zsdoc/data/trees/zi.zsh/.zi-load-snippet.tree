@@ -1,0 +1,6 @@
+.zi-load-snippet
+|-- install.zsh/.zi-download-snippet
+|-- +zi-deploy-message
+`-- +zi-message
+
+3 directories, 0 files

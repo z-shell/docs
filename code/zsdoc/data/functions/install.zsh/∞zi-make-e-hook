@@ -1,0 +1,5 @@
+[[ "$1" = plugin ]] && local dir="${5#%}" hook="$6" subtype="$7" || local dir="${4#%}" hook="$5" subtype="$6"
+
+local make=${ICE[make]}
+@zi-substitute make
+[[ $make = ("!"[^\!]*|"!") ]] && .zi-countdown make && command make -C "$dir" ${(@s; ;)${make#\!}}

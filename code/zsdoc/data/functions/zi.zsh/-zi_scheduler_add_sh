@@ -1,0 +1,7 @@
+local idx="$1" in_wait="$___ar2" in_abc="$___ar3" ver_wait="$___ar4" ver_abc="$___ar5"
+if [[ ( $in_wait = $ver_wait || $in_wait -ge 4 ) && $in_abc = $ver_abc ]]; then
+  ZI_RUN+=( "${ZI_TASKS[$idx]}" )
+  return 1
+else
+  return idx
+fi

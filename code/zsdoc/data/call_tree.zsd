@@ -1,0 +1,44 @@
+autoload.zsh/.zi-any-to-uspl2: zi.zsh/.zi-any-to-user-plugin
+autoload.zsh/.zi-at-eval: zi.zsh/@zi-substitute
+autoload.zsh/.zi-build-module: zi.zsh/+zi-message  autoload.zsh/.zi-module
+autoload.zsh/.zi-cd: autoload.zsh/.zi-get-path  zi.zsh/+zi-message
+autoload.zsh/.zi-cdisable: autoload.zsh/.zi-check-comp-consistency  autoload.zsh/.zi-prepare-readlink  autoload.zsh/.zi-get-completion-owner-uspl2col
+autoload.zsh/.zi-cenable: autoload.zsh/.zi-check-comp-consistency  autoload.zsh/.zi-prepare-readlink  autoload.zsh/.zi-get-completion-owner-uspl2col
+autoload.zsh/.zi-changes: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-exists-physically-message
+autoload.zsh/.zi-clear-completions: autoload.zsh/.zi-prepare-readlink  autoload.zsh/.zi-get-completion-owner  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-clear-report-for: autoload.zsh/.zi-any-to-uspl2
+autoload.zsh/.zi-compiled: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-compile-uncompile-all: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  install.zsh/.zi-compile-plugin  autoload.zsh/.zi-uncompile-plugin
+autoload.zsh/.zi-create: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  side.zsh/.zi-exists-physically
+autoload.zsh/.zi-delete: zi.zsh/.zi-parse-opts  zi.zsh/+zi-prehelp-usage-message  autoload.zsh/.zi-confirm  side.zsh/.zi-compute-ice  zi.zsh/.zi-any-to-user-plugin
+autoload.zsh/.zi-edit: side.zsh/.zi-compute-ice
+autoload.zsh/.zi-exists-message: autoload.zsh/.zi-any-to-uspl2  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-find-completions-of-plugin: zi.zsh/.zi-any-to-user-plugin
+autoload.zsh/.zi-format-options: autoload.zsh/.zi-save-set-extendedglob  autoload.zsh/.zi-restore-extendedglob
+autoload.zsh/.zi-get-completion-owner-uspl2col: autoload.zsh/.zi-get-completion-owner  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-get-path: zi.zsh/.zi-get-object-path
+autoload.zsh/.zi-glance: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-exists-physically-message  side.zsh/.zi-first  autoload.zsh/.zi-pager
+autoload.zsh/.zi-list-bindkeys: side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-module: autoload.zsh/.zi-build-module
+autoload.zsh/.zi-recall: side.zsh/.zi-compute-ice  zi.zsh/+zi-deploy-message
+autoload.zsh/.zi-recently: side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-run-delete-hooks: side.zsh/.zi-countdown
+autoload.zsh/.zi-search-completions: side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-self-update: zi.zsh/+zi-message  autoload.zsh/.zi-pager  zi.zsh/.zi-get-mtime-into
+autoload.zsh/.zi-show-all-reports: autoload.zsh/.zi-show-report
+autoload.zsh/.zi-show-completions: autoload.zsh/.zi-prepare-readlink  autoload.zsh/.zi-get-completion-owner  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-show-debug-report: autoload.zsh/.zi-show-report
+autoload.zsh/.zi-show-registered-plugins: side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-show-report: zi.zsh/.zi-any-to-user-plugin  autoload.zsh/.zi-exists-message  autoload.zsh/.zi-diff-functions-compute  autoload.zsh/.zi-format-functions  autoload.zsh/.zi-diff-options-compute  autoload.zsh/.zi-format-options  autoload.zsh/.zi-diff-env-compute  autoload.zsh/.zi-format-env  autoload.zsh/.zi-diff-parameter-compute  autoload.zsh/.zi-format-parameter  autoload.zsh/.zi-find-completions-of-plugin  autoload.zsh/.zi-check-which-completions-are-installed  autoload.zsh/.zi-check-which-completions-are-enabled
+autoload.zsh/.zi-show-times: side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-show-zstatus: zi.zsh/+zi-message
+autoload.zsh/.zi-stress: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-exists-physically-message  side.zsh/.zi-first
+autoload.zsh/.zi-uncompile-plugin: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2
+autoload.zsh/.zi-uninstall-completions: autoload.zsh/.zi-get-path  zi.zsh/+zi-message  install.zsh/.zi-forget-completion  install.zsh/.zi-compinit
+autoload.zsh/.zi-unload: zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  autoload.zsh/.zi-exists-message  autoload.zsh/.zi-diff-options-compute  autoload.zsh/.zi-save-set-extendedglob  autoload.zsh/.zi-restore-extendedglob  autoload.zsh/.zi-diff-functions-compute  autoload.zsh/.zi-diff-env-compute  autoload.zsh/.zi-diff-parameter-compute  autoload.zsh/.zi-unregister-plugin  autoload.zsh/.zi-clear-report-for
+autoload.zsh/.zi-unregister-plugin: zi.zsh/.zi-any-to-user-plugin
+autoload.zsh/.zi-update-all-parallel: autoload.zsh/.zi-update-or-status-snippet  autoload.zsh/.zi-wait-for-update-jobs  zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-any-colorify-as-uspl2  zi.zsh/+zi-message  autoload.zsh/.zi-update-or-status
+autoload.zsh/.zi-update-or-status: zi.zsh/.zi-set-m-func  side.zsh/.zi-two-paths  autoload.zsh/.zi-update-or-status-snippet  zi.zsh/.zi-any-to-user-plugin  side.zsh/.zi-exists-physically  side.zsh/.zi-any-colorify-as-uspl2  zi.zsh/+zi-message  side.zsh/.zi-exists-physically-message  side.zsh/.zi-compute-ice  install.zsh/.zi-get-latest-gh-r-url-part  install.zsh/.zi-setup-plugin-dir  autoload.zsh/.zi-pager  side.zsh/.zi-store-ices
+autoload.zsh/.zi-update-or-status-all: autoload.zsh/.zi-self-update  zi.zsh/+zi-message  zi.zsh/.zi-get-mtime-into  autoload.zsh/.zi-update-or-status-all  autoload.zsh/.zi-update-all-parallel  install.zsh/.zi-compinit  autoload.zsh/.zi-update-or-status-snippet  side.zsh/.zi-any-colorify-as-uspl2  zi.zsh/.zi-any-to-user-plugin  autoload.zsh/.zi-update-or-status
+autoload.zsh/.zi-update-or-status-snippet: side.zsh/.zi-compute-ice  install.zsh/.zi-update-snippet
+autoload.zsh/.zi-wait-for-update-jobs: zi.zsh/+zi-message

@@ -1,0 +1,35 @@
+builtin setopt localoptions nullglob extendedglob nokshglob noksharrays
+
+typeset -a completions
+completions=( "${ZI[COMPLETIONS_DIR]}"/_[^_.]*~*.zwc "${ZI[COMPLETIONS_DIR]}"/[^_.]*~*.zwc )
+local cpath c
+integer longest=0
+for cpath in "${completions[@]}"; do
+  c="${cpath:t}"
+  c="${c#_}"
+  [[ "${#c}" -gt "$longest" ]] && longest="${#c}"
+done
+
+.zi-prepare-readlink
+local rdlink="$REPLY"
+integer disabled unknown stray
+for cpath in "${completions[@]}"; do
+  c="${cpath:t}"
+  [[ "${c#_}" = "${c}" ]] && disabled=1 || disabled=0
+  c="${c#_}"
+  .zi-get-completion-owner "$cpath" "$rdlink"
+  [[ "$REPLY" = "[unknown]" ]] && unknown=1 || unknown=0
+  .zi-any-colorify-as-uspl2 "$REPLY"
+  stray=0
+  if (( unknown == 0 )); then
+    [[ ! -f "$cpath" ]] && stray=1
+  fi
+  if (( unknown == 1 || stray == 1 )); then
+    builtin print -n "Removing completion: ${(r:longest+1:: :)c} $REPLY"
+    (( disabled )) && builtin print -n " ${ZI[col-error]}[disabled]${ZI[col-rst]}"
+    (( unknown )) && builtin print -n " ${ZI[col-error]}[unknown file]${ZI[col-rst]}"
+    (( stray )) && builtin print -n " ${ZI[col-error]}[stray]${ZI[col-rst]}"
+    builtin print
+    command rm -f "$cpath"
+  fi
+done

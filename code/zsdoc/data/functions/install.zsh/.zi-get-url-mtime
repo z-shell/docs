@@ -1,0 +1,34 @@
+local url="$1" IFS line header
+local -a cmd
+
+setopt localoptions localtraps
+
+(( !${path[(I)/usr/local/bin]} )) && {
+    path+=( "/usr/local/bin" );
+    trap "path[-1]=()" EXIT
+  }
+
+if (( ${+commands[curl]} )) || type curl 2>/dev/null 1>&2; then
+  cmd=(command curl -sIL "$url")
+elif (( ${+commands[wget]} )) || type wget 2>/dev/null 1>&2; then
+  cmd=(command wget --server-response --spider -q "$url" -O -)
+else
+  REPLY=$(( $(date +"%s") ))
+  return 2
+fi
+
+"${cmd[@]}" |& command grep -i Last-Modified: | while read -r line; do
+  header="${${line#*, }//$'\r'}"
+done
+
+if [[ -z $header ]] {
+  REPLY=$(( $(date +"%s") ))
+  return 3
+}
+
+LANG=C TZ=UTC strftime -r -s REPLY "%d %b %Y %H:%M:%S GMT" "$header" &>/dev/null || {
+  REPLY=$(( $(date +"%s") ))
+  return 4
+}
+
+return 0

@@ -1,0 +1,6 @@
+# FUNCTION: .zi-find-completions-of-plugin [[[
+# Searches for completions owned by given plugin.
+# Returns them in `reply' array.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - plugin (only when $1 - i.e. user - given)

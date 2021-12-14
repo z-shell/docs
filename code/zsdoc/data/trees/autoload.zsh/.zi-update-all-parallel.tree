@@ -1,0 +1,6 @@
+.zi-update-all-parallel
+|-- side.zsh/.zi-any-colorify-as-uspl2
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message
+
+3 directories, 0 files

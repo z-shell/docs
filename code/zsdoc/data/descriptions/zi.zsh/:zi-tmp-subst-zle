@@ -1,0 +1,4 @@
+# FUNCTION: :zi-tmp-subst-zle. [[[.
+# Function defined to hijack plugin's calls to the `zle' builtin.
+#
+# The hijacking is to gather report data (which is used in unload).

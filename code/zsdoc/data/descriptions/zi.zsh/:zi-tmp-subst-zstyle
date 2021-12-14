@@ -1,0 +1,4 @@
+# FUNCTION: :zi-tmp-subst-zstyle. [[[
+# Function defined to hijack plugin's calls to the `zstyle' builtin.
+#
+# The hijacking is to gather report data (which is used in unload).

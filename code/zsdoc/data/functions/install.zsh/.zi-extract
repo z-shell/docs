@@ -1,0 +1,22 @@
+emulate -LR zsh
+setopt extendedglob warncreateglobal typesetsilent
+local tpe=$1 extract=$2 local_dir=$3
+(
+  builtin cd -q "$local_dir" || { +zi-message "{error}ERROR:{msg2} The path of the $tpe" "(\`{file}$local_dir{msg2}') isn't accessible.{rst}"
+      return 1
+    }
+  local -a files
+  files=( ${(@)${(@s: :)${extract##(\!-|-\!|\!|-)}}//(#b)(((#s)|([^\\])[\\]([\\][\\])#)|((#s)|([^\\])([\\][\\])#)) /${match[2]:+$match[3]$match[4] }${match[5]:+$match[6]${(l:${#match[7]}/2::\\:):-} }} )
+  if [[ ${#files} -eq 0 && -n ${extract##(\!-|-\!|\!|-)} ]] {
+      +zi-message "{error}ERROR:{msg2} The files" "(\`{file}${extract##(\!-|-\!|\!|-)}{msg2}')" "not found, cannot extract.{rst}"
+      return 1
+  } else {
+    (( !${#files} )) && files=( "" )
+  }
+  local file
+  for file ( "${files[@]}" ) {
+    [[ -z $extract ]] && local auto2=--auto
+    ziextract ${${(M)extract:#(\!|-)##}:+--auto} $auto2 $file ${${(MS)extract[1,2]##-}:+--norm} \
+      ${${(MS)extract[1,2]##\!}:+--move} ${${(MS)extract[1,2]##\!\!}:+--move2} ${${${#files}:#1}:+--nobkp}
+  }
+)

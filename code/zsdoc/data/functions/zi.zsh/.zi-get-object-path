@@ -1,0 +1,23 @@
+local type="$1" id_as="$2" local_dir dirname
+integer exists
+id_as="${ICE[id-as]:-$id_as}"
+id_as="${${id_as#"${id_as%%[! $'\t']*}"}%/}"
+for type ( ${=${${(M)type:#AUTO}:+snippet plugin}:-$type} ) {
+  if [[ $type == snippet ]] {
+    dirname="${${id_as%%\?*}:t}"
+    local_dir="${${${id_as%%\?*}/:\/\//--}:h}"
+    [[ $local_dir = . ]] && local_dir= || local_dir="${${${${${local_dir#/}//\//--}//=/-EQ-}//\?/-QM-}//\&/-AMP-}"
+    local_dir="${ZI[SNIPPETS_DIR]}${local_dir:+/$local_dir}"
+  } else {
+    .zi-any-to-user-plugin "$id_as"
+    local_dir=${${${(M)reply[-2]:#%}:+${reply[2]}}:-${ZI[PLUGINS_DIR]}/${id_as//\//---}}
+    [[ $id_as == _local/* && -d $local_dir && ! -d $local_dir/._zi ]] && command mkdir -p "$local_dir"/._zi
+    dirname=""
+  }
+  [[ -e $local_dir/${dirname:+$dirname/}._zi || -e $local_dir/${dirname:+$dirname/}._zplugin ]] && exists=1
+  (( exists )) && break
+}
+reply=( "$local_dir" "$dirname" "$exists" )
+REPLY="$local_dir${dirname:+/$dirname}"
+
+return $(( 1 - exists ))

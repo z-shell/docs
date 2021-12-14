@@ -1,0 +1,5 @@
+# FUNCTION: .zi-add-report. [[[
+# Adds a report line for given plugin.
+#
+# $1 - uspl2, i.e. user/plugin
+# $2, ... - the text

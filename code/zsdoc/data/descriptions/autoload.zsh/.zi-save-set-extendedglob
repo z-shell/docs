@@ -1,0 +1,3 @@
+# FUNCTION: .zi-save-set-extendedglob [[[
+# Enables extendedglob-option first saving if it was already
+# enabled, for restoration of this state later.

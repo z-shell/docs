@@ -1,0 +1,10 @@
+local ___type="$1" ___id=$2
+local -a ___opt
+___opt=( ${@[3,-1]} )
+if [[ $___type == snippet ]] {
+  .zi-load-snippet $___opt "$___id"
+} elif [[ $___type == plugin ]] {
+  .zi-load "$___id" "" $___opt
+}
+___retval+=$?
+return __retval
