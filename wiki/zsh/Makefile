@@ -13,5 +13,23 @@ Zsh-Native-Scripting-Handbook.pdf: Zsh-Native-Scripting-Handbook.adoc
 Zsh-Plugin-Standard.pdf: Zsh-Plugin-Standard.adoc
 	asciidoctor-pdf -a reproducible Zsh-Plugin-Standard.adoc
 
+gh-pages: all
+	@mkdir -p ~/tmp/zsh
+	@mv -v *.html ~/tmp/zsh
+	git checkout gh-pages
+	@mkdir -p zsh
+	@cp -v ~/tmp/zsh/*.html zsh/
+	git add -A zsh
+	git commit && git push origin gh-pages
+
+main:
+	git reset --hard
+	git checkout main
+	make all
+
+loop:
+	@echo $(PWD)
+	while true; do make all >/dev/null 2>&1; sleep 1; done
+
 clean:
 	rm -f *.pdf *.html
