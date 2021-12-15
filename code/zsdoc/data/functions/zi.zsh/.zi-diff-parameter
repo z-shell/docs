@@ -1,7 +1,0 @@
-typeset -a tmp
-[[ $2 = begin ]] && {
-{ [[ -z ${ZI[PARAMETERS_BEFORE__$uspl2]} ]] && ZI[PARAMETERS_BEFORE__$1]="${(j: :)${(qkv)parameters[@]}}"
-}
-} || {
-ZI[PARAMETERS_AFTER__$1]+=" ${(j: :)${(qkv)parameters[@]}}"
-}

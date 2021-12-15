@@ -1,6 +1,0 @@
-# FUNCTION: .zi-update-or-status-snippet [[[
-#
-# Implements update or status operation for snippet given by URL.
-#
-# $1 - "status" or "update"
-# $2 - snippet URL

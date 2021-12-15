@@ -1,4 +1,0 @@
-# FUNCTION: .zi-format-options [[[
-# Creates one-column text about options that changed when plugin "$1" was loaded.
-#
-# $1 - user/plugin (i.e. uspl2 format of plugin-spec)

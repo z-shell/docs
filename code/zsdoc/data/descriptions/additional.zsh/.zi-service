@@ -1,7 +1,0 @@
-# ]]]
-# FUNCTION: .zi-service [[[
-# Handles given service, i.e. obtains lock, runs it, or waits if no lock
-#
-# $1 - type "p" or "s" (plugin or snippet)
-# $2 - mode - for plugin (light or load)
-# $3 - id - URL or plugin ID or alias name (from id-as'')

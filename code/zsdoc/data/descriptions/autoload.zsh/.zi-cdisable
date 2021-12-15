@@ -1,6 +1,0 @@
-# FUNCTION: .zi-cdisable [[[
-# Enables given installed completion.
-#
-# User-action entry point.
-#
-# $1 - e.g. "_mkdir" or "mkdir"

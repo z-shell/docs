@@ -1,3 +1,0 @@
-# FUNCTION: .zi-countdown [[[
-# Displays a countdown 5...4... etc. and returns 0 if it
-# sucessfully reaches 0, or 1 if Ctrl-C will be pressed.

@@ -1,5 +1,0 @@
-.zi-prepare-home
-|-- autoload.zsh/.zi-clear-completions
-`-- install.zsh/.zi-compinit
-
-2 directories, 0 files

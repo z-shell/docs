@@ -1,3 +1,0 @@
-# FUNCTION: .zi-run. [[[
-# Run code inside plugin's folder
-# It uses the `correct' parameter from upper's scope zi().

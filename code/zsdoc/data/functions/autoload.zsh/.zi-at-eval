@@ -1,5 +1,0 @@
-local atclone="$2" atpull="$1"
-integer retval
-@zi-substitute atclone atpull
-[[ $atpull = "%atclone" ]] && { eval "$atclone"; retval=$?; } || { eval "$atpull"; retval=$?; }
-return $retval

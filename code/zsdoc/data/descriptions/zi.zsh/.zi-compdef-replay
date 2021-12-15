@@ -1,2 +1,0 @@
-# FUNCTION: .zi-compdef-replay. [[[
-# Runs gathered compdef calls. This allows to run `compinit' after loading plugins.

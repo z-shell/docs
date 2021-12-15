@@ -1,3 +1,0 @@
-# FUNCTION: .zi-download-file-stdout [[[
-# Downloads file to stdout. Supports following backend commands:
-# curl, wget, lftp, lynx. Used by snippet loading.

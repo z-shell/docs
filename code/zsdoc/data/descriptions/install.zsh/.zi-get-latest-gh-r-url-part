@@ -1,4 +1,0 @@
-# ]]]
-# FUNCTION: .zi-get-latest-gh-r-url-part [[[
-# Gets version string of latest release of given Github package.
-# Connects to Github releases page.

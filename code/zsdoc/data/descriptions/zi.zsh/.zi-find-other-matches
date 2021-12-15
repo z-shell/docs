@@ -1,4 +1,0 @@
-# FUNCTION: .zi-find-other-matches. [[[
-# Plugin's main source file is in general `name.plugin.zsh'. However,
-# there can be different conventions, if that file is not found, then
-# this functions examines other conventions in the most sane order.

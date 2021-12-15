@@ -1,6 +1,0 @@
-# FUNCTION: .zi-check-which-completions-are-installed [[[
-# For each argument that each should be a path to completion
-# within a plugin's dir, it checks whether that completion
-# is installed - returns 0 or 1 on corresponding positions in reply.
-#
-# $1, ... - path to completion within plugin's directory

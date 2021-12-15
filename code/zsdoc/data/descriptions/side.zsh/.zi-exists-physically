@@ -1,7 +1,0 @@
-# FUNCTION: .zi-exists-physically [[[
-# Checks if directory of given plugin exists in PLUGIN_DIR.
-#
-# Testable.
-#
-# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
-# $2 - plugin (only when $1 - i.e. user - given)

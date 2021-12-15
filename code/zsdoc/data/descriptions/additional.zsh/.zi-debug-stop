@@ -1,2 +1,0 @@
-# FUNCTION: .zi-debug-stop [[[
-# Stops Dtrace, i.e. session tracking for changes in Zsh state.

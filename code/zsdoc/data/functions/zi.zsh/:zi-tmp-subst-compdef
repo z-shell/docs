@@ -1,5 +1,0 @@
-builtin setopt localoptions noerrreturn noerrexit extendedglob warncreateglobal typesetsilent noshortloops unset
-.zi-add-report "${ZI[CUR_USPL2]}" "Saving \`compdef $*' for replay"
-ZI_COMPDEF_REPLAY+=( "${(j: :)${(q)@}}" )
-
-return 0
