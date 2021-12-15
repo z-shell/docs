@@ -1,3 +1,10 @@
+- [Customizing Paths](#customizing-paths)
+- [Non-GitHub (Local) Plugins](#non-github-local-plugins)
+- [Extending Git](#extending-git)
+- [Disabling System-Wide `compinit` Call (Ubuntu)](#disabling-system-wide-compinit-call-ubuntu)
+
+---
+
 ## Customizing Paths
 
 Following variables can be set to custom values, before sourcing ZI. The

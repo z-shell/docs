@@ -1,3 +1,11 @@
+- [Plugins and snippets](#plugins-and-snippets)
+- [Upgrade ZI and plugins](#upgrade-zi-and-plugins)
+- [Turbo and lucid](#turbo-and-lucid)
+- [Migration](#migration)
+- [More Examples](#more-examples)
+
+---
+
 [Click here to read the introduction to ZI](https://github.com/z-shell/zi/wiki/Introduction).
 It explains basic usage and some of the more unique features of ZI such as the Turbo mode.
 If you're new to ZI we highly recommend you read it at least once.
@@ -421,7 +429,7 @@ zi light sindresorhus/pure
 
 # A glance at the new for-syntax – load all of the above
 # plugins with a single command. For more information see:
-# https://github.com/z-shell/zi/wiki/For-Syntax/
+# https://github.com/z-shell/zi/wiki/Syntax/
 zi for \
   light-mode  zsh-users/zsh-autosuggestions \
   light-mode  z-shell/fast-syntax-highlighting \
@@ -468,24 +476,19 @@ zi ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" noco
 zi light trapd00r/LS_COLORS
 ```
 
-[You can see an extended explanation of LS_COLORS in the Wiki.](https://github.com/z-shell/zi/wiki/LS_COLORS-explanation)
-
 ```zsh
 # make'!...' -> run make before atclone & atpull
 zi ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
 zi light direnv/direnv
 ```
 
-[You can see an extended explanation of `direnv` in the Wiki.](https://github.com/z-shell/zi/wiki/Direnv-explanation)
-
-If you're interested in more examples then check out the [zi-configs repository](https://github.com/z-shell/zi-configs) where users have uploaded their
-`~/.zshrc` and ZI configurations. Feel free to
-[submit](https://github.com/z-shell/zi-configs/issues/new?template=request-to-add-zshrc-to-the-zi-configs-repo.md)
+If you're interested in more examples then check out the [playground repository](https://github.com/z-shell/playground) where users have uploaded their
+`~/.zshrc` and ZI configurations. Feel free to [submit](https://github.com/z-shell/playground/issues/new?template=request-to-add-zshrc-to-the-zi-configs-repo.md)
 your `~/.zshrc` there if it contains ZI commands.
 
-You can also check out the [Gallery of ZI Invocations](https://github.com/z-shell/zi/wiki/GALLERY/) for some additional
+You can also check out the [Gallery of ZI Invocations](https://github.com/z-shell/zi/wiki/Gallery/) for some additional
 examples.
 
 Also, two articles on the Wiki present an example setup
-[here](https://github.com/z-shell/zi/wiki/Example-Minimal-Setup/) and
-[here](https://github.com/z-shell/zi/wiki/Example-Oh-My-Zsh-setup/).
+[here](https://github.com/z-shell/zi/wiki/Minimal-Setup/) and
+[here](https://github.com/z-shell/zi/wiki/Oh-My-Zsh-Setup/).

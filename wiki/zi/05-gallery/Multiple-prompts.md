@@ -33,5 +33,3 @@ zi load geometry-zsh/geometry
 - `nocd` – don't cd into the plugin's directory when executing the `atload''`
   ice – it could make the path that's displayed by the theme to point to that
   directory.
-
-[]( vim:set ft=markdown tw=80: )
