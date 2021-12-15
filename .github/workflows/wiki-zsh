@@ -1,0 +1,45 @@
+---
+name: 📖 Zsh Documentation
+
+on:
+  push:
+  pull_request_target:
+  paths:
+    - "wiki/zsh/**"
+  workflow_dispatch:
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install zsdoc
+        run: |
+          sudo apt-get install -y zsh
+          git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
+          sudo make -C /tmp/zsdoc install
+      - name: ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+      - name: asciidoctor-pdf tilt
+        run: |
+          gem install asciidoctor-pdf tilt
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Documentation
+        run: |
+          make -C wiki/zsh clean
+          make -C wiki/zsh all
+      - name: Tar Zsh Documentation
+        run: tar cvzf zsh-wiki.tar.gz code
+      - name: Upload zsh-wiki.tar.gz
+        uses: actions/upload-artifact@v2
+        with:
+          name: Zsh Documentation
+          path: zsh-wiki.tar.gz
+      - name: Publish to GitHub Pages
+        run: |
+          make -C wiki/zsh gh-pages
+          make -C wiki/zsh main

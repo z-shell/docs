@@ -20,16 +20,17 @@ gh-pages: all
 	@mkdir -p zsh
 	@cp -v ~/tmp/zsh/*.html zsh/
 	git add -A zsh
-	git commit && git push origin gh-pages
+	echo "Documentation update ["`date "+%m/%d/%Y %H:%M:%S"`"]" > ../../.git/COMMIT_EDITMSG_
+	cat ../../.git/COMMIT_EDITMSG_
+	git commit -F ../../.git/COMMIT_EDITMSG_ && git push -f origin gh-pages
 
 main:
 	git reset --hard
 	git checkout main
-	make all
 
 loop:
 	@echo $(PWD)
 	while true; do make all >/dev/null 2>&1; sleep 1; done
 
 clean:
-	rm -f *.pdf *.html
+	rm -vf *.pdf *.html
