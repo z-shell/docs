@@ -2,10 +2,14 @@
 name: 📖 Zsh Documentation
 
 on:
-  push: [main]
-  pull_request_target: [main]
-  paths:
-    - "wiki/zsh/**"
+  push:
+    branches: [main]
+    paths:
+     - "wiki/zsh/**"
+  pull_request_target: 
+    branches: [main]
+    paths:
+     - "wiki/zsh/**"
   workflow_dispatch:
 
 jobs:
