@@ -1,0 +1,24 @@
+---
+name: 📖 ZI Wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "wiki/zi/**"
+  workflow_dispatch:
+
+jobs:
+  deploy-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 📩 Add to wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v2
+        env:
+          WIKI_DIR: wiki/zi/
+          REPO: z-shell/zi
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_MAIL: ${{ secrets.GH_MAIL }}
+          GH_NAME: ${{ github.repository_owner }}
+          EXCLUDED_FILES: "wiki/zi/drafts/"

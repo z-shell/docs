@@ -1,10 +1,8 @@
 # Zsh Native Scripting Handbook
-Sebastian Gniazdowski <psprint@zdharma.org>
 v1.19, 10/21/2018
-:source-highlighter: prettify
+:source-highlighter: rouge
 :toc:
-ifdef::backend-html5[The handbook is also available as a link:Zsh-Native-Scripting-Handbook.pdf[PDF].]
-
+ifdef::backend-html5[The handbook is also available as a link:https://github.com/z-shell/docs/wiki/zsh/Zsh-Native-Scripting-Handbook.pdf[PDF].]
 
 This document has been created after 3.5 years of creating software for Zshell
 and receiving help from IRC channel #zsh. Avoiding forks was the main guideline
@@ -25,7 +23,7 @@ elements anyway. There is no need of `@` subscript.
 
 So what use has `@` in the Zsh-world? It is: "`keep array form`" or "`do not
 join`".  When is it activated? When user quotes the array, i.e. invokes
-`"$array"`, he induces *joining* of all array elements (into a single string). 
+`"$array"`, he induces *joining* of all array elements (into a single string).
 `@` is to have elements still quoted (so empty elements are
 preserved), but not joined.
 
@@ -383,7 +381,7 @@ Note: to be compatible with `setopt ksharrays`, use `[@]` instead of `(@)`, e.g.
 `...( "${(Q)${(z)serialized[@]}[@]}" )`
 
 [#tip-serializing-with-bash]
-##### Tip: serializing with Bash
+#### Tip: serializing with Bash
 
 [source,none]
 ----

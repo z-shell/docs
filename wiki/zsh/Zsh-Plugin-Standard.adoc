@@ -1,10 +1,9 @@
 # Zsh Plugin Standard
-Sebastian Gniazdowski <psprint@zdharma.org>
-v1.0, 11/22/2019
+v1.0, 11/12/2021
 :source-highlighter: rouge
 :toc:
 
-ifdef::backend-html5[The document is also available as a link:http://zdharma.org/Zsh-100-Commits-Club/Zsh-Plugin-Standard.pdf[PDF].]
+ifdef::backend-html5[The document is also available as a link:https://github.com/z-shell/docs/wiki/zsh/Zsh-Plugin-Standard.pdf[PDF].]
 
 ## What Is A Zsh Plugin?
 
@@ -15,12 +14,10 @@ in a particular way.
 At a simple level, a plugin:
 
 1. Has its directory added to `$fpath`
-  (link:http://zsh.sourceforge.net/Doc/Release/Functions.html#Autoloading-Functions[Zsh
-  documentation]). This is being done either by a plugin manager or by the
-  plugin itself (see link:#indicator[5th section] for more information).
+  (link:http://zsh.sourceforge.net/Doc/Release/Functions.html#Autoloading-Functions[Zsh documentation]).
+  This is being done either by a plugin manager or by the plugin itself (see link:#indicator[5th section] for more information).
 
-2. Has its first `\*.plugin.zsh` file sourced (or `*.zsh`, `init.zsh`, `*.sh`,
-   these are non-standard).
+2. Has its first `\*.plugin.zsh` file sourced (or `*.zsh`, `init.zsh`, `*.sh`, these are non-standard).
 
 The first point allows plugins to provide completions and functions that are
 loaded via Zsh’s `autoload` mechanism (a single function per-file).
@@ -28,22 +25,21 @@ loaded via Zsh’s `autoload` mechanism (a single function per-file).
 From a more broad perspective, a plugin consists of:
 
 1. A directory containing various files (main script, autoload functions,
-   completions, Makefiles, backend programs, documentation).
+  completions, Makefiles, backend programs, documentation).
 
 2. A sourcable script that obtains the path to its directory via `$0` (see the
-   link:#zero-handling[next section] for a related enhancement proposal).
+  link:#zero-handling[next section] for a related enhancement proposal).
 
 3. A Github (or other site) repository identified by two components
-   **username**/**pluginname**.
+  **username**/**pluginname**.
 
 4. A software package containing any type of command line artifacts – when used
-   with advanced plugin managers that have hooks, can run Makefiles, add
-   directories to `$PATH`.
+  with advanced plugin managers that have hooks, can run Makefiles, add directories to `$PATH`.
 
 Below follow proposed enhancements and codifications of the definition of a "Zsh
 plugin" and the actions of plugin managers – the proposed standardization. They
 cover the information of how to write a Zsh plugin. +
- +
++
 
 '''
 
@@ -82,7 +78,7 @@ The one-line code above will:
       - `unsetopt function_argzero` will be detected (it causes `$0` not to
         contain plugin-script path, but path to Zsh binary, if not overwritten
         by a `0=…​` assignment),
-    
+
       - `setopt posix_argzero` will be detected (as above).
 
 4. Use `%N` prompt expansion flag, which always gives absolute path to script,
@@ -114,14 +110,11 @@ and `GLOB_ASSIGN` options. It's a standard snippet of code, so it has to be
 always working. When you'll set e.g.: the `zsh` emulation in a function, you in
 general don't have to quote assignments.
 
-##### Adoption Status
+### Adoption Status
 
-1. Plugin managers: Zinit, link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom], Zgen (after and if the
-link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit], link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom], Zgen (after and if the link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
 
-2. Plugins:
-   link:https://github.com/search?q=%22${ZERO:-${0:%23$ZSH_ARGZERO}}%22&type=Code[GitHub
-   search]
+2. Plugins: link:https://github.com/search?q=%22${ZERO:-${0:%23$ZSH_ARGZERO}}%22&type=Code[GitHub search]
 
 
 [#funcs-dir]
@@ -130,9 +123,7 @@ link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
 Despite that the current-standard plugins have their main directory added to
 `$fpath`, a more clean approach is being proposed: that the plugins use a
 subdirectory called `functions` to store their completions and autoload
-functions. This will allow a much cleaner design of plugins. For example,
-link:https://github.com/zdharma/zflai[zdharma/zflai] suffers from this issue –
-it has all of its autoload functions in the main directory of the plugin.
+functions. This will allow a much cleaner design of plugins.
 
 The plugin manager should add such directory to `$fpath`. The lack of support of
 the current plugin managers can be easily resolved via the
@@ -156,12 +147,11 @@ Above snippet added to the `plugin.zsh` file will add the directory to the
 `$fpath` with the compatibiliy with any new plugin managers preserved.
 
 Existence of the `functions` subdirectory cancels the normal adding of the main
-plugin directory to `$fpath`. 
+plugin directory to `$fpath`.
 
-##### Adoption Status
+### Adoption Status
 
-1. Plugin managers: link:https://github.com/zpm-zsh/zpm[Zpm],
-   link:https://github.com/zdharma/zinit[Zinit], link:https://github.com/jandamm/zgenom[Zgenom].
+1. Plugin managers: link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit], link:https://github.com/jandamm/zgenom[Zgenom].
 
 
 [#bin-dir]
@@ -194,7 +184,7 @@ if [[ $PMSPEC != *b* ]] {
 }
 ```
 
-##### Adoption Status
+### Adoption Status
 
 1. Plugin managers: link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom] (when you set `ZGENOM_AUTO_ADD_BIN=1`).
 
@@ -224,14 +214,9 @@ Note that the unload function should contain `unfunction $0` (or better
 `unfunction kalc_plugin_unload` etc., for copatibility with the `*_argzero`
 options), to also delete the function itself.
 
-##### Adoption Status
+### Adoption Status
 
-1. One plugin manager, Zinit, implements plugin unloading and calls the
-   function.
-2. Multiple plugins:
-    - link:https://github.com/search?q=%22_plugin_unload%22+zsh+NOT+%28zplugin%7Czinit%29%28.ch%7C-autoload%29+NOT+_zinit+NOT+_zplugin+NOT+langs.xml+NOT+tags&type=Code[GitHub
-      search],
-
+    - link:https://github.com/z-shell/zi[ZI], implements plugin unloading and calls the function.
     - `romkatv/powerlevel10k`, is
       link:https://github.com/romkatv/powerlevel10k/blob/f17081ca/internal/p10k.zsh#L5390[using]
       the function to execute a specific task: shutdown of the binary, background
@@ -269,10 +254,9 @@ The code should be executed in the plugin's directory, in the current shell.
 The mechanism thus provides another way, side to the link:#unload-fun[unload
 function], for the plugin to participate in the process of unloading it.
 
-##### Adoption Status
+### Adoption Status
 
-It's a recent addition to the standard and only one plugin manager, Zinit,
-implements it.
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit].
 
 [#update-register-call]
 ## 6. `@zsh-plugin-run-on-update` Call
@@ -291,10 +275,9 @@ builtin in the same order as they are passed to the call.
 The code should be executed in the plugin's directory, possibly in a subshell
 **after downloading any new commits** to the repository.
 
-##### Adoption Status
+### Adoption Status
 
-It's a recent addition to the standard and only one plugin manager, Zinit,
-implements it.
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit].
 
 [#indicator]
 ## 7. Plugin Manager Activity Indicator
@@ -303,8 +286,8 @@ Plugin managers should set the `$zsh_loaded_plugins` array to contain all
 previously loaded plugins and the plugin currently being loaded (as the last
 element). This will allow any plugin to:
 
- 1. Check which plugins are already loaded.
- 2. Check if it is being loaded by a plugin manager (i.e. not just sourced).
+1. Check which plugins are already loaded.
+2. Check if it is being loaded by a plugin manager (i.e. not just sourced).
 
 The first item allows a plugin to e.g. issue a notice about missing
 dependencies. Instead of issuing a notice, it may be able to satisfy the
@@ -328,14 +311,12 @@ manager. The code uses the wrapping braces around variables (i.e.: e.g.:
 `${fpath…}`) to make it compatible with the `KSH_ARRAYS` option and the quoting
 around `${0:h}` to make it compatible with the `SH_WORD_SPLIT` option.
 
-##### Adoption Status
+### Adoption Status
 
-1. Plugin managers: Zinit, link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom], Zgen (after and if the
-link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit], link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom], Zgen (after and if the link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
 
 
-2. Plugins:
-   link:https://github.com/search?q=if+%22zsh_loaded_plugins%22&type=Code[GitHub search]
+2. Plugins: link:https://github.com/search?q=if+%22zsh_loaded_plugins%22&type=Code[GitHub search]
 
 [#zpfx]
 ## 8. Global Parameter With PREFIX For Make, Configure, Etc.
@@ -343,10 +324,10 @@ link:https://github.com/tarjoilija/zgen/pull/124[PR] will be merged).
 Plugin managers may export the parameter `$ZPFX` which should contain a path to
 a directory dedicated for user-land software, i.e. for directories `$ZPFX/bin`,
 `$ZPFX/lib`, `$ZPFX/share`, etc. Suggested name of the directory is `polaris`
-(e.g.: Zinit uses this name and places this directory at `~/.zinit/polaris` by
+(e.g.: ZI uses this name and places this directory at `~/.zi/polaris` by
 default).
 
-User can then configure hooks (feature of e.g. zplug and Zinit) to invoke e.g.
+User can then configure hooks (feature of e.g. zplug and ZI) to invoke e.g.
 `make PREFIX=$ZPFX install` at clone & update of the plugin to install software
 like e.g. link:https://github.com/tj/git-extras[tj/git-extras]. This is a
 developing role of Zsh plugin managers as package managers, where `.zshrc` has a
@@ -355,16 +336,16 @@ state, and have the same state on different accounts / machines.
 
 No-narration facts-list related to `$ZPFX`:
 
- 1. `export ZPFX="$HOME/polaris"` (or e.g. `$HOME/.zinit/polaris`)
+ 1. `export ZPFX="$HOME/polaris"` (or e.g. `$HOME/.zi/polaris`)
  2. `make PREFIX=$ZPFX install`
  3. `./configure --prefix=$ZPFX`
  4. `cmake -DCMAKE_INSTALL_PREFIX=$ZPFX .`
- 5. `zinit ice make"PREFIX=$ZPFX install"`
- 6. `zplug … hook-build:"make PREFIX=$PFX install"`
+ 5. `zi ice make"PREFIX=$ZPFX install"`
+ 6. `zi … hook-build:"make PREFIX=$PFX install"`
 
-##### Adoption Status
+### Adoption Status
 
-1. Plugin managers: Zinit, link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom].
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit], link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom].
 
 
 [#pmspec]
@@ -396,9 +377,9 @@ if [[ $PMSPEC != *f* ]] {
 }
 ```
 
-##### Adoption Status
+### Adoption Status
 
-1. Plugin managers: Zinit, link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom].
+1. Plugin managers: link:https://github.com/z-shell/zi[ZI], link:https://github.com/zdharma-continuum/zinit[Zinit], link:https://github.com/zpm-zsh/zpm[Zpm], link:https://github.com/jandamm/zgenom[Zgenom].
 
 
 [#best-practices]
@@ -559,82 +540,79 @@ between prompts, thus it's natural to localize them in the main function.
 
 The recommendation is purely subjective opinion of the author. It can evolve –
 if you have any remarks, don't hesitate to
-link:https://github.com/zdharma/Zsh-100-Commits-Club/issues/new[fill them].
+link:https://github.com/z-shell/docs/issues/new[fill them].
 
-##### The Problems Solved By The Proposition
+### The Problems Solved By The Proposition
 
 However when adopted, the proposition will solve the following issues:
 
 1. Using the underscore `_` to namespace functions – this isn't the right thing
-   to do because the prefix is being already used by the completion functions,
-   so the namespace is already filled up greatly and the plugin functions get
-   lost in it.
+  to do because the prefix is being already used by the completion functions,
+  so the namespace is already filled up greatly and the plugin functions get
+  lost in it.
 
-2. Not using a prefix at all – this is also an unwanted practice as it pollutes
-   the command namespace
-   (link:https://github.com/zdharma/fast-syntax-highlighting/issues/157[an
-   example] of such issue appearing).
+2. Not using a prefix at all – this is also an unwanted practice as it pollutes the command namespace
+  (link:https://github.com/z-shell/fast-syntax-highlighting/issues/157[an example] of such issue appearing).
 
 3. It would allow to quickly discriminate between function types – e.g.: seeing
-   the `:` prefix informs the user that it's a hook-type function, while seeing
-   the `@` prefix informs the user that it's an API-like function, etc.
+  the `:` prefix informs the user that it's a hook-type function, while seeing
+  the `@` prefix informs the user that it's an API-like function, etc.
 
 4. It also provides an improvement during programming, by allowing to quickly
-   limit the number of completions offered by the editor, e.g.: for Vim's
-   `Ctrl-P` completing, when entering `+<Ctrl-P>`, then only a subset of the
-   functions is being completed (see below for the type of the functions).
+  limit the number of completions offered by the editor, e.g.: for Vim's
+  `Ctrl-P` completing, when entering `+<Ctrl-P>`, then only a subset of the
+  functions is being completed (see below for the type of the functions).
    **Note:** the editor has to be configured so that it accepts such special
-   characters as part of keywords, for Vim it's: `:set isk+=@-@,.,+,/,:` for all
-   of the proposed prefixes.
+  characters as part of keywords, for Vim it's: `:set isk+=@-@,.,+,/,:` for all
+  of the proposed prefixes.
 
-##### The Proposed Function-Name Prefixes
+### The Proposed Function-Name Prefixes
 
 The proposition of the standard prefixes is as follows:
 
-1. `.`: for regular private functions. Example function:
-   `.prompt_zinc_get_value`.
+1. `.`: for regular private functions. Example function: `.prompt_zinc_get_value`.
 
 2. `→`: for hook-like functions, so it should be used e.g.: for the
-   link:#azh[Zsh hooks] and the link:#azhw[Zle hooks], but also for any other
-   custom hook-like mechanism in the plugin . Example function name:
-   `→prompt_zinc_precmd`.
-   - previous version of the document recommended colon (`:`) for the prefix,
-     however, it was problematic, because Windows doesn't allow colons in file
-     names, so it wasn't possible to name an autoload function this way,
+  link:#azh[Zsh hooks] and the link:#azhw[Zle hooks], but also for any other
+  custom hook-like mechanism in the plugin . Example function name:
+  `→prompt_zinc_precmd`.
+  - previous version of the document recommended colon (`:`) for the prefix,
+    however, it was problematic, because Windows doesn't allow colons in file
+    names, so it wasn't possible to name an autoload function this way,
    - the arrow has a rationale behind – it denotes the execution *coming back*
-     to the function at a later time, after it has been registered as a callback
-     or a handler,
-   - the arrow is easy to type on most keyboard layouts – it is `Right-Alt`+`I`;
-     in case of problems with typing the character can be always copied –
-     handler functions do occur in the code rarely,
-   - Zsh supports absolutely any string as a function name, because absolutely
-     any string can be a **file** name – if there would be an exception in the
-     name of the callables, then how would it be possible to run a script called
-     "→abcd"?  There are *no* exceptions, the function can be called even as a
-     sequence of null bytes:
+    to the function at a later time, after it has been registered as a callback
+    or a handler,
+  - the arrow is easy to type on most keyboard layouts – it is `Right-Alt`+`I`;
+    in case of problems with typing the character can be always copied –
+    handler functions do occur in the code rarely,
+  - Zsh supports absolutely any string as a function name, because absolutely
+    any string can be a **file** name – if there would be an exception in the
+    name of the callables, then how would it be possible to run a script called
+    "→abcd"?  There are *no* exceptions, the function can be called even as a
+    sequence of null bytes:
 
     ❯ $'\0'() { print hello }
     ❯ $'\0'
     hello
 
 3. `+`: for output functions, i.e.: for functions that print to the standard
-   output and error or to a log, etc. Example function name:
-   `+prompt_zinc_output_segment`.
+  output and error or to a log, etc. Example function name:
+  `+prompt_zinc_output_segment`.
 
 4. `/`: for debug functions, i.e: for functions that output debug messages to
-   the screen or to a log or e.g.: gather some debug data. **Note:** the slash
-   makes it impossible for such functions to be auto-loaded via the `autoload`
-   mechanism. It is somewhat risky to assume, that this will never be needed for
-   the functions, however the limited number of available ASCII characters
-   justifies such allocation. Example function name: `/prompt_zinc_dmsg`.
+the screen or to a log or e.g.: gather some debug data. **Note:** the slash
+  makes it impossible for such functions to be auto-loaded via the `autoload`
+  mechanism. It is somewhat risky to assume, that this will never be needed for
+  the functions, however the limited number of available ASCII characters
+  justifies such allocation. Example function name: `/prompt_zinc_dmsg`.
 
 5. `@`: for API-like functions, i.e: for functions that are on a boundary to a
-   subsystem and expose its functionality through a well-defined, in general
-   fixed interface. For example this plugin standard
-   link:#update-register-call[defines] the function `@zsh-plugin-run-on-update`,
-   which is exposing a plugin manager's functionality in a well-defined way.
+  subsystem and expose its functionality through a well-defined, in general
+  fixed interface. For example this plugin standard
+  link:#update-register-call[defines] the function `@zsh-plugin-run-on-update`,
+  which is exposing a plugin manager's functionality in a well-defined way.
 
-##### Example Code Utilizing The Prefixes
+### Example Code Utilizing The Prefixes
 
 ```shell
 .zinc_register_hooks() {
@@ -668,17 +646,17 @@ Replace the `prj*` prefix with your project name, e.g.: `rustef` for a
 as follows:
 
 1. The line `prjef=( ${(k)functions} )` remembers all the functions that are
-   currently defined – which means that the list excludes the functions that are
-   to be yet defined by the body of the main function.
+    currently defined – which means that the list excludes the functions that are
+    to be yet defined by the body of the main function.
 
 2. The code `unset -f -- "${(k)functions[@]:|prjef}"` first does an subtraction
-   of array contents – the `:|` substitution operator – of the functions that
-   are defined at the moment of leaving of the function (the `trap`-s invoke the
-   code in this moment) with the list of functions from the start of the main
-   function – the ones stored in the variables `$prjef`.
+    of array contents – the `:|` substitution operator – of the functions that
+    are defined at the moment of leaving of the function (the `trap`-s invoke the
+    code in this moment) with the list of functions from the start of the main
+    function – the ones stored in the variables `$prjef`.
 
 3. It then unsets the resulting list of the functions – being only the newly
-   defined functions in the main function – by passing it to `unset -f …`.
+    defined functions in the main function – by passing it to `unset -f …`.
 
 This way the functions defined by the body of the main (most often an autoload)
 function will be only set during the execution of the function.
