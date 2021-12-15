@@ -2,10 +2,8 @@
   <a href="https://github.com/z-shell/zi">
     <img src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="80" height="80">
   </a>
-❮ ZI ❯ Documentation
+❮ ZI ❯ Wiki
 </h1>
-
-[![asciicast](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf.svg)](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf)
 
 ---
 
@@ -46,12 +44,14 @@ install everything from GitHub and other sites. Its characteristics are:**
 
 7. Also, specialized ZI extensions — called **annexes** — allow to extend the
    plugin manager with new commands, URL-preprocessors (used by e.g.:
-   [z-a-as-monitor](https://github.com/z-shell/z-a-as-monitor) annex),
+   [z-a-readurl](https://github.com/z-shell/z-a-readurl) annex),
    post-install and post-update hooks and much more. See the
    [z-shell](https://github.com/z-shell) organization for a growing,
    complete list of available ZI extensions and refer to the [Wiki
    article](https://github.com/z-shell/zi/wiki/Annexes/) for an introduction on
    creating your own annex.
+
+[![asciicast](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf.svg)](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf)
 
 **Here is the list of people who contributed to documentation so far:**
 
