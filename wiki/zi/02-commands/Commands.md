@@ -1,7 +1,18 @@
-Following commands are passed to `zi ...` to obtain described effects.
+- [Loading and Unloading](#loading-and-unloading)
+- [Completions Management](#completions-management)
+- [Tracking of the Active Session](#tracking-of-the-active-session)
+- [Reports and Statistics](#reports-and-statistics)
+- [Compiling](#compiling)
+- [Other](#other)
+- [Updating ZI and Plugins](#updating-zi-and-plugins)
+- [Calling `compinit` Without Turbo Mode](#calling-compinit-without-turbo-mode)
+- [Calling `compinit` With Turbo Mode](#calling-compinit-with-turbo-mode)
+  - [Ignoring Compdefs](#ignoring-compdefs)
+- [Help & Manual](#help--manual)
 
-<details>
-<summary>Loading and Unloading</summary>
+---
+
+Following commands are passed to `zi ...` to obtain described effects.
 
 ## Loading and Unloading
 
@@ -11,10 +22,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 | `light [-b] {plg-spec}`  | <div align="justify" style="text-align: justify;"> Light plugin load, without reporting/investigating. `-b` – investigate `bindkey`-calls only. There's also `light-mode` ice which can be used to induce the no-investigating (i.e.: _light_) loading, regardless of the command used.</div>                                                                                 |
 | `unload [-q] {plg-spec}` | <div align="justify" style="text-align: justify;"> Unload plugin loaded with `zi load ...`. `-q` – quiet.</div>                                                                                                                                                                                                                                                               |
 |   `snippet [-f] {url}`   | <div align="justify" style="text-align: justify;"> Source local or remote file (by direct URL). `-f` – don't use cache (force redownload). The URL can use the following shorthands: `PZT::` (Prezto), `PZTM::` (Prezto module), `OMZ::` (Oh My Zsh), `OMZP::` (OMZ plugin), `OMZL::` (OMZ library), `OMZT::` (OMZ theme), e.g.: `PZTM::environment`, `OMZP::git`, etc.</div> |
-
-</details>
-<details>
-<summary>Completions Management</summary>
 
 ## Completions Management
 
@@ -32,10 +39,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 |                        `cdreplay [-q]`                        | <div align="justify" style="text-align: justify;"> Replay compdefs (to be done after compinit). `-q` – quiet.</div>                                                                                            |
 |                        `cdclear [-q]`                         | <div align="justify" style="text-align: justify;"> Clear compdef replay list. `-q` – quiet.</div>                                                                                                              |
 
-</details>
-<details>
-<summary>Tracking of the Active Session</summary>
-
 ## Tracking of the Active Session
 
 |     Command      | Description                                                                                                |
@@ -45,10 +48,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 |    `dunload`     | <div align="justify" style="text-align: justify;"> Revert changes recorded between dstart and dstop.</div> |
 |    `dreport`     | <div align="justify" style="text-align: justify;"> Report what was going on in session.</div>              |
 |     `dclear`     | <div align="justify" style="text-align: justify;"> Clear report of what was going on in session.</div>     |
-
-</details>
-<details>
-<summary>Reports and Statistics</summary>
 
 ## Reports and Statistics
 
@@ -63,10 +62,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 |       `recently [time-spec]`       | <div align="justify" style="text-align: justify;"> Show plugins that changed recently, argument is e.g. 1 month 2 days.</div>                                                                         |
 |             `bindkeys`             | <div align="justify" style="text-align: justify;"> Lists bindkeys set up by each plugin.</div>                                                                                                        |
 
-</details>
-<details>
-<summary>Compiling</summary>
-
 ## Compiling
 
 |            Command            | Description                                                                                                                  |
@@ -74,10 +69,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 |  `compile {plg-spec}\|--all`  | <div align="justify" style="text-align: justify;"> Compile plugin. `--all` – compile all plugins.</div>                      |
 | `uncompile {plg-spec}\|--all` | <div align="justify" style="text-align: justify;"> Remove compiled version of plugin. `--all` – do it for all plugins.</div> |
 |          `compiled`           | <div align="justify" style="text-align: justify;"> List plugins that are compiled.</div>                                     |
-
-</details>
-<details>
-<summary>Other</summary>
 
 ## Other
 
@@ -100,10 +91,6 @@ Following commands are passed to `zi ...` to obtain described effects.
 | `add-fpath\|fpath` `[-f\|--front]` `{plg-spec}` `[subdirectory]` | <div align="justify" style="text-align: justify;">Adds given plugin (not yet snippet) directory to `$fpath`. If the second argument is given, it is appended to the directory path. If the option `-f`/`--front` is given, the directory path is prepended instead of appended to `$fpath`. The `{plg-spec}` can be absolute path, i.e.: it's possible to also add regular directories.</div> |
 |               `run` `[-l]` `[plugin]` `{command}`                | <div align="justify" style="text-align: justify;">Runs the given command in the given plugin's directory. If the option `-l` will be given then the plugin should be skipped – the option will cause the previous plugin to be reused.</div>                                                                                                                                                  |
 
-</details>
-<details>
-<summary>Updating ZI and Plugins</summary>
-
 ## Updating ZI and Plugins
 
 To update ZI issue `zi self-update` in the command line.
@@ -125,10 +112,6 @@ The ice modifiers for any plugin or snippet are stored in their directory in a
 `._zi` subdirectory, hence the plugin doesn't have to be loaded to be correctly
 updated. There's one other file created there, `.zi_lstupd` – it holds the log of
 the new commits pulled-in in the last update.
-
-</details>
-<details>
-<summary>Calling `compinit` Without Turbo Mode</summary>
 
 ## Calling `compinit` Without Turbo Mode
 
@@ -172,10 +155,6 @@ zi cdreplay -q      # -q is for quiet; actually, run all the `compdef's saved be
 This allows calling compinit once.
 Performance gains are huge, for example, shell startup time with double `compinit`: **0.980** sec, with
 `cdreplay` and single `compinit`: **0.156** sec.
-
-</details>
-<details>
-<summary>Calling `compinit` With Turbo Mode</summary>
 
 ## Calling `compinit` With Turbo Mode
 
@@ -227,14 +206,9 @@ zi cdlist # look at gathered compdefs
 The `cdreplay` is important if you use plugins like
 `OMZP::kubectl` or `asdf-vm/asdf`, because these plugins call `compdef`.
 
-</details>
-
-<details open="open">
-<summary>Help</summary>
+## Help & Manual
 
 |  Command   | Description                                                                 |
 | :--------: | --------------------------------------------------------------------------- |
 | `-h, help` | <div align="justify" style="text-align: justify;"> Usage information.</div> |
 |   `man`    | <div align="justify" style="text-align: justify;"> Manual.</div>            |
-
-</details>

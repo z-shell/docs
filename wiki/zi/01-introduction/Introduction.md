@@ -1,14 +1,28 @@
+- [Basic Plugin Loading](#basic-plugin-loading)
+- [Oh My Zsh, Prezto](#oh-my-zsh-prezto)
+- [Snippets and Performance](#snippets-and-performance)
+- [Ice-Modifiers](#ice-modifiers)
+- [as"program"](#asprogram)
+- [atpull"…"](#atpull)
+- [Snippets-Commands](#snippets-commands)
+- [Snippets-Completions](#snippets-completions)
+- [Completion Management](#completion-management)
+  - [Listing Completions](#listing-completions)
+  - [Enabling and Disabling Completions](#enabling-and-disabling-completions)
+- [Subversion for Subdirectories](#subversion-for-subdirectories)
+- [Turbo Mode (Zsh \>= 5.3)](#turbo-mode-zsh--53)
+  - [A Quick Glance At The The-Syntax](#a-quick-glance-at-the-the-syntax)
+  - [Turbo-Loading Sophisticated Prompts](#turbo-loading-sophisticated-prompts)
+- [Automatic Load/Unload on Condition](#automatic-loadunload-on-condition)
+
+---
+
 In the document below you’ll find out how to:
 
 - use Oh My Zsh and Prezto,
-
 - manage completions,
-
 - use the Turbo mode,
-
-- use the ice-mods like `as"program"`,
-
-and much more.
+- use the ice-mods like `as"program"`, and much more.
 
 ## Basic Plugin Loading
 

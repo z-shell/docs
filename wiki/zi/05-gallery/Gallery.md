@@ -1,8 +1,17 @@
-# Gallery Of Zi Invocations
+- [Gallery Of Invocations](#gallery-of-invocations)
+  - [Programs](#programs)
+  - [Completions](#completions)
+  - [Scripts](#scripts)
+  - [Plugins](#plugins)
+  - [Services](#services)
+  - [Snippets](#snippets)
+  - [Themes](#themes)
 
-PRs welcomed :)
+## Gallery Of Invocations
 
-## Programs
+[PRs](https://github.com/z-shell/docs/pulls) welcomed :)
+
+### Programs
 
 ```zsh
 # junegunn/fzf-bin
@@ -81,14 +90,14 @@ zi id-as"rust" wait=1 as=null sbin="bin/*" lucid rustup \
   z-shell/null
 ```
 
-## Completions
+### Completions
 
 ```zsh
 zi ice as"completion"
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 ```
 
-## Scripts
+### Scripts
 
 ```zsh
 # ogham/exa also uses the definitions
@@ -128,7 +137,7 @@ zi ice as"program" pick"bin/archey"
 zi load obihann/archey-osx
 ```
 
-## Plugins
+### Plugins
 
 ```zsh
 zi ice pick"h.sh"
@@ -208,7 +217,7 @@ zi ice lucid id-as"GitHub-notify" \
 zi light z-shell/zsh-github-issues
 ```
 
-## Services
+### Services
 
 ```zsh
 # a service that runs the redis database, in background, single instance
@@ -225,7 +234,7 @@ zi ice wait"2" lucid service"GIT" pick"zsh-github-issues.service.zsh"
 zi light z-shell/zsh-github-issues
 ```
 
-## Snippets
+### Snippets
 
 ```zsh
 zi ice svn pick"completion.zsh" src"git.zsh"
@@ -241,7 +250,7 @@ zi ice svn
 zi snippet OMZ::plugins/osx
 ```
 
-## Themes
+### Themes
 
 ```zsh
 GEOMETRY_COLOR_DIR=152
@@ -274,8 +283,13 @@ zi load romkatv/gitstatus
 # p10k one-line
 zi ice depth=1; zi light romkatv/powerlevel10k
 
+# p10k meta package
+# Configuration wizard disbled by default.
+# run manually: `p10k configure`.
+zi light-mode for @romkatv
+
 # After finishing the configuration wizard for the last question:
 # "Apply changes to ~/.zshrc?" choose no - unless you know what you're doing.
-zi ice depth'1' atload'[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' nocd
+zi ice depth'1' atload"[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" nocd
 zi light romkatv/powerlevel10k
 ```

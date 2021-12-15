@@ -1,3 +1,8 @@
+- [Using Turbo mode and for-syntax](#using-turbo-mode-and-for-syntax)
+- [Without using Turbo and for-syntax](#without-using-turbo-and-for-syntax)
+
+---
+
 ## Using Turbo mode and for-syntax
 
 ```zsh

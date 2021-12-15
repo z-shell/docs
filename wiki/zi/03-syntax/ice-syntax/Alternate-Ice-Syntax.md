@@ -1,3 +1,9 @@
+- [The Standard Syntax](#the-standard-syntax)
+- [The Alternative Syntaxes](#the-alternative-syntaxes)
+- [Summary](#summary)
+
+---
+
 ## The Standard Syntax
 
 The normal way of specifying ices and their values is by concatenating the ice
