@@ -2,8 +2,8 @@
 name: 📖 Zsh Documentation
 
 on:
-  push:
-  pull_request_target:
+  push: [main]
+  pull_request_target: [main]
   paths:
     - "wiki/zsh/**"
   workflow_dispatch:
