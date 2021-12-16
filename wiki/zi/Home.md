@@ -21,7 +21,7 @@ install everything from GitHub and other sites. Its characteristics are:**
    quickly familiarize oneself with a new plugin and provides rich and easy to
    digest information that might be helpful on various occasions.
 
-3. Supported is unloading of plugin and ability to list, (un)install and
+3. Supported is the unloading of plugin and ability to list, (un)install and
    **selectively disable**, **enable** plugin's completions.
 
 4. The plugin manager supports loading Oh My Zsh and Prezto plugins and
@@ -49,7 +49,7 @@ install everything from GitHub and other sites. Its characteristics are:**
    [z-shell](https://github.com/z-shell) organization for a growing,
    complete list of available ZI extensions and refer to the [Wiki
    article](https://github.com/z-shell/zi/wiki/Annexes/) for an introduction on
-   creating your own annex.
+   creating your annex.
 
 [![asciicast](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf.svg)](https://asciinema.org/a/QcC3gmoOqIkMdPJ7J9v6hiWGf)
 

@@ -109,7 +109,7 @@ man page).
 ## The `Z-Shell` Organization
 
 The home for the packages is [Z-Shell](https://github.com/z-shell)
-GitHub organization. You can find the available packages [here](https://github.com/search?q=topic%3Azi-package+org%3Az-shell&type=Repositories), which as of
+GitHub organization. You can find the available packages [here](https://github.com/search?q=topic%3Az-packages+org%3Az-shell&type=Repositories), which as of
 `2021-11-11` include:
 
 - **[any-node](https://github.com/z-shell/any-node)** - Special package – it is designed for easy installing of any Node modules inside the plugin directory.
