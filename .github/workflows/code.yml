@@ -40,19 +40,6 @@ jobs:
         with:
           name: code documentation
           path: code.tar.gz
-      - name: Check if update required for zsdoc
-        run: |
-          git --no-pager diff code/zsdoc
-            if git --no-pager diff --quiet code/zsdoc
-              then
-                echo "The Code Doocumentation are up to date"
-            else
-              {
-               echo "The Code Doocumentation in the repo are not up to date"
-               echo 'Please regenerate them with $ make adoc'
-               } >&2
-              exit 1
-            fi
       - name: Tree
         run: |
           tree code/zsdoc | tee docs/TREE.md
