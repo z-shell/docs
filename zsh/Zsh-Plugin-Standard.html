@@ -437,6 +437,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="article">
 <div id="header">
@@ -590,10 +805,10 @@ cover the information of how to write a Zsh plugin.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
-0="${${(M)0:#/*}:-$PWD/$0}"
+<pre class="rouge highlight"><code data-lang="shell"><span class="nv">0</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">ZERO</span><span class="k">:-${${</span><span class="nv">0</span>:#<span class="nv">$ZSH_ARGZERO</span><span class="k">}:-${</span><span class="p">(%)</span><span class="k">:-</span><span class="p">%N</span><span class="k">}}}</span><span class="s2">"</span>
+<span class="nv">0</span><span class="o">=</span><span class="s2">"</span><span class="k">${${</span><span class="p">(M)0</span>:#/<span class="p">*</span><span class="k">}:-</span><span class="nv">$PWD</span><span class="p">/</span><span class="nv">$0</span><span class="k">}</span><span class="s2">"</span>
 
-# Then ${0:h} to get plugin’s directory</code></pre>
+<span class="c"># Then ${0:h} to get plugin’s directory</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -714,9 +929,9 @@ the current plugin managers can be easily resolved via the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">if [[ ${zsh_loaded_plugins[-1]} != */kalc &amp;&amp; -z ${fpath[(r)${0:h}/functions]} ]] {
-    fpath+=( "${0:h}/functions" )
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">/functions]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
+    fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -724,9 +939,9 @@ the current plugin managers can be easily resolved via the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">if [[ $PMSPEC != *f* ]] {
-    fpath+=( "${0:h}/functions" )
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+    fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -789,9 +1004,9 @@ to handle the <code>$PATH</code> extending itself, via, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">if [[ $PMSPEC != *b* ]] {
-    path+=( "${0:h}/bin" )
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>b<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+    path+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/bin"</span> <span class="o">)</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -877,7 +1092,7 @@ has the following call syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-unload "{code-snippet-1}" "{code-snippet-2}" …</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-unload <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -913,7 +1128,7 @@ has the following call syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-update "{code-snippet-1}" "{code-snippet-2}" …</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-update <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -970,9 +1185,9 @@ manager will not handle this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">if [[ ${zsh_loaded_plugins[-1]} != */kalc &amp;&amp; -z ${fpath[(r)${0:h}]} ]] {
-    fpath+=( "${0:h}" )
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
+    fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">"</span> <span class="o">)</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1099,9 +1314,9 @@ be: <code>0fuUpiPs</code>. The plugin can then verify the support by, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">if [[ $PMSPEC != *f* ]] {
-    fpath+=( "${0:h}/functions" )
-}</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+    fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -1132,7 +1347,7 @@ syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">add-zsh-hook [ -L | -dD ] [ -Uzk ] hook function</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">add-zsh-hook <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook <span class="k">function</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1157,7 +1372,7 @@ automatically set by the Zle editor).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">add-zle-hook-widget [ -L | -dD ] [ -Uzk ] hook widgetname</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">add-zle-hook-widget <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook widgetname</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1210,9 +1425,9 @@ even more:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="shell">…
-typeset -gA Plugins
-# An example value needed by the plugin
-Plugins[MY_PLUGIN_REPO_DIR]="${0:h}"</code></pre>
+<span class="nb">typeset</span> <span class="nt">-gA</span> Plugins
+<span class="c"># An example value needed by the plugin</span>
+Plugins[MY_PLUGIN_REPO_DIR]<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1229,8 +1444,8 @@ each of the main functions provided by the plugin:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">emulate -L zsh
-setopt extended_glob warn_create_global typeset_silent \
+<pre class="rouge highlight"><code data-lang="shell">emulate <span class="nt">-L</span> zsh
+setopt extended_glob warn_create_global typeset_silent <span class="se">\</span>
         no_short_loops rc_quotes no_auto_pushd</code></pre>
 </div>
 </div>
@@ -1289,8 +1504,8 @@ of a plugin:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">local MATCH REPLY; integer MBEGIN MEND
-local -a match mbegin mend reply</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">local </span>MATCH REPLY<span class="p">;</span> integer MBEGIN MEND
+<span class="nb">local</span> <span class="nt">-a</span> match mbegin mend reply</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1425,12 +1640,12 @@ which is exposing a plugin manager&#8217;s functionality in a well-defined way.<
 <h3 id="_example_code_utilizing_the_prefixes">Example Code Utilizing The Prefixes</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">.zinc_register_hooks() {
+<pre class="rouge highlight"><code data-lang="shell">.zinc_register_hooks<span class="o">()</span> <span class="o">{</span>
     add-zsh-hook precmd :zinc_precmd
-    /zinc_dmsg "Installed precmd hook with result: $?"
-    @zsh-plugin-run-on-unload "add-zsh-hook -d precmd :zinc_precmd"
-    +zinc_print "Zinc initialization complete"
-}</code></pre>
+    /zinc_dmsg <span class="s2">"Installed precmd hook with result: </span><span class="nv">$?</span><span class="s2">"</span>
+    @zsh-plugin-run-on-unload <span class="s2">"add-zsh-hook -d precmd :zinc_precmd"</span>
+    +zinc_print <span class="s2">"Zinc initialization complete"</span>
+<span class="o">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -1446,11 +1661,11 @@ automatically unset the sub-functions when leaving the main function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell"># Don't leak any functions
-typeset -g prjef
-prjef=( ${(k)functions} )
-trap "unset -f -- \"\${(k)functions[@]:|prjef}\" &amp;&gt;/dev/null; unset prjef" EXIT
-trap "unset -f -- \"\${(k)functions[@]:|prjef}\" &amp;&gt;/dev/null; unset prjef; return 1" INT</code></pre>
+<pre class="rouge highlight"><code data-lang="shell"><span class="c"># Don't leak any functions</span>
+<span class="nb">typeset</span> <span class="nt">-g</span> prjef
+<span class="nv">prjef</span><span class="o">=(</span> <span class="k">${</span><span class="p">(k)functions</span><span class="k">}</span> <span class="o">)</span>
+<span class="nb">trap</span> <span class="s2">"unset -f -- </span><span class="se">\"\$</span><span class="s2">{(k)functions[@]:|prjef}</span><span class="se">\"</span><span class="s2"> &amp;&gt;/dev/null; unset prjef"</span> EXIT
+<span class="nb">trap</span> <span class="s2">"unset -f -- </span><span class="se">\"\$</span><span class="s2">{(k)functions[@]:|prjef}</span><span class="se">\"</span><span class="s2"> &amp;&gt;/dev/null; unset prjef; return 1"</span> INT</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1496,14 +1711,14 @@ sufficient:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">typeset -A PlgMap
-typeset -A SomeMap
-typeset -a some_array
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">typeset</span> <span class="nt">-A</span> PlgMap
+<span class="nb">typeset</span> <span class="nt">-A</span> SomeMap
+<span class="nb">typeset</span> <span class="nt">-a</span> some_array
 
-# Use
-PlgMap[state]=1
-SomeMap[state]=1
-some_array[1]=state</code></pre>
+<span class="c"># Use</span>
+PlgMap[state]<span class="o">=</span>1
+SomeMap[state]<span class="o">=</span>1
+some_array[1]<span class="o">=</span>state</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1511,12 +1726,12 @@ some_array[1]=state</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="shell">typeset -A PlgMap
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">typeset</span> <span class="nt">-A</span> PlgMap
 
-# Use
-PlgMap[state]=1
-PlgMap[SomeMap__state]=1
-PlgMap[some_array__1]=state</code></pre>
+<span class="c"># Use</span>
+PlgMap[state]<span class="o">=</span>1
+PlgMap[SomeMap__state]<span class="o">=</span>1
+PlgMap[some_array__1]<span class="o">=</span>state</code></pre>
 </div>
 </div>
 <div class="paragraph">

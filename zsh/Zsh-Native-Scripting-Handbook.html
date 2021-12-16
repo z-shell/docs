@@ -437,6 +437,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="article">
 <div id="header">
@@ -547,7 +762,7 @@ and <code>^</code> also require it. Extended-glob is one of the main features of
 <h3 id="reading-a-file">Reading a file</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">declare -a lines; lines=( "${(@f)"$(&lt;path/file)"}" )</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">declare</span> <span class="nt">-a</span> lines<span class="p">;</span> <span class="nv">lines</span><span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="p">(@f)</span><span class="s2">"</span><span class="si">$(</span>&lt;path/file<span class="si">)</span><span class="s2">"</span><span class="k">}</span><span class="s2">"</span> <span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -558,7 +773,7 @@ Information section:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">declare -a lines; lines=( ${(f)"$(&lt;path/file)"} )</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">declare</span> <span class="nt">-a</span> lines<span class="p">;</span> <span class="nv">lines</span><span class="o">=(</span> <span class="k">${</span><span class="p">(f)</span><span class="s2">"</span><span class="si">$(</span>&lt;path/file<span class="si">)</span><span class="s2">"</span><span class="k">}</span> <span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -575,7 +790,7 @@ Information section:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">declare -a lines; lines=( ${(f)"$(command arg1 ...)"} )</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">declare</span> <span class="nt">-a</span> lines<span class="p">;</span> <span class="nv">lines</span><span class="o">=(</span> <span class="k">${</span><span class="p">(f)</span><span class="s2">"</span><span class="si">$(</span><span class="nb">command </span>arg1 ...<span class="si">)</span><span class="s2">"</span><span class="k">}</span> <span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -584,7 +799,7 @@ does <code>@</code> splitting and retains any empty lines is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">declare -a lines; lines=( "${(f@)$(command arg1 ...)}" )</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">declare</span> <span class="nt">-a</span> lines<span class="p">;</span> <span class="nv">lines</span><span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="p">(f@)</span><span class="si">$(</span><span class="nb">command </span>arg1 ...<span class="si">)</span><span class="k">}</span><span class="s2">"</span> <span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -605,8 +820,8 @@ second double-quoting isn&#8217;t actually needed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">local dirname="${PWD:h}"
-local basename="${PWD:t}"</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local dirname</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PWD</span>:h<span class="k">}</span><span class="s2">"</span>
+<span class="nb">local basename</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PWD</span>:t<span class="k">}</span><span class="s2">"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -620,7 +835,7 @@ local basename="${PWD:t}"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">local absolute_path="${PWD:A}"</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local </span><span class="nv">absolute_path</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">PWD</span>:A<span class="k">}</span><span class="s2">"</span></code></pre>
 </div>
 </div>
 </div>
@@ -628,8 +843,8 @@ local basename="${PWD:t}"</code></pre>
 <h3 id="skipping-grep">Skipping grep</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">declare -a lines; lines=( "${(@f)"$(&lt;path/file)"}" )
-declare -a grepped; grepped=( ${(M)lines:#*query*} )</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">declare</span> <span class="nt">-a</span> lines<span class="p">;</span> <span class="nv">lines</span><span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="p">(@f)</span><span class="s2">"</span><span class="si">$(</span>&lt;path/file<span class="si">)</span><span class="s2">"</span><span class="k">}</span><span class="s2">"</span> <span class="o">)</span>
+<span class="nb">declare</span> <span class="nt">-a</span> grepped<span class="p">;</span> <span class="nv">grepped</span><span class="o">=(</span> <span class="k">${</span><span class="p">(M)lines</span>:#<span class="p">*query*</span><span class="k">}</span> <span class="o">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -654,10 +869,10 @@ being not under version control. You could do this in Bash style like follows:</
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">local svn_status="$(svn status)"
-if [[ -n "$(echo "$svn_status" | \grep \^\?)" ]]; then
-    echo found
-fi</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local </span><span class="nv">svn_status</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>svn status<span class="si">)</span><span class="s2">"</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$svn_status</span><span class="s2">"</span> | <span class="se">\g</span>rep <span class="se">\^\?</span><span class="si">)</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo </span>found
+<span class="k">fi</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -668,10 +883,10 @@ approach:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">local svn_status="$(svn status)" nl=$'\n'
-if [[ "$svn_status" = *((#s)|$nl)\?* ]]; then
-  echo found
-fi</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local </span><span class="nv">svn_status</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>svn status<span class="si">)</span><span class="s2">"</span> <span class="nb">nl</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$svn_status</span><span class="s2">"</span> <span class="o">=</span> <span class="k">*</span><span class="o">((</span><span class="c">#s)|$nl)\?* ]]; then</span>
+  <span class="nb">echo </span>found
+<span class="k">fi</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -687,10 +902,10 @@ versions of the pattern will have to be matched:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="zsh">setopt localoptions noextendedglob
-local svn_status="$(svn status)" nl=$'\n'
-if [[ "$svn_status" = (\?*|*$nl\?*) ]]; then
-  echo found
-fi</code></pre>
+<span class="nb">local </span><span class="nv">svn_status</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>svn status<span class="si">)</span><span class="s2">"</span> <span class="nb">nl</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$svn_status</span><span class="s2">"</span> <span class="o">=</span> <span class="o">(</span><span class="se">\?</span><span class="k">*</span>|<span class="k">*</span><span class="nv">$nl</span><span class="se">\?</span><span class="k">*</span><span class="o">)</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">echo </span>found
+<span class="k">fi</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -699,8 +914,8 @@ version):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">local needle="?" required_preceding='[[:space:]]#'
-[[ "$(svn status)" = *((#s)|$nl)${~required_preceding}${needle}* ]] &amp;&amp; echo found</code></pre>
+<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local </span><span class="nv">needle</span><span class="o">=</span><span class="s2">"?"</span> <span class="nv">required_preceding</span><span class="o">=</span><span class="s1">'[[:space:]]#'</span>
+<span class="o">[[</span> <span class="s2">"</span><span class="si">$(</span>svn status<span class="si">)</span><span class="s2">"</span> <span class="o">=</span> <span class="k">*</span><span class="o">((</span><span class="c">#s)|$nl)${~required_preceding}${needle}* ]] &amp;&amp; echo found</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1028,42 +1243,42 @@ intuitive.</p>
 <div id="read-ini-file" class="listingblock">
 <div class="title">read-ini-file</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"># Copyright (c) 2018 Sebastian Gniazdowski
-#
-# $1 - path to the ini file to parse
-# $2 - name of output hash
-# $3 - prefix for keys in the hash
-#
-# Writes to given hash under keys built in following way: ${3}&lt;section&gt;_field.
-# Values are values from ini file. Example invocation:
-#
-# read-ini-file ./database1-setup.ini DB_CONF db1_
-# read-ini-file ./database2-setup.ini DB_CONF db2_
-#
+<pre class="rouge highlight"><code data-lang="zsh"><span class="c"># Copyright (c) 2018 Sebastian Gniazdowski</span>
+<span class="c">#</span>
+<span class="c"># $1 - path to the ini file to parse</span>
+<span class="c"># $2 - name of output hash</span>
+<span class="c"># $3 - prefix for keys in the hash</span>
+<span class="c">#</span>
+<span class="c"># Writes to given hash under keys built in following way: ${3}&lt;section&gt;_field.</span>
+<span class="c"># Values are values from ini file. Example invocation:</span>
+<span class="c">#</span>
+<span class="c"># read-ini-file ./database1-setup.ini DB_CONF db1_</span>
+<span class="c"># read-ini-file ./database2-setup.ini DB_CONF db2_</span>
+<span class="c">#</span>
 
 setopt localoptions extendedglob
 
-local __ini_file="$1" __out_hash="$2" __key_prefix="$3"
-local IFS='' __line __cur_section="void" __access_string
-local -a match mbegin mend
+<span class="nb">local </span><span class="nv">__ini_file</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="nv">__out_hash</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span> <span class="nv">__key_prefix</span><span class="o">=</span><span class="s2">"</span><span class="nv">$3</span><span class="s2">"</span>
+<span class="nb">local </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">''</span> __line <span class="nv">__cur_section</span><span class="o">=</span><span class="s2">"void"</span> __access_string
+<span class="nb">local</span> <span class="nt">-a</span> match mbegin mend
 
-[[ ! -r "$__ini_file" ]] &amp;&amp; { builtin print -r "read-ini-file: an ini file is unreadable ($__ini_file)"; return 1; }
+<span class="o">[[</span> <span class="o">!</span> <span class="nt">-r</span> <span class="s2">"</span><span class="nv">$__ini_file</span><span class="s2">"</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">{</span> <span class="nb">builtin </span>print <span class="nt">-r</span> <span class="s2">"read-ini-file: an ini file is unreadable (</span><span class="nv">$__ini_file</span><span class="s2">)"</span><span class="p">;</span> <span class="k">return </span>1<span class="p">;</span> <span class="o">}</span>
 
-while read -r -t 1 __line; do
-    if [[ "$__line" = [[:blank:]]#\;* ]]; then
-        continue
-    # Match "[Section]" line
-    elif [[ "$__line" = (#b)[[:blank:]]#\[([^\]]##)\][[:blank:]]# ]]; then
-        __cur_section="${match[1]}"
-    # Match "string = string" line
-    elif [[ "$__line" = (#b)[[:blank:]]#([^[:blank:]=]##)[[:blank:]]#[=][[:blank:]]#(*) ]]; then
-        match[2]="${match[2]%"${match[2]##*[! $'\t']}"}" # severe trick - remove trailing whitespace
-        __access_string="${__out_hash}[${__key_prefix}&lt;$__cur_section&gt;_${match[1]}]"
-        : "${(P)__access_string::=${match[2]}}"
-    fi
-done &lt; "$__ini_file"
+<span class="k">while </span><span class="nb">read</span> <span class="nt">-r</span> <span class="nt">-t</span> 1 __line<span class="p">;</span> <span class="k">do
+    if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$__line</span><span class="s2">"</span> <span class="o">=</span> <span class="o">[[</span>:blank:]]#<span class="se">\;</span><span class="k">*</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+        continue</span>
+    <span class="c"># Match "[Section]" line</span>
+    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$__line</span><span class="s2">"</span> <span class="o">=</span> <span class="o">(</span><span class="c">#b)[[:blank:]]#\[([^\]]##)\][[:blank:]]# ]]; then</span>
+        <span class="nv">__cur_section</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">match</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span>
+    <span class="c"># Match "string = string" line</span>
+    <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$__line</span><span class="s2">"</span> <span class="o">=</span> <span class="o">(</span><span class="c">#b)[[:blank:]]#([^[:blank:]=]##)[[:blank:]]#[=][[:blank:]]#(*) ]]; then</span>
+        match[2]<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">match</span><span class="p">[2]%</span><span class="s2">"</span><span class="k">${</span><span class="nv">match</span><span class="p">[2]##*[! </span><span class="s1">$'</span><span class="se">\t</span><span class="s1">'</span><span class="p">]</span><span class="k">}</span><span class="s2">"</span><span class="k">}</span><span class="s2">"</span> <span class="c"># severe trick - remove trailing whitespace</span>
+        <span class="nv">__access_string</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">__out_hash</span><span class="k">}</span><span class="s2">[</span><span class="k">${</span><span class="nv">__key_prefix</span><span class="k">}</span><span class="s2">&lt;</span><span class="nv">$__cur_section</span><span class="s2">&gt;_</span><span class="k">${</span><span class="nv">match</span><span class="p">[1]</span><span class="k">}</span><span class="s2">]"</span>
+        : <span class="s2">"</span><span class="k">${</span><span class="p">(P)__access_string</span>::<span class="p">=</span><span class="k">${</span><span class="nv">match</span><span class="p">[2]</span><span class="k">}}</span><span class="s2">"</span>
+    <span class="k">fi
+done</span> &lt; <span class="s2">"</span><span class="nv">$__ini_file</span><span class="s2">"</span>
 
-return 0</code></pre>
+<span class="k">return </span>0</code></pre>
 </div>
 </div>
 </div>
