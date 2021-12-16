@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Install zsdoc
         run: |
-          sudo apt-get install -y zsh
+          sudo apt-get install -y zsh tree
           git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
           sudo make -C /tmp/zsdoc install
       - name: ruby
@@ -42,7 +42,7 @@ jobs:
           path: code.tar.gz
       - name: Check if update required for zsdoc
         run: |
-          git --no-pager diff zsoc/zsdoc
+          git --no-pager diff code/zsdoc
             if git --no-pager diff --quiet code/zsdoc
               then
                 echo "The Code Doocumentation are up to date"
@@ -53,6 +53,11 @@ jobs:
                } >&2
               exit 1
             fi
+      - name: Tree
+        run: |
+          tree code/zsdoc | tee docs/TREE.md
+          tree wiki/zsh | tee -a docs/TREE.md
+          tree wiki/zi | tee -a docs/TREE.md
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -63,7 +68,7 @@ jobs:
           # See the `pathspec`-documentation for git
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
-          file_pattern: code
+          file_pattern: code docs
           repository: .
           commit_user_name: Z-Shell Bot
           commit_user_email: z-shell@digitalclouds.dev
