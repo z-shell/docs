@@ -1,5 +1,5 @@
 ---
-name: 📖 Code Documentation
+name: 📖 Code
 on:
   workflow_dispatch:
   schedule:
