@@ -1,5 +1,5 @@
 ---
-name: 📖 Zsh Documentation
+name: 📖 Zsh
 
 on:
   push:
