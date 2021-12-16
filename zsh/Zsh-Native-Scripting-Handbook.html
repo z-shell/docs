@@ -710,10 +710,10 @@ pre.rouge {
 <p>The handbook is also available as a <a href="https://github.com/z-shell/docs/wiki/zsh/Zsh-Native-Scripting-Handbook.pdf">PDF</a>, <a href="https://z-shell.github.io/docs/zsh/Zsh-Native-Scripting-Handbook.html">HTML</a>.</p>
 </div>
 <div class="paragraph">
-<p>This document has been created after 3.5 years of creating software for Z shell
+<p>This document has been created after 3.5 years of creating software for Zshell
 and receiving help from IRC channel #zsh. Avoiding forks was the main guideline
 when creating the projects and this lead to multiple discoveries of Zsh constructs
-that are fast, robust, and do not depend on external tools. Such code is more like
+that are fast, robust and do not depend on external tools. Such code is more like
 Ruby or Perl code, less like top-down shell scripts.</p>
 </div>
 </div>
@@ -727,20 +727,20 @@ Ruby or Perl code, less like top-down shell scripts.</p>
 <p>How to access all array elements in a shell? The standard answer: <code>use @
 subscript</code>, i.e. <code>${array[@]}</code>. However, this is the Bash &amp; Ksh way (and with
 the option <code>KSH_ARRAYS</code>, Zsh also works this way, i.e. needs <code>@</code> to access
-the whole array). Z shell <strong>is different</strong>: it is <code>$array</code> that refers to all
-elements anyway. There is no need for the <code>@</code> subscript.</p>
+whole array). Zshell <strong>is different</strong>: it is <code>$array</code> that refers to all
+elements anyway. There is no need of <code>@</code> subscript.</p>
 </div>
 <div class="paragraph">
 <p>So what use has <code>@</code> in the Zsh-world? It is: &#8220;keep array form&#8221; or &#8220;do not
-join&#8221;.  When is it activated? When the user quotes the array, i.e. invokes
+join&#8221;.  When is it activated? When user quotes the array, i.e. invokes
 <code>"$array"</code>, he induces <strong>joining</strong> of all array elements (into a single string).
 <code>@</code> is to have elements still quoted (so empty elements are
 preserved), but not joined.</p>
 </div>
 <div class="paragraph">
-<p>Two forms are available, <code>"$array[@]"</code> and <code>"${(@)array}"</code>. The first form has
-an additional effect – when option <code>KSH_ARRAYS</code> is set, it indeed induces
-referencing to the whole array instead of a first element only. It should then use
+<p>Two forms are available, <code>"$array[@]"</code> and <code>"${(@)array}"</code>. First form has
+additional effect – when option <code>KSH_ARRAYS</code> is set, it indeed induces
+referencing to whole array instead of first element only. It should then use
 braces, i.e. <code>${array[@]}</code>, <code>"${array[@]}"</code> (<code>KSH_ARRAYS</code> requirement).</p>
 </div>
 <div class="paragraph">
@@ -769,8 +769,8 @@ and <code>^</code> also require it. Extended-glob is one of the main features of
 </div>
 <div class="paragraph">
 <p>This preserves empty lines because of double-quoting (the outside one).
-<code>@</code>-flag is used to obtain an array instead of a scalar. If you don&#8217;t want empty
-lines preserved, you can also skip <code>@</code>-splitting, as is explained in
+<code>@</code>-flag is used to obtain array instead of scalar. If you don&#8217;t want empty
+lines preserved, you can also skip <code>@</code>-splitting, as it is explained in
 Information section:</p>
 </div>
 <div class="listingblock">
@@ -809,10 +809,10 @@ does <code>@</code> splitting and retains any empty lines is:</p>
 suggested) by the Zsh documentation (and was used in the previous paragraph, in
 the snippet <code>&#8230;&#8203; "${(@f)"$(&lt;path/file)"}" &#8230;&#8203;</code>), only <strong>two</strong> double-quotes are
 being used. I&#8217;ve investigated this form with the main Zsh developers on the
-<code>zsh-workers@zsh.org</code> mailing list and it was clearly stated that single,
+<code>zsh-workers@zsh.org</code> mailing list, and it was clearly stated that single,
 outside quoting of <code>${(f@)&#8230;&#8203;}</code> substitution works as if it was also separately
 applied to <code>$(command &#8230;&#8203;)</code> (or to <code>$(&lt;file-path)</code>) inner substitution, so the
-second double-quoting isn&#8217;t needed.</p>
+second double-quoting isn&#8217;t actually needed.</p>
 </div>
 </div>
 <div class="sect2">
@@ -850,13 +850,13 @@ second double-quoting isn&#8217;t needed.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To have the <code>grep -v</code> effect, skip <code>M</code>-flag. To grep case-insensitively, use <code>#i</code> glob
+<p>To have <code>grep -v</code> effect, skip <code>M</code>-flag. To grep case insensitively, use <code>#i</code> glob
 flag (<code>&#8230;&#8203;:#(#i)*query*}</code>).</p>
 </div>
 <div class="paragraph">
-<p>As it can be seen, <code>${&#8230;&#8203;:#&#8230;&#8203;}</code> substitution is filtering of the array, which by
+<p>As it can be seen, <code>${&#8230;&#8203;:#&#8230;&#8203;}</code> substitution is a filtering of array, which by
 default filters-out elements (<code>(M)</code> flag induces the opposite behavior). When
-used with string, not an array, it behaves similarly: returns empty string when
+used with string, not an array, it behaves similarily: returns empty string when
 <code>{input_string_var:#pattern}</code> matches whole input string.</p>
 </div>
 <div class="paragraph">
@@ -878,8 +878,8 @@ being not under version control. You could do this in Bash style like follows:</
 </div>
 </div>
 <div class="paragraph">
-<p>Those are 3 forks: for <code>svn status</code>, for <code>echo</code>, and for <code>grep</code>. This can be solved
-by the <code>:#</code> substitution and <code>(M)</code> flag described above in this section (just check
+<p>That are 3 forks: for <code>svn status</code>, for <code>echo</code> and for <code>grep</code>. This can be solved
+by <code>:#</code> substitution and <code>(M)</code> flag described above in this section (just check
 if the number of matched lines is greater than 0). However, there&#8217;s a more direct
 approach:</p>
 </div>
@@ -911,7 +911,7 @@ versions of the pattern will have to be matched:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In general, multi-line matching falls into the following idiom (`extended glob
+<p>In general, multi-line matching falls into the following idiom (<code>extendedglob</code>
 version):</p>
 </div>
 <div class="listingblock">
@@ -921,8 +921,8 @@ version):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It does a single fork (calls <code>svn status). The `${~variable}</code> means (the <code>~</code>
-init): "the variable is holding a pattern, interpret it". All in all, instead
+<p>It does a single fork (calls <code>svn status</code>). The <code>${~variable}</code> means (the <code>~</code>
+in it): "the variable is holding a pattern, interpret it". All in all, instead
 of regular expressions we were using patterns (globs) (see
 <a href="#built-in-regular-expressions-engine">this section</a>).</p>
 </div>
@@ -937,10 +937,10 @@ of regular expressions we were using patterns (globs) (see
 </div>
 <div class="paragraph">
 <p>The <code>~</code> is a negation&#8201;&#8212;&#8201;<code>match *abc* but not &#8230;&#8203;</code>. Then, <code>^</code> is also a negation.
-The effect is: <code>*ABC* but not those that don&#8217;t have *efg*</code> which equals to:
-<code>*ABC* but those that have also *efg*</code>. This is a regular pattern and it can
-be used with <code>:#</code> above to search arrays, or with the <code>R</code>-subscript flag to search
-hashes (<code>${hsh[(R)*pattern*]}</code>), etc. The inventor of those patterns is Mikael
+The effect is: <code>*abc* but not those that don&#8217;t have *efg*</code> which equals to:
+<code>*abc* but those that have also *efg*</code>. This is a regular pattern and it can
+be used with <code>:#</code> above to search arrays, or with <code>R</code>-subscript flag to search
+hashes (<code>${hsh[(R)*pattern*]}</code>), etc. Inventor of those patterns is Mikael
 Magnusson.</p>
 </div>
 </div>
@@ -957,7 +957,7 @@ print $text ▶ 12 21</code></pre>
 <div class="paragraph">
 <p><code>#m</code> flag enables the <code>$MATCH</code> parameter. At each <code>//</code> substitution, <code>$map</code> is
 queried for character-replacement. You can substitute a text variable too, just
-skip <code>[@]</code> and parentheses in the assignment.</p>
+skip <code>[@]</code> and parentheses in assignment.</p>
 </div>
 </div>
 <div class="sect2">
@@ -971,10 +971,10 @@ HELP=""; print ${${HELP:+help enabled}:-help disabled} ▶ help disabled</code><
 <div class="paragraph">
 <p>Ternary expression is known from <code>C</code> language but exists also in Zsh, but
 directly only in math context, i.e. <code>(( a = a &gt; 0 ? b : c ))</code>. Flexibility of
-Zsh allows such expressions also in a normal context. Above is an example. <code>:+</code> is
+Zsh allows such expressions also in normal context. Above is an example. <code>:+</code> is
 "if not empty, substitute …" <code>:-</code> is "if empty, substitute …". You can save
-a great number of lines of code with those substitutions, it&#8217;s normally at least
-4-lines <code>if</code> condition or lengthy <code>&amp;&amp;</code>/<code>||</code> use.</p>
+great number of lines of code with those substitutions, it&#8217;s normally at least
+4-lines <code>if</code> condition or lenghty <code>&amp;&amp;</code>/<code>||</code> use.</p>
 </div>
 </div>
 <div class="sect2">
@@ -986,8 +986,8 @@ var=abcd; print ${${${(M)var:#abc}:+is abc}:-not abc} ▶ not abc</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A one-line "if var = x, then …, else …". Again, can spare a great amount of boring
-code that makes a 10-line function a 20-line one.</p>
+<p>An one-line "if var = x, then …, else …". Again, can spare a great amount of boring
+code that makes 10-line function a 20-line one.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1004,8 +1004,8 @@ enables the <code>$match</code> parameters. There&#8217;s also <code>#m</code> b
 <code>$MATCH</code> for whole matched text, not for any parenthesis.</p>
 </div>
 <div class="paragraph">
-<p>Zsh patterns are a custom regular expressions engine. They are
-slightly faster than the <code>zsh/regex</code> module (used for <code>=~</code> operator) and don&#8217;t have
+<p>Zsh patterns are basically a custom regular expressions engine. They are
+slightly faster than <code>zsh/regex</code> module (used for <code>=~</code> operator) and don&#8217;t have
 that dependency (regex module can be not present, e.g. in default static build
 of Zsh). Also, they can be used in substitutions, for example in <code>//</code>
 substitution.</p>
@@ -1021,7 +1021,7 @@ declare -a array; array=( a a b ); print ${(u)array} ▶ a b</code></pre>
 </div>
 <div class="paragraph">
 <p>Enable <code>-U</code> flag for array so that it guards elements to be unique, or use
-<code>u</code>-flag to make unique elements of an array.</p>
+<code>u</code>-flag to uniquify elements of any array.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1033,9 +1033,10 @@ print "${list[@]/(#b)([^,]##,)(#c3,3)([^,]##)*/${match[2]}}" ▶ 1 2</code></pre
 </div>
 </div>
 <div class="paragraph">
-<p>The pattern specifies 3 blocks of <code>[^,]##,</code> so 3 "not-comma multiple times, then comma", then the single block of "not-comma multiple times" in second parentheses&#8201;&#8212;&#8201;and then replaces this with second parentheses. The result is the 4th column extracted
-from multiple lines of text, something <code>awk</code> is often used for. Another method is
-the use of <code>s</code>-flag. For a single line of text:</p>
+<p>The pattern specifies 3 blocks of <code>[^,]##,</code> so 3 "not-comma multiple times, then
+comma", then single block of "not-comma multiple times" in second parentheses&#8201;&#8212;&#8201;and then replaces this with second parentheses. Result is 4th column extracted
+from multiple lines of text, something <code>awk</code> is often used for. Other method is
+use of <code>s</code>-flag. For single line of text:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1060,7 +1061,7 @@ print "${list[@]/(#m)*/${${(s:,:)MATCH}[4]}}" ▶ 1 2</code></pre>
 index <code>[4]</code> in above snippet will index a string, and show its 4-th letter.
 Starting with Zsh 5.4, thanks to a patch by Bart Schaefer (<code>40640: the (A)
 parameter flag forces array result even if&#8230;&#8203;</code>), it is possible to force
-<strong>array</strong>-kind of result even for a single column, by adding <code>(A)</code> flag, i.e.:</p>
+<strong>array</strong>-kind of result even for single column, by adding <code>(A)</code> flag, i.e.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1120,12 +1121,13 @@ print ${(kv)deserialized} ▶ key value</code></pre>
 <div class="paragraph">
 <p><code>j</code>-flag means join&#8201;&#8212;&#8201;by spaces, in this case. Flags <code>kv</code> mean: keys and values,
 interleaving. Important <code>q</code>-flag means: quote. So what is obtained is each key
-and value quoted, and put into a string separated by spaces.</p>
+and value quoted, and put into string separated by spaces.</p>
 </div>
 <div class="paragraph">
-<p><code>z</code>-flag means: split as if Zsh parser would split. So quoting (with backslashes, double quoting, and others) is recognized. Obtained is array <code>( "key" "value")</code>
-which is then de-quoted with <code>Q</code>-flag. This yields original data, assigned to
-hash <code>deserialized</code>. Use this to e.g. implement an array of hashes.</p>
+<p><code>z</code>-flag means: split as if Zsh parser would split. So quoting (with backslashes,
+double quoting and other) is recognized. Obtained is array <code>( "key" "value")</code>
+which is then dequoted with <code>Q</code>-flag. This yields original data, assigned to
+hash <code>deserialized</code>. Use this to e.g. implement array of hashes.</p>
 </div>
 <div class="paragraph">
 <p>Note: to be compatible with <code>setopt ksharrays</code>, use <code>[@]</code> instead of <code>(@)</code>, e.g.:
@@ -1141,8 +1143,8 @@ eval "deserialized=($serialized)"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This method works also with Zsh. The drawback is the use of <code>eval</code>, however, it&#8217;s
-impossible that any problem will occur unless someone compromises variable&#8217;s
+<p>This method works also with Zsh. The drawback is use of <code>eval</code>, however it&#8217;s
+impossible that any problem will occurr unless someone compromises variable&#8217;s
 value, but as always, <code>eval</code> should be avoided if possible.</p>
 </div>
 </div>
@@ -1155,7 +1157,7 @@ value, but as always, <code>eval</code> should be avoided if possible.</p>
 <div class="sect2">
 <h3 id="git-subcmd-test">Testing for Git subcommand</h3>
 <div class="paragraph">
-<p>Following code checks, if there is a <code>git</code> subcommand <code>$mysub</code>:</p>
+<p>Following code checks if there is a <code>git</code> subcommand <code>$mysub</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1163,7 +1165,7 @@ value, but as always, <code>eval</code> should be avoided if possible.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Those are <code>4</code> forks. The code can be replaced according to this guide:</p>
+<p>That are <code>4</code> forks. The code can be replaced according to this guide:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1187,7 +1189,7 @@ put a backslash-\ at the end of the line and press enter – it is the
 line-continuation that occurs at that moment).</p>
 </div>
 <div class="paragraph">
-<p>The required functionality is: in the given string, count the number of
+<p>The required functionality is: in given string, count the number of
 apostrophes, but <em>only the unquoted ones</em>. This means that only apostrophes
 with null or an even number of preceding backslashes should be accepted into
 the count:</p>
@@ -1206,7 +1208,7 @@ echo $count ▶ 3</code></pre>
 <code>$buf</code>).</p>
 </div>
 <div class="paragraph">
-<p>Below follows a variation of the above snippet that doesn&#8217;t use math-code execution:</p>
+<p>Below follows a variation of above snippet that doesn&#8217;t use math-code execution:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1237,7 +1239,7 @@ but the hash keys like <code>$DB_CONF[db1_&lt;connection&gt;_host]</code> are ac
 intuitive.</p>
 </div>
 <div class="paragraph">
-<p>The code should be placed in a file named <code>read-ini-file</code>, in <code>$fpath</code>, and
+<p>The code should be placed in file named <code>read-ini-file</code>, in <code>$fpath</code>, and
 <code>autoload read-ini-file</code> should be invoked.</p>
 </div>
 <div id="read-ini-file" class="listingblock">
@@ -1246,11 +1248,11 @@ intuitive.</p>
 <pre class="rouge highlight"><code data-lang="zsh"><span class="c"># Copyright (c) 2018 Sebastian Gniazdowski</span>
 <span class="c">#</span>
 <span class="c"># $1 - path to the ini file to parse</span>
-<span class="c"># $2 - the name of output hash</span>
+<span class="c"># $2 - name of output hash</span>
 <span class="c"># $3 - prefix for keys in the hash</span>
 <span class="c">#</span>
-<span class="c"># Writes to given hash under keys built-in following way: ${3}&lt;section&gt;_field.</span>
-<span class="c"># Values are values from the ini file. Example invocation:</span>
+<span class="c"># Writes to given hash under keys built in following way: ${3}&lt;section&gt;_field.</span>
+<span class="c"># Values are values from ini file. Example invocation:</span>
 <span class="c">#</span>
 <span class="c"># read-ini-file ./database1-setup.ini DB_CONF db1_</span>
 <span class="c"># read-ini-file ./database2-setup.ini DB_CONF db2_</span>

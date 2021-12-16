@@ -704,7 +704,7 @@ pre.rouge {
 <li><a href="#_adoption_status_8">Adoption Status</a></li>
 </ul>
 </li>
-<li><a href="#pmspec">9. Global Parameter holding the plugin manager&#8217;s capabilities</a>
+<li><a href="#pmspec">9. Global Parameter holding the plugin-manager&#8217;s capabilities</a>
 <ul class="sectlevel2">
 <li><a href="#_adoption_status_9">Adoption Status</a></li>
 </ul>
@@ -756,13 +756,13 @@ in a particular way.</p>
 This is being done either by a plugin manager or by the plugin itself (see <a href="#indicator">5th section</a> for more information).</p>
 </li>
 <li>
-<p>Has it&#8217;s first <code>*.plugin.zsh</code> file sourced (or <code>*.zsh</code>, <code>init.zsh</code>, <code>*.sh</code>, these are non-standard).</p>
+<p>Has its first <code>*.plugin.zsh</code> file sourced (or <code>*.zsh</code>, <code>init.zsh</code>, <code>*.sh</code>, these are non-standard).</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>The first point allows plugins to provide completions and functions that are
-loaded via Zsh’s <code>autoload</code> mechanism (a single function per file).</p>
+loaded via Zsh’s <code>autoload</code> mechanism (a single function per-file).</p>
 </div>
 <div class="paragraph">
 <p>From a more broad perspective, a plugin consists of:</p>
@@ -770,15 +770,15 @@ loaded via Zsh’s <code>autoload</code> mechanism (a single function per file).
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>A directory containing various files (the main script, autoload functions,
+<p>A directory containing various files (main script, autoload functions,
 completions, Makefiles, backend programs, documentation).</p>
 </li>
 <li>
-<p>A sourceable script that obtains the path to its directory via <code>$0</code> (see the
+<p>A sourcable script that obtains the path to its directory via <code>$0</code> (see the
 <a href="#zero-handling">next section</a> for a related enhancement proposal).</p>
 </li>
 <li>
-<p>A Github (or another site) repository identified by two components
+<p>A Github (or other site) repository identified by two components
 <strong>username</strong>/<strong>pluginname</strong>.</p>
 </li>
 <li>
@@ -789,8 +789,8 @@ with advanced plugin managers that have hooks, can run Makefiles, add directorie
 </div>
 <div class="paragraph">
 <p>Below follow proposed enhancements and codifications of the definition of a "Zsh
-the plugin" and the actions of plugin managers – the proposed standardization. They
-cover the information on how to write a Zsh plugin. </p>
+plugin" and the actions of plugin managers – the proposed standardization. They
+cover the information of how to write a Zsh plugin. </p>
 </div>
 </div>
 </div>
@@ -802,7 +802,7 @@ cover the information on how to write a Zsh plugin. </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="nv">0</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">ZERO</span><span class="k">:-${${</span><span class="nv">0</span>:#<span class="nv">$ZSH_ARGZERO</span><span class="k">}:-${</span><span class="p">(%)</span><span class="k">:-</span><span class="p">%N</span><span class="k">}}}</span><span class="s2">"</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="nv">0</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">ZERO</span><span class="k">:-${${</span><span class="nv">0</span>:#<span class="nv">$ZSH_ARGZERO</span><span class="k">}:-${</span><span class="p">(%)</span><span class="k">:-</span><span class="p">%N</span><span class="k">}}}</span><span class="s2">"</span>
 <span class="nv">0</span><span class="o">=</span><span class="s2">"</span><span class="k">${${</span><span class="p">(M)0</span>:#/<span class="p">*</span><span class="k">}:-</span><span class="nv">$PWD</span><span class="p">/</span><span class="nv">$0</span><span class="k">}</span><span class="s2">"</span>
 
 <span class="c"># Then ${0:h} to get plugin’s directory</span></code></pre>
@@ -814,7 +814,7 @@ cover the information on how to write a Zsh plugin. </p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Be backward-compatible with normal <code>$0</code> setting and usage.</p>
+<p>Be backwards-compatible with normal <code>$0</code> setting and usage.</p>
 </li>
 <li>
 <p>Use <code>ZERO</code> if it’s not empty,</p>
@@ -825,7 +825,7 @@ cover the information on how to write a Zsh plugin. </p>
 loading a plugin,</p>
 </li>
 <li>
-<p>this allows e.g. <code>eval "$(&lt;plugin)"</code>, which can be faster
+<p>this allows for e.g. <code>eval "$(&lt;plugin)"</code>, which can be faster
 than <code>source</code>
 (<a href="http://www.zsh.org/mla/workers/2017/msg01827.html">comparison</a>
 note that it’s not for a compiled script).</p>
@@ -844,7 +844,7 @@ note that it’s not for a compiled script).</p>
 </li>
 <li>
 <p><code>unsetopt function_argzero</code> will be detected (it causes <code>$0</code> not to
-contain a plugin-script path, but the path to Zsh binary, if not overwritten
+contain plugin-script path, but path to Zsh binary, if not overwritten
 by a <code>0=…​</code> assignment),</p>
 </li>
 <li>
@@ -885,12 +885,12 @@ an automatic fashion), but performance differences of this are yet unclear. It
 might however provide a use case.</p>
 </div>
 <div class="paragraph">
-<p>The last, 5th point also allows using the <code>$0</code> handling in scripts (i.e.
-runnable with the hashbang <code>#!…</code>) to get the directory in which the script
+<p>The last, 5th point also allows to use the <code>$0</code> handling in scripts (i.e.
+runnables with the hashbang <code>#!…</code>) to get the directory in which the script
 file resides.</p>
 </div>
 <div class="paragraph">
-<p>The assignment uses quoting to make it resilient to the combination of <code>GLOB_SUBST</code>
+<p>The assignment uses quoting to make it resilient to combination of <code>GLOB_SUBST</code>
 and <code>GLOB_ASSIGN</code> options. It&#8217;s a standard snippet of code, so it has to be
 always working. When you&#8217;ll set e.g.: the <code>zsh</code> emulation in a function, you in
 general don&#8217;t have to quote assignments.</p>
@@ -914,19 +914,19 @@ general don&#8217;t have to quote assignments.</p>
 <h2 id="funcs-dir">2. Functions Directory</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Despite that, the current-standard plugins have their main directory added to
+<p>Despite that the current-standard plugins have their main directory added to
 <code>$fpath</code>, a more clean approach is being proposed: that the plugins use a
 subdirectory called <code>functions</code> to store their completions and autoload
 functions. This will allow a much cleaner design of plugins.</p>
 </div>
 <div class="paragraph">
-<p>The plugin manager should add such a directory to <code>$fpath</code>. The lack of support of
+<p>The plugin manager should add such directory to <code>$fpath</code>. The lack of support of
 the current plugin managers can be easily resolved via the
 <a href="#indicator">indicator</a>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">/functions]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">/functions]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
     fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
 <span class="o">}</span></code></pre>
 </div>
@@ -936,17 +936,17 @@ the current plugin managers can be easily resolved via the
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
     fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The above snippet added to the <code>plugin.zsh</code> file will add the directory to the
-<code>$fpath</code> with the compatibility with any new plugin managers preserved.</p>
+<p>Above snippet added to the <code>plugin.zsh</code> file will add the directory to the
+<code>$fpath</code> with the compatibiliy with any new plugin managers preserved.</p>
 </div>
 <div class="paragraph">
-<p>The existence of the <code>functions</code> subdirectory cancels the normal adding of the main
+<p>Existence of the <code>functions</code> subdirectory cancels the normal adding of the main
 plugin directory to <code>$fpath</code>.</p>
 </div>
 <div class="sect2">
@@ -966,7 +966,7 @@ plugin directory to <code>$fpath</code>.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Plugins sometimes provide a runnable script or program, either for their
-internal use or for the end-user. It is proposed that for the latter, the plugin
+internal use or for the end user. It is proposed that for the latter, the plugin
 shall use a <code>bin/</code> subdirectory inside its main dir (it is recommended, that for
 internal use, the runnable be called via the <code>$0</code> value obtained as described
 above). The runnable should be put into the directory with a <code>+x</code> access right
@@ -1001,7 +1001,7 @@ to handle the <code>$PATH</code> extending itself, via, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>b<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>b<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
     path+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/bin"</span> <span class="o">)</span>
 <span class="o">}</span></code></pre>
 </div>
@@ -1027,7 +1027,7 @@ plugin-ID), then it can provide a function, <code>kalc_plugin_unload</code>, tha
 called by a plugin manager to undo the effects of loading that plugin.</p>
 </div>
 <div class="paragraph">
-<p>A plugin manager can implement its tracking of changes made by a plugin so
+<p>A plugin manager can implement its own tracking of changes made by a plugin so
 this is in general optional. However, to properly unload e.g. a prompt,
 dedicated tracking (easy to do for the plugin creator) can provide better,
 predictable results. Any special, uncommon effects of loading a plugin are
@@ -1036,14 +1036,14 @@ possible to undo only by a dedicated function.</p>
 <div class="paragraph">
 <p>However, an interesting compromise approach is available – to withdraw only the
 special effects of loading a plugin via the dedicated, plugin-provided function
-and leave the rest to the plugin manager. The value of such an approach is that
+and leave the rest to the plugin manager. The value of such approach is that
 maintaining of such function (if it is to withdraw <strong>all</strong> plugin side-effects)
 can be a daunting task requiring constant monitoring of it during the plugin
-development process.</p>
+develoment process.</p>
 </div>
 <div class="paragraph">
 <p>Note that the unload function should contain <code>unfunction $0</code> (or better
-<code>unfunction kalc_plugin_unload</code> etc., for compatibility with the <code>*_argzero</code>
+<code>unfunction kalc_plugin_unload</code> etc., for copatibility with the <code>*_argzero</code>
 options), to also delete the function itself.</p>
 </div>
 <div class="sect2">
@@ -1089,13 +1089,13 @@ has the following call syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">@zsh-plugin-run-on-unload <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-unload <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The function registers pieces of code to be run by the plugin manager <strong>on
 unload of the plugin</strong>. The execution of the code should be done by the <code>eval</code>
-built-in in the same order as they are passed to the call.</p>
+builtin in the same order as they are passed to the call.</p>
 </div>
 <div class="paragraph">
 <p>The code should be executed in the plugin&#8217;s directory, in the current shell.</p>
@@ -1125,17 +1125,17 @@ has the following call syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">@zsh-plugin-run-on-update <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">@zsh-plugin-run-on-update <span class="s2">"{code-snippet-1}"</span> <span class="s2">"{code-snippet-2}"</span> …</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The function registers pieces of code to be run by the plugin manager on
-an update of the plugin. The execution of the code should be done by the <code>eval</code>
-built-in in the same order as they are passed to the call.</p>
+update of the plugin. The execution of the code should be done by the <code>eval</code>
+builtin in the same order as they are passed to the call.</p>
 </div>
 <div class="paragraph">
 <p>The code should be executed in the plugin&#8217;s directory, possibly in a subshell
-<strong>After downloading any new commits</strong> to the repository.</p>
+<strong>after downloading any new commits</strong> to the repository.</p>
 </div>
 <div class="sect2">
 <h3 id="_adoption_status_6">Adoption Status</h3>
@@ -1170,10 +1170,10 @@ element). This will allow any plugin to:</p>
 <div class="paragraph">
 <p>The first item allows a plugin to e.g. issue a notice about missing
 dependencies. Instead of issuing a notice, it may be able to satisfy the
-dependencies from resources it provides. For example, the <code>pure</code> prompt provides
-a <code>zsh-async</code> dependency library within its source tree, which is normally a
+dependencies from resources it provides. For example, <code>pure</code> prompt provides
+<code>zsh-async</code> dependency library within its source tree, which is normally a
 separate project. Consequently, the prompt can decide to source its private copy
-of <code>zsh-async</code>, having also reliable <code>$0</code> defined by the previous section (note:
+of <code>zsh-async</code>, having also reliable <code>$0</code> defined by previous section (note:
 <code>pure</code> doesn’t normally do this).</p>
 </div>
 <div class="paragraph">
@@ -1182,13 +1182,13 @@ manager will not handle this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="k">${</span><span class="nv">zsh_loaded_plugins</span><span class="p">[-1]</span><span class="k">}</span> <span class="o">!=</span> <span class="k">*</span>/kalc <span class="o">&amp;&amp;</span> <span class="nt">-z</span> <span class="k">${</span><span class="nv">fpath</span><span class="p">[(r)</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="p">]</span><span class="k">}</span> <span class="o">]]</span> <span class="o">{</span>
     fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">"</span> <span class="o">)</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This will allow the user to reliably source the plugin without using a plugin
+<p>This will allow user to reliably source the plugin without using a plugin
 manager. The code uses the wrapping braces around variables (i.e.: e.g.:
 <code>${fpath…}</code>) to make it compatible with the <code>KSH_ARRAYS</code> option and the quoting
 around <code>${0:h}</code> to make it compatible with the <code>SH_WORD_SPLIT</code> option.</p>
@@ -1214,17 +1214,17 @@ around <code>${0:h}</code> to make it compatible with the <code>SH_WORD_SPLIT</c
 <div class="paragraph">
 <p>Plugin managers may export the parameter <code>$ZPFX</code> which should contain a path to
 a directory dedicated for user-land software, i.e. for directories <code>$ZPFX/bin</code>,
-<code>$ZPFX/lib</code>, <code>$ZPFX/share</code>, etc. The suggested name of the directory is <code>polaris</code>
+<code>$ZPFX/lib</code>, <code>$ZPFX/share</code>, etc. Suggested name of the directory is <code>polaris</code>
 (e.g.: ZI uses this name and places this directory at <code>~/.zi/polaris</code> by
 default).</p>
 </div>
 <div class="paragraph">
-<p>Users can then configure hooks (a feature of e.g. zplug and ZI) to invoke e.g.
+<p>User can then configure hooks (feature of e.g. zplug and ZI) to invoke e.g.
 <code>make PREFIX=$ZPFX install</code> at clone &amp; update of the plugin to install software
 like e.g. <a href="https://github.com/tj/git-extras">tj/git-extras</a>. This is a
-the developing role of Zsh plugin managers as package managers, where <code>.zshrc</code> has a
+developing role of Zsh plugin managers as package managers, where <code>.zshrc</code> has a
 similar role to Chef or Puppet configuration and allows to <strong>declare</strong> system
-state, and have the same state on different accounts/machines.</p>
+state, and have the same state on different accounts / machines.</p>
 </div>
 <div class="paragraph">
 <p>No-narration facts-list related to <code>$ZPFX</code>:</p>
@@ -1264,13 +1264,13 @@ state, and have the same state on different accounts/machines.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pmspec">9. Global Parameter holding the plugin manager&#8217;s capabilities</h2>
+<h2 id="pmspec">9. Global Parameter holding the plugin-manager&#8217;s capabilities</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The above paragraphs of the standard spec each constitute a capability, a
 feature of the plugin manager. It would make sense that the capabilities are
 somehow discoverable. To address this, a global parameter called <code>PMSPEC</code> (from
-<em>plugin-manager specification</em>) is proposed. It can hold the following Latin
+<em>plugin-manager specification</em>) is proposed. It can hold the following latin
 letters each informing the plugin, that the plugin manager has support for a
 given feature:</p>
 </div>
@@ -1292,10 +1292,10 @@ given feature:</p>
 <p><code>U</code> - … the <code>@zsh-plugin-run-on-unload</code> call,</p>
 </li>
 <li>
-<p><code>p</code> – … the <code>@zsh-plugin-run-on-update</code> call,</p>
+<p><code>p</code> – … the <code>@zsh-plugin-run-on-update</code> call,</p>
 </li>
 <li>
-<p><code>i</code> – … the <code>zsh_loaded_plugins</code> activity indicator,</p>
+<p><code>i</code> – … the <code>zsh_loaded_plugins</code> activity indicator,</p>
 </li>
 <li>
 <p><code>P</code> – … the <code>ZPFX</code> global parameter,</p>
@@ -1311,7 +1311,7 @@ be: <code>0fuUpiPs</code>. The plugin can then verify the support by, e.g.:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="k">if</span> <span class="o">[[</span> <span class="nv">$PMSPEC</span> <span class="o">!=</span> <span class="k">*</span>f<span class="k">*</span> <span class="o">]]</span> <span class="o">{</span>
     fpath+<span class="o">=(</span> <span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">/functions"</span> <span class="o">)</span>
 <span class="o">}</span></code></pre>
 </div>
@@ -1333,7 +1333,7 @@ be: <code>0fuUpiPs</code>. The plugin can then verify the support by, e.g.:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The document is to define a <strong>Zsh-plugin</strong> but also to serve as an information
-source for plugin creators. Therefore, it covers also best practices
+source for plugin creators. Therefore, it covers also a best practices
 information in this section.</p>
 </div>
 <div class="sect2">
@@ -1344,7 +1344,7 @@ syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">add-zsh-hook <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook <span class="k">function</span></code></pre>
+<pre class="rouge highlight"><code data-lang="shell">add-zsh-hook <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook <span class="k">function</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1358,9 +1358,9 @@ documentation</a>.</p>
 <div class="sect2">
 <h3 id="azhw">Use Of <code>add-zle-hook-widget</code> To Install Zle Hooks</h3>
 <div class="paragraph">
-<p>The zle editor is the part of the Zsh that is responsible for receiving the text
+<p>Zle editor is the part of the Zsh that is responsible for receiving the text
 from the user. It can be said that it’s based on widgets, which are nothing more
-than Zsh functions that are allowed to be run in Zle context, i.e. from the Zle
+than Zsh functions that are allowed to be ran in Zle context, i.e. from the Zle
 editor (plus a few minor differences, like e.g.: the <code>$WIDGET</code> parameter that’s
 automatically set by the Zle editor).</p>
 </div>
@@ -1369,12 +1369,12 @@ automatically set by the Zle editor).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">add-zle-hook-widget <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook widgetname</code></pre>
+<pre class="rouge highlight"><code data-lang="shell">add-zle-hook-widget <span class="o">[</span> <span class="nt">-L</span> | <span class="nt">-dD</span> <span class="o">]</span> <span class="o">[</span> <span class="nt">-Uzk</span> <span class="o">]</span> hook widgetname</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The call resembles the syntax of the <code>add-zsh-hook</code> function. The only
-the difference is that it takes a <code>widgetname</code>, not a function name and that the
+difference is that it takes a <code>widgetname</code>, not a function name, and that the
 <code>hook</code> is being one of: <code>isearch-exit</code>, <code>isearch-update</code>, <code>line-pre-redraw</code>,
 <code>line-init</code>, <code>line-finish</code>, <code>history-line-set</code>, or <code>keymap-select</code>. Their
 meaning is explained in the
@@ -1382,19 +1382,19 @@ meaning is explained in the
 documentation</a>.</p>
 </div>
 <div class="paragraph">
-<p>The use of this function is recommended because it allows
-the installation <strong>multiple</strong> hooks per each <code>hook</code> entry. Before introducing the
+<p>The use of this function is recommended because it allows to
+install <strong>multiple</strong> hooks per each <code>hook</code> entry. Before introducing the
 <code>add-zle-hook-widget</code> function the "normal" way to install a hook was to define
-a widget with the name of one of the special widgets. Now, after the function has
+widget with the name of one of the special widgets. Now, after the function has
 been introduced in Zsh <code>5.3</code> it should be used instead.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="std-param-naming">Standard Parameter Naming</h3>
 <div class="paragraph">
-<p>There&#8217;s a convention already present in the Zsh world – to name array variables
+<p>There&#8217;s a convention already present in the Zsh world – to name array variables
 lowercase and scalars uppercase. It&#8217;s being followed by e.g.: the Zsh manual and
-the Z shell itself (e.g.: <code>REPLY</code> scalar and <code>reply</code> array, etc.). The
+the Zshell itself (e.g.: <code>REPLY</code> scalar and <code>reply</code> array, etc.). The
 requirement for the scalars to be uppercase should be, in my opinion, kept only
 for the global parameters. I.e.: it&#8217;s fine to name local parameters inside a
 function lowercase even when they are scalars, not only arrays.</p>
@@ -1403,11 +1403,11 @@ function lowercase even when they are scalars, not only arrays.</p>
 <p>An extension to the convention is being proposed: to name associative arrays
 (i.e.: hashes) capitalized, i.e.: with only first letter uppercase and the
 remaining letters lowercase. See <a href="#std-hash">the next section</a> for an
-example of such hash. In the case of the name consisting of multiple words each of
+example of such hash. In case of the name consisting of multiple words each of
 them should be capitalized, e.g.: <code>typeset -A MyHash</code>.</p>
 </div>
 <div class="paragraph">
-<p>This convention will increase code readability and bring order to it.</p>
+<p>This convention will increase code readibility and bring order to it.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1421,7 +1421,7 @@ even more:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">…
+<pre class="rouge highlight"><code data-lang="shell">…
 <span class="nb">typeset</span> <span class="nt">-gA</span> Plugins
 <span class="c"># An example value needed by the plugin</span>
 Plugins[MY_PLUGIN_REPO_DIR]<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">0</span>:h<span class="k">}</span><span class="s2">"</span></code></pre>
@@ -1429,7 +1429,7 @@ Plugins[MY_PLUGIN_REPO_DIR]<span class="o">=</span><span class="s2">"</span><spa
 </div>
 <div class="paragraph">
 <p>This way all the data of all plugins will be kept in a single parameter,
-available for easy examination and overview (via e.g.: <code>varied Plugins</code>) and also
+available for easy examination and overview (via e.g.: <code>vared Plugins</code>) and also
 not polluting the namespace.</p>
 </div>
 </div>
@@ -1441,14 +1441,14 @@ each of the main functions provided by the plugin:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">emulate <span class="nt">-L</span> zsh
+<pre class="rouge highlight"><code data-lang="shell">emulate <span class="nt">-L</span> zsh
 setopt extended_glob warn_create_global typeset_silent <span class="se">\</span>
         no_short_loops rc_quotes no_auto_pushd</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>It resets all the options to their default state according to the <code>zsh</code>
-emulation mode, with the use of the <code>local_options</code> option – so the options will be
+emulation mode, with use of the <code>local_options</code> option – so the options will be
 restored to their previous state when leaving the function.</p>
 </div>
 <div class="paragraph">
@@ -1458,17 +1458,17 @@ restored to their previous state when leaving the function.</p>
 <ul>
 <li>
 <p><code>extended_glob</code> – enables one of the main Zshell features – the advanced,
-the built-in regex-like globing mechanism,</p>
+built-in regex-like globing mechanism,</p>
 </li>
 <li>
 <p><code>warn_create_global</code> – enables warnings to be printed each time a (global)
-the variable is defined without being explicitly defined by a <code>typeset</code>, <code>local</code>,
+variable is defined without being explicitly defined by a <code>typeset</code>, <code>local</code>,
 <code>declare</code>, etc.  call; it allows to catch typos and missing localizations of
-the variables and thus prevent from writing a bad code,</p>
+the variables and thus prevents from writing a bad code,</p>
 </li>
 <li>
 <p><code>typeset_silent</code> – it allows to call <code>typeset</code>, <code>local</code>, etc. multiple times on
-the same variable; without it, the second call causes the variable contents to
+the same variable; without it the second call causes the variable contents to
 be printed first; using this option allows to declare variables inside loops,
 near the place of their use, which sometimes helps to write a more readable
 code,</p>
@@ -1481,12 +1481,12 @@ for the details),</p>
 </li>
 <li>
 <p><code>rc_quotes</code> – adds useful ability to insert apostrophes into an
-apostrophe-quoted string, by use of <code>''</code> inside it, e.g.: <code>'a string&#8217;s
+apostrophe-quoted string, by use of <code>''</code> inside it, e.g.: <code>'a string''s
 example'</code> will yield the string <code>a string&#8217;s example</code>,</p>
 </li>
 <li>
 <p><code>no_auto_pushd</code> - disables the automatic push of the directory passed to <code>cd</code>
-builtin onto the directory stack; this is useful because otherwise the
+builtin onto the directory stack; this is useful, because otherwise the
 internal directory changes done by the plugin will pollute the global
 directory stack.</p>
 </li>
@@ -1501,7 +1501,7 @@ of a plugin:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">local </span>MATCH REPLY<span class="p">;</span> integer MBEGIN MEND
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">local </span>MATCH REPLY<span class="p">;</span> integer MBEGIN MEND
 <span class="nb">local</span> <span class="nt">-a</span> match mbegin mend reply</code></pre>
 </div>
 </div>
@@ -1515,14 +1515,14 @@ global scope. Also, their automatic creation would trigger the warning from the
 <p>The <code>reply</code> and <code>REPLY</code> parameters are being normally used to return an array or
 a scalar from a function, respectively – it&#8217;s the standard way of passing values
 from functions. Their use is naturally limited to the functions called from the
-the main function of a plugin – they should not be used to pass data around e.g.: in
+main function of a plugin – they should not be used to pass data around e.g.: in
 between prompts, thus it&#8217;s natural to localize them in the main function.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="namespacing">Standard Function Name-Space Prefixes</h3>
 <div class="paragraph">
-<p>The recommendation is the purely subjective opinion of the author. It can evolve –
+<p>The recommendation is purely subjective opinion of the author. It can evolve –
 if you have any remarks, don&#8217;t hesitate to
 <a href="https://github.com/z-shell/docs/issues/new">fill them</a>.</p>
 </div>
@@ -1530,7 +1530,7 @@ if you have any remarks, don&#8217;t hesitate to
 <div class="sect2">
 <h3 id="_the_problems_solved_by_the_proposition">The Problems Solved By The Proposition</h3>
 <div class="paragraph">
-<p>However, when adopted, the proposition will solve the following issues:</p>
+<p>However when adopted, the proposition will solve the following issues:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1546,14 +1546,14 @@ lost in it.</p>
 </li>
 <li>
 <p>It would allow to quickly discriminate between function types – e.g.: seeing
-the <code>:</code> prefix informs the user that it&#8217;s a hook-type function while seeing
+the <code>:</code> prefix informs the user that it&#8217;s a hook-type function, while seeing
 the <code>@</code> prefix informs the user that it&#8217;s an API-like function, etc.</p>
 </li>
 <li>
 <p>It also provides an improvement during programming, by allowing to quickly
 limit the number of completions offered by the editor, e.g.: for Vim&#8217;s
 <code>Ctrl-P</code> completing, when entering <code>+&lt;Ctrl-P&gt;</code>, then only a subset of the
-functions are being completed (see below for the type of the functions).
+functions is being completed (see below for the type of the functions).
  <strong>Note:</strong> the editor has to be configured so that it accepts such special
 characters as part of keywords, for Vim it&#8217;s: <code>:set isk+=@-@,.,+,/,:</code> for all
 of the proposed prefixes.</p>
@@ -1573,17 +1573,18 @@ of the proposed prefixes.</p>
 </li>
 <li>
 <p><code>→</code>: for hook-like functions, so it should be used e.g.: for the
-<a href="#azh">Zsh hooks</a> and the <a href="#azhw">Zle hooks</a>, but also for any other, custom hook-like mechanism in the plugin. Example function name:
+<a href="#azh">Zsh hooks</a> and the <a href="#azhw">Zle hooks</a>, but also for any other
+custom hook-like mechanism in the plugin . Example function name:
 <code>→prompt_zinc_precmd</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>the previous version of the document recommended colon (<code>:</code>) for the prefix,
+<p>previous version of the document recommended colon (<code>:</code>) for the prefix,
 however, it was problematic, because Windows doesn&#8217;t allow colons in file
 names, so it wasn&#8217;t possible to name an autoload function this way,</p>
 </li>
 <li>
-<p>the arrow has a rationale behind it - it denotes the execution <strong>coming back</strong>
+<p>the arrow has a rationale behind – it denotes the execution <strong>coming back</strong>
 to the function at a later time, after it has been registered as a callback
 or a handler,</p>
 </li>
@@ -1593,11 +1594,11 @@ in case of problems with typing the character can be always copied –
 handler functions do occur in the code rarely,</p>
 </li>
 <li>
-<p>Zsh supports any string as a function name, because absolutely
+<p>Zsh supports absolutely any string as a function name, because absolutely
 any string can be a <strong>file</strong> name – if there would be an exception in the
 name of the callables, then how would it be possible to run a script called
 "→abcd"?  There are <strong>no</strong> exceptions, the function can be called even as a
-the sequence of null bytes:</p>
+sequence of null bytes:</p>
 <div class="literalblock">
 <div class="content">
 <pre>❯ $'\0'() { print hello }
@@ -1611,15 +1612,15 @@ hello</pre>
 </li>
 <li>
 <p><code>+</code>: for output functions, i.e.: for functions that print to the standard
-output and error or a log, etc. Example function name:
+output and error or to a log, etc. Example function name:
 <code>+prompt_zinc_output_segment</code>.</p>
 </li>
 <li>
-<p><code>/</code>: for debugging functions, i.e: for functions that output debugs messages to
-the screen or a log or e.g.: gather some debug data. <strong>Note:</strong> the slash
+<p><code>/</code>: for debug functions, i.e: for functions that output debug messages to
+the screen or to a log or e.g.: gather some debug data. <strong>Note:</strong> the slash
   makes it impossible for such functions to be auto-loaded via the <code>autoload</code>
   mechanism. It is somewhat risky to assume, that this will never be needed for
-  the functions, however, the limited number of available ASCII characters
+  the functions, however the limited number of available ASCII characters
   justifies such allocation. Example function name: <code>/prompt_zinc_dmsg</code>.</p>
 </li>
 <li>
@@ -1636,7 +1637,7 @@ which is exposing a plugin manager&#8217;s functionality in a well-defined way.<
 <h3 id="_example_code_utilizing_the_prefixes">Example Code Utilizing The Prefixes</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh">.zinc_register_hooks<span class="o">()</span> <span class="o">{</span>
+<pre class="rouge highlight"><code data-lang="shell">.zinc_register_hooks<span class="o">()</span> <span class="o">{</span>
     add-zsh-hook precmd :zinc_precmd
     /zinc_dmsg <span class="s2">"Installed precmd hook with result: </span><span class="nv">$?</span><span class="s2">"</span>
     @zsh-plugin-run-on-unload <span class="s2">"add-zsh-hook -d precmd :zinc_precmd"</span>
@@ -1657,7 +1658,7 @@ automatically unset the sub-functions when leaving the main function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="c"># Don't leak any functions</span>
+<pre class="rouge highlight"><code data-lang="shell"><span class="c"># Don't leak any functions</span>
 <span class="nb">typeset</span> <span class="nt">-g</span> prjef
 <span class="nv">prjef</span><span class="o">=(</span> <span class="k">${</span><span class="p">(k)functions</span><span class="k">}</span> <span class="o">)</span>
 <span class="nb">trap</span> <span class="s2">"unset -f -- </span><span class="se">\"\$</span><span class="s2">{(k)functions[@]:|prjef}</span><span class="se">\"</span><span class="s2"> &amp;&gt;/dev/null; unset prjef"</span> EXIT
@@ -1681,7 +1682,7 @@ to be yet defined by the body of the main function.</p>
 of array contents – the <code>:|</code> substitution operator – of the functions that
 are defined at the moment of leaving of the function (the <code>trap</code>-s invoke the
 code in this moment) with the list of functions from the start of the main
-function – the ones stored in the variables <code>$prjef</code>.</p>
+function – the ones stored in the variables <code>$prjef</code>.</p>
 </li>
 <li>
 <p>It then unsets the resulting list of the functions – being only the newly
@@ -1691,7 +1692,7 @@ defined functions in the main function – by passing it to <code>unset -f …</
 </div>
 <div class="paragraph">
 <p>This way the functions defined by the body of the main (most often an autoload)
-the function will be only set during the execution of the function.</p>
+function will be only set during the execution of the function.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1707,7 +1708,7 @@ sufficient:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="zsh"><span class="nb">typeset</span> <span class="nt">-A</span> PlgMap
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">typeset</span> <span class="nt">-A</span> PlgMap
 <span class="nb">typeset</span> <span class="nt">-A</span> SomeMap
 <span class="nb">typeset</span> <span class="nt">-a</span> some_array
 
@@ -1722,18 +1723,18 @@ some_array[1]<span class="o">=</span>state</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>typeset -A PlgMap
+<pre class="rouge highlight"><code data-lang="shell"><span class="nb">typeset</span> <span class="nt">-A</span> PlgMap
 
-# Use
-PlgMap[state]=1
-PlgMap[SomeMap__state]=1
-PlgMap[some_array__1]=state</pre>
+<span class="c"># Use</span>
+PlgMap[state]<span class="o">=</span>1
+PlgMap[SomeMap__state]<span class="o">=</span>1
+PlgMap[some_array__1]<span class="o">=</span>state</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The use of this method is very unproblematic. The author reduced the number of
-global parameters in one of the projects by 21 by using an automatic conversion with
-Vim substitution patterns with backreferences without any problems.</p>
+global parameters in one of projects by 21 by using an automatic conversion with
+Vim substitution patterns with back references without any problems.</p>
 </div>
 <div class="paragraph">
 <p>Following the <a href="#std-hash">Standard Plugins Hash</a> section, the plugin could
@@ -1761,8 +1762,10 @@ v0.98, 10/25/2019: 2/ Added <code>Standard Function Name-Space Prefixes</code> s
 v0.98, 10/25/2019: 3/ Added <code>Preventing Function Pollution</code> section<br>
 v0.98, 10/25/2019: 4/ Added <code>Preventing Parameter Pollution</code> section<br>
 v0.97, 10/23/2019: Added <code>Standard Recommended Options</code> section<br>
-v0.96, 10/23/2019: Added <code>@zsh-plugin-run-on-unload</code> and <code>@zsh-plugin-run-on-update</code> calls<br>
-v0.95, 07/31/2019: Plugin unload function <code>*_unload_plugin</code> -&#8594; <code>*_plugin_unload</code><br>
+v0.96, 10/23/2019: Added <code>@zsh-plugin-run-on-unload</code> and
+<code>@zsh-plugin-run-on-update</code> calls<br>
+v0.95, 07/31/2019: Plugin unload function <code>*_unload_plugin</code> -&#8594;
+<code>*_plugin_unload</code><br>
 v0.94, 07/20/2019: Add initial version of the best practices section<br>
 v0.93, 07/20/2019: 1/ Add the second line to the <code>$0</code> handling.<br>
 v0.93, 07/20/2019: 2/ Reformat to 80 columns<br>
