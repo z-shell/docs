@@ -42,9 +42,11 @@ jobs:
           path: code.tar.gz
       - name: Tree
         run: |
+          echo -e "```SystemVerilog"
           tree code/zsdoc | tee docs/TREE.md
           tree wiki/zsh | tee -a docs/TREE.md
           tree wiki/zi | tee -a docs/TREE.md
+          echo -e "```"
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
