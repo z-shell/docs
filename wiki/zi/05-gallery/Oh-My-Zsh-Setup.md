@@ -50,7 +50,7 @@ e.g. instead of 200 ms, it'll be getting your shell started up after **40 ms**
 (!).
 
 It is using the for-syntax, which is a recent addition to ZI and it's
-described in detail [on this page](https://z-shell.github.io/zi/wiki/For-Syntax/).
+described in detail [on this page](Syntax#the-for-syntax).
 
 ## Without using Turbo and for-syntax
 
@@ -88,6 +88,4 @@ zi light z-shell/fast-syntax-highlighting
 In general, Turbo can be optionally enabled only for a subset of plugins or for
 all plugins. It needs Zsh \>= 5.3.
 
-The **Introduction** contains [**more
-information**](http://z-shell.github.io/zi/wiki/INTRODUCTION/#turbo_mode_zsh_62_53)
-on Turbo.
+The **Introduction** contains [**more information**](http://z-shell.github.io/zi/wiki/Introduction#turbo-mode-zsh--53) on Turbo.

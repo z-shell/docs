@@ -1,12 +1,18 @@
 - [Plugins and snippets](#plugins-and-snippets)
 - [Upgrade ZI and plugins](#upgrade-zi-and-plugins)
 - [Turbo and lucid](#turbo-and-lucid)
+  - [Turbo Mode](#turbo-mode)
+  - [Lucid](#lucid)
 - [Migration](#migration)
+  - [Migration from Oh-My-ZSH](#migration-from-oh-my-zsh)
+  - [Migration from Prezto](#migration-from-prezto)
+  - [Migration from Zgen](#migration-from-zgen)
+  - [Migration from Zplug](#migration-from-zplug)
 - [More Examples](#more-examples)
 
 ---
 
-[Click here to read the introduction to ZI](https://github.com/z-shell/zi/wiki/Introduction).
+[Click here to read the introduction to ZI](Introduction).
 It explains basic usage and some of the more unique features of ZI such as the Turbo mode.
 If you're new to ZI we highly recommend you read it at least once.
 
@@ -53,7 +59,7 @@ zi ice depth"1" # git clone depth
 zi light romkatv/powerlevel10k
 
 # Load pure theme
-zi ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zi ice pick"async.zsh" src"pure.zsh" # with the zsh-async library that's bundled with it.
 zi light sindresorhus/pure
 
 # Load starship theme
@@ -82,8 +88,8 @@ zi update --parallel 40
 
 Turbo and lucid are the most used options.
 
-<details>
-<summary><b>Turbo Mode</b></summary>
+### Turbo Mode
+
 Turbo mode is the key to performance. It can be loaded asynchronously, which makes a huge difference when the amount of plugins increases.
 
 Usually used as `zi ice wait"<SECONDS>"`, let's use the previous example:
@@ -99,10 +105,7 @@ zi ice wait    # also be used in `light` and `snippet`
 zi snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 ```
 
-</details>
-
-<details>
-<summary><b>Lucid</b></summary>
+### Lucid
 
 Turbo mode is verbose, so you need an option for quiet.
 
@@ -117,13 +120,12 @@ zi load z-shell/history-search-multi-word
 
 **_F&A:_** What is `ice`?
 
-`ice` is zi's option command. The option melts like ice and is used only once.
-(more: [Ice Modifiers](#ice-modifiers))
+`ice` is Zi's options command. The option melts like ice and is used only once.
+(more: [Ice Modifiers](Ice-modifiers)).
 
 ## Migration
 
-<details>
-<summary><b>Migration from Oh-My-ZSH</b></summary>
+### Migration from Oh-My-ZSH
 
 **Basic**
 
@@ -162,7 +164,7 @@ Some themes require not only Oh My Zsh's Git **library**, but also Git **plugin*
 about `current_branch` may appear). Load this Git-plugin as single-file
 snippet directly from OMZ.
 
-Most themes require `promptsubst` option (`setopt promptsubst` in `zshrc`), if it isn't set, then
+Most themes require the `promptsubst` option (`setopt promptsubst` in `zshrc`), if it isn't set, then
 prompt will appear as something like: `... $(build_prompt) ...`.
 
 You might want to suppress completions provided by the git plugin by issuing `zi cdclear -q`
@@ -262,12 +264,9 @@ zi ice as"completion"
 zi snippet OMZP::fd/_fd
 ```
 
-[You can see an extended explanation of Oh-My-Zsh setup in the Wiki](http://z-shell.github.io/zi/wiki/Example-Oh-My-Zsh-setup/)
+[You can see an extended explanation of Oh-My-Zsh setup in the Wiki](Oh-My-Zsh-Setup/)
 
-</details>
-
-<details>
-<summary><b> Migration from Prezto </b></summary>
+### Migration from Prezto
 
 **Basic**
 
@@ -331,10 +330,7 @@ zi snippet PZTM::completion
 
 Read [zstyle](http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module) doc (more: [What does `zstyle` do?](https://unix.stackexchange.com/questions/214657/what-does-zstyle-do)).
 
-</details>
-
-<details>
-<summary><b>Migration from Zgen</b></summary>
+### Migration from Zgen
 
 **Oh My Zsh**
 
@@ -375,7 +371,7 @@ zstyle ':prezto:<modulename>:' <option> <values(s)> # Set original prezto style
 
 **General**
 
-`location`: refer [Selection of Files](#selection-of-files-to-source-)
+`location`: refer [Selection of Files](Ices#the-src-ice)
 
 ```zsh
 zgen load <repo> [location] [branch]
@@ -384,10 +380,7 @@ zi ice ver"[branch]"
 zi load <repo>
 ```
 
-</details>
-
-<details>
-<summary><b>Migration from Zplug</b></summary>
+### Migration from Zplug
 
 **Basic**
 
@@ -416,14 +409,12 @@ zi load <repo/plugin>
 - `lazy` => `autoload`
 - `depth` => `depth`
 
-</details>
-
 ## More Examples
 
-After installing ZI you can start adding some actions (load some plugins) to `~/.zshrc`, at bottom. Some examples:
+After installing ZI you can start adding some actions (load some plugins) to `~/.zshrc`, at the bottom. Some examples:
 
 ```zsh
-# Load the pure theme, with zsh-async library that's bundled with it.
+# Load the pure theme, with the zsh-async library that's bundled with it.
 zi ice pick"async.zsh" src"pure.zsh"
 zi light sindresorhus/pure
 
@@ -437,15 +428,15 @@ zi for \
   light-mode pick"async.zsh" src"pure.zsh" \
     sindresorhus/pure
 
-# Binary release in archive, from GitHub-releases page.
+# Binary release in the archive, from GitHub-releases page.
 # After automatic unpacking it provides program "fzf".
 zi ice from"gh-r" as"program"
 zi light junegunn/fzf
 
-# One other binary release, it needs renaming from `docker-compose-Linux-x86_64`.
+# One other binary release, needs renaming from `docker-compose-Linux-x86_64`.
 # This is done by ice-mod `mv'{from} -> {to}'. There are multiple packages per
-# single version, for OS X, Linux and Windows – so ice-mod `bpick' is used to
-# select Linux package – in this case this is actually not needed, ZI will
+# single version, for OS X, Linux, and Windows – so ice-mod `bpick' is used to
+# select Linux package – in this case, this is not needed, ZI will
 # grep operating system name and architecture automatically when there's no `bpick'.
 zi ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
 zi load docker/compose
@@ -453,7 +444,7 @@ zi load docker/compose
 # Vim repository on GitHub – a typical source code that needs compilation – ZI
 # can manage it for you if you like, run `./configure` and other `make`, etc. stuff.
 # Ice-mod `pick` selects a binary program to add to $PATH. You could also install the
-# package under the path $ZPFX, see: http://z-shell.github.io/zi/wiki/Compiling-programs
+# package under the path $ZPFX, see: https://github.com/z-shell/zi/wiki/Compiling-programs
 zi ice as"program" atclone"rm -f src/auto/config.cache; ./configure" \
   atpull"%atclone" make pick"src/vim"
 zi light vim/vim
@@ -465,7 +456,7 @@ zi ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zi light tj/git-extras
 
 # Handle completions without loading any plugin, see "clist" command.
-# This one is to be ran just once, in interactive session.
+# This one is to be run just once, in an interactive session.
 zi creinstall %HOME/my_completions
 ```
 
@@ -486,9 +477,8 @@ If you're interested in more examples then check out the [playground repository]
 `~/.zshrc` and ZI configurations. Feel free to [submit](https://github.com/z-shell/playground/issues/new?template=request-to-add-zshrc-to-the-zi-configs-repo.md)
 your `~/.zshrc` there if it contains ZI commands.
 
-You can also check out the [Gallery of ZI Invocations](https://github.com/z-shell/zi/wiki/Gallery/) for some additional
-examples.
+For some additional examples you can also check out the:
 
-Also, two articles on the Wiki present an example setup
-[here](https://github.com/z-shell/zi/wiki/Minimal-Setup/) and
-[here](https://github.com/z-shell/zi/wiki/Oh-My-Zsh-Setup/).
+- [Gallery of Invocations](https://github.com/z-shell/zi/wiki/Gallery/),
+- [Minimal Setup](https://github.com/z-shell/zi/wiki/Minimal-Setup/),
+- [Oh-My-Zsh](https://github.com/z-shell/zi/wiki/Oh-My-Zsh-Setup/).

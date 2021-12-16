@@ -1,11 +1,6 @@
 - [The `for''` syntax](#the-for-syntax)
-  - [Examples of `for''` syntax](#examples-of-for-syntax)
 - [The `make''` syntax](#the-make-syntax)
 - [The `bindmap''` keybindings](#the-bindmap-keybindings)
-  - [Examples of `bindmap''`](#examples-of-bindmap)
-  - [Explanation](#explanation)
-  - [Using `bindmap''` In Light Mode](#using-bindmap-in-light-mode)
-  - [Using The `UPAR`, Etc. Shorthands](#using-the-upar-etc-shorthands)
 
 ---
 
@@ -34,7 +29,7 @@ Above single command installs 6 plugins (Git extension packages), with the base
 ices `as"null" wait"3" lucid` that are common to all of the plugins and
 6 plugin-specific add-on ices.
 
-### Examples of `for''` syntax
+**Examples of `for''` syntax**
 
 Load a few useful binary (i.e.: binary packages from the GitHub Releases) utils:
 
@@ -90,7 +85,7 @@ want a different binding(s), which will require a complicated, additional
 ZI provides a solution to this problem – the ability to remap the bindkeys
 with a short ice-modifier specification with the `bindmap''` ice.
 
-### Examples of `bindmap''`
+** Examples of `bindmap''`**
 
 ```zsh
 # Map Ctrl-G instead of Ctrl-R for the history searcher.
@@ -113,7 +108,7 @@ zi bindmap='!" " -> magic-space; !"^ " -> globalias' nocompletions \
   ohmyzsh/ohmyzsh
 ```
 
-### Explanation
+**Explanation**
 
 As it can be seen, the `bindmap''` ice has two modes of operation: normal and
 exclamation-mark (`bindmap'!…'`). In the first mode, the remapping is beind done
@@ -140,7 +135,7 @@ bindkey " " magic-space
 
 (for the `bindmap='!" " -> magic-space; !"^ " -> globalias'` ice).
 
-### Using `bindmap''` In Light Mode
+**Using `bindmap''` In Light Mode**
 
 When the investigation mode is on – i.e.: when the full loading mode is being
 used (default in the `for` syntax and when `zi load …` is used) – then the
@@ -157,7 +152,7 @@ zi trackbinds bindmap'^R -> ^G' for z-shell/history-search-multi-word
 zi light z-shell/history-search-multi-word
 ```
 
-### Using The `UPAR`, Etc. Shorthands
+**Using The `UPAR`, Etc. Shorthands**
 
 There are four special values that can be used on the left side of the bind-map:
 `UPAR`, `DOWNAR`, `LEFTAR`, `RIGHTAR`. They'll match up arrow, down arrow, etc.
