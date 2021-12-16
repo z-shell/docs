@@ -1,0 +1,13 @@
+[[ $1 = <-> && ( ${#} = 1 || ( $2 = (hup|nval|err) && ${#} = 2 ) ) ]] && { zle && {
+  local alltext text IFS=$'\n' nl=$'\n'
+  repeat 25; do read -r -u"$1" text; alltext+="${text:+$text$nl}"; done
+  [[ $alltext = @rst$nl ]] && { builtin zle reset-prompt; ((1)); } || \
+    { [[ -n $alltext ]] && builtin zle -M "$alltext"; }
+}
+builtin zle -F "$1"; exec {1}<&-
+return 0
+}
+local THEFD=13371337 hasw
+exec {THEFD} < <(LANG=C sleep $(( 0.01 + ${${${(M)1#@sleep:}:+${1#@sleep:}}:-0} )); builtin print -r -- ${1:#(@msg|@sleep:*)} "${@[2,-1]}"; )
+command true
+builtin zle -F "$THEFD" +zi-deploy-message

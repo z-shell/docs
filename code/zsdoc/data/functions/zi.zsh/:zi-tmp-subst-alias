@@ -1,0 +1,30 @@
+builtin setopt localoptions noerrreturn noerrexit extendedglob warncreateglobal typesetsilent noshortloops unset
+.zi-add-report "${ZI[CUR_USPL2]}" "Alias $*"
+typeset -a pos
+pos=( "$@" )
+local -a opts
+zparseopts -a opts -D ${(s::):-gs}
+local a quoted tmp
+for a in "$@"; do
+  local aname="${a%%[=]*}"
+  local avalue="${a#*=}"
+  (( ${+aliases[$aname]} )) && .zi-add-report "${ZI[CUR_USPL2]}" "Warning: redefining alias \`${aname}', previous value: ${aliases[$aname]}"
+  local bname=${(q)aliases[$aname]}
+  aname="${(q)aname}"
+  if (( ${+opts[(r)-s]} )); then
+    tmp=-s
+    tmp="${(q)tmp}"
+    quoted="$aname $bname $tmp"
+  elif (( ${+opts[(r)-g]} )); then
+    tmp=-g
+    tmp="${(q)tmp}"
+    quoted="$aname $bname $tmp"
+  else
+    quoted="$aname $bname"
+  fi
+  quoted="${(q)quoted}"
+  [[ -n ${ZI[CUR_USPL2]} ]] && ZI[ALIASES__${ZI[CUR_USPL2]}]+="$quoted "
+  [[ ${ZI[DTRACE]} = 1 ]] && ZI[ALIASES___dtrace/_dtrace]+="$quoted "
+done
+builtin alias "${pos[@]}"
+return $?

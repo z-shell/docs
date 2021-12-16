@@ -1,0 +1,31 @@
+.zi-any-to-user-plugin "$1" "$2"
+local user="${reply[-2]}" plugin="${reply[-1]}"
+.zi-exists-physically-message "$user" "$plugin" || return 1
+.zi-first "$1" "$2" || {
+builtin print "${ZI[col-error]}No source file found, cannot stress${ZI[col-rst]}"
+return 1
+}
+local pdir_path="${reply[-2]}" fname="${reply[-1]}"
+integer compiled=1
+[[ -e "${fname}.zwc" ]] && command rm -f "${fname}.zwc" || compiled=0
+local -a ZI_STRESS_TEST_OPTIONS
+ZI_STRESS_TEST_OPTIONS=(
+"NO_SHORT_LOOPS" "IGNORE_BRACES" "IGNORE_CLOSE_BRACES"
+"SH_GLOB" "CSH_JUNKIE_QUOTES" "NO_MULTI_FUNC_DEF"
+)
+(
+emulate -LR ksh
+builtin unsetopt shglob kshglob
+for i in "${ZI_STRESS_TEST_OPTIONS[@]}"; do
+  builtin setopt "$i"
+  builtin print -n "Stress-testing ${fname:t} for option $i "
+    zcompile -UR "$fname" 2>/dev/null && {
+    builtin print "[${ZI[col-success]}Success${ZI[col-rst]}]"
+  } || {
+    builtin print "[${ZI[col-failure]}Fail${ZI[col-rst]}]"
+  }
+  builtin unsetopt "$i"
+done
+)
+command rm -f "${fname}.zwc"
+(( compiled )) && zcompile -U "$fname"

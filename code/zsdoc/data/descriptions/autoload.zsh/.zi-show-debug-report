@@ -1,0 +1,4 @@
+# FUNCTION: .zi-show-debug-report [[[
+# Displays dtrace report (data recorded in interactive session).
+#
+# User-action entry point.

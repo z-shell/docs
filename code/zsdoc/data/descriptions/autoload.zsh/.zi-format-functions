@@ -1,0 +1,4 @@
+# FUNCTION: .zi-format-functions [[[
+# Creates a one or two columns text with functions created by given plugin.
+#
+# $1 - user/plugin (i.e. uspl2 format of plugin-spec)

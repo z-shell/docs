@@ -1,0 +1,5 @@
+# FUNCTION: .zi-list-compdef-replay [[[
+# Shows recorded compdefs (called by plugins loaded earlier). Plugins often call `compdef' hoping
+# for `compinit' being already ran. ❮ ZI ❯ solves this by recording compdefs.
+#
+# User-action entry point.

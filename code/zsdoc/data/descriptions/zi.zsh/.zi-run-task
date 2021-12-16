@@ -1,0 +1,12 @@
+# FUNCTION: .zi-run-task. [[[
+# A backend, worker function of .zi-scheduler. It obtains the tasks
+# index and a few of its properties (like the type: plugin, snippet,
+# service plugin, service snippet) and executes it first checking for
+# additional conditions (like non-numeric wait'' ice).
+#
+# $1 - the pass number, either 1st or 2nd pass
+# $2 - the time assigned to the task
+# $3 - type: plugin, snippet, service plugin, service snippet
+# $4 - task's index in the ZI[WAIT_ICE_...] fields
+# $5 - mode: load or light
+# $6 - the plugin-spec or snippet URL or alias name (from id-as'')

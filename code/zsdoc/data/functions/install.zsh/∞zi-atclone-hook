@@ -1,0 +1,4 @@
+[[ "$1" = plugin ]] && local dir="${5#%}" hook="$6" subtype="$7" || local dir="${4#%}" hook="$5" subtype="$6"
+local atclone=${ICE[atclone]}
+@zi-substitute atclone
+[[ -n $atclone ]] && .zi-countdown atclone && { local ___oldcd=$PWD; (( ${+ICE[nocd]} == 0 )) && { () { setopt localoptions noautopushd; builtin cd -q "$dir"; } && eval "$atclone"; ((1)); } || eval "$atclone"; () { setopt localoptions noautopushd; builtin cd -q "$___oldcd"; }; }

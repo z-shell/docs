@@ -1,0 +1,17 @@
+if [[ $1 == set ]]; then
+  ZI[___m_bkp]="${functions[m]}"
+  setopt noaliases
+  functions[m]="${functions[+zi-message]}"
+  setopt aliases
+elif [[ $1 == unset ]]; then
+  if [[ -n ${ZI[___m_bkp]} ]]; then
+    setopt noaliases
+    functions[m]="${ZI[___m_bkp]}"
+    setopt aliases
+  else
+    noglob unset functions[m]
+  fi
+else
+  +zi-message "{error}ERROR #1"
+  return 1
+fi

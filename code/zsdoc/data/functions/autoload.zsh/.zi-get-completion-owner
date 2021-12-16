@@ -1,0 +1,19 @@
+setopt localoptions extendedglob nokshglob noksharrays noshwordsplit
+local cpath="$1"
+local readlink_cmd="$2"
+local in_plugin_path tmp
+in_plugin_path="${cpath:A}"
+tmp=$( "$readlink_cmd" "$cpath" )
+[[ -n "$tmp" ]] && in_plugin_path="$tmp"
+if [[ "$in_plugin_path" != "$cpath" ]]; then
+  while [[ "$in_plugin_path" != ${ZI[PLUGINS_DIR]}/[^/]## && "$in_plugin_path" != "/" ]]; do
+    in_plugin_path="${in_plugin_path:h}"
+  done
+  in_plugin_path="${in_plugin_path:t}"
+  if [[ -z "$in_plugin_path" ]]; then
+    in_plugin_path="${tmp:h}"
+  fi
+else
+  in_plugin_path="[unknown]"
+fi
+REPLY="$in_plugin_path"

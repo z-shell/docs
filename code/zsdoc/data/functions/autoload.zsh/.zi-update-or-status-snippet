@@ -1,0 +1,28 @@
+local st="$1" URL="${2%/}" local_dir filename is_snippet
+(( ${#ICE[@]} > 0 )) && { ZI_SICE[$URL]=""; local nf="-nftid"; }
+local -A ICE2
+.zi-compute-ice "$URL" "pack$nf" ICE2 local_dir filename is_snippet || return 1
+integer retval
+if [[ "$st" = "status" ]]; then
+  if (( ${+ICE2[svn]} )); then
+    builtin print -r -- "${ZI[col-info]}Status for ${${${local_dir:h}:t}##*--}/${local_dir:t}${ZI[col-rst]}"
+    ( builtin cd -q "$local_dir"; command svn status -vu )
+    retval=$?
+    builtin print
+  else
+    builtin print -r -- "${ZI[col-info]}Status for ${${local_dir:h}##*--}/$filename${ZI[col-rst]}"
+    ( builtin cd -q "$local_dir"; command ls -lth $filename )
+    retval=$?
+    builtin print
+  fi
+else
+  (( ${+functions[.zi-setup-plugin-dir]} )) || builtin source ${ZI[BIN_DIR]}"/lib/zsh/install.zsh"
+  ICE=( "${(kv)ICE2[@]}" )
+  .zi-update-snippet "${ICE2[teleid]:-$URL}"
+  retval=$?
+fi
+ICE=()
+if (( PUPDATE && ZI[annex-multi-flag:pull-active] > 0 )) {
+  builtin print ${ZI[annex-multi-flag:pull-active]} >| $PUFILE.ind
+}
+return $retval

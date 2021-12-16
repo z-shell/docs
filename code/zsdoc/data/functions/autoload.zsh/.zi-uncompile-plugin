@@ -1,0 +1,20 @@
+builtin setopt localoptions nullglob
+
+.zi-any-to-user-plugin "$1" "$2"
+local user="${reply[-2]}" plugin="${reply[-1]}" silent="$3"
+[[ "$user" = "%" ]] && local pdir_path="$plugin" || local pdir_path="${ZI[PLUGINS_DIR]}/${user:+${user}---}${plugin//\//---}"
+typeset -a matches m
+matches=( $pdir_path/*.zwc(DN) )
+if [[ "${#matches[@]}" -eq "0" ]]; then
+  if [[ "$silent" = "1" ]]; then
+    builtin print "not compiled"
+  else
+    .zi-any-colorify-as-uspl2 "$user" "$plugin"
+    builtin print -r -- "$REPLY not compiled"
+  fi
+  return 1
+fi
+for m in "${matches[@]}"; do
+  builtin print "Removing ${ZI[col-info]}${m:t}${ZI[col-rst]}"
+  command rm -f "$m"
+done

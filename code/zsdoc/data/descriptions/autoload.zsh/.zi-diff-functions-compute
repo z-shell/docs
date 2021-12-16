@@ -1,0 +1,5 @@
+# FUNCTION: .zi-diff-functions-compute [[[
+# Computes FUNCTIONS that holds new functions added by plugin.
+# Uses data gathered earlier by .zi-diff-functions().
+#
+# $1 - user/plugin

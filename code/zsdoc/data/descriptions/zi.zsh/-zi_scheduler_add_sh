@@ -1,0 +1,4 @@
+# FUNCTION: -zi_scheduler_add_sh. [[[
+# Copies task into ZI_RUN array, called when a task timeouts.
+# A small function ran from pattern in /-substitution as a math
+# function.

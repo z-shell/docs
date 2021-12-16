@@ -1,0 +1,5 @@
+# FUNCTION: .zi-load. [[[
+# Implements the exposed-to-user action of loading a plugin.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
+# $2 - plugin name, if the third format is used

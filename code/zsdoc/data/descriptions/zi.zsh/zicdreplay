@@ -1,0 +1,3 @@
+# FUNCTION: zicdreplay. [[[
+# A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+# It works like `zi cdreplay', which cannot be invoked from such hook ices.

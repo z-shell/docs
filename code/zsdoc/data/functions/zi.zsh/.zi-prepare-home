@@ -1,0 +1,38 @@
+[[ -n ${ZI[HOME_READY]} ]] && return
+ZI[HOME_READY]=1
+[[ ! -d ${ZI[HOME_DIR]} ]] && {
+  command mkdir  -p "${ZI[HOME_DIR]}"
+  command chmod go-w "${ZI[HOME_DIR]}"
+  command mkdir 2>/dev/null -p $ZPFX/bin
+}
+[[ ! -d ${ZI[ZMODULES_DIR]} ]] && {
+  command mkdir -p "${ZI[ZMODULES_DIR]}"
+  command chmod go-w "${ZI[ZMODULES_DIR]}"
+}
+[[ ! -d ${ZI[PLUGINS_DIR]}/_local---zi ]] && {
+  command rm -rf "${ZI[PLUGINS_DIR]:-${TMPDIR:-/tmp}/132bcaCAB}/_local---zi"
+  command mkdir -p "${ZI[PLUGINS_DIR]}/_local---zi"
+  command chmod go-w "${ZI[PLUGINS_DIR]}"
+  command ln -s "${ZI[BIN_DIR]}/lib/_zi" "${ZI[PLUGINS_DIR]}/_local---zi"
+  command mkdir 2>/dev/null -p $ZPFX/bin
+  (( ${+functions[.zi-setup-plugin-dir]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/install.zsh" || return 1
+  (( ${+functions[.zi-confirm]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/autoload.zsh" || return 1
+  .zi-clear-completions &>/dev/null
+  .zi-compinit &>/dev/null
+}
+[[ ! -d ${ZI[COMPLETIONS_DIR]} ]] && {
+  command mkdir "${ZI[COMPLETIONS_DIR]}"
+  command chmod go-w "${ZI[COMPLETIONS_DIR]}"
+  command ln -s "${ZI[PLUGINS_DIR]}/_local---zi/_zi" "${ZI[COMPLETIONS_DIR]}"
+  command mkdir 2>/dev/null -p $ZPFX/bin
+  (( ${+functions[.zi-setup-plugin-dir]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/install.zsh" || return 1
+  .zi-compinit &>/dev/null
+}
+[[ ! -d ${ZI[SNIPPETS_DIR]} ]] && {
+  command mkdir -p "${ZI[SNIPPETS_DIR]}/OMZ::plugins"
+  command chmod go-w "${ZI[SNIPPETS_DIR]}"
+  ( builtin cd ${ZI[SNIPPETS_DIR]}; command ln -s OMZ::plugins plugins; )
+  command mkdir -p "${ZI[SERVICES_DIR]}"
+  command chmod go-w "${ZI[SERVICES_DIR]}"
+  command mkdir 2>/dev/null -p $ZPFX/bin
+}

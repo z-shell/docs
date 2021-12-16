@@ -1,0 +1,5 @@
+# FUNCTION: .zi-confirm [[[
+# Prints given question, waits for "y" key, evals given expression if "y" obtained
+#
+# $1 - question
+# $2 - expression

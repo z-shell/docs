@@ -1,0 +1,5 @@
+# FUNCTION: .zi-format-env [[[
+# Creates one-column text about FPATH or PATH elements added when given plugin was loaded.
+#
+# $1 - user/plugin (i.e. uspl2 format of plugin-spec)
+# $2 - if 1, then examine PATH, if 2, then examine FPATH

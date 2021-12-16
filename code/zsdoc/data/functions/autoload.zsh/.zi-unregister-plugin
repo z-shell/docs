@@ -1,0 +1,5 @@
+.zi-any-to-user-plugin "$1" "$2"
+local uspl2="${reply[-2]}${${reply[-2]:#(%|/)*}:+/}${reply[-1]}" teleid="$3"
+ZI_REGISTERED_PLUGINS[${ZI_REGISTERED_PLUGINS[(i)$uspl2]}]=()
+zsh_loaded_plugins[${zsh_loaded_plugins[(i)$teleid]}]=()
+ZI[STATES__$uspl2]="0"

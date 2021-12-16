@@ -33,7 +33,7 @@ Has 1 line(s). No functions are called (may set up e.g. a hook, a Zle widget bou
 ~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-clear-debug-report [[[
  Forgets dtrace repport gathered up to this moment.
 ____
@@ -52,7 +52,7 @@ Called by:
 ~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-debug-start [[[
  Starts Dtrace, i.e. session tracking for changes in Zsh state.
 ____
@@ -72,7 +72,7 @@ Called by:
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-debug-stop [[[
  Stops Dtrace, i.e. session tracking for changes in Zsh state.
 ____
@@ -91,7 +91,7 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-debug-unload [[[
  Reverts changes detected by dtrace run.
 ____
@@ -112,11 +112,11 @@ Called by:
 ~~~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: .zi-service [[[
  Handles given service, i.e. obtains lock, runs it, or waits if no lock
-
+ 
  $1 - type "p" or "s" (plugin or snippet)
  $2 - mode - for plugin (light or load)
  $3 - id - URL or plugin ID or alias name (from id-as'')
@@ -136,7 +136,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-wrap-track-functions [[[
 ____
 
@@ -150,7 +150,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-source [[[
 ____
 
@@ -162,3 +162,4 @@ Has 25 line(s). Calls functions:
 Uses feature(s): _eval_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+

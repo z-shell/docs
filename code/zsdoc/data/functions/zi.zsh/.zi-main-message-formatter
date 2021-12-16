@@ -1,0 +1,18 @@
+if [[ -z $1 && -z $2 && -z $3 ]]; then
+REPLY=""
+return
+fi
+local append influx in_prepend
+if [[ $2 == (b|u|it|st|nb|nu|nit|nst) ]]; then
+append=$ZI[col-$2]
+elif [[ $2 == (…|ndsh|mdsh|mmdsh|-…|lr|) || -z $2 || -z $ZI[col-$2] ]]; then
+if [[ $ZI[__last-formatter-code] != (…|ndsh|mdsh|mmdsh|-…|lr|rst|nl|) ]]; then
+  in_prepend=$ZI[col-$ZI[__last-formatter-code]]
+  influx=$ZI[col-$ZI[__last-formatter-code]]
+  fi
+else
+  append=$ZI[col-rst]
+fi
+REPLY=$in_prepend${ZI[col-$2]:-$1}$influx$3$append
+local nl=$'\n' vertical=$'\013' carriager=$'\015'
+REPLY=${REPLY//$nl/$vertical$carriager}

@@ -107,7 +107,7 @@ _Exports (environment):_ PMSPEC [big]*//* ZPFX [big]*//* ZSH_CACHE_DIR
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: +zi-deploy-message. [[[
  Deploys a sub-prompt message to be displayed OR a `zle
  .reset-prompt' call to be invoked
@@ -127,7 +127,7 @@ Called by:
 ~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: +zi-message. [[[
 ____
 
@@ -178,7 +178,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: +zi-prehelp-usage-message. [[[
 ____
 
@@ -196,7 +196,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: -zi_scheduler_add_sh. [[[
  Copies task into ZI_RUN array, called when a task timeouts.
  A small function ran from pattern in /-substitution as a math
@@ -211,7 +211,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-add-fpath. [[[
 ____
 
@@ -227,10 +227,10 @@ Called by:
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-add-report. [[[
  Adds a report line for given plugin.
-
+ 
  $1 - uspl2, i.e. user/plugin
  $2, ... - the text
 ____
@@ -252,7 +252,7 @@ Called by:
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-any-to-pid. [[[
 ____
 
@@ -272,15 +272,15 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-any-to-user-plugin. [[[
  Allows elastic plugin-spec across the code.
-
+ 
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
  $2 - plugin (only when $1 - i.e. user - given)
-
+ 
  Returns user and plugin in $reply.
-
+ 
 ____
 
 Has 25 line(s). Doesn't call other functions.
@@ -323,7 +323,7 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-compdef-clear. [[[
  Implements user-exposed functionality to clear gathered compdefs.
 ____
@@ -343,7 +343,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-compdef-replay. [[[
  Runs gathered compdef calls. This allows to run `compinit' after loading plugins.
 ____
@@ -365,7 +365,7 @@ Called by:
 ~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-diff. [[[
  Performs diff actions of all types
 ____
@@ -384,10 +384,10 @@ Called by:
 ~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-diff-env. [[[
  Implements detection of change in PATH and FPATH.
-
+ 
  $1 - user/plugin (i.e. uspl2 format)
  $2 - command, can be "begin" or "end"
 ____
@@ -403,10 +403,10 @@ Called by:
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-diff-functions. [[[
  Implements detection of newly created functions. Performs data gathering, computation is done in *-compute().
-
+ 
  $1 - user/plugin (i.e. uspl2 format)
  $2 - command, can be "begin" or "end"
 ____
@@ -421,10 +421,10 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-diff-options. [[[
  Implements detection of change in option state. Performs data gathering, computation is done in *-compute().
-
+ 
  $1 - user/plugin (i.e. uspl2 format)
  $2 - command, can be "begin" or "end"
 ____
@@ -439,11 +439,11 @@ Called by:
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-diff-parameter. [[[
  Implements detection of change in any parameter's existence and type.
  Performs data gathering, computation is done in *-compute().
-
+ 
  $1 - user/plugin (i.e. uspl2 format)
  $2 - command, can be "begin" or "end"
 ____
@@ -458,7 +458,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-find-other-matches. [[[
  Plugin's main source file is in general `name.plugin.zsh'. However,
  there can be different conventions, if that file is not found, then
@@ -477,7 +477,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-formatter-bar. [[[
 ____
 
@@ -491,7 +491,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-formatter-bar-util. [[[
 ____
 
@@ -506,7 +506,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-formatter-pid. [[[
 ____
 
@@ -523,7 +523,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-formatter-th-bar. [[[
 ____
 
@@ -537,7 +537,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-formatter-url. [[[
 ____
 
@@ -549,7 +549,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-get-mtime-into. [[[
 ____
 
@@ -565,7 +565,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-get-object-path. [[[
 ____
 
@@ -589,7 +589,7 @@ Called by:
 ~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-ice. [[[
  Parses ICE specification, puts the result into ICE global hash. The ice-spec is valid for
  next command only (i.e. it "melts"), but it can then stick to plugin and activate e.g. at update.
@@ -609,10 +609,10 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-load. [[[
  Implements the exposed-to-user action of loading a plugin.
-
+ 
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
  $2 - plugin name, if the third format is used
 ____
@@ -636,7 +636,7 @@ Called by:
 ~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-load-ices. [[[
 ____
 
@@ -654,7 +654,7 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-load-object. [[[
 ____
 
@@ -670,10 +670,10 @@ Called by:
 ~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-load-plugin. [[[
  Lower-level function for loading a plugin.
-
+ 
  $1 - user
  $2 - plugin
  $3 - mode (light or load)
@@ -696,10 +696,10 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-load-snippet. [[[
  Implements the exposed-to-user action of loading a snippet.
-
+ 
  $1 - url (can be local, absolute path).
 ____
 
@@ -724,7 +724,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: +zi-message-formatter [[[
 ____
 
@@ -736,7 +736,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-pack-ice. [[[
  Remembers all ice-mods, assigns them to concrete plugin. Ice spec is in general forgotten for
  second-next command (that's why it's called "ice" - it melts), however they glue to the object (plugin
@@ -758,7 +758,7 @@ Called by:
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: +zi-parse-opts. [[[
 ____
@@ -774,7 +774,7 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-prepare-home. [[[
  Creates all directories needed by ZI, first checks if they already exist.
 ____
@@ -797,7 +797,7 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-register-plugin. [[[
  Adds the plugin to ZI_REGISTERED_PLUGINS array and to the
  zsh_loaded_plugins array (managed according to the plugin standard:
@@ -817,7 +817,7 @@ Called by:
 ~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-run. [[[
  Run code inside plugin's folder
  It uses the `correct' parameter from upper's scope zi().
@@ -838,13 +838,13 @@ Called by:
 ~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-run-task. [[[
  A backend, worker function of .zi-scheduler. It obtains the tasks
  index and a few of its properties (like the type: plugin, snippet,
  service plugin, service snippet) and executes it first checking for
  additional conditions (like non-numeric wait'' ice).
-
+ 
  $1 - the pass number, either 1st or 2nd pass
  $2 - the time assigned to the task
  $3 - type: plugin, snippet, service plugin, service snippet
@@ -868,7 +868,7 @@ Called by:
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION:.zi-set-m-func() [[[
  Sets and withdraws the temporary, atclone/atpull time function `m`.
 ____
@@ -890,7 +890,7 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-setup-params. [[[
 ____
 
@@ -905,7 +905,7 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-submit-turbo. [[[
  If `zi load`, `zi light` or `zi snippet`  will be
  preceded with `wait', `load', `unload' or `on-update-of`/`subscribe'
@@ -924,7 +924,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-tmp-subst-off. [[[
  Turn off temporary substituting of functions completely for a given mode ("load", "light",
  "light-b" (i.e. the `trackbinds' mode) or "compdef").
@@ -943,7 +943,7 @@ Called by:
 ~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-tmp-subst-on. [[[
  Turn on temporary substituting of functions of builtins and functions according to passed
  mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
@@ -963,7 +963,7 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: .zi-util-shands-path. [[[
  Replaces parts of path with %HOME, etc.
 ____
@@ -982,18 +982,18 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-reload-and-run. [[[
  Marks given function ($3) for autoloading, and executes it triggering the load.
  $1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
  because using that on older Zsh versions causes problems with traps.
-
+ 
  So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".
-
+ 
  $1 - FPATH dedicated to function
  $2 - autoload options
  $3 - function name (one that needs autoloading)
-
+ 
  Author: Bart Schaefer
 ____
 
@@ -1007,10 +1007,10 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-alias. [[[
  Function defined to hijack plugin's calls to the `alias' builtin.
-
+ 
  The hijacking is to gather report data (which is used in unload).
 ____
 
@@ -1026,10 +1026,10 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-autoload. [[[
  Function defined to hijack plugin's calls to the `autoload' builtin.
-
+ 
  The hijacking is not only to gather report data, but also to.
  run custom `autoload' function, that doesn't need FPATH.
 ____
@@ -1051,10 +1051,10 @@ Called by:
 ~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-bindkey. [[[
  Function defined to hijack plugin's calls to the `bindkey' builtin.
-
+ 
  The hijacking is to gather report data (which is used in unload).
 ____
 
@@ -1071,7 +1071,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-compdef. [[[
  Function defined to hijack plugin's calls to the `compdef' function.
  The hijacking is not only for reporting, but also to save compdef
@@ -1090,10 +1090,10 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-zle. [[[.
  Function defined to hijack plugin's calls to the `zle' builtin.
-
+ 
  The hijacking is to gather report data (which is used in unload).
 ____
 
@@ -1109,10 +1109,10 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: :zi-tmp-subst-zstyle. [[[
  Function defined to hijack plugin's calls to the `zstyle' builtin.
-
+ 
  The hijacking is to gather report data (which is used in unload).
 ____
 
@@ -1128,7 +1128,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: @autoload. [[[
 ____
@@ -1146,7 +1146,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zi-register-annex. [[[
  Registers the z-annex inside ZI – i.e. an ZI extension
 ____
@@ -1159,7 +1159,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zi-register-hook. [[[
  Registers the z-annex inside ZI – i.e. an ZI extension
 ____
@@ -1174,23 +1174,23 @@ Called by:
 ~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zi-scheduler. [[[
  Searches for timeout tasks, executes them. There's an array of tasks
  waiting for execution, this scheduler manages them, detects which ones
  should be run at current moment, decides to remove (or not) them from
  the array after execution.
-
+ 
  $1 - if "following", then it is non-first (second and more)
  invocation of the scheduler; this results in chain of `sched'
  invocations that results in repetitive @zi-scheduler activity.
-
+ 
  if "burst", then all tasks are marked timeout and executed one
  by one; this is handy if e.g. a docker image starts up and
  needs to install all turbo-mode plugins without any hesitation
  (delay), i.e. "burst" allows to run package installations from
  script, not from prompt.
-
+ 
 ____
 
 Has 74 line(s). *Is a precmd hook*. Calls functions:
@@ -1206,7 +1206,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zi-substitute. [[[
 ____
 
@@ -1233,7 +1233,7 @@ _Environment variables used:_ ZPFX
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zsh-plugin-run-on-update. [[[
  The Plugin Standard required mechanism, see:
  https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard
@@ -1249,7 +1249,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: @zsh-plugin-run-on-update. [[[
  The Plugin Standard required mechanism
 ____
@@ -1264,7 +1264,7 @@ pmodload
 ~~~~~~~~
 
 ____
-
+ 
  FUNCTION: pmodload. [[[
  Compatibility with Prezto. Calls can be recursive.
 ____
@@ -1281,7 +1281,7 @@ zi
 ~~
 
 ____
-
+ 
  FUNCTION: zi. [[[
  Main function directly exposed to user, obtains subcommand and its arguments, has completion.
 ____
@@ -1339,7 +1339,7 @@ zi-turbo
 ~~~~~~~~
 
 ____
-
+ 
  FUNCTION: zi-turbo. [[[
  With zi-turbo first argument is a wait time and suffix, i.e. "0a".
  Anything that doesn't match will be passed as if it were an ice mod.
@@ -1396,7 +1396,7 @@ zicdclear
 ~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: zicdclear. [[[
  A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.
@@ -1412,7 +1412,7 @@ zicdreplay
 ~~~~~~~~~~
 
 ____
-
+ 
  FUNCTION: zicdreplay. [[[
  A function that can be invoked from within `atinit', `atload', etc. ice-mod.
  It works like `zi cdreplay', which cannot be invoked from such hook ices.
@@ -1428,7 +1428,7 @@ zicompdef
 ~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: zicompdef. [[[
  Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode). An utility functton of an undefined use case.
@@ -1442,7 +1442,7 @@ zicompinit
 ~~~~~~~~~~
 
 ____
-
+ 
  ]]]
  FUNCTION: zicompinit. [[[
  A function that can be invoked from within `atinit', `atload', etc. ice-mod.
@@ -1472,7 +1472,7 @@ zpcdreplay
 ~~~~~~~~~~
 
 ____
-
+ 
  ]]]
  Compatibility functions. [[[
  zinit() { zi "$@"; }
@@ -1507,17 +1507,17 @@ add-zsh-hook
 ~~~~~~~~~~~~
 
 ____
-
+ 
  Add to HOOK the given FUNCTION.
  HOOK is one of chpwd, precmd, preexec, periodic, zshaddhistory,
  zshexit, zsh_directory_name (the _functions subscript is not required).
-
+ 
  With -d, remove the function from the hook instead; delete the hook
  variable if it is empty.
-
+ 
  -D behaves like -d, but pattern characters are active in the
  function name, so any matching function will be deleted from the hook.
-
+ 
 ____
 
 Has 93 line(s). Doesn't call other functions.
@@ -1533,16 +1533,16 @@ compinit
 ~~~~~~~~
 
 ____
-
+ 
  Initialisation for new style completion. This mainly contains some helper
  functions and setup. Everything else is split into different files that
  will automatically be made autoloaded (see the end of this file).  The
  names of the files that will be considered for autoloading are those that
  begin with an underscores (like `_condition).
-
+ 
  The first line of each of these files is read and must indicate what
  should be done with its contents:
-
+ 
  `#compdef <names ...>'
 ____
 
@@ -1560,8 +1560,8 @@ is-at-least
 ~~~~~~~~~~~
 
 ____
-
-
+ 
+ 
  Test whether $ZSH_VERSION (or some value of your choice, if a second argument
  is provided) is greater than or equal to x.y.z-r (in argument one). In fact,
  it'll accept any dot/dash-separated string of numbers as its second argument
@@ -1570,7 +1570,7 @@ ____
  when the comparison is done; only the numbers matter. Any left-out segments
  in the first argument that are present in the version string compared are
  considered as zeroes, eg 3 == 3.0 == 3.0.0 == 3.0.0.0 and so on.
-
+ 
 ____
 
 Has 56 line(s). Doesn't call other functions.
@@ -1580,3 +1580,4 @@ Called by:
  :zi-tmp-subst-autoload
  :zi-tmp-subst-bindkey
  Script-Body
+

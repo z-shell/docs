@@ -1,0 +1,34 @@
+local uspl2="$1"
+typeset -a func
+func=( "${(z)ZI[FUNCTIONS__$uspl2]}" )
+integer longest=0 longest_left=0 cur_left_len=0 count=1
+local f
+for f in "${(on)func[@]}"; do
+[[ -z "${#f}" ]] && continue
+f="${(Q)f}"
+if (( count ++ % 2 != 0 )); then
+  [[ "${#f}" -gt "$longest_left" ]] && longest_left="${#f}"
+  cur_left_len="${#f}"
+else
+  cur_left_len+="${#f}"
+  cur_left_len+=1
+  [[ "$cur_left_len" -gt "$longest" ]] && longest="$cur_left_len"
+fi
+done
+local answer=""
+count=1
+for f in "${(on)func[@]}"; do
+[[ -z "$f" ]] && continue
+f="${(Q)f}"
+if (( COLUMNS >= longest )); then
+  if (( count ++ % 2 != 0 )); then
+  answer+="${(r:longest_left+1:: :)f}"
+  else
+  answer+="$f"$'\n'
+  fi
+else
+  answer+="$f"$'\n'
+fi
+done
+REPLY="$answer"
+(( COLUMNS >= longest && count % 2 == 0 )) && REPLY="$REPLY"$'\n'

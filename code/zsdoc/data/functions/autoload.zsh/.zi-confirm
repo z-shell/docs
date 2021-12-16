@@ -1,0 +1,22 @@
+if (( OPTS[opt_-y,--yes] )); then
+  integer retval
+  eval "$2"; retval=$?
+  (( OPTS[opt_-q,--quiet] )) || builtin print "\nDone (action executed, exit code: $retval)"
+else
+  builtin print -Pr -- "$1"
+  builtin print "[yY/n…]"
+  local ans
+  if [[ -t 0 ]] {
+    read -q ans
+  } else {
+    read -k1 -u0 ans
+  }
+  if [[ "$ans" = "y" ]] {
+    eval "$2"
+    builtin print "\nDone (action executed, exit code: $?)"
+  } else {
+    builtin print "\nBreak, no action"
+    return 1
+  }
+fi
+return 0

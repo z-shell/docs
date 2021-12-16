@@ -1,0 +1,7 @@
+# FUNCTION: .zi-show-report [[[
+# Displays report of the plugin given.
+#
+# User-action entry point.
+#
+# $1 - plugin spec (4 formats: user---plugin, user/plugin, user (+ plugin in $2), plugin)
+# $2 - plugin (only when $1 - i.e. user - given)

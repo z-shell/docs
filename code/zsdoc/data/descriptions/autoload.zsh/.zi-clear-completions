@@ -1,0 +1,7 @@
+# FUNCTION: .zi-clear-completions [[[
+# Delete stray and improper completions.
+#
+# Completions live even when plugin isn't loaded - if they are
+# installed and enabled.
+#
+# User-action entry point.

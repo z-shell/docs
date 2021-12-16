@@ -1,0 +1,39 @@
+local uspl2 uspl2col sw first=1
+local -a string_widget
+integer correct=0
+[[ -o "KSH_ARRAYS" ]] && correct=1
+for uspl2 in "${(@ko)ZI[(I)BINDKEYS__*]}"; do
+  [[ -z "${ZI[$uspl2]}" ]] && continue
+  (( !first )) && builtin print
+  first=0
+  uspl2="${uspl2#BINDKEYS__}"
+  .zi-any-colorify-as-uspl2 "$uspl2"
+  uspl2col="$REPLY"
+  builtin print "$uspl2col"
+  string_widget=( "${(z@)ZI[BINDKEYS__$uspl2]}" )
+  for sw in "${(Oa)string_widget[@]}"; do
+    [[ -z "$sw" ]] && continue
+    sw="${(Q)sw}"
+    typeset -a sw_arr
+    sw_arr=( "${(z@)sw}" )
+    local sw_arr1="${(Q)sw_arr[1-correct]}"
+    local sw_arr2="${(Q)sw_arr[2-correct]}"
+    local sw_arr3="${(Q)sw_arr[3-correct]}"
+    local sw_arr4="${(Q)sw_arr[4-correct]}"
+    local sw_arr5="${(Q)sw_arr[5-correct]}"
+
+    if [[ "$sw_arr3" = "-M" && "$sw_arr5" != "-R" ]]; then
+      builtin print "bindkey $sw_arr1 $sw_arr2 ${ZI[col-info]}for keymap $sw_arr4${ZI[col-rst]}"
+    elif [[ "$sw_arr3" = "-M" && "$sw_arr5" = "-R" ]]; then
+      builtin print "${ZI[col-info]}range${ZI[col-rst]} bindkey $sw_arr1 $sw_arr2 ${ZI[col-info]}mapped to $sw_arr4${ZI[col-rst]}"
+    elif [[ "$sw_arr3" != "-M" && "$sw_arr5" = "-R" ]]; then
+      builtin print "${ZI[col-info]}range${ZI[col-rst]} bindkey $sw_arr1 $sw_arr2"
+    elif [[ "$sw_arr3" = "-A" ]]; then
+      builtin print "Override of keymap \`main'"
+    elif [[ "$sw_arr3" = "-N" ]]; then
+      builtin print "New keymap \`$sw_arr4'"
+    else
+      builtin print "bindkey $sw_arr1 $sw_arr2"
+    fi
+  done
+done

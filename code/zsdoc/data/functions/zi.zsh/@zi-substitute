@@ -1,0 +1,36 @@
+emulate -LR zsh
+builtin setopt extendedglob warncreateglobal typesetsilent noshortloops
+local -A ___subst_map
+___subst_map=(
+  "%ID%"   "${id_as_clean:-$id_as}"
+  "%USER%" "$user"
+  "%PLUGIN%" "${plugin:-$save_url}"
+  "%URL%" "${save_url:-${user:+$user/}$plugin}"
+  "%DIR%" "${local_path:-$local_dir${dirname:+/$dirname}}"
+  '$ZPFX' "$ZPFX"
+  '${ZPFX}' "$ZPFX"
+  '%OS%' "${OSTYPE%(-gnu|[0-9]##)}" '%MACH%' "$MACHTYPE" '%CPU%' "$CPUTYPE"
+  '%VENDOR%' "$VENDOR" '%HOST%' "$HOST" '%UID%' "$UID" '%GID%' "$GID"
+)
+if [[ -n ${ICE[param]} && ${ZI[SUBST_DONE_FOR]} != ${ICE[param]} ]] {
+  ZI[SUBST_DONE_FOR]=${ICE[param]}
+  ZI[PARAM_SUBST]=
+  local -a ___params
+  ___params=( ${(s.;.)ICE[param]} )
+  local ___param ___from ___to
+  for ___param ( ${___params[@]} ) {
+    local ___from=${${___param%%([[:space:]]|)(->|→)*}##[[:space:]]##} ___to=${${___param#*(->|→)([[:space:]]|)}%[[:space:]]}
+    ___from=${___from//((#s)[[:space:]]##|[[:space:]]##(#e))/}
+    ___to=${___to//((#s)[[:space:]]##|[[:space:]]##(#e))/}
+    ZI[PARAM_SUBST]+="%${(q)___from}% ${(q)___to} "
+  }
+}
+local -a ___add
+___add=( "${ICE[param]:+${(@Q)${(@z)ZI[PARAM_SUBST]}}}" )
+(( ${#___add} % 2 == 0 )) && ___subst_map+=( "${___add[@]}" )
+local ___var_name
+for ___var_name; do
+  local ___value=${(P)___var_name}
+  ___value=${___value//(#m)(%[a-zA-Z0-9]##%|\$ZPFX|\$\{ZPFX\})/${___subst_map[$MATCH]}}
+  : ${(P)___var_name::=$___value}
+done

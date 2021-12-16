@@ -1,0 +1,3 @@
+# FUNCTION: +zi-deploy-message. [[[
+# Deploys a sub-prompt message to be displayed OR a `zle
+# .reset-prompt' call to be invoked

@@ -1,0 +1,9 @@
+  if [[ ${ZI[DTRACE]} = 1 ]]; then
+    +zi-message "{error}Dtrace is already active, stop it first with \`dstop'{rst}"
+    return 1
+  fi
+
+ZI[DTRACE]=1
+
+.zi-diff _dtrace/_dtrace begin
+.zi-tmp-subst-on dtrace

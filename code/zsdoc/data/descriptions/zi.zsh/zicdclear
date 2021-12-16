@@ -1,0 +1,3 @@
+# ]]]
+# FUNCTION: zicdclear. [[[
+# A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.

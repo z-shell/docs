@@ -1,0 +1,19 @@
+local uspl2="$1"
+REPLY=""
+integer empty=0
+.zi-save-set-extendedglob
+[[ "${ZI[OPTIONS__$uspl2]}" != *[$'! \t']* ]] && empty=1
+.zi-restore-extendedglob
+(( empty )) && return 0
+typeset -A opts
+opts=( "${(z)ZI[OPTIONS__$uspl2]}" )
+integer longest=0
+local k
+for k in "${(kon)opts[@]}"; do
+  [[ "${#k}" -gt "$longest" ]] && longest="${#k}"
+done
+local txt
+for k in "${(kon)opts[@]}"; do
+  [[ "${opts[$k]}" = "on" ]] && txt="was unset" || txt="was set"
+  REPLY+="${(r:longest+1:: :)k}$txt"$'\n'
+done

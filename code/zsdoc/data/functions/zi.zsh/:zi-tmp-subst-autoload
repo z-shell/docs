@@ -1,0 +1,106 @@
+emulate -LR zsh
+builtin setopt extendedglob warncreateglobal typesetsilent rcquotes
+local -a opts opts2 custom reply
+local func
+
+zparseopts -D -E -M -a opts ${(s::):-RTUXdkmrtWzwC} I+=opts2 S+:=custom
+
+builtin set -- ${@:#--}
+.zi-any-to-user-plugin $ZI[CUR_USPL2]
+[[ $reply[1] = % ]] && local PLUGIN_DIR="$reply[2]" || \
+local PLUGIN_DIR="$ZI[PLUGINS_DIR]/${reply[1]:+$reply[1]---}${reply[2]//\//---}"
+local -a fpath_elements
+fpath_elements=( ${fpath[(r)$PLUGIN_DIR/*]} )
+[[ -d $PLUGIN_DIR/functions ]] && fpath_elements+=( "$PLUGIN_DIR"/functions )
+
+if (( ${+opts[(r)-X]} )); then
+  .zi-add-report "${ZI[CUR_USPL2]}" "Warning: Failed autoload ${(j: :)opts[@]} $*"
+  +zi-message -u2 "{error}builtin autoload required for {obj}${(j: :)opts[@]}{error} option(s)"
+  return 1
+fi
+if (( ${+opts[(r)-w]} )); then
+  .zi-add-report "${ZI[CUR_USPL2]}" "-w-Autoload ${(j: :)opts[@]} ${(j: :)@}"
+  fpath+=( $PLUGIN_DIR )
+  builtin autoload ${opts[@]} "$@"
+  return $?
+fi
+if [[ -n ${(M)@:#+X} ]]; then
+  .zi-add-report "${ZI[CUR_USPL2]}" "Autoload +X ${opts:+${(j: :)opts[@]} }${(j: :)${@:#+X}}"
+  local +h FPATH=$PLUGINS_DIR${fpath_elements:+:${(j.:.)fpath_elements[@]}}:$FPATH
+  local +h -a fpath
+  fpath=( $PLUGIN_DIR $fpath_elements $fpath )
+  builtin autoload +X ${opts[@]} "${@:#+X}"
+  return $?
+fi
+
+for func; do
+  .zi-add-report "${ZI[CUR_USPL2]}" "Autoload $func${opts:+ with options ${(j: :)opts[@]}}"
+done
+
+integer count retval
+for func; do
+  if (( ${+functions[$func]} != 1 )) {
+    builtin setopt noaliases
+    if [[ $func == /* ]] && is-at-least 5.4; then
+      builtin autoload ${opts[@]} $func
+      return $?
+    elif [[ $func == /* ]]; then
+      if [[ $ZI[MUTE_WARNINGS] != (1|true|on|yes) && -z $ZI[WARN_SHOWN_FOR_$ZI[CUR_USPL2]] ]]; then
+        +zi-message "{u-warn}Warning{b-warn}: {rst}the plugin {pid}$ZI[CUR_USPL2]" \
+          "{rst}is using autoload functions specified by their absolute path," \
+          "which is not supported by this Zsh version ({↔} {version}$ZSH_VERSION{rst}," \
+          "required is Zsh >= {version}5.4{rst})." "{nl}A fallback mechanism has been applied, which works well only" \
+          "for functions in the plugin {u}{slight}main{rst} directory." "{nl}(To mute this message, set" \
+          "{var}\$ZI[MUTE_WARNINGS]{rst} to a truth value.)"
+        ZI[WARN_SHOWN_FOR_$ZI[CUR_USPL2]]=1
+      fi
+      func=$func:t
+    fi
+    if [[ ${ZI[NEW_AUTOLOAD]} = 2 ]]; then
+      builtin autoload ${opts[@]} "$PLUGIN_DIR/$func"
+      retval=$?
+    elif [[ ${ZI[NEW_AUTOLOAD]} = 1 ]]; then
+      if (( ${+opts[(r)-C]} )) {
+        local pth nl=$'\n' sel=""
+        for pth ( $PLUGIN_DIR $fpath_elements $fpath ) {
+          [[ -f $pth/$func ]] && { sel=$pth; break; }
+        }
+        if [[ -z $sel ]] {
+          +zi-message '{u-warn}zi{b-warn}:{error} Couldn''t find autoload function{ehi}:' \
+            "{apo}\`{file}${func}{apo}\`{error} anywhere in {var}\$fpath{error}."
+            retval=1
+        } else {
+          eval "function ${(q)${custom[++count*2]}:-$func} {
+            local body=\"\$(<${(qqq)sel}/${(qqq)func})\" body2
+            () { setopt localoptions extendedglob
+              body2=\"\${body##[[:space:]]#${func}[[:blank:]]#\(\)[[:space:]]#\{}\"
+              [[ \$body2 != \$body ]] && body2=\"\${body2%\}[[:space:]]#([$nl]#([[:blank:]]#\#[^$nl]#((#e)|[$nl]))#)#}\"
+            }
+            functions[${${(q)custom[count*2]}:-$func}]=\"\$body2\"
+            ${(q)${custom[count*2]}:-$func} \"\$@\"
+          }"
+          retval=$?
+        }
+      } else {
+        eval "function ${(q)func} {
+          local -a fpath
+          fpath=( ${(qqq)PLUGIN_DIR} ${(qqq@)fpath_elements} ${(qqq@)fpath} )
+          builtin autoload -X ${(j: :)${(q-)opts[@]}}
+        }"
+        retval=$?
+      }
+    else
+      eval "function ${(q)func} {
+        :zi-reload-and-run ${(qqq)PLUGIN_DIR}"$'\0'"${(pj,\0,)${(qqq)fpath_elements[@]}} ${(qq)opts[*]} ${(q)func} "'"$@"
+      }'
+      retval=$?
+    fi
+    (( ZI[ALIASES_OPT] )) && builtin setopt aliases
+  }
+  if (( ${+opts2[(r)-I]} )) {
+    ${custom[count*2]:-$func}
+    retval=$?
+  }
+done
+
+return $retval
