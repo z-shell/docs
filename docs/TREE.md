@@ -1,3 +1,4 @@
+```SystemVerilog
 code/zsdoc
 ├── Makefile
 ├── ZSDOC_REAMDE.md
@@ -569,3 +570,4 @@ wiki/zi
     └── declare-zsh.md
 
 10 directories, 36 files
+```
