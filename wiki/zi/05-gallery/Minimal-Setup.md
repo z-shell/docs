@@ -38,8 +38,7 @@ zi wait lucid light-mode for \
 - the syntax-highlighting and suggestions plugins are loaded early for a better
   user experience.
 
-The same setup but without using Turbo mode (i.e. no `wait''` ice) and without
-the [The-Syntax](https://github.com/zi/wiki/The-Syntax/):
+The same setup but without using Turbo mode (i.e. no `wait''` ice) and without[The `for''` syntax](Syntax#the-for-syntax):
 
 ```zsh
 zi ice blockf atpull'zi creinstall -q .'

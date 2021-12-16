@@ -9,7 +9,7 @@
 
 Following variables can be set to custom values, before sourcing ZI. The
 previous global variables like `$ZPLG_HOME` have been removed to not pollute
-the namespace – there's a single `$ZI` hash instead of `8` string
+the namespace – there's a single `$ZI` hash instead of `8` string
 variables. Please update your dotfiles.
 
 ```zsh
@@ -38,7 +38,7 @@ where software with `Makefile`, etc. can be pointed to, by e.g. `atclone'./confi
 
 Use `create` subcommand with user name `_local` (the default) to create the plugin's
 skeleton in `$ZI[PLUGINS_DIR]`. It will be not connected with the GitHub repository
-(because of the user name being `_local`). To enter the plugin's directory use `cd` command
+(because of the user name being `_local`). To enter the plugin's directory use the `cd` command
 with just the plugin's name (without `_local`, it's optional).
 
 If the user name will not be `_local`, then ZI will create a repository also on GitHub
@@ -46,8 +46,7 @@ and set up the correct repository origin.
 
 ## Extending Git
 
-There are several projects that provide git extensions. Installing them with
-ZI has many benefits:
+Several projects provide git extensions. Installing them with ZI has many benefits:
 
 - all files are under `$HOME` – no administrator rights needed,
 - declarative setup (like Chef or Puppet) – copying `.zshrc` to a different account
@@ -85,6 +84,6 @@ To disable this call – what is needed to avoid the slowdown and if the user lo
 any completion-equipped plugins, i.e. almost on 100% – add the following lines to `~/.zshenv`:
 
 ```zsh
-# Skip the not really helping Ubuntu global compinit
+# Skip the not helping Ubuntu global compinit
 skip_global_compinit=1
 ```

@@ -102,12 +102,12 @@ zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_doc
 ```zsh
 # ogham/exa also uses the definitions
 zi ice wait"0c" lucid reset \
-    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
-            \${P}sed -i \
-            '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
-            \${P}dircolors -b LS_COLORS > c.zsh" \
-    atpull'%atclone' pick"c.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+  atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
+    \${P}sed -i \
+    '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+    \${P}dircolors -b LS_COLORS > c.zsh" \
+  atpull'%atclone' pick"c.zsh" nocompile'!' \
+  atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zi light trapd00r/LS_COLORS
 
 # revolver
@@ -116,8 +116,16 @@ zi light molovo/revolver
 
 # zunit
 zi ice wait"2" lucid as"program" pick"zunit" \
-            atclone"./build.zsh" atpull"%atclone"
+  atclone"./build.zsh" atpull"%atclone"
 zi load molovo/zunit
+
+# revolver and zunit using for'' syntax
+zi for \
+  as"program" atclone"ln -sfv revolver.zsh-completion _revolver" \
+  atpull"%atclone" pick"revolver" @molovo/revolver \
+  as"completion" atclone"./build.zsh; ln -sfv zunit.zsh-completion _zunit" \
+  atpull"%atclone" sbin"zunit" @zunit-zsh/zunit
+
 
 zi ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX" nocompile
 zi light tj/git-extras

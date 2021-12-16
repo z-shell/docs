@@ -4,7 +4,7 @@ v1.19, 10/21/2018
 :rouge-style: monokai
 :toc:
 
-ifdef::backend-html5[The handbook is also available as a link:https://github.com/z-shell/docs/wiki/zsh/Zsh-Native-Scripting-Handbook.pdf[PDF].]
+ifdef::backend-html5[The handbook is also available as a link:https://github.com/z-shell/docs/wiki/zsh/Zsh-Native-Scripting-Handbook.pdf[PDF], link:https://z-shell.github.io/docs/zsh/Zsh-Native-Scripting-Handbook.html[HTML].]
 
 This document has been created after 3.5 years of creating software for Zshell
 and receiving help from IRC channel #zsh. Avoiding forks was the main guideline

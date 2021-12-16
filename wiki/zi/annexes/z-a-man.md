@@ -1,11 +1,9 @@
-## Introduction
-
 A ZI [extension](../Annexes/) that automatically generates:
 
 - man pages for all plugins and snippets (out of plugin README.md files by
   using [ronn](https://github.com/rtomayko/ronn) converter),
 - code-documentation manpages (by using
-  [zshelldoc](https://github.com/z-shell/zshelldoc) project).
+  [zsdoc](https://github.com/z-shell/zsdoc) project).
 
 Man extension is being activated at clone of a plugin and also at update of it
 and it then generates the manpages. To view them there's a `zman` command:
@@ -21,11 +19,11 @@ zman -c z-shell/z-a-man
 
 Main manual (of the project):
 
-![README](https://raw.githubusercontent.com/z-shell/z-a-man/main/images/zman-readme.png)
+![README](https://raw.githubusercontent.com/z-shell/z-a-man/main/docs/images/zman-readme.png)
 
 Code documentation for the plugin.zsh file (of the project):
 
-![Code documentation](https://raw.githubusercontent.com/z-shell/z-a-man/main/images/zman-cd.png)
+![Code documentation](https://raw.githubusercontent.com/z-shell/z-a-man/main/docs/images/zman-cd.png)
 
 ## Installation
 
