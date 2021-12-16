@@ -4,7 +4,7 @@ v1.0, 11/12/2021
 :rouge-style: monokai
 :toc:
 
-ifdef::backend-html5[The document is also available as a link:https://github.com/z-shell/docs/raw/main/wiki/zsh/Zsh-Native-Scripting-Handbook.pdf[PDF], link:https://z-shell.github.io/docs/zsh/Zsh-Plugin-Standard.html[HTML].]
+ifdef::backend-html5[The document is also available as a link:https://github.com/z-shell/docs/raw/main/wiki/zsh/Zsh-Plugin-Standard.pdf[PDF], link:https://z-shell.github.io/docs/zsh/Zsh-Plugin-Standard.html[HTML].]
 
 ## What Is A Zsh Plugin?
 
