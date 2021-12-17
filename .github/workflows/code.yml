@@ -6,13 +6,17 @@ on:
     - cron: "30 4 * * 4"
 
 jobs:
-  generate-documentation:
+  deps:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - uses: mktcode/consecutive-workflow-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: 'true'
       - name: Install zsdoc
         run: |
           sudo apt-get install -y zsh tree
-          git submodule update --init --recursive
           sudo make -C lib/zsdoc install
       - name: ruby
         uses: ruby/setup-ruby@v1
@@ -22,9 +26,10 @@ jobs:
       - name: asciidoctor-pdf
         run: |
           gem install asciidoctor-pdf rouge
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+  generate:
+    runs-on: ubuntu-latest
+    needs: [ deps ]
+    steps:
       - name: Generate Asciidoc
         run: make -C code adoc
       - name: Generate PDF
