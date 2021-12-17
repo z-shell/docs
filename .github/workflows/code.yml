@@ -12,7 +12,6 @@ jobs:
       - name: Install zsdoc
         run: |
           sudo apt-get install -y zsh tree
-#          git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
           git submodule update --init --recursive
           sudo make -C lib/zsdoc install
       - name: ruby
