@@ -1,0 +1,3 @@
+[submodule "lib/zsdoc"]
+	path = lib/zsdoc
+	url = git@github.com:z-shell/zsdoc.git
