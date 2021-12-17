@@ -32,6 +32,8 @@ jobs:
     needs: [ deps ]
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate Asciidoc
         run: make -C code adoc
       - name: Generate PDF
