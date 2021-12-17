@@ -51,17 +51,19 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Code Documentation Update"
-          branch: main
+          # Defaults to the current branch.
+          #branch: main
           # See https://git-scm.com/docs/git-commit#_options
           commit_options: "--no-verify --signoff"
           # See the `pathspec`-documentation for git
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
           file_pattern: code docs
-          repository: .
-          commit_user_name: Z-Shell Bot
-          commit_user_email: z-shell@digitalclouds.dev
-          commit_author: Z-Shell ZI <z-shell@digitalclouds.dev>
+          # Defaults to the root of the repository
+          #repository:
+          #commit_user_name: Z-Shell Bot
+          #commit_user_email: z-shell@digitalclouds.dev
+          #commit_author: Z-Shell ZI <z-shell@digitalclouds.dev>
           #tagging_message: 'v1.0.0'
           # See https://git-scm.com/docs/git-status#_options
           status_options: "--untracked-files=no"
