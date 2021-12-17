@@ -13,7 +13,7 @@ jobs:
       - uses: mktcode/consecutive-workflow-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          submodules: 'true'
+          submodules: recursive
       - name: Install zsdoc
         run: |
           sudo apt-get install -y zsh tree
