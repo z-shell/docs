@@ -21,4 +21,4 @@ This repository manages the following documentation:
 - [Zsh Plugin Standard](https://github.com/z-shell/docs/blob/main/wiki/zi/Zsh-Plugin-Standard) | updated on `changes`
 - [Zsh Native Scripting Handbook](https://github.com/z-shell/docs/blob/main/wiki/zi/Zsh-Native-Scripting-Handbook) | updated on `changes`
 
-> Files [tree](docs/TREE.md)
+> Files [tree](TREE.md)
