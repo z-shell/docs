@@ -7,7 +7,8 @@
 
 ***
 
-  ZI is a fast and feature-rich Z Shell plugin manager that will entitle you to install almost everything from **GitHub**,  **RubyGems**,  **Node modules**,  **Rust**,   and **Cargo** packages inside the plugin directory. 
+
+  ZI is a fast and feature-rich Z Shell plugin manager that will allow you to install almost everything from **GitHub**,  **RubyGems**,  **Node modules**,  **Rust**,   and **Cargo** packages inside the plugin directory. 
 
 Provides — [Turbo mode](https://github.com/z-shell/zi/wiki/Introduction#turbo-mode-zsh--53) which yields **50-80% [faster](https://github.com/z-shell/pm-perf-test) Zsh startup** — with a [**reports**](https://github.com/z-shell/zi/wiki/Commands#reports-and-statistics) about the plugins, such as describing what **aliases**, **functions**, **bindkeys**, **Zle widgets**, **zstyles**, [**completions**](https://github.com/z-shell/zi/wiki/Introduction#completion-management), variables, `PATH` and `FPATH` elements a plugin has set up. Allows to quickly [familiarize](https://github.com/z-shell/zi/wiki/Profiling-plugins) oneself with a new plugin and provides rich and easy-to-digest information that might be helpful on various occasions. supports the unloading of plugins and the ability to list, (un)install, and **selectively disable**, **enable** plugin's completions.
 
