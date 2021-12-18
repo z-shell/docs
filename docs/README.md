@@ -1,9 +1,10 @@
-<h3 align="center">
+<h2 align="center">
   <a href="https://github.com/z-shell/zi">
     <img src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="60" height="60">
   </a>
 ❮ ZI ❯ Documentation
-</h3>
+</h2>
+
 <div align="center">
 
 [![📖 ZI Wiki](https://github.com/z-shell/docs/actions/workflows/wiki-zi.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/wiki-zi.yml)
@@ -12,8 +13,6 @@
 
 </div>  
   
-***
-
 This repository manages the following documentation:
 
 - [ZI Wiki](https://github.com/z-shell/zi/wiki) | updated on `changes`
