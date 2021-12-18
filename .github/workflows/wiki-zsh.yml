@@ -1,5 +1,5 @@
 ---
-name: 📖 Zsh Documentation
+name: 📖 Zsh
 
 on:
   push:
@@ -8,8 +8,6 @@ on:
       - "wiki/zsh/**"
   pull_request_target:
     branches: [main]
-    paths:
-      - "wiki/zsh/**"
   workflow_dispatch:
 
 jobs:
