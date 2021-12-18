@@ -3,13 +3,11 @@
     <img src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="60" height="60">
   </a>
 ❮ ZI ❯ Wiki
-</h2>
-
-<h3 align="center">
+</h2><h3><div align="center">
   
 **ZI is a fast and feature-rich plugin manager for [Zsh](https://zsh.sourceforge.io/) - [Unix shell](https://en.wikipedia.org/wiki/Unix_shell).** 
   
-</h3>
+</div></h3>
 
 - Has a [turbo mode](https://github.com/z-shell/zi/wiki/Introduction#turbo-mode-zsh--53) which yields 50-80% [faster](https://github.com/z-shell/pm-perf-test) Zsh startup.
 
