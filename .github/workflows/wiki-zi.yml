@@ -12,8 +12,9 @@ jobs:
   deploy-wiki:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Include knowledge base
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 🏗 Prepare wiki
         run: make -C wiki/zsh to-wiki-pages
       - name: 📩 Add to wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v2
