@@ -17,8 +17,9 @@
   - [Compiling Programs](Compiling-programs)
   - [Profiling Plugins](Profiling-plugins)
   - [Multiple Prompts](Multiple-prompts)
-- 📦 [**Packages**](Packages)
-- 💠 [**Annexes**](Annexes)
+- 💠 [**Ecosystem**](Home)
+  - [Packages](Packages)
+  - [Annexes](Annexes)
 
 #### 🔖 Knowledge Base
 
