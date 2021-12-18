@@ -1,5 +1,5 @@
 The files will be processed and their documentation will be generated
-in subdirectory `zsdoc` (with meta-data in subdirectory `data').
+in subdirectory `zsdoc` (with meta-data in subdirectory `data`).
 
 > Supported are Bash and Zsh scripts.
 
