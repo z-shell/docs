@@ -5,7 +5,7 @@ in subdirectory `zsdoc` (with meta-data in subdirectory `data').
 
 - Reading configuration from: /usr/local/share/zsdoc/zsd.config
 - Zsh control binary is: `zsh'
-- Usage: zsd [-h/--help] [-v/--verbose] [-q/--quiet] [-n/--noansi] [--cignore <pattern>] {file1} [file2] ...
+- Usage: `zsd [-h/--help] [-v/--verbose] [-q/--quiet] [-n/--noansi] [--cignore <pattern>] {file1} [file2] ...`
 
 Options:
 
