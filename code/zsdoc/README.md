@@ -3,8 +3,8 @@ in subdirectory `zsdoc` (with meta-data in subdirectory `data').
 
 > Supported are Bash and Zsh scripts.
 
-- Reading configuration from: /usr/local/share/zsdoc/zsd.config
-- Zsh control binary is: `zsh'
+- Reading configuration from: `/usr/local/share/zsdoc/zsd.config`
+- Zsh control binary is: `zsh`
 - Usage: `zsd [-h/--help] [-v/--verbose] [-q/--quiet] [-n/--noansi] [--cignore <pattern>] {file1} [file2] ...`
 
 Options:
