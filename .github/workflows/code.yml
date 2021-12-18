@@ -1,20 +1,24 @@
 ---
-name: 📖 Code Documentation
+name: 📖 Code
 on:
   workflow_dispatch:
   schedule:
     - cron: "30 4 * * 4"
 
 jobs:
-  generate-documentation:
+  deps:
     runs-on: ubuntu-latest
     steps:
-      - name: Install zsdoc
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+
+      - name: Set zsdoc
         run: |
           sudo apt-get install -y zsh tree
-          git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
-          sudo make -C /tmp/zsdoc install
-      - name: ruby
+          sudo make -C lib/zsdoc install
+      - name: Set ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
@@ -22,9 +26,6 @@ jobs:
       - name: asciidoctor-pdf
         run: |
           gem install asciidoctor-pdf rouge
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate Asciidoc
         run: make -C code adoc
       - name: Generate PDF
@@ -47,21 +48,24 @@ jobs:
           tree wiki/zsh | tee -a docs/TREE.md
           tree wiki/zi | tee -a docs/TREE.md
           echo -e "```"
+          
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Code Documentation Update"
-          branch: main
+          # Defaults to the current branch.
+          #branch: main
           # See https://git-scm.com/docs/git-commit#_options
           commit_options: "--no-verify --signoff"
           # See the `pathspec`-documentation for git
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
           file_pattern: code docs
-          repository: .
-          commit_user_name: Z-Shell Bot
-          commit_user_email: z-shell@digitalclouds.dev
-          commit_author: Z-Shell ZI <z-shell@digitalclouds.dev>
+          # Defaults to the root of the repository
+          #repository:
+          #commit_user_name: Z-Shell Bot
+          #commit_user_email: z-shell@digitalclouds.dev
+          #commit_author: Z-Shell ZI <z-shell@digitalclouds.dev>
           #tagging_message: 'v1.0.0'
           # See https://git-scm.com/docs/git-status#_options
           status_options: "--untracked-files=no"
@@ -72,3 +76,5 @@ jobs:
           skip_fetch: true
           # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
           disable_globbing: true
+          if: steps.auto-commit-action.outputs.changes_detected == 'false'
+          run: echo "No Changes!"

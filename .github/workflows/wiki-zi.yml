@@ -12,10 +12,15 @@ jobs:
   deploy-wiki:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Include knowledge base
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 📥 Add from wiki
+        run: |
+          git clone https://github.com/z-shell/zi.wiki.git /tmp/zi.wiki
+          rsync -av /tmp/zi.wiki/* wiki/zi
+      - name: 🏗 Prepare wiki
         run: make -C wiki/zsh to-wiki-pages
-      - name: 📩 Add to wiki
+      - name: 📤 Add to wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v2
         env:
           WIKI_DIR: wiki/zi/
@@ -23,4 +28,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           GH_MAIL: ${{ secrets.GH_MAIL }}
           GH_NAME: ${{ github.repository_owner }}
-          EXCLUDED_FILES: "wiki/zi/drafts/"
+          #EXCLUDED_FILES: "wiki/zi/drafts/"
