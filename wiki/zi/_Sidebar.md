@@ -6,7 +6,7 @@
   - [How to use](How-to-Use)
   - [Hints & Tips](Hints-&-Tips)
 - ✍️ [**Syntax**](Syntax)
-  - [Ice](Ice)
+  - 🧊 [Ice](Ice)
     - [Ice modifiers](Ice-modifiers)
     - [Alternate ice syntax](Alternate-Ice-Syntax)
   - [Code Documentation](Code-Documentation)
