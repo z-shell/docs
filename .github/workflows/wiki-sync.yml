@@ -12,8 +12,8 @@ on:
   gollum:
 
 env:
-  GIT_AUTHOR_NAME: Actionbot
-  GIT_AUTHOR_EMAIL: actions@github.com
+  GIT_AUTHOR_NAME: ZI Actionbot
+  GIT_AUTHOR_EMAIL: z-shell@digitalclouds.dev
 
 jobs:
   job-sync-docs-to-wiki:
