@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
       - name: 🏗 Prepare wiki
         run: make -C wiki/zsh to-wiki-pages
-      - name: 📤 Add to wiki
+      - name: 📤 Sync Docs to Wiki
         uses: Andrew-Chen-Wang/github-wiki-action@v2
         env:
           WIKI_DIR: wiki/zi/
