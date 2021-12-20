@@ -92,7 +92,7 @@ This installs the annex and makes the `rustup` and `cargo''` ices available.
 
 ## Rust tools meta package
 
-To install Rust utilities, simply run `zi light @rust-utils`, it will install abd setup:
+To install Rust utilities, simply run `zi light @rust-utils`, it will install and setup:
 
 ```SystemVerilog
 bin-gem-node annex: Created the cargo shim and set +x on the cargo binary
