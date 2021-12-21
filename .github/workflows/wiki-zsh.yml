@@ -14,11 +14,14 @@ jobs:
   generate-documentation:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
       - name: ⚡ Install zsdoc
         run: |
-          sudo apt-get install -y zsh
-          git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
-          sudo make -C /tmp/zsdoc install
+          sudo apt-get install -y zsh tree
+          sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
