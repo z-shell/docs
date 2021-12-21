@@ -13,30 +13,29 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive
-
-      - name: Set zsdoc
+      - name: ⚡ Install zsdoc
         run: |
           sudo apt-get install -y zsh tree
           sudo make -C lib/zsdoc install
-      - name: Set ruby
+      - name: 💎 Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
           bundler-cache: true
-      - name: asciidoctor-pdf
+      - name: 📝 Install asciidoctor-pdf and rouge
         run: |
           gem install asciidoctor-pdf rouge
-      - name: Generate Asciidoc
+      - name: ♻️ Generate Asciidoc
         run: make -C code adoc
-      - name: Generate PDF
+      - name: ♻️ Generate PDF
         run: make -C code/zsdoc pdf
-      - name: Generate HTML
+      - name: ♻️ Generate HTML
         run: make -C code/zsdoc html
-      - name: Cleanup
+      - name: ♻️ Cleanup
         run: make -C code clean
-      - name: Tar Code documentation
+      - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
-      - name: Upload code.tar.gz
+      - name: 📤 Upload code.tar.gz
         uses: actions/upload-artifact@v2
         with:
           name: code documentation
@@ -49,7 +48,7 @@ jobs:
           tree wiki/zi | tee -a docs/TREE.md
           echo -e "```"
           
-      - name: Commit changes
+      - name: 🚀 Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Code Documentation Update"
