@@ -1,13 +1,11 @@
 ---
-name: 📖 Zsh Documentation
+name: 📖 Zsh
 
 on:
   push:
-    branches: [main]
     paths:
       - "wiki/zsh/**"
   pull_request_target:
-    branches: [main]
     paths:
       - "wiki/zsh/**"
   workflow_dispatch:
@@ -16,36 +14,39 @@ jobs:
   generate-documentation:
     runs-on: ubuntu-latest
     steps:
-      - name: Install zsdoc
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - name: ⚡ Install zsdoc
         run: |
-          sudo apt-get install -y zsh
-          git clone https://github.com/z-shell/zsdoc.git /tmp/zsdoc
-          sudo make -C /tmp/zsdoc install
-      - name: ruby
+          sudo apt-get install -y zsh tree
+          sudo make -C lib/zsdoc install
+      - name: 💎 Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
           bundler-cache: true
-      - name: asciidoctor-pdf rouge
+      - name: 📝 Install asciidoctor-pdf and rouge
         run: |
           gem install asciidoctor-pdf rouge
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Generate Documentation
+      - name: ♻️ Generate Documentation
         run: |
           make -C wiki/zsh clean
           make -C wiki/zsh all
-      - name: Tar Zsh Documentation
+      - name: ♻️ Compress the Zsh Documentation
         run: tar cvzf zsh-wiki.tar.gz wiki/zsh
       - name: Upload zsh-wiki.tar.gz
         uses: actions/upload-artifact@v2
         with:
-          name: Zsh Documentation
+          name: ♻️ Zsh Documentation
           path: zsh-wiki.tar.gz
-      - name: Prepare Github Pages
+      - name: ♻️ Prepare Github Pages
         run: make -C wiki/zsh prep-gh-pages
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

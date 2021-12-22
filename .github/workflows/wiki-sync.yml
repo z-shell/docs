@@ -1,0 +1,51 @@
+---
+name: 📖 Wiki Sync
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - "docs/wiki/**"
+  repository_dispatch:
+    types: [docs]
+  gollum:
+
+env:
+  GIT_AUTHOR_NAME: ZI Actionbot
+  GIT_AUTHOR_EMAIL: z-shell@digitalclouds.dev
+
+jobs:
+  job-sync-docs-to-wiki:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'gollum'
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+      - name: 📤 Sync Docs to Wiki
+        uses: newrelic/wiki-sync-action@master
+        with:
+          source: docs/wiki
+          destination: wiki
+          token: ${{ secrets.GH_PAT }}
+          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
+          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
+  
+  job-sync-wiki-to-docs:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'gollum'
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PAT }}
+          ref: develop
+      - name: 📥 Sync Wiki to Docs
+        uses: newrelic/wiki-sync-action@master
+        with:
+          source: wiki
+          destination: docs/wiki
+          token: ${{ secrets.GH_PAT }}
+          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
+          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
+          branch: develop

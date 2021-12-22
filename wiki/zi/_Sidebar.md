@@ -6,7 +6,7 @@
   - [How to use](How-to-Use)
   - [Hints & Tips](Hints-&-Tips)
 - ✍️ [**Syntax**](Syntax)
-  - [Ice](Ice)
+  - 🧊 [Ice](Ice)
     - [Ice modifiers](Ice-modifiers)
     - [Alternate ice syntax](Alternate-Ice-Syntax)
   - [Code Documentation](Code-Documentation)
@@ -17,8 +17,9 @@
   - [Compiling Programs](Compiling-programs)
   - [Profiling Plugins](Profiling-plugins)
   - [Multiple Prompts](Multiple-prompts)
-- 📦 [**Packages**](Packages)
-- 💠 [**Annexes**](Annexes)
+- 💠 [**Ecosystem**](Home)
+  - [Packages](Packages)
+  - [Annexes](Annexes)
 
 #### 🔖 Knowledge Base
 

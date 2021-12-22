@@ -89,3 +89,22 @@ zi light z-shell/z-a-rust
 ```
 
 This installs the annex and makes the `rustup` and `cargo''` ices available.
+
+## Rust tools meta package
+
+To install Rust utilities, simply run `zi light @rust-utils`, it will install and setup:
+
+```SystemVerilog
+bin-gem-node annex: Created the cargo shim and set +x on the cargo binary
+bin-gem-node annex: Created the cargo-clippy shim and set +x on the cargo-clippy binary
+bin-gem-node annex: Created the cargo-fmt shim and set +x on the cargo-fmt binary
+bin-gem-node annex: Created the cargo-miri shim and set +x on the cargo-miri binary
+bin-gem-node annex: Created the clippy-driver shim and set +x on the clippy-driver binary
+bin-gem-node annex: Created the rls shim and set +x on the rls binary
+bin-gem-node annex: Created the rustc shim and set +x on the rustc binary
+bin-gem-node annex: Created the rustdoc shim and set +x on the rustdoc binary
+bin-gem-node annex: Created the rustfmt shim and set +x on the rustfmt binary
+bin-gem-node annex: Created the rust-gdb shim and set +x on the rust-gdb binary
+bin-gem-node annex: Created the rust-lldb shim and set +x on the rust-lldb binary
+bin-gem-node annex: Created the rustup shim and set +x on the rustup binary
+```
