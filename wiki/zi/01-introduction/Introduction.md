@@ -15,6 +15,8 @@
   - [Turbo-Loading Sophisticated Prompts](#turbo-loading-sophisticated-prompts)
 - [Automatic Load/Unload on Condition](#automatic-loadunload-on-condition)
 
+> Contribute to [introduction](https://github.com/z-shell/docs/blob/main/wiki/zi/01-introduction/Introduction.md)
+
 ---
 
 In the document below you’ll find out how to:
