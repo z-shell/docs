@@ -5,9 +5,15 @@
 - [`wait''`](#wait)
 - [`wrap-track''`](#wrap-track)
 - [`src''`, `pick''`, `multisrc''`](#src-pick-multisrc)
-- [`atclone`, `atpull`, `atinit`, `atload`.](#atclone-atpull-atinit-atload)
+- [`atclone''`, `atpull''`, `atinit''`, `atload''`.](#atclone-atpull-atinit-atload)
+
+> Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/03-syntax/ice-syntax/Ice.md)
 
 ---
+
+F&A: What is ice?
+
+`ice` is Zi's options command. The option melts like ice and is used only once.
 
 ### `extract''`
 
@@ -465,7 +471,7 @@ time and will allow activation of keyboard in between the snippets. The
 `multisrc''` way doesn't work this way – sourcing many files can cause
 noticeable keyboard freezes (in Turbo).
 
-### `atclone`, `atpull`, `atinit`, `atload`.
+### `atclone''`, `atpull''`, `atinit''`, `atload''`.
 
 There are four code-receiving ices: `atclone`, `atpull`, `atinit`, `atload`.
 Their role is to **receive a portion of Zsh code and execute it in certain
