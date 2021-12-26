@@ -15,9 +15,10 @@
   
 This repository manages the following documentation:
 
-- [ZI Wiki](https://github.com/z-shell/zi/wiki) | updated on `changes`
-- [Code Documentation](https://github.com/z-shell/zi/wiki/Code-Documentation) | updated every `Thursday 4:30 UTC`
-- [Zsh Plugin Standard](https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard) | updated on `changes`
-- [Zsh Native Scripting Handbook](https://github.com/z-shell/zi/wiki/Zsh-Native-Scripting-Handbook) | updated on `changes`
+- [ZI Wiki](https://github.com/z-shell/zi/wiki) | update: `on changes`
+- [Code Documentation](https://github.com/z-shell/zi/wiki/Code-Documentation) | update: `every Thursday 4:30 UTC`
+- [Zsh Plugin Standard](https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard) | update: `on changes`
+- [Zsh Native Scripting Handbook](https://github.com/z-shell/zi/wiki/Zsh-Native-Scripting-Handbook) | update: `on changes`
+- [Zsh Plugins Commit TOP](https://github.com/z-shell/zi/wiki/Zsh-Plugins-Commit-TOP) | update: `at 03:30 UTC on the 1st in Jan, Apr, Jul and Oct`
 
 > Files [tree](TREE.md)
