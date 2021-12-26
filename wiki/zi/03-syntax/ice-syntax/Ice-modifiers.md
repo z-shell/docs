@@ -1,4 +1,4 @@
-- [Ice modifiers syntax](#ice-modifiers-syntax)
+- [Ice-modifiers](#ice-modifiers)
   - [Cloning options](#cloning-options)
   - [Selection of Files (To Source, …)](#selection-of-files-to-source-)
   - [Conditional Loading](#conditional-loading)
@@ -10,22 +10,19 @@
 - [Order of Execution](#order-of-execution)
 - [A Few Remarks](#a-few-remarks)
 
+> Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/03-syntax/ice-syntax/Ice-modifiers.md)
+
 ---
 
-Following `ice` modifiers are to be
-[passed](Alternate-Ice-Syntax/) to `zi ice ...` to
-obtain described effects. The word `ice` means something that's added (like ice to a
-drink) – and in ZI it means adding a modifier to a next `zi` command, and also
-something that's temporary because it melts – and this means that the modification will
-last only for a **single** next `zi` command.
+### Ice Modifiers
+
+Following ice modifiers are to be [passed](https://github.com/z-shell/zi/wiki/Alternate-Ice-Syntax/) to `zi ice...` to obtain described effects. The word `ice` means something that's added (like ice to a drink) – and in ZI it means adding a modifier to a next `zi` command, and also something that's temporary because it melts – and this means that the modification will last only for a **single** next `zi` command.
 
 Some Ice-modifiers are highlighted and clicking on them will take you to the
 appropriate Wiki page for an extended explanation.
 
 You may safely assume given ice works with both plugins and snippets unless
 explicitly stated otherwise.
-
-## Ice modifiers syntax
 
 ### Cloning options
 
