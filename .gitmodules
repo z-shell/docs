@@ -1,3 +1,6 @@
 [submodule "lib/zsdoc"]
-	path = lib/zsdoc
-	url = git@github.com:z-shell/zsdoc.git
+path = lib/zsdoc
+url = https://github.com/z-shell/zsdoc
+[submodule "zsh-plugin-assessor"]
+path = docs/zsh-plugins-top100/zsh-plugin-assessor
+url = https://github.com/z-shell/zsh-plugin-assessor
