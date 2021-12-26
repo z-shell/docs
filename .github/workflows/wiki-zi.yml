@@ -6,7 +6,6 @@ on:
     paths:
       - "wiki/zi/**"
   workflow_dispatch:
-  workflow_call:
 
 jobs:
   deploy-wiki:
