@@ -3,8 +3,6 @@ name: 📖 Wiki Sync
 
 on:
   push:
-    branches:
-      - develop
     paths:
       - "docs/wiki/**"
   repository_dispatch:
