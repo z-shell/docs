@@ -30,7 +30,8 @@ jobs:
           cp -vf docs/zsh-plugins-top100/README.md wiki/zi/06-knowledge-base/Zsh-Plugins-TOP100.md
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
+          git add docs/zsh-plugins-top100/README.md wiki/zi/06-knowledge-base/Zsh-Plugins-TOP100.md
+          git commit -m "Assessor update" -a
       - name: 📤 Push changes
         uses: ad-m/github-push-action@master
         with:
