@@ -30,7 +30,7 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
           gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
-  
+
   job-sync-wiki-to-docs:
     runs-on: ubuntu-latest
     if: github.event_name == 'gollum'

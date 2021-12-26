@@ -47,7 +47,7 @@ jobs:
           tree wiki/zsh | tee -a docs/TREE.md
           tree wiki/zi | tee -a docs/TREE.md
           echo -e "```"
-          
+
       - name: 🚀 Commit & push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:

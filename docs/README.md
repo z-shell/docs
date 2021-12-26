@@ -11,9 +11,9 @@
 [![📖 Code Documentation](https://github.com/z-shell/docs/actions/workflows/code.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/code.yml)
 [![📖 Zsh Documentation](https://github.com/z-shell/docs/actions/workflows/wiki-zsh.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/wiki-zsh.yml)
 [![🏅 Plugin Assessor](https://github.com/z-shell/docs/actions/workflows/assessor.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/assessor.yml)
-  
-</div>  
-  
+
+</div>
+
 This repository manages the following documentation:
 
 - [ZI Wiki](https://github.com/z-shell/zi/wiki) | update: `on changes`
