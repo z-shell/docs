@@ -107,7 +107,7 @@ integer plugin_idx=0 line_num
 
 print "#gathered_plugins: ${#gathered_plugins}"
 
-builtin print -n "\n# Plugins (#$LAST_PLUGIN_IDX)\n\n" >>! "$PWD/README.md"
+builtin print -n "\n## Plugins (#$LAST_PLUGIN_IDX)\n\n" >>! "$PWD/README.md"
 
 for PLUGIN in "${gathered_plugins[@]}"; do
   plugin_idx+=1
@@ -116,7 +116,7 @@ for PLUGIN in "${gathered_plugins[@]}"; do
   LINE="${lines[line_num]}"
 
   builtin print -r -- "${LINE//:2nd_place_medal/}" >>! "$PWD/README.md"
-  [[ "$plugin_idx" -eq "$LAST_PLUGIN_IDX" ]] && print -n "\n# Themes (#$((${#gathered_plugins} - LAST_PLUGIN_IDX)))\n\n" >>! "$PWD/README.md"
+  [[ "$plugin_idx" -eq "$LAST_PLUGIN_IDX" ]] && print -n "\n## Themes (#$((${#gathered_plugins} - LAST_PLUGIN_IDX)))\n\n" >>! "$PWD/README.md"
 done
 
 float -F2 elapsed_time=$((SECONDS / 60.0))

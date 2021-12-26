@@ -1,13 +1,14 @@
-- [Gallery Of Invocations](#gallery-of-invocations)
-  - [Programs](#programs)
-  - [Completions](#completions)
-  - [Scripts](#scripts)
-  - [Plugins](#plugins)
-  - [Services](#services)
-  - [Snippets](#snippets)
-  - [Themes](#themes)
+- [Programs](#programs)
+- [Completions](#completions)
+- [Scripts](#scripts)
+- [Plugins](#plugins)
+- [Services](#services)
+- [Snippets](#snippets)
+- [Themes](#themes)
 
-## Gallery Of Invocations
+> Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/05-gallery/Gallery.md)
+
+---
 
 [PRs](https://github.com/z-shell/docs/pulls) welcomed :)
 

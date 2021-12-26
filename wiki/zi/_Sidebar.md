@@ -2,9 +2,9 @@
 
 - 💡 [**Introduction**](Introduction)
   - [Usage](Usage)
-  - [Commands](Commands)
-  - [How to use](How-to-Use)
   - [Hints & Tips](Hints-&-Tips)
+- 🛠 [**Commands**](Commands)
+  - [How to use](How-to-Use)
 - ✍️ [**Syntax**](Syntax)
   - 🧊 [Ice](Ice)
     - [Ice modifiers](Ice-modifiers)

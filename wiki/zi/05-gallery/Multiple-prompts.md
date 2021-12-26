@@ -1,4 +1,3 @@
-
 - `load''` – condition that when fulfilled will cause plugin to be loaded,
 - `unload''` – as above, but will unload plugin, note that plugins are loaded with <code>zi load </code>, not `zi light`, to track what plugin does, to be able to unload it,
 - `atload'!…'` – run the `precmd` hooks to make the prompts fully initialized when loaded in the middle of the prompt (`precmd` hooks are being normally run before each **new** prompt); exclamation mark causes the effects of the functions to be tracked, to allow better unloading,

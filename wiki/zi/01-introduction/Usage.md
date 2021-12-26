@@ -10,6 +10,8 @@
   - [Migration from Zplug](#migration-from-zplug)
 - [More Examples](#more-examples)
 
+> Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/01-introduction/Usage.md)
+
 ---
 
 [Click here to read the introduction to ZI](Introduction).

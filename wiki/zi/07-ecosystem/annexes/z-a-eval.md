@@ -1,7 +1,5 @@
 Author: [NICHOLAS85](https://gihub.com/NICHOLAS85)
 
----
-
 An Annex (i.e. an extension) that provides additional functionality, which allows to:
 
 1. Cache the output of arbitrarily slow initialization command to speed up shell startup time.

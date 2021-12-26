@@ -3,6 +3,8 @@
 - [Extending Git](#extending-git)
 - [Disabling System-Wide `compinit` Call (Ubuntu)](#disabling-system-wide-compinit-call-ubuntu)
 
+> Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/01-introduction/Hints-%26-Tips.md)
+
 ---
 
 ## Customizing Paths
