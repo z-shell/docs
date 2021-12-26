@@ -1,4 +1,7 @@
-all: README.html README.pdf
+all: render
+
+render:
+	./render.zsh
 
 README.html: README.adoc
 	asciidoctor -a reproducible README.adoc
