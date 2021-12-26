@@ -9,7 +9,7 @@ env:
   TERM: xterm-256color
 
 jobs:
-  build:
+  run-assessor:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
@@ -37,3 +37,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+
+  sync-zi-wiki:
+    uses: z-shell/docs/.github/workflows/wiki-zi.yml@main
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
