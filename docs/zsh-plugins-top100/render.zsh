@@ -43,13 +43,13 @@ command cp -vf "${AZP_DIR}/README.md" $ASSESSOR_DIR
 # CONSTRUCT THE RESULTING PAGE
 #
 
-command rm -f README.md
+command rm -f "$PWD/README.md"
 
-command cat page-parts/header.md README.md >>!
-command cat page-parts/awesome.md README.md >>!
-builtin print -n "\n\nPlugins evaluated at $(LANG=en_US date +'%B %dth, %Y')\n\n" README.md >>!
-command cat page-parts/intro.md README.md >>!
-command cat page-parts/iconography.md README.md >>!
+command cat page-parts/header.md README.md >>! "$PWD/README.md"
+command cat page-parts/awesome.md README.md >>! "$PWD/README.md"
+builtin print -n "\n\nPlugins evaluated at $(LANG=en_US date +'%B %dth, %Y')\n\n" README.md >>! "$PWD/README.md"
+command cat page-parts/intro.md README.md >>! "$PWD/README.md"
+command cat page-parts/iconography.md README.md >>! "$PWD/README.md"
 
 local LINE IN_PLUGINS_SECTION=0 IN_THEMES_SECTION=0 \
   CONTENTS="$(<zsh-plugin-assessor/README.md_new)"
@@ -108,7 +108,7 @@ integer plugin_idx=0 line_num
 
 print "#gathered_plugins: ${#gathered_plugins}"
 
-builtin print -n "\n# Plugins (#$LAST_PLUGIN_IDX)\n\n" README.md >>!
+builtin print -n "\n# Plugins (#$LAST_PLUGIN_IDX)\n\n" README.md >>! "$PWD/README.md"
 
 for PLUGIN in "${gathered_plugins[@]}"; do
   plugin_idx+=1
@@ -116,8 +116,8 @@ for PLUGIN in "${gathered_plugins[@]}"; do
   line_num="${plugin_to_line_num[$PLUGIN]}" start_pos=0
   LINE="${lines[line_num]}"
 
-  builtin print -r -- "${LINE//:2nd_place_medal/}" README.md >>!
-  [[ "$plugin_idx" -eq "$LAST_PLUGIN_IDX" ]] && print -n "\n# Themes (#$((${#gathered_plugins} - LAST_PLUGIN_IDX)))\n\n" README.md >>!
+  builtin print -r -- "${LINE//:2nd_place_medal/}" README.md >>! "$PWD/README.md"
+  [[ "$plugin_idx" -eq "$LAST_PLUGIN_IDX" ]] && print -n "\n# Themes (#$((${#gathered_plugins} - LAST_PLUGIN_IDX)))\n\n" README.md >>! "$PWD/README.md"
 done
 
 float -F2 elapsed_time=$((SECONDS / 60.0))
