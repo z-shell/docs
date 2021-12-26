@@ -1,6 +1,8 @@
 name: 🏅 Plugin Assessor CI
 
 on:
+  schedule:
+    - cron: "30 03 01 */3 *"
   workflow_dispatch:
 
 env:
