@@ -1,4 +1,4 @@
-name: 🏅 Plugins Assessor CI
+name: 🏅 Plugin Assessor CI
 
 on:
   workflow_dispatch:
