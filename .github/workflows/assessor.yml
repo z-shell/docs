@@ -23,10 +23,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install zsh -yq
       - name: 🚀 Run Assessor
         run: |
-          docs/zsh-plugins-top100/render.zsh
-          cp -vf docs/zsh-plugins-top100/README.md docs/wiki/zi/06-knowledge-base/Zsh-Plugins-top100.md
+          cd docs/zsh-plugins-top100
+          ./render.zsh
       - name: ☑️ Commit files
         run: |
+          cp -vf docs/zsh-plugins-top100/README.md docs/wiki/zi/06-knowledge-base/Zsh-Plugins-top100.md
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git commit -m "Add changes" -a
