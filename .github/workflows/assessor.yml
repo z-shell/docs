@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: 📦 Dependencies
-        run: sudo apt-get update && sudo apt-get install zsh -yq
+        run: sudo apt-get update && sudo apt-get upgrade -yq && sudo apt-get install zsh -yq
       - name: 🚀 Run Assessor
         run: |
           ./render.zsh

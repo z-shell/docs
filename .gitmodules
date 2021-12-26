@@ -2,5 +2,5 @@
 path = lib/zsdoc
 url = https://github.com/z-shell/zsdoc
 [submodule "zsh-plugin-assessor"]
-path = docs/zsh-plugins-top100/zsh-plugin-assessor
+path = docs/zsh-plugins-commit-top/zsh-plugin-assessor
 url = https://github.com/z-shell/zsh-plugin-assessor
