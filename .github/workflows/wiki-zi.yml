@@ -3,7 +3,6 @@ name: 📖 ZI
 
 on:
   push:
-    branches: [main]
     paths:
       - "wiki/zi/**"
   workflow_dispatch:
