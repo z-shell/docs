@@ -10,7 +10,8 @@
 [![📖 ZI Wiki](https://github.com/z-shell/docs/actions/workflows/wiki-zi.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/wiki-zi.yml)
 [![📖 Code Documentation](https://github.com/z-shell/docs/actions/workflows/code.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/code.yml)
 [![📖 Zsh Documentation](https://github.com/z-shell/docs/actions/workflows/wiki-zsh.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/wiki-zsh.yml)
-
+[![🏅 Plugin Assessor](https://github.com/z-shell/docs/actions/workflows/assessor.yml/badge.svg)](https://github.com/z-shell/docs/actions/workflows/assessor.yml)
+  
 </div>  
   
 This repository manages the following documentation:
