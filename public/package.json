@@ -19,13 +19,13 @@
     "@mdx-js/react": "1.6.22",
     "clsx": "1.1.1",
     "prism-react-renderer": "1.2.1",
-    "raw-loader": "^4.0.2",
+    "raw-loader": "4.0.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "nth-check": ">=2.0.1",
-    "trim": ">=0.0.3"
+    "nth-check": "2.0.1",
+    "trim": "1.0.1"
   },
   "browserslist": {
     "production": [
