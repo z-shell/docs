@@ -134,7 +134,7 @@ zi light-mode for @fuzzy-src
 > Consisting of: 1) [paulirish/git-open](https://github.com/paulirish/git-open), 2) [paulirish/git-recent](https://github.com/paulirish/git-recent), 3) [davidosomething/git-my](https://github.com/davidosomething/git-my), 4) [arzzen/git-quick-stats](https://github.com/arzzen/git-quick-stats), 5) [iwata/git-now](https://github.com/iwata/git-now), 6) [tj/git-extras](https://github.com/tj/git-extras), 7) [wfxr/forgit](https://github.com/wfxr/forgit).
 
 ```zsh
-zi light-mode for @rust-utils
+zi light-mode for@ext-git
 ```
 
 ### Rust utilities

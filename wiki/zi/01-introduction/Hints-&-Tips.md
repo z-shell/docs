@@ -1,6 +1,8 @@
 - [Customizing Paths](#customizing-paths)
 - [Non-GitHub (Local) Plugins](#non-github-local-plugins)
 - [Extending Git](#extending-git)
+- [Setopt](#setopt)
+- [Zstyle](#zstyle)
 - [Disabling System-Wide `compinit` Call (Ubuntu)](#disabling-system-wide-compinit-call-ubuntu)
 
 > Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/01-introduction/Hints-%26-Tips.md)
@@ -77,6 +79,126 @@ zi as"null" wait"1" lucid for \
 ```
 
 The target directory for installed files is `$ZPFX` (`~/.zi/polaris` by default).
+
+With [meta-plugins](https://github.com/z-shell/zi/wiki/z-a-meta-plugins) consisting of:
+
+Annexes:
+
+1. [z-shell/z-a-unscope](https://github.com/z-shell/z-a-unscope),
+2. [z-shell/z-a-readurl](https://github.com/z-shell/z-a-readurl),
+3. [z-shell/z-a-patch-dl](https://github.com/z-shell/z-a-patch-dl),
+4. [z-shell/z-a-rust](https://github.com/z-shell/z-a-rust),
+5. [z-shell/z-a-submods](https://github.com/z-shell/z-a-submods),
+6. [z-shell/z-a-bin-gem-node](https://github.com/z-shell/z-a-bin-gem-node).
+
+Git tools:
+
+1. [paulirish/git-open](https://github.com/paulirish/git-open),
+2. [paulirish/git-recent](https://github.com/paulirish/git-recent),
+3. [davidosomething/git-my](https://github.com/davidosomething/git-my),
+4. [arzzen/git-quick-stats](https://github.com/arzzen/git-quick-stats),
+5. [iwata/git-now](https://github.com/iwata/git-now),
+6. [tj/git-extras](https://github.com/tj/git-extras),
+7. [wfxr/forgit](https://github.com/wfxr/forgit).
+
+just run:
+
+```zsh
+zi light-mode for z-shell/z-a-meta-plugins @annexes @ext-git
+```
+
+## Setopt
+
+Options are primarily referred to by name.
+These names are case insensitive and underscores are ignored.
+For example, `allexport` is equivalent to `A__lleXP_ort`.
+
+The sense of an option name may be inverted by preceding it with `no`,
+so `setopt No_Beep` is equivalent to `unsetopt beep`.
+This inversion can only be done once, so `nonobeep` is not a synonym for `beep`. Similarly,
+`tify` is not a synonym for `nonotify` (the inversion of `notify`).
+
+Some options also have one or more single letter names.
+There are two sets of single letter options: one used by default,
+and another used to emulate sh/ksh (used when the SH_OPTION_LETTERS option is set).
+The single letter options can be used on the shell command line, or with the set,
+setopt and unsetopt builtins, as normal Unix options preceded by `-`.
+
+The sense of the single letter options may be inverted by using `+` instead of `-`.
+Some of the single letter option names refer to an option being off,
+in which case the inversion of that name refers to the option being on.
+For example, `+n` is the short name of `exec`, and `-n` is the short name of its inversion,
+`noexec`.
+
+In strings of single letter options supplied to the shell at startup,
+trailing whitespace will be ignored; for example the string `-f ` will be treated just as `-f`,
+but the string `-f i` is an error. This is because many systems which implement the `#!` mechanism
+for calling scripts do not strip trailing whitespace.
+
+```zsh
+#
+# setopts
+#
+setopt bang_hist                # Treat The '!' Character Specially During Expansion.
+setopt hist_ignore_all_dups     # Remove older duplicate entries from history
+setopt hist_expire_dups_first   # Expire A Duplicate Event First When Trimming History.
+setopt hist_ignore_dups         # Do Not Record An Event That Was Just Recorded Again.
+setopt hist_reduce_blanks       # Remove superfluous blanks from history items
+setopt hist_find_no_dups        # Do Not Display A Previously Found Event.
+setopt hist_ignore_space        # Do Not Record An Event Starting With A Space.
+setopt hist_save_no_dups        # Do Not Write A Duplicate Event To The History File.
+setopt hist_verify              # Do Not Execute Immediately Upon History Expansion.
+setopt append_history           # Allow multiple terminal sessions to all append to one zsh command history
+setopt extended_history         # Show Timestamp In History.
+setopt inc_append_history       # Write To The History File Immediately, Not When The Shell Exits.
+setopt share_history            # Share history between different instances of the shell
+setopt multios                  # Perform implicit tees or cats when multiple redirections are attempted
+setopt interactive_comments     # Allow comments even in interactive shells (especially for Muness)
+setopt pushd_ignore_dups        # Don't push multiple copies of the same directory onto the directory stack
+setopt auto_cd                  # Use cd by typing directory name if it's not a command
+setopt no_beep                  # Don't beep on error
+setopt auto_list                # Automatically list choices on ambiguous completion
+setopt auto_pushd               # Make cd push the old directory onto the directory stack
+setopt pushdminus               # Swapped the meaning of cd +1 and cd -1; we want them to mean the opposite of what they mean
+setopt promptsubst              # Enables the substitution of parameters inside the prompt each time the prompt is drawn
+```
+
+## Zstyle
+
+`zstyle` handles the obvious style control for the completion system, but it seems to cover more than just that.
+E.g., the vcs_info module relies on it for display of git status in your prompt.
+You can start by looking at the few explanatory paragraphs in man zshmodules in the zstyle section.
+
+```zsh
+#
+# zstyle
+#
+# Fuzzy matching of completions for when you mistype them:
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3>7?7:($#PREFIX+$#SUFFIX)/3))numeric)'
+# Pretty completions
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' rehash true
+# Do menu-driven completion.
+zstyle ':completion:*' menu select
+# Color completion for some things.
+# http://linuxshellaccount.blogspot.com/2008/12/color-completion-using-zsh-modules-on.html
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+```
 
 ## Disabling System-Wide `compinit` Call (Ubuntu)
 

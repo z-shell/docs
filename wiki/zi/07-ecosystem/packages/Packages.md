@@ -1,12 +1,24 @@
-## Introduction
+There are two interesting packages, [any-gem](https://github.com/z-shell/any-gem) and [any-node](https://github.com/z-shell/any-node).
+They allow to install any Gem(s) or Node module(s) locally in a newly created plugin directory. For example:
+
+```zsh
+zi pack param='GEM -> rails' for any-gem
+zi pack param='MOD -> doctoc' for any-node
+# To have the command in zshrc, add an id-as'' ice so that
+# ZI knows that the package is already installed
+# (also: the Unicode arrow is allowed)
+zi id-as=jekyll pack param='GEM → jekyll' for any-gem
+```
+
+The binaries will be exposed without altering the PATH via shims (Bin-Gem-Node annex is needed). Shims are correctly removed when deleting a plugin with `zi delete ….`
 
 ZI can install from so-called _packages_ – GitHub repositories holding
-a `package.json` file with the ZI meta-data in them.
+a `package.json` file with the meta-data in them.
 
 This way you don't have to (but still can) specify ices, which might be handy
 when the ice-mod list is long and complex.
 
-## Motivation
+## Motivation behind packages
 
 The motivation for adding such functionality was:
 

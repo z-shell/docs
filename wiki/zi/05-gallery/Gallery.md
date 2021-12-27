@@ -152,10 +152,6 @@ zi load obihann/archey-osx
 zi ice pick"h.sh"
 zi light paoloantinori/hhighlighter
 
-# zsh-tag-search; after ^G, prepend with "/" for the regular search
-zi ice wait lucid bindmap"^R -> ^G"
-zi light -b z-shell/zsh-tag-search
-
 # forgit
 zi ice wait lucid
 zi load 'wfxr/forgit'
@@ -186,7 +182,7 @@ zi load z-shell/zsh-navigation-tools
 # z-shell/history-search-multi-word
 zstyle ":history-search-multi-word" page-size "11"
 zi ice wait"1" lucid
-zi load z-shell/history-search-multi-word
+zi load z-shell/H-S-MW
 
 # ZUI and Crasis
 zi ice wait"1" lucid
@@ -201,15 +197,10 @@ zi load voronkovich/gitignore.plugin.zsh
 
 # Autosuggestions & fast-syntax-highlighting
 zi ice wait lucid atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
-zi light z-shell/fast-syntax-highlighting
+zi light z-shell/F-Sy-H
 # zsh-autosuggestions
 zi ice wait lucid atload"!_zsh_autosuggest_start"
 zi load zsh-users/zsh-autosuggestions
-
-# F-Sy-H automatic per-directory themes plugin – available for patrons:
-# https://patreon.com/psprint
-zi ice wait"1" lucid from"psprint@gitlab.com"
-zi load psprint/fsh-auto-themes
 
 # zredis together with some binding/tying
 # – defines the variable $rdhash
