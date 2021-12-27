@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
@@ -8,10 +8,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: '❮ ZI ❯',
   tagline: 'A Swiss Army Knife for Zsh - Unix shell.',
-  url: 'https://z-shell.pages.dev/',
+  url: 'https://z-shell.pages.dev',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
   organizationName: 'z-shell',
   projectName: 'zi',
@@ -69,7 +69,7 @@ const config = {
             items: [
               {
                 label: 'ZI Wiki',
-                to: '/docs/intro',
+                to: '/docs/wiki',
               },
             ],
           },
@@ -101,7 +101,8 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-      },
+		  additionalLanguages: ['shell-session', 'bash', 'vim', 'git']
+		},
     }),
 };
 

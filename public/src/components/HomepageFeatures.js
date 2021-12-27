@@ -4,32 +4,34 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Yields 50-80% faster Zsh startup',
+    Svg: require('../../static/img/turbo.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+		It allows to postpone the loading of a plugin to the moment
+		when the processing of `.zshrc` is finished and the first prompt is being shown.
       </>
     ),
   },
   {
     title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('../../static/img/stats.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+			Provides the statistics about the plugins,
+			such as describing what aliases, functions, bindkeys,
+			Zle widgets, zstyles, completions, variables,
+			`PATH` and `FPATH` elements a plugin has set up
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Get all favorite features',
+    Svg: require('../../static/img/zsh.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+			Supports loading Oh My Zsh, Prezto plugins and libraries, however,
+			the implementation isn't framework-specific and doesn't bloat the plugin manager with such code.
       </>
     ),
   },

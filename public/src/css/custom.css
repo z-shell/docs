@@ -17,12 +17,14 @@
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(20, 23, 25, 1);
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+html[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(20, 23, 25, 1);
+  --ifm-color-primary: #4e89e8;
+  --ifm-color-primary-dark: #5a91ea;
 }
