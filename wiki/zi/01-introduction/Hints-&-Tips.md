@@ -82,23 +82,25 @@ The target directory for installed files is `$ZPFX` (`~/.zi/polaris` by default)
 
 With [meta-plugins](https://github.com/z-shell/zi/wiki/z-a-meta-plugins) consisting of:
 
-Annexes: 
-1) [z-shell/z-a-unscope](https://github.com/z-shell/z-a-unscope), 
-2) [z-shell/z-a-readurl](https://github.com/z-shell/z-a-readurl), 
-3) [z-shell/z-a-patch-dl](https://github.com/z-shell/z-a-patch-dl), 
-4) [z-shell/z-a-rust](https://github.com/z-shell/z-a-rust), 
-5) [z-shell/z-a-submods](https://github.com/z-shell/z-a-submods), 
-6) [z-shell/z-a-bin-gem-node](https://github.com/z-shell/z-a-bin-gem-node).
+Annexes:
+
+1. [z-shell/z-a-unscope](https://github.com/z-shell/z-a-unscope),
+2. [z-shell/z-a-readurl](https://github.com/z-shell/z-a-readurl),
+3. [z-shell/z-a-patch-dl](https://github.com/z-shell/z-a-patch-dl),
+4. [z-shell/z-a-rust](https://github.com/z-shell/z-a-rust),
+5. [z-shell/z-a-submods](https://github.com/z-shell/z-a-submods),
+6. [z-shell/z-a-bin-gem-node](https://github.com/z-shell/z-a-bin-gem-node).
 
 Git tools:
-1) [paulirish/git-open](https://github.com/paulirish/git-open), 
-2) [paulirish/git-recent](https://github.com/paulirish/git-recent),
-3) [davidosomething/git-my](https://github.com/davidosomething/git-my), 
-4) [arzzen/git-quick-stats](https://github.com/arzzen/git-quick-stats), 
-5) [iwata/git-now](https://github.com/iwata/git-now), 
-6) [tj/git-extras](https://github.com/tj/git-extras), 
-7) [wfxr/forgit](https://github.com/wfxr/forgit).
-  
+
+1. [paulirish/git-open](https://github.com/paulirish/git-open),
+2. [paulirish/git-recent](https://github.com/paulirish/git-recent),
+3. [davidosomething/git-my](https://github.com/davidosomething/git-my),
+4. [arzzen/git-quick-stats](https://github.com/arzzen/git-quick-stats),
+5. [iwata/git-now](https://github.com/iwata/git-now),
+6. [tj/git-extras](https://github.com/tj/git-extras),
+7. [wfxr/forgit](https://github.com/wfxr/forgit).
+
 just run:
 
 ```zsh
