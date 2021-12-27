@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: ❮ ZI ❯ Wiki
-slug: /wiki-home
+slug: /wiki
 ---
 
 <div align="center">
@@ -49,10 +49,6 @@ Install almost everything from [GitHub](https://github.com):
 </Tabs>
 
 ---
-
-- Has a [turbo mode](https://github.com/z-shell/zi/wiki/Introduction#turbo-mode-zsh--53) which yields 50-80% [faster](https://github.com/z-shell/pm-perf-test) Zsh startup.
-
-- Supports loading [Oh My Zsh and Prezto](https://github.com/z-shell/zi/wiki/Introduction#oh-my-zsh-prezto) plugins and libraries, however, the implementation isn't framework-specific and doesn't bloat the plugin manager with such code. See our wiki on how to [migrate](https://github.com/z-shell/zi/wiki/Usage#migration) from other plugin managers.
 
 - The dedicated [packages](https://github.com/z-shell/zi/wiki/Packages/) that offload the user from providing long and complex commands. See the [Z-Shell ZI](https://github.com/z-shell) organization for a complete list of packages.
 
