@@ -15,7 +15,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[**.{md,rst}]
+[*.{md,rst}]
 trim_trailing_whitespace = false
 
 [*.{sh,bash,zsh,fish}]
