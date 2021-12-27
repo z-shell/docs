@@ -1,6 +1,7 @@
-#### [Home](Home)
+### [Home](Home)
 
 - 💡 [**Introduction**](Introduction)
+  - [Installation](Installation)
   - [Usage](Usage)
   - [Hints & Tips](Hints-&-Tips)
 - 🛠 [**Commands**](Commands)
