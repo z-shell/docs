@@ -8,6 +8,14 @@
 
 ## Quick install
 
+:::tip
+
+If you prefer stable version with less changes, append `-b <tag>` e.g:
+
+`sh -c "$(curl -fsSL https://git.io/get-zi)" -- -i skip -b 0.9.9`
+
+:::
+
 ```zsh
 # Will add minimal configuration
 sh -c "$(curl -fsSL https://git.io/get-zi)" --
