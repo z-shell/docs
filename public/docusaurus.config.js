@@ -47,7 +47,12 @@ const config = {
         indexName: 'dev-z-shell',
         contextualSearch: true,
       },
-
+      hideableSidebar: true,
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+	  },
       announcementBar: {
         id: 'announcementBar-2',
         content: `⭐️ If you like Z-Shell ZI, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/z-shell/zi">GitHub</a>`,
@@ -56,7 +61,7 @@ const config = {
       	playgroundPosition: 'bottom',
       },
 	  navbar: {
-//        hideableSidebar: true,
+        hideOnScroll: true,
         title: '❮ ZI ❯',
         logo: {
           alt: 'ZI Logo',
