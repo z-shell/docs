@@ -47,7 +47,16 @@ const config = {
         indexName: 'dev-z-shell',
         contextualSearch: true,
       },
-	   navbar: {
+
+      announcementBar: {
+        id: 'announcementBar-2',
+        content: `⭐️ If you like Z-Shell ZI, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/z-shell/zi">GitHub</a>`,
+      },
+       liveCodeBlock: {
+      	playgroundPosition: 'bottom',
+      },
+	  navbar: {
+//        hideableSidebar: true,
         title: '❮ ZI ❯',
         logo: {
           alt: 'ZI Logo',
@@ -108,7 +117,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-		  additionalLanguages: ['shell-session', 'bash', 'vim', 'git']
+		  additionalLanguages: ['shell-session', 'git', 'sh', 'markdown', 'bash', 'vim', 'java']
 		},
     }),
 };
