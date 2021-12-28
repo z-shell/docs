@@ -116,8 +116,15 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-		  additionalLanguages: ['shell-session', 'bash', 'vim', 'git']
-		},
+		  additionalLanguages: ['shell-session', 'bash', 'vim', 'git'],
+	algolia: {
+      appId: '9MWZG6YTZH',
+      apiKey: '25296a50114a93564278103ec825b069',
+      indexName: 'dev-z-shell',
+      contextualSearch: true
+//      externalUrlRegex: 'external\\.com|domain\\.com',
+//      searchParameters: {},
+	  },
     }),
 };
 
