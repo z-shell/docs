@@ -1,3 +1,10 @@
+---
+sidebar_position: 2
+id: ice-modifiers
+title: Ice Modifiers
+slug: /ice-modifiers
+---
+
 Following ice modifiers are to be [passed](https://github.com/z-shell/zi/wiki/Alternate-Ice-Syntax/) to `zi ice...` to obtain described effects. The word `ice` means something that's added (like ice to a drink) – and in ZI it means adding a modifier to a next `zi` command, and also something that's temporary because it melts – and this means that the modification will last only for a **single** next `zi` command.
 
 Some Ice-modifiers are highlighted and clicking on them will take you to the

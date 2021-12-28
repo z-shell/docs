@@ -10,8 +10,8 @@ const config = {
   tagline: 'A Swiss Army Knife for Zsh - Unix shell.',
   url: 'https://z-shell.pages.dev',
   baseUrl: '/',
-  onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'log',
   favicon: 'img/favicon.ico',
   organizationName: 'z-shell',
   projectName: 'zi',
@@ -69,7 +69,7 @@ const config = {
             items: [
               {
                 label: 'ZI Wiki',
-                to: '/docs/wiki',
+                to: '/docs/intro',
               },
             ],
           },

@@ -1,15 +1,16 @@
 ---
-sidebar_position: 2
-title: Introduction
-slug: /Introduction
+sidebar_position: 1
+id: overview
+title: Overview
+slug: /overview
 ---
 
-In the document below you’ll find out how to:
+In this overview will cover basics for:
 
-- use Oh My Zsh and Prezto,
-- manage completions,
-- use the Turbo mode,
-- use the ice-mods like `as"program"`, and much more.
+- Oh My Zsh & Prezto,
+- Completions,
+- Turbo mode,
+- Ice-mods
 
 ## Basic Plugin Loading
 
@@ -19,13 +20,12 @@ zi light zsh-users/zsh-syntax-highlighting
 ```
 
 The above commands show two ways of basic plugin loading. <code>load</code> causes reporting to
-be enabled – you can track what plugin does, view the information with `zi report {plugin-spec}` and then also unload the plugin with `zi unload {plugin-spec}`. `light` is a significantly faster loading without tracking and
-reporting, by using which user resigns of the ability to view the plugin report
+be enabled – you can track what plugin does, view the information with `zi report {plugin-name}` and then also unload the plugin with `zi unload {plugin-name}`. `light` is a significantly faster loading without tracking and reporting, by using which user resigns of the ability to view the plugin report
 and to unload it.
 
 :::note
 
-**In Turbo mode the slowdown caused by tracking is negligible.**.
+In Turbo mode the slowdown caused by tracking is negligible..
 
 :::
 
@@ -52,7 +52,7 @@ allows loading snippets that are multi-file (for example, a Prezto module can
 consist of two or more files, e.g. `init.zsh` and `alias.zsh`). Default files
 that will be sourced are: `*.plugin.zsh`, `init.zsh`, `*.zsh-theme`:
 
-```shell
+```shell {3}
 # URL points to a directory
 zi ice svn
 zi snippet PZT::modules/docker
@@ -67,19 +67,23 @@ gives profits in performance of `ZI`, it is really fast and also compact
 
 ## Ice-Modifiers
 
-The command `zi ice` provides ice-modifiers for single next command (see [**ice-modifiers**](Ice-modifiers)). The logic is that "ice" is something that’s added (e.g. to a drink or a coffee) – and in the ZI sense this means that ice is a modifier added to the next ZI command, and also something that melts (so it doesn’t last long) – and in the ZI use it means that the modifier lasts for only single next ZI command. Using one other ice-modifier "**pick**" users can explicitly **select the file to source**:
+:::info
 
-```shell
+See: [ice-modifiers](Ice-modifiers) for more information.
+
+:::
+
+The command `zi ice` provides ice-modifiers for single next command. The logic is that "ice" is something that’s added (e.g. to a drink or a coffee) – and in the ZI sense this means that ice is a modifier added to the next ZI command, and also something that melts (so it doesn’t last long) – and in the ZI use it means that the modifier lasts for only single next ZI command. Using one other ice-modifier "**pick**" users can explicitly **select the file to source**:
+
+```shell {1}
 zi ice svn pick"init.zsh"
 zi snippet PZT::modules/git
 ```
 
-Content of ice-modifier is simply put into `"…"`, `'…'`, or `$'…'`. No
-need for `":"` after the ice-mod name (although it's allowed, so as the equal sign
-`=`, so e.g. `pick="init.zsh"` or `pick=init.zsh` are being correctly
-recognized). This way editors like `vim` and `emacs` and also
-`zsh-users/zsh-syntax-highlighting` and `z-shell/F-Sy-H` will
-highlight contents of ice-modifiers.
+Content of ice-modifier is simply put into `"…"`, `'…'`, or `$'…'`.
+No need for `":"` after the ice-mod name (although it's allowed, so as the equal sign `=`,
+so e.g. `pick="init.zsh"` or `pick=init.zsh` are being correctly recognized).
+This way editors like `vim` and `emacs` and also `zsh-users/zsh-syntax-highlighting` and `z-shell/F-Sy-H` will highlight contents of ice-modifiers.
 
 ## as"program"
 
@@ -97,10 +101,13 @@ The above command will add plugin directory to `$PATH`, copy file `httpstat.sh` 
 i.e. to `httpstat`. Another ice-mod exists, `mv`, which works like `cp` but
 **moves** a file instead of **copying** it. `mv` is ran before `cp`.
 
-!!!note
-**The `cp` and `mv` ices (and also as some other ones, like `atclone`) are
-being run when the plugin or snippet is being _installed_. To test them
-again first delete the plugin or snippet by `zi delete PZT::modules/osx` (for example).**
+:::tip
+
+The `cp` and `mv` ices (and also as some other ones, like `atclone`) are
+being run when the plugin or snippet is being _installed_.
+To test them again first delete the plugin or snippet by `zi delete PZT::modules/osx` (for example).
+
+:::
 
 ## atpull"…"
 
@@ -125,42 +132,47 @@ into the plugin's contents without blocking the ability to update it with `git`
 (or with `subversion` in case of snippets, more on this below at
 [**\*\***](#on_svn_revert)).
 
-!!!note
-**For exclamation mark to not be expanded by Zsh an interactive session, use
-`'…'` not `"…"` to enclose contents of `atpull` ice-mod.**
+:::info
 
-## Snippets-Commands
+For exclamation mark to not be expanded by Zsh an interactive session,
+use `'…'` not `"…"` to enclose contents of `atpull` ice-mod.\*\*
+
+:::
+
+## Snippets as commands
 
 Commands can also be added to `$PATH` using **snippets**. For example:
 
-```shell
+```shell {2,4}
 zi ice mv"httpstat.sh -> httpstat" \
   pick"httpstat" as"program"
 zi snippet \
   https://github.com/b4b4r07/httpstat/blob/master/httpstat.sh
 ```
 
-<a id="on_svn_revert"></a>
-(**\*\***) Snippets also support `atpull` ice-mod, so it’s possible to do e.g.
-`atpull'!svn revert'`. There’s also `atinit` ice-mod, executed before each
-loading of plugin or snippet.
+:::tip
 
-## Snippets-Completions
+Snippets also support `atpull` ice-mod, so it’s possible to do e.g. `atpull'!svn revert'`.
+There’s also `atinit` ice-mod, executed before each loading of plugin or snippet.
+
+:::
+
+## Snippets as completions
 
 By using the `as''` ice-mod with value `completion` you can point the `snippet`
-subcommand directly to a completion file, e.g.:
+subcommand directly to a completion file:
 
-```shell
+```shell {2}
 zi ice as"completion"
 zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 ```
 
-## Completion Management
+## Completion management
 
-ZI allows to disable and enable each completion in every plugin. Try
-installing a popular plugin that provides completions:
+ZI allows to disable and enable each completion in every plugin.
+Try installing a popular plugin that provides completions:
 
-```shell
+```shell {1}
 zi ice blockf
 zi light zsh-users/zsh-completions
 ```
@@ -177,10 +189,13 @@ zi creinstall zsh-users/zsh-completions # install
 
 ### Listing Completions
 
-**note** **`zini` is an alias that can be used in interactive sessions.**
+:::note
 
-To see what completions **all** plugins provide, in tabular formatting and with
-name of each plugin, use:
+`zini` is an alias that can be used in interactive sessions.
+
+:::
+
+To see what completions **all** plugins provide, in tabular formatting and with name of each plugin, use:
 
 ```shell
 zini clist
@@ -209,25 +224,24 @@ console, dad, debuild, dget, dhcpcd, diana zsh-users/zsh-completions
 ...
 ```
 
-### Enabling and Disabling Completions
+### Enabling and Disabling completions
 
 Completions can be disabled so that e.g. original Zsh completion will be used.
 The commands are very basic, they only need completion **name**:
 
-```shell
+```shell {1,3}
 $ zi cdisable cmake
 Disabled cmake completion belonging to zsh-users/zsh-completions
 $ zi cenable cmake
 Enabled cmake completion belonging to zsh-users/zsh-completions
 ```
 
-That’s all on completions. There’s one more command, `zi csearch`, that
-will **search** all plugin directories for available completions, and show if
-they are installed:
+That’s all on completions. There’s one more command, `zi csearch`,
+that will **search** all plugin directories for available completions, and show if they are installed:
 
 This sums up complete control over completions.
 
-## Subversion for Subdirectories
+## Subversion for subdirectories
 
 In general, to use **subdirectories** of Github projects as snippets add
 `/trunk/{path-to-dir}` to URL, for example:
@@ -235,10 +249,17 @@ In general, to use **subdirectories** of Github projects as snippets add
 ```shell
 zi ice svn
 zi snippet https://github.com/zsh-users/zsh-completions/trunk/src
+```
 
-# For Oh My Zsh and Prezto, the OMZ:: and PZT:: prefixes work
-# without the need to add the `/trunk/` infix (however the path
-# should point to a directory, not to a file):
+:::tip
+
+For Oh My Zsh and Prezto, the OMZ:: and PZT:: prefixes work
+without the need to add the `/trunk/` infix (however the path
+should point to a directory, not to a file):
+
+:::
+
+```shell
 zi ice svn
 zi snippet PZT::modules/docker
 ```
@@ -255,10 +276,19 @@ for 10 minutes. And here, in ZI, there are no drawbacks of this approach – no
 lags, freezes, etc. – the command line is fully usable while the plugins are
 being loaded, for any number of plugins.
 
-**Note:** **Turbo will speed up Zsh startup by <u>50%–80%</u>. For example, instead of 200 ms, it'll be 40 ms (!)**
+:::info
 
-Zsh 5.3 or greater is required. To use this Turbo mode add `wait` ice to the
-target plugin in one of the following ways:
+Turbo will speed up Zsh startup by <u>50%–80%</u>. For example, instead of 200 ms, it'll be 40 ms.
+
+:::
+
+:::note
+
+Zsh 5.3 or greater is required.
+
+:::
+
+To use this Turbo mode add `wait` ice to the target plugin in one of the following ways:
 
 ```shell
 PS1="READY > "
@@ -300,13 +330,12 @@ plugin to not show.
 
 ### A Quick Glance At [The `for''` syntax](Syntax#the-for-syntax)
 
-This introduction is based on the classic, two-command syntax (`zi ice …; zi load/light/snippet …`) of ZI. However, there's also available a
-recently added so-called _for-syntax_. It is the right moment to take a glance at
-it, by rewriting the above autosuggestions invocation using it:
+This introduction is based on the classic, two-command syntax (`zi ice …; zi load/light/snippet …`) of ZI.
+However, there's also available a recently added so-called _for-syntax_.
+It is the right moment to take a glance at it, by rewriting the above autosuggestions invocation using it:
 
 ```shell
-zi wait lucid atload'_zsh_autosuggest_start' light-mode for \
-  zsh-users/zsh-autosuggestions
+zi wait lucid atload'_zsh_autosuggest_start' light-mode for zsh-users/zsh-autosuggestions
 ```
 
 The syntax is a more concise one. The single command will work the same
@@ -315,7 +344,7 @@ problems when using ZI, like providing common/default ices for a set of
 plugins or sourcing multiple files with [`src''` ice](Ice#src-pick-multisrc).
 For more information refer to the page dedicated to the syntax ([here](Syntax/)).
 
-### Turbo-Loading Sophisticated Prompts
+### Turbo Loading sophisticated prompts
 
 For some, mostly advanced themes the initialization of the prompt is being done in a `precmd`-hook, i.e.;
 in a function that's gets called before each prompt. The hook is installed by the [add-zsh-hook](Zsh-Plugin-Standard#use-of-add-zsh-hook-to-install-hooks) Zsh function by adding its name to the `$precmd_functions` array.
@@ -335,7 +364,7 @@ _zsh_autosuggest_start prompt_zinc_setup prompt_zinc_precmd
 
 Then, add them to the ice-list in the `atload''` ice:
 
-```shell
+```shell {2}
 zi ice wait'!' lucid nocd \
   atload'!prompt_zinc_setup; prompt_zinc_precmd'
 zi load robobenklein/zinc
@@ -345,20 +374,22 @@ The exclamation mark in `atload'!…'` is to track the functions allowing the
 plugin to be unloaded, as described [here](Ice#atclone-atpull-atinit-atload).
 It might be useful for the multi-prompt setup described next.
 
-## Automatic Load/Unload on Condition
+## Automatic load/unload based on condition
 
 Ices `load` and `unload` allow defining when you want plugins active or
 inactive. For example:
 
-```shell
-# Load when in ~/tmp
+Load when in ~/tmp
 
+```shell {1}
 zi ice load'![[ $PWD = */tmp* ]]' unload'![[ $PWD != */tmp* ]]' \
   atload"!promptinit; prompt sprint3"
 zi load psprint/zprompts
+```
 
-# Load when NOT in ~/tmp
+Load when NOT in ~/tmp
 
+```shell {1}
 zi ice load'![[ $PWD != */tmp* ]]' unload'![[ $PWD = */tmp* ]]'
 zi load russjohnson/angry-fly-zsh
 ```
@@ -368,13 +399,20 @@ have plugin-sets, e.g. by defining parameter `$PLUGINS` with possible values
 like `cpp`, `web`, `admin` and by setting `load` / `unload` conditions to
 activate different plugins on `cpp`, on `web`, etc.
 
-!!!note
-**The difference with `wait` is that `load` / `unload` are constantly
-active, not only till first activation.**
+:::note
 
-Note that for the unloading of a plugin to work the plugin needs to be loaded with
-tracking (so `zi load …`, not `zi light …`). Tracking causes a slight slowdown,
-however, this doesn’t influence Zsh startup time when using Turbo mode.
+- The difference with `wait` is that `load` / `unload` are constantly active, not only till first activation.
 
-**See also: [multiple prompts](Multiple-prompts).** It contains a
-more real-world examples of a multi-prompt setup, which is being close to what the author uses in his setup.
+- Note that for the unloading of a plugin to work the plugin needs to be loaded with
+  tracking (so `zi load …`, not `zi light …`).
+  Tracking causes a slight slowdown, however, this doesn’t influence Zsh startup time when using Turbo mode.
+
+:::
+
+:::tip
+
+See: [multiple prompts](Multiple-prompts).
+It contains a more real-world examples of a multi-prompt setup,
+which is being close to what the author uses in his setup.
+
+:::

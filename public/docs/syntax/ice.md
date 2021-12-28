@@ -1,3 +1,10 @@
+---
+sidebar_position: 2
+id: ice
+title: Ice Syntax
+slug: /ice
+---
+
 F&A: What is ice?
 
 `ice` is Zi's options command. The option melts like ice and is used only once.
@@ -96,7 +103,7 @@ In order to install and load a plugin whose repository is private - i.e.:
 requires providing credentials in order to log in – use the `from''` ice in the
 following way:
 
-```zsh
+```shell
 zi ice from"user@github.com"
 zi load user/fsh-auto-themes
 ```
@@ -108,7 +115,7 @@ The point is that when the `from''` ice isn't one of `gh`, `github`, `gl`,
 treaten as a domain name** and inserted into the domain position into the clone
 url. I.e.: the following (more or less) `git clone` command is being run:
 
-```zsh
+```shell
 git clone https://{from-ice-contents}/user/plugin
 ```
 
@@ -128,7 +135,7 @@ through the `id-as` ice-mod. For example, one could try to load
 [**docker/compose**](https://github.com/docker/compose) from GitHub binary
 releases:
 
-```zsh
+```shell
 zi ice as"program" from"gh-r" mv"docker-c* -> docker-compose"
 zi light "docker/compose"
 ```
@@ -143,21 +150,21 @@ which this document is devoted: by using the `id-as` ice the user can resolve
 the conflict by loading the completion under a kind of a _nickname_, for example
 under "_dc-complete_", by issuing the following commands:
 
-```zsh
+```shell
 zi ice as"completion" id-as"dc-complete"
 zi load docker/compose
 ```
 
 The plugin (of the type `completion`) is now seen under ID `dc-complete`:
 
-```zsh
+```shell
 ~ zi list | grep -i dc-complete
 dc-complete
 ```
 
 Issuing `zi report dc-complete` also works, so as other Zi commands:
 
-```zsh
+```shell
 ~ zi report dc-complete
 Plugin report for dc-complete
 -------------------------------
@@ -169,7 +176,7 @@ _docker-compose [enabled]
 This can be also used to nickname snippets. For example, you can use this to
 create handy IDs in place of long urls:
 
-```zsh
+```shell
 zi ice as"program" id-as"git-unique"
 zi snippet https://github.com/Osse/git-scripts/blob/master/git-unique
 ```
@@ -184,7 +191,7 @@ There's a special value to the `id-as''` ice – `auto`. It causes the nickname 
 be automatically set to the last component of the plugin name or snippet URL.
 For example:
 
-```zsh
+```shell
 zi ice as"program" id-as"auto"
 zi snippet https://github.com/Osse/git-scripts/blob/master/git-unique
 ```
@@ -192,7 +199,7 @@ zi snippet https://github.com/Osse/git-scripts/blob/master/git-unique
 will work the same as before, i.e.: like if the ice used was
 `id-as'git-unique'`. Example with a plugin:
 
-```zsh
+```shell
 # Will work as if id-as'zsh-autopair' was passed
 zi ice wait lucid id-as"auto"
 zi load hlissner/zsh-autopair
@@ -202,7 +209,7 @@ zi load hlissner/zsh-autopair
 
 An empty `id-as''` will work the same as `id-as'auto'`, i.e.:
 
-```zsh
+```shell
 # Will work as if id-as'zsh-autopair' was passed
 zi ice wait lucid id-as
 zi load hlissner/zsh-autopair
@@ -212,7 +219,7 @@ zi load hlissner/zsh-autopair
 
 **Note:** **Turbo mode, i.e. the `wait` ice that implements it needs Zsh >= 5.3.**
 
-```zsh
+```shell
 zi ice wait'0' # or just: zi ice wait
 zi light wfxr/forgit
 ```
@@ -220,7 +227,7 @@ zi light wfxr/forgit
 - waits for prompt,
 - instantly ("0" seconds) after prompt loads given plugin.
 
-```zsh
+```shell
 zi ice wait'[[ -n ${ZLAST_COMMANDS[(r)cras*]} ]]'
 zi light z-shell/zi-crasis
 ```
@@ -232,7 +239,7 @@ zi light z-shell/zi-crasis
 - Screencast that presents the feature:
   [![screencast](https://asciinema.org/a/149725.svg)](https://asciinema.org/a/149725)
 
-```zsh
+```shell
 zi ice wait'[[ $PWD = */github || $PWD = */github/* ]]'
 zi load unixorn/git-extra-commands
 ```
@@ -242,7 +249,7 @@ zi load unixorn/git-extra-commands
 Turbo mode also support a suffix – the letter `a`, `b` or `c`. The meaning is
 illustrated by the following example:
 
-```zsh
+```shell
 zi ice wait"0b" as"command" pick"wd.sh" atinit"echo Firing 1" lucid
 zi light mfaerevaag/wd
 zi ice wait"0a" as"command" pick"wd.sh" atinit"echo Firing 2" lucid
@@ -273,7 +280,7 @@ function. For example, [**romkatv/powerlevel10k**](https://github.com/romkatv/po
 
 The ice takes a list of function names, with the elements separated by `;`:
 
-```zsh
+```shell
 zi ice wrap-track"func1;func2;…" …
 …
 ```
@@ -286,7 +293,7 @@ function of the plugin – called `_p9k_precmd` (to get the name of the function
 do `echo $precmd_functions` after loading a theme) – should be passed to
 `wrap-track''` ice, like so:
 
-```zsh
+```shell
 # Load when MYPROMPT == 4
 zi ice load'![[ $MYPROMPT = 4 ]]' unload'![[ $MYPROMPT != 4 ]]' \
   atload'source ~/.p10k.zsh; _p9k_precmd' wrap-track'_p9k_precmd'
@@ -298,7 +305,7 @@ normally recorded, which can be viewed in the report of the
 [**romkatv/powerlevel10k**](https://github.com/romkatv/powerlevel10k) theme:
 
 <pre>
-<code>~ zplg report romkatv/powerlevel10k:
+<code>~ zi report romkatv/powerlevel10k:
 Report for romkatv/powerlevel10k plugin
 <span class="hljs-blue">---------------------------------------</span>
 Source powerlevel10k.zsh-theme (reporting enabled)
@@ -341,7 +348,7 @@ to load a new prompt.
 
 Normally `src''` can be used to specify additional file to source:
 
-```zsh
+```shell
 zi ice pick"powerless.zsh" src"utilities.zsh"
 zi light martinrotter/powerless
 ```
@@ -354,7 +361,7 @@ zi light martinrotter/powerless
 
 However, via `atload''` ice one can provide simple loop to source more files:
 
-```zsh
+```shell
 zi ice svn pick"completion.zsh" \
   atload'local f; for f in git.zsh misc.zsh; do \
         source $f \
@@ -379,7 +386,7 @@ Loads **multiple** files enumerated with spaces as the separator
 (e.g. `multisrc'misc.zsh grep.zsh'`) and also using brace-expansion syntax
 (e.g. `multisrc'{misc,grep}.zsh')`. Example:
 
-```zsh
+```shell
 zi ice svn pick"completion.zsh" multisrc'git.zsh \
     functions.zsh {history,grep}.zsh'
 zi snippet OMZ::lib
@@ -387,7 +394,7 @@ zi snippet OMZ::lib
 
 The all possible ways to use the `multisrc''` ice-mod:
 
-```zsh
+```shell
 zi ice depth"1" multisrc="lib/{functions,misc}.zsh" pick"/dev/null"
 zi load robbyrussell/oh-my-zsh
 
@@ -500,7 +507,7 @@ the code passed to `atload` ice to be recorded.
 
 For example, in the following invocation:
 
-```zsh
+```shell
 zi ice id-as'test' atload'!PATH+=:~/share'
 zi load z-shell/null
 ```
@@ -509,7 +516,7 @@ the `$PATH` is being changed within `atload` ice. ZI's tracking records
 `$PATH` changes and withdraws them on plugin unload, and also shows information
 loading:
 
-<pre><code>$ zplg report test
+<pre><code>$ zi report test
 Report for test plugin
 <span class="hljs-blue">----------------------</span>
 Source  (reporting enabled)
@@ -534,17 +541,21 @@ Plugin report saved to $LASTREPORT
 The same example as in the [**Tracking precmd-based Plugins**](#ice---wrap-track)
 article, but using the _exclamation mark_-preceded `atload` instead of `wrap-track`:
 
-```zsh
+```shell
 # Load when MYPROMPT == 4
 zi ice load'![[ $MYPROMPT = 4 ]]' unload'![[ $MYPROMPT != 4 ]]' \
   atload'!source ~/.p10k.zsh; _p9k_precmd'
 zi load romkatv/powerlevel10k
 ```
 
-**Summary**
+:::info
+
+Summary
 
 The creation of the four additional Zle-widgets will be recorded (see the
 [**article**](#ice---wrap-track) on `wrap-track` for more information) – the effect will
 be exactly the same as with the `wrap-track` ice. The widgets will be properly
 deleted/restored on the plugin unload with `MYPROMPT=3` (for example) and the
 shell state will be clean, ready to load a new prompt.
+
+:::
