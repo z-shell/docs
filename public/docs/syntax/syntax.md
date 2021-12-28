@@ -1,10 +1,11 @@
-- [The `for''` syntax](#the-for-syntax)
-- [The `make''` syntax](#the-make-syntax)
-- [The `bindmap''` keybindings](#the-bindmap-keybindings)
-
+---
+sidebar_position: 1
+id: syntax
+title: Syntax overview
+slug: /Syntax
 ---
 
-```zsh
+```shell
 zi ice …
 zi load … # or zi light, zi snippet
 ```
@@ -15,7 +16,7 @@ example:
 
 ## The `for''` syntax
 
-```zsh
+```shell
 zi as"null" wait"3" lucid for \
   sbin Fakerr/git-recall \
   sbin paulirish/git-open \
@@ -33,7 +34,7 @@ ices `as"null" wait"3" lucid` that are common to all of the plugins and
 
 Load a few useful binary (i.e.: binary packages from the GitHub Releases) utils:
 
-```zsh
+```shell
 zi as"null" wait"2" lucid from"gh-r" for \
   mv"exa* -> exa" sbin ogham/exa \
   mv"fd* -> fd" sbin"fd/fd" @sharkdp/fd \
@@ -48,7 +49,7 @@ skipped.
 
 Turbo load some plugins, without any plugin-specific ices:
 
-```zsh
+```shell
 zi wait lucid for \
   hlissner/zsh-autopair \
   urbainvaes/fzf-marks
@@ -56,7 +57,7 @@ zi wait lucid for \
 
 Load two Oh My Zsh files as snippets, in Turbo:
 
-```zsh
+```shell
 zi wait lucid for \
   OMZ::lib/git.zsh \
   atload"unalias grv" OMZ::plugins/git/git.plugin.zsh
@@ -64,7 +65,7 @@ zi wait lucid for \
 
 ## The `make''` syntax
 
-```zsh
+```shell
 zi ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zi light tj/git-extras
 ```
@@ -87,7 +88,7 @@ with a short ice-modifier specification with the `bindmap''` ice.
 
 ** Examples of `bindmap''`**
 
-```zsh
+```shell
 # Map Ctrl-G instead of Ctrl-R for the history searcher.
 zi bindmap'^R -> ^G' for z-shell/history-search-multi-word
 
@@ -121,14 +122,14 @@ In the second mode, the remapping is being done from-key to-widget, i.e.:
 to the given widget instead of the widget specified in the `bindkey` command,
 i.e.: instead of:
 
-```zsh
+```shell
 bindkey "^ " magic-space
 bindkey " " globalias
 ```
 
 the actual call that'll be done will be:
 
-```zsh
+```shell
 bindkey "^ " globalias
 bindkey " " magic-space
 ```
@@ -143,7 +144,7 @@ used (default in the `for` syntax and when `zi load …` is used) – then the
 – activated when `zi light …` or the `light-mode` ice is being used – the
 `bindmap''` is unavailable, unless the `trackbinds` ice is specified, i.e.:
 
-```zsh
+```shell
 # With use of the light-mode ice and the for-syntax:
 zi light-mode trackbinds bindmap'^R -> ^G' for z-shell/history-search-multi-word
 
@@ -158,7 +159,7 @@ There are four special values that can be used on the left side of the bind-map:
 `UPAR`, `DOWNAR`, `LEFTAR`, `RIGHTAR`. They'll match up arrow, down arrow, etc.
 So that it's possible to do:
 
-```zsh
+```shell
 zi bindmap='LEFTAR -> ^F; RIGHTAR -> ^G' …
 ```
 

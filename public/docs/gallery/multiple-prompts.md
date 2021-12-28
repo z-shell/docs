@@ -1,13 +1,38 @@
-- `load''` – condition that when fulfilled will cause plugin to be loaded,
-- `unload''` – as above, but will unload plugin, note that plugins are loaded with <code>zi load </code>, not `zi light`, to track what plugin does, to be able to unload it,
-- `atload'!…'` – run the `precmd` hooks to make the prompts fully initialized when loaded in the middle of the prompt (`precmd` hooks are being normally run before each **new** prompt); exclamation mark causes the effects of the functions to be tracked, to allow better unloading,
-- conditions are checked every second, you can use conditions like `![[ $PWD == *github* ]]` to change prompt after changing directory to `*github*`, the exclamation mark `![[ … ]]` causes prompt to be reset after loading or unloading the plugin,
-- `pick'/dev/null'` – disable sourcing of the default-found file,
-- `multisrc''` – source multiple files,
-- `lucid` – don't show the under-prompt message that says e.g.: `Loaded geometry-zsh/geometry`,
-- `nocd` – don't cd into the plugin's directory when executing the `atload''` ice – it could make the path that's displayed by the theme to point to that directory.
+---
+sidebar_position: 1
+id: multiple-prompts
+title: Multiple prompts
+slug: /multiple-prompts
+---
 
-```zsh
+:::info
+
+`load''` – condition that when fulfilled will cause plugin to be loaded,
+`unload''` – as above, but will unload plugin, note that plugins are loaded with <code>zi load </code>, not
+`zi light`, to track what plugin does, to be able to unload it,
+`atload'!…'` – run the `precmd` hooks to make the prompts fully initialized when loaded in the middle of the prompt.
+`precmd` hooks are being normally run before each **new** prompt.
+
+:::
+
+Exclamation mark causes the effects of the functions to be tracked, to allow better unloading, conditions are checked every second,
+you can use conditions like:
+
+:::info
+
+`![[ $PWD == *github* ]]` to change prompt after changing directory to `*github*`, the exclamation mark
+`![[ … ]]` causes prompt to be reset after loading or unloading the plugin,
+`pick'/dev/null'` – disable sourcing of the default-found file,
+`multisrc''` – source multiple files,
+`lucid` – don't show the under-prompt message that says e.g.:
+
+`Loaded geometry-zsh/geometry`,
+`nocd` – don't cd into the plugin's directory when executing the
+`atload''` ice – it could make the path that's displayed by the theme to point to that directory.
+
+:::
+
+```shell
 # Theme no. 1 - zprompts
 zi lucid \
  load'![[ $MYPROMPT = 1 ]]' \
