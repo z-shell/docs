@@ -16,6 +16,7 @@
 
 This repository manages the following documentation:
 
+- https://z-shell.pages.dev :sparkles:
 - [ZI Wiki](https://github.com/z-shell/zi/wiki) | update: `on changes`
 - [Code Documentation](https://github.com/z-shell/zi/wiki/Code-Documentation) | update: `every Thursday 4:30 UTC`
 - [Zsh Plugin Standard](https://github.com/z-shell/zi/wiki/Zsh-Plugin-Standard) | update: `on changes`
