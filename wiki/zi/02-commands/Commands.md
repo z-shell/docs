@@ -109,7 +109,7 @@ Following commands are passed to `zi ...` to obtain described effects.
 
 |              Command               | Description                                                                                                                                                                                           |
 | :--------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|         `times [-s] [-m]`          | <div align="justify" style="text-align: justify;"> Statistics on plugin load times, sorted in order of loading. `-s` – use seconds instead of milliseconds. `-m` – show plugin loading moments.</div> |
+|         `times [-s] [-m] [-a]`          | <div align="justify" style="text-align: justify;"> Statistics on plugin load times, sorted in order of loading. `-s` – use seconds instead of milliseconds. `-m` – show plugin loading moments and `-a` both.</div> |
 |             `zstatus`              | <div align="justify" style="text-align: justify;"> Overall ZI status.</div>                                                                                                                           |
 |   `report {plugin-spec}\|--all`    | <div align="justify" style="text-align: justify;"> Show plugin report. `--all` – do it for all plugins.</div>                                                                                         |
 | `loaded [keyword], list [keyword]` | <div align="justify" style="text-align: justify;"> Show what plugins are loaded (filter with 'keyword').</div>                                                                                        |
