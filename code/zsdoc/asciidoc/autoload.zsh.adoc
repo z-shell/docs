@@ -258,9 +258,8 @@ ____
  
  FUNCTION: .zi-check-comp-consistency [[[
  ❮ ZI ❯ creates symlink for each installed completion.
- This function checks whether given completion (i.e.
- file like "_mkdir") is indeed a symlink. Backup file
- is a completion that is disabled - has the leading "_" removed.
+ This function checks whether given completion (i.e. file like "_mkdir") is indeed a symlink.
+ Backup file is a completion that is disabled - has the leading "_" removed.
  
  $1 - path to completion within plugin's directory
  $2 - path to backup file within plugin's directory
@@ -876,7 +875,7 @@ ____
  FUNCTION: .zi-ls [[[
 ____
 
-Has 17 line(s). Doesn't call other functions.
+Has 18 line(s). Doesn't call other functions.
 
 Called by:
 
@@ -910,6 +909,7 @@ ____
  
  FUNCTION: .zi-pager [[[
  BusyBox less lacks the -X and -i options, so it can use more
+ TODO: .zi-pager:7: less not found
 ____
 
 Has 14 line(s). Doesn't call other functions.
@@ -1456,7 +1456,7 @@ ____
  User-action entry point.
 ____
 
-Has 96 line(s). Calls functions:
+Has 102 line(s). Calls functions:
 
  .zi-update-or-status-all
  |-- install.zsh/.zi-compinit

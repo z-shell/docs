@@ -24,7 +24,7 @@ completions=( "${ZI[COMPLETIONS_DIR]}"/_[^_.]*~*.zwc(DN) )
 +zi-message "Enabled completions: {num}${#completions[@]}{rst}"
 completions=( "${ZI[COMPLETIONS_DIR]}"/[^_.]*~*.zwc(DN) )
 +zi-message "Disabled completions: {num}${#completions[@]}{rst}"
-completions=( "${ZI[PLUGINS_DIR]}"/*/**/_[^_.]*~*(*.zwc|*.html|*.txt|*.png|*.jpg|*.jpeg|*.js|*.md|*.yml|*.ri|_zsh_highlight*|/zsdoc/*|*.ps1)(DN) )
+completions=( "${ZI[PLUGINS_DIR]}"/*/**/_[^_.]*~*(*.zwc|*.html|*.txt|*.png|*.jpg|*.jpeg|*.js|*.md|*.yml|*.ri|_zsh_highlight*|/tests/*|/zsdoc/*|*.ps1)(DN) )
 +zi-message "Completions available overall: {num}${#completions[@]}{rst}"
 +zi-message -n "Snippets loaded: "
 local sni
