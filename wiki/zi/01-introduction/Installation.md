@@ -1,6 +1,6 @@
 - [Quick install](#quick-install)
-  - [Manual install](#manual-install)
-  - [Post-install](#post-install)
+- [Manual install](#manual-install)
+- [Post-install](#post-install)
 
 > Contribute to [this page](https://github.com/z-shell/docs/blob/main/wiki/zi/01-introduction/Installation.md)
 
@@ -8,13 +8,10 @@
 
 ## Quick install
 
-:::tip
-
 If you prefer stable version with less changes, append `-b <tag>` e.g:
 
 `sh -c "$(curl -fsSL https://git.io/get-zi)" -- -i skip -b 0.9.9`
 
-:::
 
 ```zsh
 # Will add minimal configuration
@@ -37,7 +34,7 @@ sh -c "$(curl -fsSL https://git.io/get-zi)" -- -a loader
 sh -c "$(curl -fsSL https://git.io/get-zi)" -- -a ???
 ```
 
-### Manual install
+## Manual install
 
 Clone repository:
 
@@ -56,7 +53,7 @@ autoload -Uz _zi
 (( ${+_comps} )) && _comps[zi]=_zi
 ```
 
-### Post-install
+## Post-install
 
 - Run: `exec zsh` and `zi self-update`.
 - Visit [wiki](https://github.com/z-shell/zi/wiki/):
