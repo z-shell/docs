@@ -44,3 +44,5 @@ num calls    time                self                 name
   - so for example, `--zi-shadow-autoload` spent 8.71 ms on executing only
     its own code.
 - the table is sorted on the **self-time** column.
+
++++
