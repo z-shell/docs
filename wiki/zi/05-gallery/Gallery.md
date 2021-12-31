@@ -293,3 +293,5 @@ zi light-mode for @romkatv
 zi ice depth'1' atload"[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh" nocd
 zi light romkatv/powerlevel10k
 ```
+
++++
