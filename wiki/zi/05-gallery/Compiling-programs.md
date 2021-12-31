@@ -44,3 +44,5 @@ In general, Direnv works by hooking up to Zsh. The code that does this is
 provided by program `direnv` (built by `make''`). Above `atclone''` puts this
 code into file `zhook.zsh`, `src''` sources it. This way `direnv hook zsh` is
 executed only on clone and update, and Zsh starts faster.
+
++++
