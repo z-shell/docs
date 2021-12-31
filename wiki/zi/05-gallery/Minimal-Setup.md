@@ -55,3 +55,5 @@ zi light zsh-users/zsh-autosuggestions
 Without Turbo the syntax-highlighting plugin can be loaded at the end, as it
 doesn't make any difference (the prompt will appear after loading all objects,
 anyway).
+
++++
