@@ -9,10 +9,6 @@
 
 </div></h2>
 
-<div align="center">
-<a href="https://asciinema.org/a/459358" target="_blank"><img src="https://asciinema.org/a/459358.svg" width="85%" /></a>
-</div>
-
 - Has a [turbo mode](https://github.com/z-shell/zi/wiki/Introduction#turbo-mode-zsh--53) which yields 50-80% [faster](https://github.com/z-shell/pm-perf-test) Zsh startup.
 
 - Allow to install [**RubyGems**](https://rubygems.org/) [[1](https://github.com/z-shell/zi/wiki/z-a-bin-gem-node)] [[2](https://github.com/z-shell/any-gem)], [**Node modules**](https://www.npmjs.com/) [[1](https://github.com/z-shell/zi/wiki/z-a-bin-gem-node)] [[2](https://github.com/z-shell/any-node)], [**Rust packages**](https://crates.io/) [[1](https://github.com/z-shell/zi/wiki/z-a-rust)] and almost everything from [**GitHub**](https://github.com) [[1](https://github.com/z-shell/zi/wiki/z-a-meta-plugins)] [[2](https://github.com/z-shell/zi/wiki/Gallery)] [[3](https://github.com/z-shell/zi/wiki/Annexes)] [[4](https://github.com/z-shell/zi/wiki/Packages)].
@@ -22,6 +18,10 @@
 - The dedicated [packages](https://github.com/z-shell/zi/wiki/Packages/) that offload the user from providing long and complex commands. See the [Z-Shell ZI](https://github.com/z-shell) organization for a complete list of packages.
 
 - The specialized extensions — called [annexes](https://github.com/z-shell/zi/wiki/Annexes/) — allow to extend the plugin manager with new commands, URL-preprocessors (used by e.g.: [z-a-readurl](https://github.com/z-shell/z-a-readurl) annex), post-install and post-update hooks and much more.
+
+<div align="center">
+<a href="https://asciinema.org/a/459358" target="_blank"><img src="https://asciinema.org/a/459358.svg" width="85%" /></a>
+</div>
 
 - The system does not use `$FPATH`, loading multiple plugins don't clutter `$FPATH` with the same number of entries (e.g. `10`, `15` or more). Code is immune to `KSH_ARRAYS` and other options typically causing compatibility problems.
 
