@@ -89,3 +89,5 @@ In general, Turbo can be optionally enabled only for a subset of plugins or for
 all plugins. It needs Zsh \>= 5.3.
 
 The **Introduction** contains [**more information**](http://z-shell.github.io/zi/wiki/Introduction#turbo-mode-zsh--53) on Turbo.
+
++++
