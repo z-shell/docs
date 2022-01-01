@@ -428,3 +428,5 @@ the ZI package via:
 ```zsh
 zi pack=bgn for firefox
 ```
+
++++
