@@ -268,3 +268,5 @@ The `cdreplay` is important if you use plugins like
 | :--------: | --------------------------------------------------------------------------- |
 | `-h, help` | <div align="justify" style="text-align: justify;"> Usage information.</div> |
 |   `man`    | <div align="justify" style="text-align: justify;"> Manual.</div>            |
+
++++
