@@ -392,3 +392,5 @@ however, this doesn’t influence Zsh startup time when using Turbo mode.
 
 **See also: [multiple prompts](Multiple-prompts).** It contains a
 more real-world examples of a multi-prompt setup, which is being close to what the author uses in his setup.
+
++++
