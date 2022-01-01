@@ -211,3 +211,5 @@ any completion-equipped plugins, i.e. almost on 100% – add the following lines
 # Skip the not helping Ubuntu global compinit
 skip_global_compinit=1
 ```
+
++++
