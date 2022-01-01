@@ -1,5 +1,3 @@
-[![Test](https://github.com/z-shell/zpmod/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/z-shell/zpmod/actions/workflows/build.yml)
-
 # Zsh module `zpmod`
 
 The module is a binary Zsh module (think about `zmodload` Zsh command, it's that topic) which transparently and
@@ -47,3 +45,5 @@ To enable debug messages from the module set:
 ```zsh
 typeset -g ZI_MOD_DEBUG=1
 ```
+
++++
