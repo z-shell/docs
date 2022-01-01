@@ -484,3 +484,5 @@ For some additional examples you can also check out the:
 - [Gallery of Invocations](https://github.com/z-shell/zi/wiki/Gallery/),
 - [Minimal Setup](https://github.com/z-shell/zi/wiki/Minimal-Setup/),
 - [Oh-My-Zsh](https://github.com/z-shell/zi/wiki/Oh-My-Zsh-Setup/).
+
++++
