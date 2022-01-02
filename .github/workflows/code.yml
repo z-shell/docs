@@ -77,3 +77,13 @@ jobs:
           disable_globbing: true
           if: steps.auto-commit-action.outputs.changes_detected == 'false'
           run: echo "No Changes!"
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 🚀 Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: ${{ secrets.GH_MAIL }}
+          build_dir: code/zsdoc/html
