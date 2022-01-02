@@ -1212,7 +1212,7 @@ ____
  User-action entry point.
 ____
 
-Has 51 line(s). Calls functions:
+Has 54 line(s). Calls functions:
 
  .zi-show-times
  `-- side.zsh/.zi-any-colorify-as-uspl2

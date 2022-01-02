@@ -7,7 +7,7 @@
 ❯ stress         ${ZI[col-pname]}[plugin]${ZI[col-rst]}     – Test plugin for compatibility with set of options
 ❯ changes        ${ZI[col-pname]}[plugin]${ZI[col-rst]}     – View plugin's git log
 ❯ recently       ${ZI[col-info]}[time]${ZI[col-rst]}       – Show plugins that changed recently, argument is e.g. 1 month 2 days
-❯ times [-s] [-m]             – Statistics on plugin load times, sorted in order of loading; -s – use seconds instead of milliseconds, -m – show plugin loading moments
+❯ times [-s] [-m] [-a]        – Statistics on plugin load times, sorted in order of loading; -s – use seconds instead of milliseconds, -m – loading moments, -a – show both
 ❯ zstatus                     – Overall ❮ ZI ❯ status
 ❯ dtrace|dstart               – Start tracking what's going on in session
 ❯ dstop                       – Stop tracking what's going on in session
