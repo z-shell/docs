@@ -46,19 +46,15 @@ jobs:
           name: ♻️ Zsh Documentation
           path: zsh-wiki.tar.gz
       - uses: actions/checkout@v2
-      - name: 🚀 Deploy to GitHub Pages
+      - name: ♻️ Prepare GitHub Pages
         run: |
           make -C wiki/zsh prep-gh-pages
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add wiki/zsh/gh-pages
+          git add code/zsh
           git commit -m "Zsh Documentation Update" -a
-          git subtree push --force --progress --prefix wiki/zsh/gh-pages origin gh-pages
-
-#      - name: 🚀 Deploy to GitHub Pages
-#        uses: Cecilapp/GitHub-Pages-deploy@v3
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          email: ${{ secrets.GH_MAIL }}
-#          build_dir: wiki/zsh/gh-pages
+      - name: 📤 Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
