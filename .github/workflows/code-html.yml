@@ -1,5 +1,5 @@
 ---
-name: 🚀 Deploy Code Documentation
+name: 🚀 Deploy Code to GHP
 
 on:
   workflow_run:
