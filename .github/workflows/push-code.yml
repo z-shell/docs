@@ -19,8 +19,6 @@ jobs:
       - name: ♻️ Prepare
         run: |
           mkdir -p gh-pages/code gh-pages/zsh
-          cp -vrf code/zsdoc/asciidoc gh-pages/code/
-          cp -vrf code/zsdoc/pdf gh-pages/code/
           cp -vrf code/zsdoc/html gh-pages/code/
           cp -vrf code/zsh gh-pages/
       - name: 🚀 Deploy to GitHub Pages
