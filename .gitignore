@@ -1,4 +1,3 @@
-
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -9,3 +8,9 @@
 # Local files
 .history/
 .drafts/
+
+# Exclude from GH Pages push
+code/Makefile
+code/zsdoc/data
+code/zsdoc/Makefile
+code/zsdoc/README.md
