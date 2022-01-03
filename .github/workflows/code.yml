@@ -40,7 +40,7 @@ jobs:
         with:
           name: code documentation
           path: code.tar.gz
-      - name: Tree
+      - name: 🏗 Tree
         run: |
           echo -e "```SystemVerilog"
           tree code/zsdoc | tee docs/TREE.md
@@ -75,11 +75,6 @@ jobs:
           skip_fetch: true
           # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
           disable_globbing: true
-          if: steps.auto-commit-action.outputs.changes_detected == 'false'
-          run: echo "No Changes!"
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: 🚀 Deploy to GitHub Pages
         uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
