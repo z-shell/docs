@@ -22,6 +22,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
           publish_branch: gh-pages
-          publish_dir: code
+          publish_dir: ./code
           allow_empty_commit: true
           keep_files: true
