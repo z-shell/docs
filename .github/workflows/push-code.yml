@@ -16,14 +16,12 @@ jobs:
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-#          exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
+          exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
           publish_branch: gh-pages
           publish_dir: code
           allow_empty_commit: true
+          keep_files: true
