@@ -31,7 +31,7 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add docs/zsh-plugins-commit-top/README.md wiki/zi/06-knowledge-base/Zsh-Plugins-Commit-TOP.md
-          git commit -m "Zsh Plugins commit update" -a
+          git commit --allow-empty -m "Zsh Plugins commit update" -a
       - name: 📤 Push changes
         uses: ad-m/github-push-action@master
         with:
