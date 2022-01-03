@@ -14,8 +14,8 @@ Zsh-Plugin-Standard.pdf: Zsh-Plugin-Standard.adoc
 	asciidoctor-pdf -a reproducible Zsh-Plugin-Standard.adoc
 
 prep-gh-pages: Zsh-Native-Scripting-Handbook.html Zsh-Plugin-Standard.html
-	@mkdir -p gh-pages/zsh
-	@mv -vf *.html gh-pages/zsh/
+	@mkdir -p ../../code/zsh
+	@mv -vf *.html ../../code/zsh/
 
 to-wiki-pages:
 	@cp -vf Zsh-Plugin-Standard.adoc ../zi/06-knowledge-base/Zsh-Plugin-Standard.asciidoc
