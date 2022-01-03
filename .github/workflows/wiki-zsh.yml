@@ -53,7 +53,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add wiki/zsh/gh-pages
           git commit -m "Zsh Documentation Update" -a
-          git subtree push --prefix wiki/zsh/gh-pages origin gh-pages
+          git subtree push --force --progress --prefix wiki/zsh/gh-pages origin gh-pages
 
 #      - name: 🚀 Deploy to GitHub Pages
 #        uses: Cecilapp/GitHub-Pages-deploy@v3
