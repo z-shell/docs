@@ -45,7 +45,8 @@ jobs:
         with:
           name: ♻️ Zsh Documentation
           path: zsh-wiki.tar.gz
-      - name:  🚀 Deploy to GitHub Pages
+      - uses: actions/checkout@v2
+      - name: 🚀 Deploy to GitHub Pages
         run: |
           make -C wiki/zsh prep-gh-pages
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
