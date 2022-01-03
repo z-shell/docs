@@ -11,6 +11,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v2
@@ -18,9 +20,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🚀 Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          email: ${{ secrets.GH_MAIL }}
-          build_dir: code
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: code
+          exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
+          allow_empty_commit: true
