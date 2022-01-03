@@ -57,18 +57,30 @@ jobs:
         with:
           email: ${{ secrets.GH_MAIL }}
           build_dir: code/zsdoc/html
-      - name: 🚀 Commit & push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: ☑️ Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs code
+          git commit -m "Code documentation" -a
+      - name: 📤 Push changes
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: "Code Documentation Update"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      #- name: 🚀 Commit & push changes
+      #  uses: stefanzweifel/git-auto-commit-action@v4
+      #  with:
+      #    commit_message: "Code Documentation Update"
           # Defaults to the current branch.
           #branch: main
           # See https://git-scm.com/docs/git-commit#_options
-          commit_options: "--no-verify --signoff"
+      #    commit_options: "--no-verify --signoff"
           # See the `pathspec`-documentation for git
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
-          file_pattern: code docs
+      #    file_pattern: code docs
           # Defaults to the root of the repository
           #repository:
           #commit_user_name: Z-Shell Bot
@@ -76,12 +88,12 @@ jobs:
           #commit_author: Z-Shell ZI <z-shell@digitalclouds.dev>
           #tagging_message: 'v1.0.0'
           # See https://git-scm.com/docs/git-status#_options
-          status_options: "--untracked-files=no"
+      #    status_options: "--untracked-files=no"
           # See https://git-scm.com/docs/git-add#_options
           #add_options: '-u'
-          push_options: "--force"
-          skip_dirty_check: true
-          skip_fetch: true
+      #    push_options: "--force"
+      #    skip_dirty_check: true
+      #    skip_fetch: true
           # Details: https://www.gnu.org/software/bash/manual/html_node/Filename-Expansion.html
-          disable_globbing: true
+      #    disable_globbing: true
 
