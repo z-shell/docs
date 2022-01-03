@@ -8,7 +8,7 @@ on:
       - completed
       
 jobs:
-  run-assessor:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
