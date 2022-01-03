@@ -23,7 +23,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+#          exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
           publish_branch: gh-pages
           publish_dir: code
-          exclude_assets: 'code/Makefile,code/zsdoc/data,code/zsdoc/Makefile,code/zsdoc/README.md'
           allow_empty_commit: true
