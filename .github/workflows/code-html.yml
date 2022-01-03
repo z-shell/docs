@@ -3,10 +3,11 @@ name: 🚀 Deploy ZI Code to GHP
 
 on:
   workflow_run:
-    workflows: ["📖 Code, 📖 Zsh"]
+    workflows: 
+      - "📖 Code"
+      - "📖 Zsh"
     types:
       - completed
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
