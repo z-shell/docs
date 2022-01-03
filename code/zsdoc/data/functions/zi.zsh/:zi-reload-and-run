@@ -1,9 +1,0 @@
-local fpath_prefix="$1" autoload_opts="$2" func="$3"
-shift 3
-unfunction -- "$func"
-local -a ___fpath
-___fpath=( ${fpath[@]} )
-local -a +h fpath
-[[ $FPATH != *${${(@0)fpath_prefix}[1]}* ]] && fpath=( ${(@0)fpath_prefix} ${___fpath[@]} )
-builtin autoload ${(s: :)autoload_opts} -- "$func"
-"$func" "$@"

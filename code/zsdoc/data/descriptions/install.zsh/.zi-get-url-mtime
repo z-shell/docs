@@ -1,2 +1,0 @@
-# FUNCTION: .zi-get-url-mtime [[[
-# For the given URL returns the date in the Last-Modified header as a time stamp

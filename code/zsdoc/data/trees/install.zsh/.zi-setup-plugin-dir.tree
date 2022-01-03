@@ -1,9 +1,0 @@
-.zi-setup-plugin-dir
-|-- side.zsh/.zi-any-colorify-as-uspl2
-|-- side.zsh/.zi-store-ices
-|-- zi.zsh/+zi-message
-|-- zi.zsh/.zi-get-object-path
-`-- ziextract
-    `-- zi.zsh/+zi-message
-
-6 directories, 0 files

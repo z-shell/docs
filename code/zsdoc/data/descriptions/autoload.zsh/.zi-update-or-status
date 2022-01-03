@@ -1,8 +1,0 @@
-# FUNCTION: .zi-update-or-status [[[
-# Updates (git pull) or does `git status' for given plugin.
-#
-# User-action entry point.
-#
-# $1 - "status" for status, other for update
-# $2 - plugin spec (4 formats: user---plugin, user/plugin, user (+ plugin in $2), plugin)
-# $3 - plugin (only when $1 - i.e. user - given)

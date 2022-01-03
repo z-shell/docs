@@ -1,5 +1,0 @@
-# FUNCTION: :zi-tmp-subst-autoload. [[[
-# Function defined to hijack plugin's calls to the `autoload' builtin.
-#
-# The hijacking is not only to gather report data, but also to.
-# run custom `autoload' function, that doesn't need FPATH.

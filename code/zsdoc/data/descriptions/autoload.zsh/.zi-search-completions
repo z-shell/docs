@@ -1,6 +1,0 @@
-# FUNCTION: .zi-search-completions [[[
-# While .zi-show-completions() shows what completions are
-# installed, this functions searches through all plugin dirs
-# showing what's available in general (for installation).
-#
-# User-action entry point.

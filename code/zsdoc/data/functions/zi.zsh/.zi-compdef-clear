@@ -1,3 +1,0 @@
-local quiet="$1" count="${#ZI_COMPDEF_REPLAY}"
-ZI_COMPDEF_REPLAY=( )
-[[ $quiet = -q ]] || +zi-message "Compdef-replay cleared (it had {num}${count}{rst} entries)."

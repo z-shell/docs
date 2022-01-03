@@ -1,6 +1,0 @@
-# FUNCTION: .zi-load-plugin. [[[
-# Lower-level function for loading a plugin.
-#
-# $1 - user
-# $2 - plugin
-# $3 - mode (light or load)

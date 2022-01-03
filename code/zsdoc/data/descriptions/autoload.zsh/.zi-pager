@@ -1,3 +1,0 @@
-# FUNCTION: .zi-pager [[[
-# BusyBox less lacks the -X and -i options, so it can use more
-# TODO: .zi-pager:7: less not found

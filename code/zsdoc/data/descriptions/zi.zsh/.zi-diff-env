@@ -1,5 +1,0 @@
-# FUNCTION: .zi-diff-env. [[[
-# Implements detection of change in PATH and FPATH.
-#
-# $1 - user/plugin (i.e. uspl2 format)
-# $2 - command, can be "begin" or "end"

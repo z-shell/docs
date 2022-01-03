@@ -1,2 +1,0 @@
-# FUNCTION: .zi-debug-unload [[[
-# Reverts changes detected by dtrace run.

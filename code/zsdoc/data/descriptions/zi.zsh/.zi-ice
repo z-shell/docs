@@ -1,3 +1,0 @@
-# FUNCTION: .zi-ice. [[[
-# Parses ICE specification, puts the result into ICE global hash. The ice-spec is valid for
-# next command only (i.e. it "melts"), but it can then stick to plugin and activate e.g. at update.

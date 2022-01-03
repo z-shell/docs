@@ -1,5 +1,0 @@
-# FUNCTION: .zi-exists-message [[[
-# Checks if plugin is loaded. Testable. Also outputs error message if plugin is not loaded.
-#
-# $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
-# $2 - (optional) plugin (only when $1 - i.e. user - given)

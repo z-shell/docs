@@ -1,4 +1,0 @@
-# FUNCTION: .zi-tmp-subst-on. [[[
-# Turn on temporary substituting of functions of builtins and functions according to passed
-# mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
-# to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.

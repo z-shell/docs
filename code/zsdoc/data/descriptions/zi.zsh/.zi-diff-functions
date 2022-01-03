@@ -1,5 +1,0 @@
-# FUNCTION: .zi-diff-functions. [[[
-# Implements detection of newly created functions. Performs data gathering, computation is done in *-compute().
-#
-# $1 - user/plugin (i.e. uspl2 format)
-# $2 - command, can be "begin" or "end"

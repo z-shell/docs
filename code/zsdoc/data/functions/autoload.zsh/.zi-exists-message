@@ -1,7 +1,0 @@
-.zi-any-to-uspl2 "$1" "$2"
-if [[ -z "${ZI_REGISTERED_PLUGINS[(r)$REPLY]}" ]]; then
-  .zi-any-colorify-as-uspl2 "$1" "$2"
-  builtin print "${ZI[col-error]}No such plugin${ZI[col-rst]} $REPLY"
-  return 1
-fi
-return 0

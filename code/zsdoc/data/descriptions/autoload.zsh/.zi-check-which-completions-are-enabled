@@ -1,8 +1,0 @@
-# FUNCTION: .zi-check-which-completions-are-enabled [[[
-# For each argument that each should be a path to completion
-# within a plugin's dir, it checks whether that completion
-# is disabled - returns 0 or 1 on corresponding positions in reply.
-#
-# Uninstalled completions will be reported as "0" - i.e. disabled
-#
-# $1, ... - path to completion within plugin's directory

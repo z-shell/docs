@@ -1,5 +1,0 @@
-# FUNCTION: .zi-compinit [[[
-# User-exposed `compinit' frontend which first ensures that all completions managed by ❮ ZI ❯ are forgotten by Z-shell.
-# After that it runs normal `compinit', which should more easily detect ❮ ZI ❯ completions.
-#
-# No arguments.

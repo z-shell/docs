@@ -1,6 +1,0 @@
-(( ${+functions[.zi-unload]} )) || builtin source "${ZI[BIN_DIR]}/lib/zsh/autoload.zsh" || return 1
-if [[ ${ZI[DTRACE]} = 1 ]]; then
-  +zi-message "{error}Dtrace is still active, stop it first with \`dstop'{rst}"
-else
-  .zi-unload _dtrace _dtrace
-fi

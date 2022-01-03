@@ -1,4 +1,0 @@
-# FUNCTION: .zi-compile-uncompile-all [[[
-# Compiles or uncompiles all existing (on disk) plugins.
-#
-# User-action entry point.

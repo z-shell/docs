@@ -1,2 +1,0 @@
-# FUNCTION: .zi-build-module [[[
-# Performs ./configure && make on the module and displays information how to load the module in .zshrc.
