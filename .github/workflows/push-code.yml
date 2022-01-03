@@ -1,5 +1,5 @@
 ---
-name: 🚀 Deploy ZI Code to GHP
+name: 🚀 Deploy Code to GH Pages
 
 on:
   workflow_run:
