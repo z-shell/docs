@@ -1,14 +1,13 @@
-<h2 align="center">
+<h1 align="center">
   <a href="https://github.com/z-shell/zi">
     <img src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="60" height="60">
   </a>
 ❮ ZI ❯ Wiki
+</h1><div align="center"><h2>
 
-  ---
-  
-**A Swiss Army Knife for [Zsh](https://zsh.sourceforge.io/) - [Unix shell](https://en.wikipedia.org/wiki/Unix_shell).**
+  **A Swiss Army Knife for [Zsh](https://zsh.sourceforge.io/) - [Unix shell](https://en.wikipedia.org/wiki/Unix_shell).**
 
-</h2>
+</h2></div>
 
 - Has a [turbo mode](https://github.com/z-shell/zi/wiki/Introduction#turbo-mode-zsh--53) which yields 50-80% [faster](https://github.com/z-shell/pm-perf-test) Zsh startup.
 
