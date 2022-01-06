@@ -1,5 +1,7 @@
 ### [Home](Home)
 
+- 🎉[**New Wiki**](https://z-shell.pages.dev/)
+
 - 💡 [**Introduction**](Introduction)
   - [Installation](Installation)
   - [Usage](Usage)
