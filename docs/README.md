@@ -2,7 +2,7 @@
   <a href="https://github.com/z-shell/zi">
     <img src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="60" height="60">
   </a>
-❮ ZI ❯ https://z-shell.pages.dev :sparkles:
+❮ ZI ❯ https://z.digitalclouds.dev:sparkles:
 </h2>
 
 <div align="center">
