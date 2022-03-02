@@ -9,7 +9,7 @@ jobs:
   deps:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive
@@ -47,7 +47,7 @@ jobs:
           tree wiki/zsh | tee -a docs/TREE.md
           tree wiki/zi | tee -a docs/TREE.md
           echo -e "```"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: ☑️ Commit files

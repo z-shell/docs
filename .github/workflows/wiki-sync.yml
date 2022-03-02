@@ -19,7 +19,7 @@ jobs:
     if: github.event_name != 'gollum'
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: 📤 Sync Docs to Wiki
         uses: newrelic/wiki-sync-action@master
         with:
@@ -34,7 +34,7 @@ jobs:
     if: github.event_name == 'gollum'
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_PAT }}
           ref: develop
