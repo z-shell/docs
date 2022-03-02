@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive
@@ -31,7 +31,7 @@ jobs:
       - name: 📝 Install asciidoctor-pdf and rouge
         run: |
           gem install asciidoctor-pdf rouge
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: ♻️ Generate Documentation
@@ -45,7 +45,7 @@ jobs:
         with:
           name: ♻️ Zsh Documentation
           path: zsh-wiki.tar.gz
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: ♻️ Prepare GitHub Pages
         run: |
           make -C wiki/zsh prep-gh-pages
