@@ -8,7 +8,7 @@
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 
-Plugins evaluated at March 24th, 2022
+Plugins evaluated at April 01th, 2022
 
 There are so many plugins on the great [awesome-zsh-plugins](https://github.com/unixorn/awesome-zsh-plugins) page that
 it makes sense to filter them out and also to **score** them. The plugins below
