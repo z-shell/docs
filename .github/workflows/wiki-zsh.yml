@@ -41,7 +41,7 @@ jobs:
       - name: ♻️ Compress the Zsh Documentation
         run: tar cvzf zsh-wiki.tar.gz wiki/zsh
       - name: Upload zsh-wiki.tar.gz
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ♻️ Zsh Documentation
           path: zsh-wiki.tar.gz
