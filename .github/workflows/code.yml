@@ -36,7 +36,7 @@ jobs:
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: code documentation
           path: code.tar.gz
