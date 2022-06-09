@@ -1,0 +1,60 @@
+---
+name: 📖 Zsh
+
+on:
+  push:
+    paths:
+      - "wiki/zsh/**"
+  pull_request:
+    paths:
+      - "wiki/zsh/**"
+  workflow_dispatch:
+
+jobs:
+  generate-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - name: ⚡ Install zsdoc
+        run: |
+          sudo apt-get install -y zsh tree
+          sudo make -C lib/zsdoc install
+      - name: 💎 Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
+      - name: 📝 Install asciidoctor-pdf and rouge
+        run: |
+          gem install asciidoctor-pdf rouge
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: ♻️ Generate Documentation
+        run: |
+          make -C wiki/zsh clean
+          make -C wiki/zsh all
+      - name: ♻️ Compress the Zsh Documentation
+        run: tar cvzf zsh-wiki.tar.gz wiki/zsh
+      - name: Upload zsh-wiki.tar.gz
+        uses: actions/upload-artifact@v3
+        with:
+          name: ♻️ Zsh Documentation
+          path: zsh-wiki.tar.gz
+      - uses: actions/checkout@v3
+      - name: ♻️ Prepare GitHub Pages
+        run: |
+          make -C wiki/zsh prep-gh-pages
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add code/zsh
+          git commit --allow-empty -m "Zsh Documentation Update" -a
+      - name: 📤 Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

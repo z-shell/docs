@@ -1,0 +1,30 @@
+### [Home](Home)
+
+- 🎉 [**New Wiki**](https://z-shell.pages.dev/)
+
+- 💡 [**Introduction**](Introduction)
+  - [Installation](Installation)
+  - [Usage](Usage)
+  - [Hints & Tips](Hints-&-Tips)
+- 🛠 [**Commands**](Commands)
+- ✍️ [**Syntax**](Syntax)
+  - 🧊 [Ice](Ice)
+    - [Ice modifiers](Ice-modifiers)
+    - [Alternate ice syntax](Alternate-Ice-Syntax)
+  - [Code Documentation](Code-Documentation)
+- ✨ [**Gallery Of Invocations**](Gallery)
+  - [Minimal Setup](Minimal-Setup)
+  - [Oh My Zsh Setup](Oh-My-Zsh-Setup)
+  - [Specific Setup](Specific-Setup)
+  - [Compiling Programs](Compiling-programs)
+  - [Profiling Plugins](Profiling-plugins)
+  - [Multiple Prompts](Multiple-prompts)
+- 💠 [**Ecosystem**](Home)
+  - [Packages](Packages)
+  - [Annexes](Annexes)
+
+#### 🔖 Knowledge Base
+
+- [Contributing](https://github.com/ss-o/zi/blob/main/docs/CONTRIBUTING.md)
+- [Zsh Plugin Standard](Zsh-Plugin-Standard)
+- [Zsh Native Scripting Handbook](Zsh-Native-Scripting-Handbook)

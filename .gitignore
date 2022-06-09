@@ -1,0 +1,17 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local files
+.history/
+.drafts/
+.trunk/out*
+
+# Exclude from GH Pages push
+code/Makefile
+code/zsdoc/data
+code/zsdoc/Makefile
+code/zsdoc/README.md
