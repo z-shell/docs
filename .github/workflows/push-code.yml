@@ -1,0 +1,31 @@
+---
+name: 🚀 Deploy Code to GH Pages
+
+on:
+  workflow_run:
+    workflows:
+      - "📖 Code"
+    types:
+      - completed
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+      - name: ♻️ Prepare
+        run: |
+          mkdir -p gh-pages/code gh-pages/zsh
+          cp -vrf code/zsdoc/html gh-pages/code/
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./gh-pages
+          allow_empty_commit: true
+          keep_files: true
+          user_name: digital-teams[bot]
+          user_email: digital-teams@pm.me

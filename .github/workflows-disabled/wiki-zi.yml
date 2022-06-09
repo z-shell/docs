@@ -1,0 +1,26 @@
+---
+name: 📖 ZI
+
+on:
+  push:
+    paths:
+      - "wiki/zi/**"
+  workflow_dispatch:
+
+jobs:
+  deploy-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+      - name: 🏗 Prepare wiki
+        run: make -C wiki/zsh to-wiki-pages
+      - name: 📤 Sync Docs to Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v3
+        env:
+          WIKI_DIR: wiki/zi/
+          REPO: z-shell/zi
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_MAIL: ${{ secrets.GH_MAIL }}
+          GH_NAME: ${{ github.repository_owner }}
+          #EXCLUDED_FILES: "wiki/zi/drafts/"

@@ -1,0 +1,47 @@
+---
+name: 📖 Code
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 4 * * 4"
+
+jobs:
+  deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - name: ⚡ Install zsdoc
+        run: |
+          sudo apt-get install -y zsh tree
+          sudo make -C lib/zsdoc install
+      - name: 💎 Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler-cache: true
+      - name: 📝 Install asciidoctor-pdf and rouge
+        run: |
+          gem install asciidoctor-pdf rouge
+      - name: ♻️ Generate Code
+        run: |
+          make -C code
+          make -C code clean
+      - name: ⭕ Trunk Check
+        run: ./.trunk/bin/trunk check --fix code
+      - name: 🏗 Compress code documentation
+        run: tar cvzf code.tar.gz code
+      - name: 📤 Upload code.tar.gz
+        uses: actions/upload-artifact@v3
+        with:
+          name: code documentation
+          path: code.tar.gz
+      - name: "🆗 Commit"
+        uses: z-shell/.github/actions/commit@main
+        with:
+          commitMessage: Code Documentation ${{ github.sha }}
+          workDir: code
+          commitUserName: digital-teams[bot]
+          commitUserEmail: digital-teams@pm.me

@@ -1,0 +1,39 @@
+name: 🏅 Plugin Assessor
+
+on:
+  schedule:
+    - cron: "30 03 01 */3 *"
+  workflow_dispatch:
+
+env:
+  TERM: xterm-256color
+
+jobs:
+  run-assessor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+      - name: 📦 Dependencies
+        run: sudo apt-get update && sudo apt-get upgrade -yq && sudo apt-get install zsh -yq
+      - name: 🚀 Run Assessor
+        run: |
+          ./render.zsh
+        working-directory: docs/zsh-plugins-commit-top
+      - name: ☑️ Commit files
+        run: |
+          cp -vf docs/zsh-plugins-commit-top/README.md wiki/zi/06-knowledge-base/Zsh-Plugins-Commit-TOP.md
+          git config --local user.email "digital-teams@pm.me"
+          git config --local user.name " digital-teams [bot]"
+          git add docs/zsh-plugins-commit-top/README.md wiki/zi/06-knowledge-base/Zsh-Plugins-Commit-TOP.md
+          git commit --allow-empty -m "Zsh Plugins commit update" -a
+      - name: 📤 Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
