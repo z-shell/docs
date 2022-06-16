@@ -2067,6 +2067,7 @@
  .zi-diff-options
  .zi-diff-parameter
  .zi-find-other-matches
+ .zi-formatter-auto
  .zi-formatter-bar
  .zi-formatter-bar-util
  .zi-formatter-pid
@@ -2133,7 +2134,7 @@ PRECMD-HOOK @zi-scheduler</pre
           <div class="sect2">
             <h3 id="_script_body">Script Body</h3>
             <div class="paragraph">
-              <p>Has 202 line(s). Calls functions:</p>
+              <p>Has 211 line(s). Calls functions:</p>
             </div>
             <div class="literalblock">
               <div class="content">
@@ -2206,7 +2207,7 @@ autoload.zsh/.zi-recall</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 14 line(s). Doesn&#8217;t call other functions.</p>
+              <p>Has 13 line(s). Doesn&#8217;t call other functions.</p>
             </div>
             <div class="paragraph">
               <p>Called by:</p>
@@ -2761,7 +2762,7 @@ $2 - command, can be "begin" or "end"</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 7 line(s). Doesn&#8217;t call other functions.</p>
+              <p>Has 6 line(s). Doesn&#8217;t call other functions.</p>
             </div>
             <div class="paragraph">
               <p>Called by:</p>
@@ -2805,6 +2806,45 @@ side.zsh/.zi-first</pre
               </div>
             </div>
             <div class="paragraph">
+              <div class="title">zi-formatter-auto</div>
+              <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
+            </div>
+            <div class="quoteblock">
+              <blockquote>
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>
+FUNCTION: .zi-formatter-auto[[[
+The automatic message formatting tool automatically detects,
+formats, and colorizes the following pieces of text:</pre
+                    >
+                  </div>
+                </div>
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>
+[URLs], [plugin IDs + word- after a check to the disk], [ice modifiers],
+[zi commands], single char bits and quoted strings: [ `...', "..." ].</pre
+                    >
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+            <div class="paragraph">
+              <p>Has 34 line(s). Calls functions:</p>
+            </div>
+            <div class="literalblock">
+              <div class="content">
+                <pre>.zi-formatter-auto</pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Uses feature(s): <em>type</em></p>
+            </div>
+            <div class="paragraph">
+              <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+            </div>
+            <div class="paragraph">
               <div class="title">zi-formatter-bar</div>
               <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
             </div>
@@ -2842,7 +2882,7 @@ side.zsh/.zi-first</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 7 line(s). Doesn&#8217;t call other functions.</p>
+              <p>Has 6 line(s). Doesn&#8217;t call other functions.</p>
             </div>
             <div class="paragraph">
               <p>Called by:</p>
@@ -2883,7 +2923,12 @@ side.zsh/.zi-first</pre
               <p>Uses feature(s): <em>source</em></p>
             </div>
             <div class="paragraph">
-              <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+              <p>Called by:</p>
+            </div>
+            <div class="literalblock">
+              <div class="content">
+                <pre>.zi-formatter-auto</pre>
+              </div>
             </div>
             <div class="paragraph">
               <div class="title">zi-formatter-th-bar</div>
@@ -2923,10 +2968,15 @@ side.zsh/.zi-first</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 19 line(s). Doesn&#8217;t call other functions.</p>
+              <p>Has 14 line(s). Doesn&#8217;t call other functions.</p>
             </div>
             <div class="paragraph">
-              <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+              <p>Called by:</p>
+            </div>
+            <div class="literalblock">
+              <div class="content">
+                <pre>.zi-formatter-auto</pre>
+              </div>
             </div>
             <div class="paragraph">
               <div class="title">zi-get-mtime-into</div>
@@ -3808,7 +3858,7 @@ run custom `autoload' function, that doesn't need FPATH.</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 107 line(s). Calls functions:</p>
+              <p>Has 105 line(s). Calls functions:</p>
             </div>
             <div class="literalblock">
               <div class="content">
@@ -4758,7 +4808,7 @@ Script-Body</pre
       </div>
     </div>
     <div id="footer">
-      <div id="footer-text">Last updated 2022-06-09 13:31:24 UTC</div>
+      <div id="footer-text">Last updated 2022-06-16 04:56:11 UTC</div>
     </div>
   </body>
 </html>
