@@ -9,8 +9,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  trunk:
-    name: "⚡"
+  trunk-check:
+    name: "⚡Check"
+    uses: z-shell/.github/.github/workflows/trunk.yml@main
+  trunk-upload:
+    name: "⚡Upload"
     uses: z-shell/.github/.github/workflows/trunk.yml@main
     if: ${{ github.repository == 'z-shell/docs' }}
     secrets:
