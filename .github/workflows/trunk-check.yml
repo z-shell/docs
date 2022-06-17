@@ -12,5 +12,6 @@ jobs:
   trunk:
     name: "⚡"
     uses: z-shell/.github/.github/workflows/trunk.yml@main
+    if: ${{ github.repository == z-shell/docs }}
     secrets:
       trunk-token: ${{ secrets.TRUNK_TOKEN }}
