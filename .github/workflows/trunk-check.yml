@@ -14,11 +14,9 @@ jobs:
   check:
     name: "⚡"
     uses: z-shell/.github/.github/workflows/trunk.yml@main
-
   upload:
-    if: ${{ github.event.schedule == '0 05 * * 5' }}
-    name: "⚡"
+    if: github.event.schedule == "0 05 * * 5"
+    name: "🆙"
     uses: z-shell/.github/.github/workflows/trunk.yml@main
     secrets:
-      if: ${{ github.repository == 'z-shell/docs' }}
       trunk-token: ${{ secrets.TRUNK_TOKEN }}
