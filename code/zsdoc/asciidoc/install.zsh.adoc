@@ -359,7 +359,10 @@ ____
  $3 - subdirectory (not path) with working copy, needed for -t and -u
 ____
 
-Has 27 line(s). Doesn't call other functions.
+Has 27 line(s). Calls functions:
+
+ .zi-mirror-using-svn
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
@@ -474,7 +477,7 @@ ____
  $2 - file
 ____
 
-Has 269 line(s). Calls functions:
+Has 265 line(s). Calls functions:
 
  ziextract
  `-- zi.zsh/+zi-message

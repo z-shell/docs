@@ -76,6 +76,7 @@ FUNCTIONS
  zicdreplay
  zicompdef
  zicompinit
+ zicompinit_fast
  zpcdclear
  zpcdreplay
  zpcompdef
@@ -92,7 +93,7 @@ DETAILS
 Script Body
 ~~~~~~~~~~~
 
-Has 211 line(s). Calls functions:
+Has 219 line(s). Calls functions:
 
  Script-Body
  |-- +zi-message
@@ -179,6 +180,7 @@ Called by:
  install.zsh/.zi-get-latest-gh-r-url-part
  install.zsh/.zi-get-package
  install.zsh/.zi-install-completions
+ install.zsh/.zi-mirror-using-svn
  install.zsh/.zi-setup-plugin-dir
  install.zsh/.zi-update-snippet
  install.zsh/ziextract
@@ -501,11 +503,11 @@ ____
  [zi commands], single char bits and quoted strings: [ `...', "..." ].
 ____
 
-Has 34 line(s). Calls functions:
+Has 36 line(s). Calls functions:
 
  .zi-formatter-auto
 
-Uses feature(s): _type_
+Uses feature(s): _setopt_, _type_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -722,9 +724,10 @@ ____
 Has 107 line(s). Calls functions:
 
  .zi-load-plugin
- `-- :zi-tmp-subst-autoload
-     |-- +zi-message
-     `-- is-at-least
+ |-- :zi-tmp-subst-autoload
+ |   |-- +zi-message
+ |   `-- is-at-least
+ `-- additional.zsh/.zi-wrap-functions
 
 Uses feature(s): _eval_, _setopt_, _source_, _unfunction_, _zle_
 
@@ -748,6 +751,7 @@ Has 173 line(s). Calls functions:
  .zi-load-snippet
  |-- +zi-deploy-message
  |-- +zi-message
+ |-- additional.zsh/.zi-wrap-functions
  `-- install.zsh/.zi-download-snippet
 
 Uses feature(s): _autoload_, _eval_, _setopt_, _source_, _unfunction_, _zparseopts_, _zstyle_
@@ -1474,7 +1478,8 @@ ____
  
  ]]]
  FUNCTION: zicompdef. [[[
- Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode). An utility functton of an undefined use case.
+ Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
+ An utility function of an undefined use case.
 ____
 
 Has 1 line(s). Doesn't call other functions.
@@ -1499,6 +1504,28 @@ Has 1 line(s). Calls functions:
  `-- compinit
 
 Uses feature(s): _autoload_, _compinit_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+zicompinit_fast
+~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: zicompinit_fast. [[[
+ Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
+ This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
+ modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
+ A function that can be invoked from within `atinit', `atload'
+____
+
+Has 13 line(s). Calls functions:
+
+ zicompinit_fast
+ `-- compinit
+
+Uses feature(s): _autoload_, _compinit_, _zcompile_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -1646,6 +1673,7 @@ Called by:
 
  zi
  zicompinit
+ zicompinit_fast
  zpcompinit
 
 is-at-least

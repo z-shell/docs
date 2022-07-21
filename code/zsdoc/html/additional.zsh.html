@@ -2056,7 +2056,7 @@
 .zi-debug-stop
 .zi-debug-unload
 .zi-service
-.zi-wrap-track-functions
+.zi-wrap-functions
 :zi-tmp-subst-source</pre
               >
             </div>
@@ -2266,14 +2266,20 @@ $3 - id - URL or plugin ID or alias name (from id-as'')</pre
               <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
             </div>
             <div class="paragraph">
-              <div class="title">zi-wrap-track-functions</div>
-              <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
+              <div class="title">zi-wrap-functions</div>
+              <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
             </div>
             <div class="quoteblock">
               <blockquote>
                 <div class="literalblock">
                   <div class="content">
-                    <pre>FUNCTION: .zi-wrap-track-functions [[[</pre>
+                    <pre>
+FUNCTION: .zi-wrap-functions [[[
+Handles the wrap'…' ice-modifier which allows to extend the tracking (e.g: gathering of report and unload data) of a plugin
+beyond the moment of sourcing it's main file(s). It works by wrapping the given functions with a tracking-enabling
+and disabling snippet of code.This is useful especially with prompts, as they very often do their
+initialization in the first call to their precmd hook function.</pre
+                    >
                   </div>
                 </div>
               </blockquote>
@@ -2285,7 +2291,15 @@ $3 - id - URL or plugin ID or alias name (from id-as'')</pre
               <p>Uses feature(s): <em>eval</em></p>
             </div>
             <div class="paragraph">
-              <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+              <p>Called by:</p>
+            </div>
+            <div class="literalblock">
+              <div class="content">
+                <pre>
+zi.zsh/.zi-load-plugin
+zi.zsh/.zi-load-snippet</pre
+                >
+              </div>
             </div>
           </div>
           <div class="sect2">
@@ -2321,7 +2335,7 @@ $3 - id - URL or plugin ID or alias name (from id-as'')</pre
       </div>
     </div>
     <div id="footer">
-      <div id="footer-text">Last updated 2022-07-14 05:09:30 UTC</div>
+      <div id="footer-text">Last updated 2022-07-21 05:07:35 UTC</div>
     </div>
   </body>
 </html>

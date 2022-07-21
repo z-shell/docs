@@ -2114,6 +2114,7 @@
  zicdreplay
  zicompdef
  zicompinit
+ zicompinit_fast
  zpcdclear
  zpcdreplay
  zpcompdef
@@ -2134,7 +2135,7 @@ PRECMD-HOOK @zi-scheduler</pre
           <div class="sect2">
             <h3 id="_script_body">Script Body</h3>
             <div class="paragraph">
-              <p>Has 211 line(s). Calls functions:</p>
+              <p>Has 219 line(s). Calls functions:</p>
             </div>
             <div class="literalblock">
               <div class="content">
@@ -2257,6 +2258,7 @@ install.zsh/.zi-get-cygwin-package
 install.zsh/.zi-get-latest-gh-r-url-part
 install.zsh/.zi-get-package
 install.zsh/.zi-install-completions
+install.zsh/.zi-mirror-using-svn
 install.zsh/.zi-setup-plugin-dir
 install.zsh/.zi-update-snippet
 install.zsh/ziextract
@@ -2831,7 +2833,7 @@ formats, and colorizes the following pieces of text:</pre
               </blockquote>
             </div>
             <div class="paragraph">
-              <p>Has 34 line(s). Calls functions:</p>
+              <p>Has 36 line(s). Calls functions:</p>
             </div>
             <div class="literalblock">
               <div class="content">
@@ -2839,7 +2841,7 @@ formats, and colorizes the following pieces of text:</pre
               </div>
             </div>
             <div class="paragraph">
-              <p>Uses feature(s): <em>type</em></p>
+              <p>Uses feature(s): <em>setopt</em>, <em>type</em></p>
             </div>
             <div class="paragraph">
               <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
@@ -3224,9 +3226,10 @@ $3 - mode (light or load)</pre
               <div class="content">
                 <pre>
 .zi-load-plugin
-`-- :zi-tmp-subst-autoload
-    |-- +zi-message
-    `-- is-at-least</pre
+|-- :zi-tmp-subst-autoload
+|   |-- +zi-message
+|   `-- is-at-least
+`-- additional.zsh/.zi-wrap-functions</pre
                 >
               </div>
             </div>
@@ -3271,6 +3274,7 @@ Implements the exposed-to-user action of loading a snippet.</pre
 .zi-load-snippet
 |-- +zi-deploy-message
 |-- +zi-message
+|-- additional.zsh/.zi-wrap-functions
 `-- install.zsh/.zi-download-snippet</pre
                 >
               </div>
@@ -4493,7 +4497,8 @@ It works like `zi cdreplay', which cannot be invoked from such hook ices.</pre
                     <pre>
 ]]]
 FUNCTION: zicompdef. [[[
-Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode). An utility functton of an undefined use case.</pre
+Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
+An utility function of an undefined use case.</pre
                     >
                   </div>
                 </div>
@@ -4536,6 +4541,42 @@ zicompinit
             </div>
             <div class="paragraph">
               <p>Uses feature(s): <em>autoload</em>, <em>compinit</em></p>
+            </div>
+            <div class="paragraph">
+              <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+            </div>
+          </div>
+          <div class="sect2">
+            <h3 id="_zicompinit_fast">zicompinit_fast</h3>
+            <div class="quoteblock">
+              <blockquote>
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>
+]]]
+FUNCTION: zicompinit_fast. [[[
+Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
+This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
+modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
+A function that can be invoked from within `atinit', `atload'</pre
+                    >
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+            <div class="paragraph">
+              <p>Has 13 line(s). Calls functions:</p>
+            </div>
+            <div class="literalblock">
+              <div class="content">
+                <pre>
+zicompinit_fast
+`-- compinit</pre
+                >
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Uses feature(s): <em>autoload</em>, <em>compinit</em>, <em>zcompile</em></p>
             </div>
             <div class="paragraph">
               <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
@@ -4763,6 +4804,7 @@ should be done with its contents:</pre
                 <pre>
 zi
 zicompinit
+zicompinit_fast
 zpcompinit</pre
                 >
               </div>
@@ -4808,7 +4850,7 @@ Script-Body</pre
       </div>
     </div>
     <div id="footer">
-      <div id="footer-text">Last updated 2022-07-14 05:09:24 UTC</div>
+      <div id="footer-text">Last updated 2022-07-21 05:07:26 UTC</div>
     </div>
   </body>
 </html>

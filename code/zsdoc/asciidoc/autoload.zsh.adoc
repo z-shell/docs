@@ -447,7 +447,7 @@ ____
  $2 - (optional) plugin (only when $1 - i.e. user - given)
 ____
 
-Has 103 line(s). Calls functions:
+Has 99 line(s). Calls functions:
 
  .zi-create
  |-- side.zsh/.zi-any-colorify-as-uspl2
@@ -472,7 +472,7 @@ ____
  $2 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 94 line(s). Calls functions:
+Has 93 line(s). Calls functions:
 
  .zi-delete
  |-- side.zsh/.zi-compute-ice
@@ -1462,7 +1462,7 @@ ____
  $3 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 280 line(s). Calls functions:
+Has 279 line(s). Calls functions:
 
  .zi-update-or-status
  |-- install.zsh/.zi-get-latest-gh-r-url-part
@@ -1477,7 +1477,7 @@ Has 280 line(s). Calls functions:
  |-- zi.zsh/.zi-any-to-user-plugin
  `-- zi.zsh/.zi-set-m-func
 
-Uses feature(s): _kill_, _read_, _setopt_, _source_, _trap_, _wait_
+Uses feature(s): _kill_, _setopt_, _source_, _trap_, _wait_
 
 Called by:
 

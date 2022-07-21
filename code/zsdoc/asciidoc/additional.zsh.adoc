@@ -18,7 +18,7 @@ FUNCTIONS
  .zi-debug-stop
  .zi-debug-unload
  .zi-service
- .zi-wrap-track-functions
+ .zi-wrap-functions
  :zi-tmp-subst-source
 
 DETAILS
@@ -132,19 +132,26 @@ Uses feature(s): _kill_, _read_, _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-.zi-wrap-track-functions
-~~~~~~~~~~~~~~~~~~~~~~~~
+.zi-wrap-functions
+~~~~~~~~~~~~~~~~~~
 
 ____
  
- FUNCTION: .zi-wrap-track-functions [[[
+ FUNCTION: .zi-wrap-functions [[[
+ Handles the wrap'…' ice-modifier which allows to extend the tracking (e.g: gathering of report and unload data) of a plugin
+ beyond the moment of sourcing it's main file(s). It works by wrapping the given functions with a tracking-enabling
+ and disabling snippet of code.This is useful especially with prompts, as they very often do their
+ initialization in the first call to their precmd hook function.
 ____
 
 Has 19 line(s). Doesn't call other functions.
 
 Uses feature(s): _eval_
 
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+Called by:
+
+ zi.zsh/.zi-load-plugin
+ zi.zsh/.zi-load-snippet
 
 :zi-tmp-subst-source
 ~~~~~~~~~~~~~~~~~~~~
