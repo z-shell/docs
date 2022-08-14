@@ -30,7 +30,7 @@ jobs:
           make -C code
           make -C code clean
       - name: ⭕ Trunk Check
-        run: ./.trunk/bin/trunk check --fix code
+        run: ./.trunk/bin/trunk check --fix --ci-progress code
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
