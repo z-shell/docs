@@ -257,7 +257,7 @@ ____
  Connects to Github releases page.
 ____
 
-Has 106 line(s). Calls functions:
+Has 113 line(s). Calls functions:
 
  .zi-get-latest-gh-r-url-part
  `-- zi.zsh/+zi-message
@@ -403,7 +403,7 @@ ____
  $2 - plugin
 ____
 
-Has 202 line(s). Calls functions:
+Has 208 line(s). Calls functions:
 
  .zi-setup-plugin-dir
  |-- side.zsh/.zi-any-colorify-as-uspl2

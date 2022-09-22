@@ -498,16 +498,16 @@ ____
  FUNCTION: .zi-formatter-auto[[[
  The automatic message formatting tool automatically detects,
  formats, and colorizes the following pieces of text:
- 
- [URLs], [plugin IDs + word- after a check to the disk], [ice modifiers],
- [zi commands], single char bits and quoted strings: [ `...', "..." ].
+ [URLs], [plugin IDs (user/repo) if exists on the disk], [numbers], [time], [single-word id-as plugins],
+ [single word commands], [single word functions], [zi commands], [ice modifiers (e.g: mv'a -> b')],
+ [single-char bits and quoted strings (`...', ,'...', "...")].
 ____
 
-Has 36 line(s). Calls functions:
+Has 46 line(s). Calls functions:
 
  .zi-formatter-auto
 
-Uses feature(s): _setopt_, _type_
+Uses feature(s): _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 

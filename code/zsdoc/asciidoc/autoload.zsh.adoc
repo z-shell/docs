@@ -817,7 +817,7 @@ ____
  User-action entry point.
 ____
 
-Has 29 line(s). Calls functions:
+Has 30 line(s). Calls functions:
 
  .zi-help
  `-- zi.zsh/+zi-message
