@@ -23,7 +23,8 @@ jobs:
           submodules: recursive
       - name: ⚡ Dependencies
         run: |
-          apt update -yq; sudo apt-get install -yq zsh tree
+          sudo apt update -yq
+          sudo apt-get install -yq zsh tree
           curl -sL https://trunk.io/releases/trunk -o ~/trunk
           chmod a+x ~/trunk; sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
