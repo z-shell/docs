@@ -11,10 +11,6 @@ repo:
     owner: z-shell
     name: docs
 lint:
-  linters:
-    - name: markdownlint
-      command: [markdownlint, -q, --config, .github/.markdownlint.yaml, "${target}"]
-      direct_configs: [.github/.markdownlint.yaml]
   enabled:
     - git-diff-check
     - actionlint@1.6.19
