@@ -8,16 +8,16 @@ on:
     types: [opened, synchronize]
   schedule:
     - cron: "0 05 * * 5"
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 jobs:
   check:
     if: github.event.schedule != '0 05 * * 5'
     name: "⚡"
-    uses: z-shell/.github/.github/workflows/trunk.yml@main
+    uses: z-shell/.github/.github/workflows/trunk.yml@v1.0.0
   upload:
     if: github.event.schedule == '0 05 * * 5'
     name: "🆙"
-    uses: z-shell/.github/.github/workflows/trunk.yml@main
+    uses: z-shell/.github/.github/workflows/trunk.yml@v1.0.0
     secrets:
       trunk-token: ${{ secrets.TRUNK_TOKEN }}
