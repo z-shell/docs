@@ -1,6 +1,10 @@
 version: 0.1
+runtimes:
+  enabled:
+    - go@1.18.3
+    - node@16.14.2
 cli:
-  version: 0.13.1-beta
+  version: 0.18.1-beta
 repo:
   repo:
     host: github.com
@@ -12,7 +16,8 @@ lint:
       command: [markdownlint, -q, --config, .github/.markdownlint.yaml, "${target}"]
       direct_configs: [.github/.markdownlint.yaml]
   enabled:
-    - actionlint@1.6.13
-    - gitleaks@8.8.7
-    - markdownlint@0.31.1
+    - git-diff-check
+    - actionlint@1.6.19
+    - gitleaks@8.13.0
+    - markdownlint@0.32.2
     - prettier@2.7.1
