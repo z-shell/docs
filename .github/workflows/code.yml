@@ -2,7 +2,7 @@
 name: 📖 Code
 on:
   push:
-    paths: ".github/workflows/code.yml"
+    paths: '.github/workflows/code.yml'
   workflow_dispatch: {}
   schedule:
     - cron: "30 4 * * 4"
@@ -37,10 +37,10 @@ jobs:
         run: |
           make -C code
           make -C code clean
-      - name: ⭕ Trunk Check
-        uses: z-shell/.github/.github/workflows/trunk.yml@v1.0.0
+      - name: ✨ Trunk Check
+        uses: trunk-io/trunk-action@22e948f7bb9f870bc6c42625585f1ef27e9c5afc
         with:
-          arguments: "check --fix code"
+          arguments: 'check --fix code'
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
