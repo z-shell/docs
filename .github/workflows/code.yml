@@ -51,7 +51,7 @@ jobs:
           name: code documentation
           path: code.tar.gz
       - name: "🆗 Commit"
-        uses: z-shell/.github/actions/commit@v1.0.0
+        uses: z-shell/.github/actions/commit@v1.0.1
         with:
           commitMessage: Code ${{ github.sha }}
           workDir: code
