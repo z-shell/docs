@@ -41,6 +41,7 @@ jobs:
           make -C code
           make -C code clean
           ~/trunk fmt
+          rm ~/trunk
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
