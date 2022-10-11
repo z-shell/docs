@@ -37,8 +37,6 @@ jobs:
         run: |
           make -C code
           make -C code clean
-          curl -L https://trunk.io/releases/trunk -o ~/trunk
-          chmod a+x ~/trunk; ~/trunk fmt; rm ~/trunk
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
