@@ -26,7 +26,7 @@ jobs:
           sudo apt update -yq
           sudo apt-get install -yq zsh tree
           curl -L https://trunk.io/releases/trunk -o ~/trunk
-          chmod a+x ~/trunk; 
+          chmod a+x ~/trunk
           ~/trunk upgrade -y
           sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
@@ -40,7 +40,7 @@ jobs:
         run: |
           make -C code
           make -C code clean
-          ~/trunk fmt --all
+          ~/trunk fmt
       - name: ✨ Trunk Check
         uses: trunk-io/trunk-action@22e948f7bb9f870bc6c42625585f1ef27e9c5afc
       - name: 🏗 Compress code documentation
