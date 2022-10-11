@@ -2,7 +2,7 @@
 name: 📖 Code
 on:
   push:
-    paths: '.github/workflows/code.yml'
+    paths: ".github/workflows/code.yml"
   workflow_dispatch: {}
   schedule:
     - cron: "30 4 * * 4"
