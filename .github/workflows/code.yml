@@ -41,8 +41,6 @@ jobs:
           make -C code
           make -C code clean
           ~/trunk fmt
-      - name: ✨ Trunk Check
-        uses: trunk-io/trunk-action@22e948f7bb9f870bc6c42625585f1ef27e9c5afc
       - name: 🏗 Compress code documentation
         run: tar cvzf code.tar.gz code
       - name: 📤 Upload code.tar.gz
