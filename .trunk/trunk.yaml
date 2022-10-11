@@ -35,6 +35,7 @@ lint:
     - markdownlint@0.32.2
     - prettier@2.7.1
   ignore:
-    - linters: [markdownlint]
+    - linters: [markdownlint, prettier]
       paths:
         - wiki/**
+        - code/zsdoc/html/*
