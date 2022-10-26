@@ -27,7 +27,7 @@ jobs:
           sudo apt-get install -yq zsh tree
           sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
-        uses: ruby/setup-ruby@eae47962baca661befdfd24e4d6c34ade04858f7
+        uses: ruby/setup-ruby@ece82769428359c077b5a5eaff268902a303c101
         with:
           ruby-version: 3.1
           bundler-cache: true
@@ -49,5 +49,5 @@ jobs:
         with:
           commitMessage: Code ${{ github.sha }}
           workDir: code
-          commitUserName: ${{ secrets.ACTIONS_USER }}
-          commitUserEmail: ${{ secrets.ACTIONS_MAIL }}
+          commitUserName: digital-teams[bot]
+          commitUserEmail: actions@zshell.dev
