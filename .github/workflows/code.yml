@@ -49,5 +49,5 @@ jobs:
         with:
           commitMessage: Code ${{ github.sha }}
           workDir: code
-          commitUserName: ${{ secrets.ACTIONS_USER }}
-          commitUserEmail: ${{ secrets.ACTIONS_MAIL }}
+          commitUserName: digital-teams[bot]
+          commitUserEmail: actions@zshell.dev
