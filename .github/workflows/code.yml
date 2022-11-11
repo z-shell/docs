@@ -3,14 +3,18 @@ name: 📖 Code
 on:
   push:
     branches: [main]
-    paths: 
+    paths:
+      - ".github/workflows/code.yml"
+  pull_request:
+    branches: [main]
+    paths:
       - ".github/workflows/code.yml"
   schedule:
     - cron: "30 4 * * 4"
   workflow_dispatch: {}
 
 jobs:
-  generate:  
+  generate:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
