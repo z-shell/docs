@@ -93,18 +93,15 @@ DETAILS
 Script Body
 ~~~~~~~~~~~
 
-Has 219 line(s). Calls functions:
+Has 279 line(s). Calls functions:
 
  Script-Body
- |-- +zi-message
  |-- @zi-register-hook
  |-- add-zsh-hook
- |-- autoload.zsh/.zi-module
- `-- is-at-least
+ |-- is-at-least
+ `-- side.zsh/.zi-check-module
 
-Uses feature(s): _add-zsh-hook_, _alias_, _autoload_, _export_, _is-at-least_, _setopt_, _source_, _zmodload_, _zstyle_
-
-_Exports (environment):_ PMSPEC [big]*//* ZCDR [big]*//* ZPFX [big]*//* ZSH_CACHE_DIR
+Uses feature(s): _add-zsh-hook_, _alias_, _autoload_, _is-at-least_, _setopt_, _source_, _zmodload_, _zstyle_
 
 +zi-deploy-message
 ~~~~~~~~~~~~~~~~~~
@@ -146,7 +143,6 @@ Called by:
  .zi-run
  .zi-set-m-func
  :zi-tmp-subst-autoload
- Script-Body
  zi
  additional.zsh/.zi-debug-start
  additional.zsh/.zi-debug-unload
@@ -187,6 +183,7 @@ Called by:
  install.zsh/∞zi-mv-hook
  install.zsh/∞zi-ps-on-update-hook
  install.zsh/∞zi-reset-hook
+ side.zsh/.zi-check-module
  side.zsh/.zi-countdown
  side.zsh/.zi-exists-physically-message
 
@@ -333,8 +330,6 @@ Called by:
  side.zsh/.zi-exists-physically-message
  side.zsh/.zi-exists-physically
  side.zsh/.zi-first
-
-_Environment variables used:_ ZPFX
 
 .zi-compdef-clear
 ~~~~~~~~~~~~~~~~~
@@ -645,8 +640,6 @@ Called by:
 
  zi
 
-_Environment variables used:_ ZPFX
-
 .zi-load
 ~~~~~~~~
 
@@ -689,8 +682,6 @@ Has 22 line(s). Calls functions:
 Called by:
 
  zi
-
-_Environment variables used:_ ZPFX
 
 .zi-load-object
 ~~~~~~~~~~~~~~~
@@ -820,10 +811,10 @@ Called by:
 ____
  
  FUNCTION: .zi-prepare-home. [[[
- Creates all directories needed by ZI, first checks if they already exist.
+ Establish all required directories.
 ____
 
-Has 38 line(s). Calls functions:
+Has 64 line(s). Calls functions:
 
  .zi-prepare-home
  |-- autoload.zsh/.zi-clear-completions
@@ -834,8 +825,6 @@ Uses feature(s): _source_
 Called by:
 
  Script-Body
-
-_Environment variables used:_ ZPFX
 
 .zi-register-plugin
 ~~~~~~~~~~~~~~~~~~~
@@ -1020,8 +1009,6 @@ Called by:
 
  .zi-any-to-pid
 
-_Environment variables used:_ ZPFX
-
 :zi-reload-and-run
 ~~~~~~~~~~~~~~~~~~
 
@@ -1192,7 +1179,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ____
  
  FUNCTION: @zi-register-annex. [[[
- Registers the z-annex inside ZI – i.e. an ZI extension
+ Registers the z-annex inside Zi – i.e. an Zi extension
 ____
 
 Has 8 line(s). Doesn't call other functions.
@@ -1205,10 +1192,12 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ____
  
  FUNCTION: @zi-register-hook. [[[
- Registers the z-annex inside ZI – i.e. an ZI extension
+ Registers the z-annex inside Zi.
 ____
 
-Has 4 line(s). Doesn't call other functions.
+Has 6 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
 
 Called by:
 
@@ -1270,8 +1259,6 @@ Called by:
  install.zsh/∞zi-make-ee-hook
  install.zsh/∞zi-make-hook
  install.zsh/∞zi-mv-hook
-
-_Environment variables used:_ ZPFX
 
 @zsh-plugin-run-on-unload
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1389,7 +1376,7 @@ ____
  FUNCTION: zi-turbo. [[[
  With zi-turbo first argument is a wait time and suffix, i.e. "0a".
  Anything that doesn't match will be passed as if it were an ice mod.
- Default ices depth'3' and lucid, allowed values [0-9][a-d].
+ Default ices depth'3' and lucid, allowed values [0-9][a-c].
 ____
 
 Has 1 line(s). Calls functions:

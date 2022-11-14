@@ -111,8 +111,8 @@ Called by:
 ____
  
  FUNCTION: .zi-compinit [[[
- User-exposed `compinit' frontend which first ensures that all completions managed by ❮ ZI ❯ are forgotten by Z-shell.
- After that it runs normal `compinit', which should more easily detect ❮ ZI ❯ completions.
+ User-exposed `compinit' frontend which first ensures that all completions managed by ❮ Zi ❯ are forgotten by Z-shell.
+ After that it runs normal `compinit', which should more easily detect ❮ Zi ❯ completions.
  
  No arguments.
 ____
@@ -251,13 +251,12 @@ Called by:
 
 ____
  
- ]]]
  FUNCTION: .zi-get-latest-gh-r-url-part [[[
  Gets version string of latest release of given Github package.
  Connects to Github releases page.
 ____
 
-Has 113 line(s). Calls functions:
+Has 109 line(s). Calls functions:
 
  .zi-get-latest-gh-r-url-part
  `-- zi.zsh/+zi-message
@@ -291,8 +290,6 @@ Uses feature(s): _eval_, _setopt_, _trap_
 Called by:
 
  zi.zsh/.zi-load
-
-_Environment variables used:_ zi.zsh -> ZPFX
 
 .zi-get-url-mtime
 ~~~~~~~~~~~~~~~~~
@@ -451,15 +448,13 @@ ____
  FUNCTION zicp [[[
 ____
 
-Has 28 line(s). Doesn't call other functions.
+Has 27 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_
 
 Called by:
 
  zimv
-
-_Environment variables used:_ zi.zsh -> ZPFX
 
 ziextract
 ~~~~~~~~~
@@ -600,7 +595,7 @@ ____
  FUNCTION: ∞zi-cp-hook [[[
 ____
 
-Has 24 line(s). Calls functions:
+Has 25 line(s). Calls functions:
 
  ∞zi-cp-hook
  `-- zi.zsh/@zi-substitute
@@ -716,7 +711,7 @@ ____
  FUNCTION: ∞zi-reset-opt-hook [[[
 ____
 
-Has 74 line(s). Calls functions:
+Has 73 line(s). Calls functions:
 
  ∞zi-reset-hook
  `-- zi.zsh/+zi-message

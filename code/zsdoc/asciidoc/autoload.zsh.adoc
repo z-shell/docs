@@ -175,7 +175,7 @@ Called by:
 ____
  
  FUNCTION: .zi-cd [[[
- Jumps to plugin's directory (in ❮ ZI ❯ home directory).
+ Jumps to plugin's directory (in ❮ Zi ❯ home directory).
  
  User-action entry point.
  
@@ -262,7 +262,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ____
  
  FUNCTION: .zi-check-comp-consistency [[[
- ❮ ZI ❯ creates symlink for each installed completion.
+ ❮ Zi ❯ creates symlink for each installed completion.
  This function checks whether given completion (i.e. file like "_mkdir") is indeed a symlink.
  Backup file is a completion that is disabled - has the leading "_" removed.
  
@@ -464,7 +464,7 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ____
  
  FUNCTION: .zi-delete [[[
- Deletes plugin's or snippet's directory (in ❮ ZI ❯ home directory).
+ Deletes plugin's or snippet's directory (in ❮ Zi ❯ home directory).
  
  User-action entry point.
  
@@ -850,7 +850,7 @@ ____
  
  FUNCTION: .zi-list-compdef-replay [[[
  Shows recorded compdefs (called by plugins loaded earlier). Plugins often call `compdef' hoping
- for `compinit' being already ran. ❮ ZI ❯ solves this by recording compdefs.
+ for `compinit' being already ran. ❮ Zi ❯ solves this by recording compdefs.
  
  User-action entry point.
 ____
@@ -897,7 +897,7 @@ Uses feature(s): _autoload_, _is-at-least_
 Called by:
 
  .zi-build-module
- zi.zsh/Script-Body
+ side.zsh/.zi-check-module
  zi.zsh/zi
 
 .zi-pager
@@ -1107,7 +1107,7 @@ Called by:
 ____
  
  FUNCTION: .zi-self-update [[[
- Updates ❮ ZI ❯ code (does a git pull).
+ Updates ❮ Zi ❯ code (does a git pull).
  
  User-action entry point.
 ____
@@ -1267,7 +1267,7 @@ Called by:
 ____
  
  FUNCTION: .zi-show-zstatus [[[
- Shows ❮ ZI ❯ status, i.e. number of loaded plugins,
+ Shows ❮ Zi ❯ status, i.e. number of loaded plugins,
  of available completions, etc.
  
  User-action entry point.
@@ -1283,8 +1283,6 @@ Uses feature(s): _setopt_
 Called by:
 
  zi.zsh/zi
-
-_Environment variables used:_ zi.zsh -> ZPFX
 
 .zi-stress
 ~~~~~~~~~~
