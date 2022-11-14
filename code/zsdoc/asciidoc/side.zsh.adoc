@@ -14,6 +14,7 @@ FUNCTIONS
 ---------
 
  .zi-any-colorify-as-uspl2
+ .zi-check-module
  .zi-compute-ice
  .zi-countdown
  .zi-exists-physically
@@ -73,6 +74,27 @@ Called by:
  install.zsh/.zi-install-completions
  install.zsh/.zi-setup-plugin-dir
  zi.zsh/.zi-formatter-pid
+
+.zi-check-module
+~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-check-module. [[[
+ Check module. Don't trust access times and verify hard stored values.
+____
+
+Has 21 line(s). Calls functions:
+
+ .zi-check-module
+ |-- autoload.zsh/.zi-module
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _source_
+
+Called by:
+
+ zi.zsh/Script-Body
 
 .zi-compute-ice
 ~~~~~~~~~~~~~~~
