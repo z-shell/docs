@@ -1,7 +1,7 @@
 <h1 align="center">
   <p><a href="https://github.com/z-shell/zi">
   <img align="center" src="https://raw.githubusercontent.com/z-shell/zi/main/docs/images/logo.svg" alt="Logo" width="60px" height="60px"></a>
-  ❮ ZI ❯ https://www.zshell.dev :sparkles: </p>
+  ❮ Zi ❯ https://www.zshell.dev :sparkles: </p>
 </h1>
 
 <div align="center">
