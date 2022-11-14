@@ -26,6 +26,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: ⚡ Dependencies
         run: |
           sudo apt update -yq
