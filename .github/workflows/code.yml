@@ -51,8 +51,8 @@ jobs:
         with:
           name: code documentation
           path: code.tar.gz
-      - if: github.event.push
-        name: "🆗 Commit"
+      - name: "🆗 Commit"
+        if: ${{ github.event_name == 'push' }}
         uses: z-shell/.github/actions/commit@main
         with:
           commitMessage: Code ${{ github.sha }}
