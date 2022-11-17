@@ -52,7 +52,7 @@ jobs:
           name: code documentation
           path: code.tar.gz
       - name: "🆗 Commit"
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name != 'pull_request' }}
         uses: z-shell/.github/actions/commit@main
         with:
           commitMessage: Code ${{ github.sha }}
