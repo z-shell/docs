@@ -834,7 +834,7 @@ ____
  FUNCTION: .zi-register-plugin. [[[
  Adds the plugin to ZI_REGISTERED_PLUGINS array and to the
  zsh_loaded_plugins array (managed according to the plugin standard:
- https://z.digitalclouds.dev/community/zsh_plugin_standard).
+ https://wiki.zshell.dev/community/zsh_plugin_standard).
 ____
 
 Has 20 line(s). Calls functions:
@@ -1182,7 +1182,9 @@ ____
  Registers the z-annex inside Zi – i.e. an Zi extension
 ____
 
-Has 8 line(s). Doesn't call other functions.
+Has 10 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -1267,7 +1269,7 @@ ____
  
  FUNCTION: @zsh-plugin-run-on-update. [[[
  The Plugin Standard required mechanism, see:
- https://z.digitalclouds.dev/community/zsh_plugin_standard
+ https://wiki.zshell.dev/community/zsh_plugin_standard
 ____
 
 Has 2 line(s). Calls functions:
