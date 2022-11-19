@@ -462,38 +462,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre> .zi-at-eval
+<pre> ∞zi-atclone-hook
+ .zi-at-eval
+ ∞zi-atpull-e-hook
+ ∞zi-atpull-hook
  .zi-compile-plugin
+ ∞zi-compile-plugin-hook
  .zi-compinit
+ zicp
+ ∞zi-cp-hook
  .zi-download-file-stdout
  .zi-download-snippet
  .zi-extract
+ ziextract
+ ∞zi-extract-hook
  .zi-forget-completion
  .zi-get-cygwin-package
  .zi-get-latest-gh-r-url-part
  .zi-get-package
  .zi-get-url-mtime
  .zi-install-completions
- .zi-mirror-using-svn
- .zi-parse-json
- .zi-setup-plugin-dir
- .zi-update-snippet
- zicp
- ziextract
- zimv
- zpextract
- ∞zi-atclone-hook
- ∞zi-atpull-e-hook
- ∞zi-atpull-hook
- ∞zi-compile-plugin-hook
- ∞zi-cp-hook
- ∞zi-extract-hook
- ∞zi-make-e-hook
  ∞zi-make-ee-hook
+ ∞zi-make-e-hook
  ∞zi-make-hook
+ .zi-mirror-using-svn
+ zimv
  ∞zi-mv-hook
+ .zi-parse-json
  ∞zi-ps-on-update-hook
  ∞zi-reset-hook
+ .zi-setup-plugin-dir
+ .zi-update-snippet
+ zpextract
 AUTOLOAD compinit</pre>
 </div>
 </div>
@@ -509,6 +509,34 @@ AUTOLOAD compinit</pre>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>source</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_atclone_hook">∞zi-atclone-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-atclone-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 18 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-atclone-hook
+|-- side.zsh/.zi-countdown
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>eval</em>, <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-at-eval</div>
@@ -544,6 +572,60 @@ FUNCTION: .zi-at-eval [[[</pre>
 <pre>∞zi-atpull-e-hook
 ∞zi-atpull-hook</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_atpull_e_hook">∞zi-atpull-e-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-atpull-e-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 17 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-atpull-e-hook
+`-- side.zsh/.zi-countdown</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_atpull_hook">∞zi-atpull-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-atpull-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 16 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-atpull-hook
+`-- side.zsh/.zi-countdown</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-compile-plugin</div>
@@ -589,6 +671,32 @@ autoload.zsh/.zi-compile-uncompile-all
 zi.zsh/zi</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_zi_compile_plugin_hook">∞zi-compile-plugin-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-compile-plugin-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 15 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-compile-plugin-hook</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
 <div class="paragraph">
 <div class="title">zi-compinit</div>
 <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
@@ -630,9 +738,63 @@ After that it runs normal `compinit', which should more easily detect ❮ Zi ❯
 <pre>.zi-install-completions
 autoload.zsh/.zi-uninstall-completions
 autoload.zsh/.zi-update-or-status-all
-zi.zsh/.zi-prepare-home
-zi.zsh/zi</pre>
+zi.zsh/zi
+zi.zsh/.zi-prepare-home</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicp">zicp</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION zicp [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 27 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zimv</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_cp_hook">∞zi-cp-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-cp-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 25 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-cp-hook
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-download-file-stdout</div>
@@ -730,9 +892,9 @@ zi.zsh/.zi-load-snippet</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-extract
-|-- zi.zsh/+zi-message
-`-- ziextract
-    `-- zi.zsh/+zi-message</pre>
+|-- ziextract
+|   `-- zi.zsh/+zi-message
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -745,6 +907,76 @@ zi.zsh/.zi-load-snippet</pre>
 <div class="content">
 <pre>∞zi-extract-hook</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ziextract">ziextract</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: ziextract [[[
+If the file is an archive, it is extracted by this function.
+Next stage is scanning of files with the common utility `file',
+to detect executables. They are given +x mode. There are also
+messages to the user on performed actions.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$1 - url
+$2 - file</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 265 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ziextract
+`-- zi.zsh/+zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em>, <em>unfunction</em>, <em>zparseopts</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-extract
+.zi-get-package
+.zi-setup-plugin-dir
+zpextract</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_extract_hook">∞zi-extract-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-extract-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 5 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-extract-hook
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-forget-completion</div>
@@ -873,10 +1105,10 @@ FUNCTION: .zi-get-package [[[</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-get-package
+|-- ziextract
+|   `-- zi.zsh/+zi-message
 |-- zi.zsh/+zi-message
-|-- zi.zsh/@zi-substitute
-`-- ziextract
-    `-- zi.zsh/+zi-message</pre>
+`-- zi.zsh/@zi-substitute</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -950,8 +1182,8 @@ $3 - if 1, then reinstall, otherwise only install completions that aren't there<
 <pre>.zi-install-completions
 |-- side.zsh/.zi-any-colorify-as-uspl2
 |-- side.zsh/.zi-exists-physically-message
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -966,6 +1198,81 @@ $3 - if 1, then reinstall, otherwise only install completions that aren't there<
 .zi-setup-plugin-dir
 zi.zsh/zi</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_make_ee_hook">∞zi-make-ee-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-make-ee-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 7 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-make-ee-hook
+|-- side.zsh/.zi-countdown
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_make_e_hook">∞zi-make-e-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-make-e-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 7 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-make-e-hook
+|-- side.zsh/.zi-countdown
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_make_hook">∞zi-make-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: ∞zi-make-hook [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 6 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>∞zi-make-hook
+|-- side.zsh/.zi-countdown
+`-- zi.zsh/@zi-substitute</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-mirror-using-svn</div>
@@ -1011,196 +1318,6 @@ $3 - subdirectory (not path) with working copy, needed for -t and -u</pre>
 <pre>.zi-download-snippet</pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">zi-parse-json</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: .zi-parse-json [[[
-Retrievies the ice-list from given profile from the JSON of the package.json.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 102 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-parse-json</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-get-package</pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">zi-setup-plugin-dir</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: .zi-setup-plugin-dir [[[
-Clones given plugin into PLUGIN_DIR.
-Supports multiple sites (respecting `from' and `proto' ice modifiers).
-Invokes compilation of plugin's main file.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$1 - user
-$2 - plugin</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 208 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-setup-plugin-dir
-|-- side.zsh/.zi-any-colorify-as-uspl2
-|-- side.zsh/.zi-store-ices
-|-- zi.zsh/+zi-message
-|-- zi.zsh/.zi-get-object-path
-`-- ziextract
-    `-- zi.zsh/+zi-message</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em>, <em>trap</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>autoload.zsh/.zi-update-or-status
-zi.zsh/.zi-load</pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">zi-update-snippet</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: .zi-update-snippet [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 71 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-update-snippet
-|-- zi.zsh/+zi-message
-|-- zi.zsh/.zi-get-object-path
-`-- zi.zsh/.zi-pack-ice</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>eval</em>, <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>autoload.zsh/.zi-update-or-status-snippet</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zicp">zicp</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION zicp [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 27 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zimv</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ziextract">ziextract</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: ziextract [[[
-If the file is an archive, it is extracted by this function.
-Next stage is scanning of files with the common utility `file',
-to detect executables. They are given +x mode. There are also
-messages to the user on performed actions.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$1 - url
-$2 - file</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 265 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>ziextract
-`-- zi.zsh/+zi-message</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em>, <em>unfunction</em>, <em>zparseopts</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-extract
-.zi-get-package
-.zi-setup-plugin-dir
-zpextract</pre>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_zimv">zimv</h3>
@@ -1221,266 +1338,6 @@ FUNCTION zimv [[[</pre>
 <div class="content">
 <pre>zimv
 `-- zicp</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zpextract">zpextract</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: zpextract [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zpextract
-`-- ziextract
-    `-- zi.zsh/+zi-message</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_atclone_hook">∞zi-atclone-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-atclone-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 18 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-atclone-hook
-|-- side.zsh/.zi-countdown
-`-- zi.zsh/@zi-substitute</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>eval</em>, <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_atpull_e_hook">∞zi-atpull-e-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-atpull-e-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 17 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-atpull-e-hook
-`-- side.zsh/.zi-countdown</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_atpull_hook">∞zi-atpull-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-atpull-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 16 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-atpull-hook
-`-- side.zsh/.zi-countdown</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_compile_plugin_hook">∞zi-compile-plugin-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-compile-plugin-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 15 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-compile-plugin-hook</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_cp_hook">∞zi-cp-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-cp-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 25 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-cp-hook
-`-- zi.zsh/@zi-substitute</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_extract_hook">∞zi-extract-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-extract-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 5 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-extract-hook
-`-- zi.zsh/@zi-substitute</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_make_e_hook">∞zi-make-e-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-make-e-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 7 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-make-e-hook
-|-- side.zsh/.zi-countdown
-`-- zi.zsh/@zi-substitute</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_make_ee_hook">∞zi-make-ee-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-make-ee-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 7 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-make-ee-hook
-|-- side.zsh/.zi-countdown
-`-- zi.zsh/@zi-substitute</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_make_hook">∞zi-make-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: ∞zi-make-hook [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 6 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>∞zi-make-hook
-|-- side.zsh/.zi-countdown
-`-- zi.zsh/@zi-substitute</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1513,6 +1370,39 @@ FUNCTION: zpextract [[[</pre>
 </div>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+<div class="paragraph">
+<div class="title">zi-parse-json</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: .zi-parse-json [[[
+Retrievies the ice-list from given profile from the JSON of the package.json.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 102 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-parse-json</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-get-package</pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1569,6 +1459,116 @@ FUNCTION: ∞zi-reset-opt-hook [[[</pre>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
+<div class="paragraph">
+<div class="title">zi-setup-plugin-dir</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: .zi-setup-plugin-dir [[[
+Clones given plugin into PLUGIN_DIR.
+Supports multiple sites (respecting `from' and `proto' ice modifiers).
+Invokes compilation of plugin's main file.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$1 - user
+$2 - plugin</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 208 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-setup-plugin-dir
+|-- side.zsh/.zi-any-colorify-as-uspl2
+|-- side.zsh/.zi-store-ices
+|-- ziextract
+|   `-- zi.zsh/+zi-message
+|-- zi.zsh/.zi-get-object-path
+`-- zi.zsh/+zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em>, <em>trap</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>autoload.zsh/.zi-update-or-status
+zi.zsh/.zi-load</pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">zi-update-snippet</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: .zi-update-snippet [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 71 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-update-snippet
+|-- zi.zsh/.zi-get-object-path
+|-- zi.zsh/+zi-message
+`-- zi.zsh/.zi-pack-ice</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>eval</em>, <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>autoload.zsh/.zi-update-or-status-snippet</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zpextract">zpextract</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: zpextract [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 1 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zpextract
+`-- ziextract
+    `-- zi.zsh/+zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_compinit">compinit</h3>
@@ -1597,7 +1597,7 @@ should be done with its contents:</pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 549 line(s). Doesn&#8217;t call other functions.</p>
+<p>Has 573 line(s). Doesn&#8217;t call other functions.</p>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>autoload</em>, <em>bindkey</em>, <em>compdef</em>, <em>compdump</em>, <em>eval</em>, <em>read</em>, <em>setopt</em>, <em>unfunction</em>, <em>zle</em>, <em>zstyle</em></p>
@@ -1616,7 +1616,7 @@ should be done with its contents:</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-17 16:56:06 UTC
+Last updated 2022-11-19 04:41:41 UTC
 </div>
 </div>
 </body>

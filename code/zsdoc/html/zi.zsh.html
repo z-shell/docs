@@ -462,16 +462,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="literalblock">
 <div class="content">
-<pre> +zi-deploy-message
- +zi-message
- +zi-prehelp-usage-message
- -zi_scheduler_add_sh
+<pre> ❮▼❯
+ @autoload
+ pmodload
+ zi
  .zi-add-fpath
  .zi-add-report
  .zi-any-to-pid
  .zi-any-to-user-plugin
+ zicdclear
+ zicdreplay
+ zicompdef
  .zi-compdef-clear
  .zi-compdef-replay
+ zicompinit
+ zicompinit_fast
+ +zi-deploy-message
  .zi-diff
  .zi-diff-env
  .zi-diff-functions
@@ -493,44 +499,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  .zi-load-plugin
  .zi-load-snippet
  .zi-main-message-formatter
+ +zi-message
  .zi-pack-ice
  .zi-parse-opts
+ +zi-prehelp-usage-message
  .zi-prepare-home
+ @zi-register-annex
+ @zi-register-hook
  .zi-register-plugin
+ :zi-reload-and-run
  .zi-run
  .zi-run-task
+ -zi_scheduler_add_sh
  .zi-set-m-func
  .zi-setup-params
  .zi-submit-turbo
- .zi-tmp-subst-off
- .zi-tmp-subst-on
- .zi-util-shands-path
- :zi-reload-and-run
+ @zi-substitute
  :zi-tmp-subst-alias
  :zi-tmp-subst-autoload
  :zi-tmp-subst-bindkey
  :zi-tmp-subst-compdef
+ .zi-tmp-subst-off
+ .zi-tmp-subst-on
  :zi-tmp-subst-zle
  :zi-tmp-subst-zstyle
- @autoload
- @zi-register-annex
- @zi-register-hook
- @zi-substitute
- @zsh-plugin-run-on-unload
- @zsh-plugin-run-on-update
- pmodload
- zi
  zi-turbo
- zicdclear
- zicdreplay
- zicompdef
- zicompinit
- zicompinit_fast
+ .zi-util-shands-path
  zpcdclear
  zpcdreplay
  zpcompdef
  zpcompinit
- ❮▼❯
+ @zsh-plugin-run-on-unload
+ @zsh-plugin-run-on-update
 AUTOLOAD add-zsh-hook
 AUTOLOAD compinit
 AUTOLOAD is-at-least
@@ -550,169 +550,207 @@ PRECMD-HOOK @zi-scheduler</pre>
 <div class="literalblock">
 <div class="content">
 <pre>Script-Body
-|-- @zi-register-hook
 |-- add-zsh-hook
 |-- is-at-least
-`-- side.zsh/.zi-check-module</pre>
+|-- side.zsh/.zi-check-module
+`-- @zi-register-hook</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>add-zsh-hook</em>, <em>alias</em>, <em>autoload</em>, <em>is-at-least</em>, <em>setopt</em>, <em>source</em>, <em>zmodload</em>, <em>zstyle</em></p>
 </div>
+<div class="paragraph">
+<p>❮▼❯
+<sub>~</sub></p>
 </div>
-<div class="sect2">
-<h3 id="_zi_deploy_message">+zi-deploy-message</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>FUNCTION: +zi-deploy-message. [[[
-Deploys a sub-prompt message to be displayed OR a `zle
-.reset-prompt' call to be invoked</pre>
+<pre>]]]
+Compatibility functions. [[[</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 13 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>read</em>, <em>zle</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
+<p>Has 1 line(s). Calls functions:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>.zi-load-snippet
-.zi-load
-autoload.zsh/.zi-recall</pre>
+<pre>❮▼❯
+`-- zi
+    |-- additional.zsh/.zi-clear-debug-report
+    |-- additional.zsh/.zi-debug-start
+    |-- additional.zsh/.zi-debug-stop
+    |-- additional.zsh/.zi-debug-unload
+    |-- autoload.zsh/.zi-analytics-menu
+    |-- autoload.zsh/.zi-cdisable
+    |-- autoload.zsh/.zi-cenable
+    |-- autoload.zsh/.zi-clear-completions
+    |-- autoload.zsh/.zi-compiled
+    |-- autoload.zsh/.zi-compile-uncompile-all
+    |-- autoload.zsh/.zi-help
+    |-- autoload.zsh/.zi-list-bindkeys
+    |-- autoload.zsh/.zi-list-compdef-replay
+    |-- autoload.zsh/.zi-ls
+    |-- autoload.zsh/.zi-module
+    |-- autoload.zsh/.zi-recently
+    |-- autoload.zsh/.zi-registered-ice-mods
+    |-- autoload.zsh/.zi-registered-subcommands
+    |-- autoload.zsh/.zi-search-completions
+    |-- autoload.zsh/.zi-self-update
+    |-- autoload.zsh/.zi-show-all-reports
+    |-- autoload.zsh/.zi-show-completions
+    |-- autoload.zsh/.zi-show-debug-report
+    |-- autoload.zsh/.zi-show-registered-plugins
+    |-- autoload.zsh/.zi-show-report
+    |-- autoload.zsh/.zi-show-times
+    |-- autoload.zsh/.zi-show-zstatus
+    |-- autoload.zsh/.zi-uncompile-plugin
+    |-- autoload.zsh/.zi-uninstall-completions
+    |-- autoload.zsh/.zi-unload
+    |-- autoload.zsh/.zi-update-or-status
+    |-- autoload.zsh/.zi-update-or-status-all
+    |-- compinit
+    |-- install.zsh/.zi-compile-plugin
+    |-- install.zsh/.zi-compinit
+    |-- install.zsh/.zi-forget-completion
+    |-- install.zsh/.zi-install-completions
+    |-- +zi-message
+    `-- +zi-prehelp-usage-message
+        `-- +zi-message</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_zi_message">+zi-message</h3>
+<h3 id="_autoload">@autoload</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>FUNCTION: +zi-message. [[[</pre>
+<pre>]]]
+FUNCTION: @autoload. [[[</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 13 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
+<p>Has 1 line(s). Calls functions:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>+zi-prehelp-usage-message
-.zi-compdef-clear
-.zi-compdef-replay
-.zi-load-snippet
-.zi-register-plugin
-.zi-run
-.zi-set-m-func
-:zi-tmp-subst-autoload
-zi
-additional.zsh/.zi-debug-start
-additional.zsh/.zi-debug-unload
-additional.zsh/:zi-tmp-subst-source
-autoload.zsh/.zi-analytics-menu
-autoload.zsh/.zi-build-module
-autoload.zsh/.zi-cd
-autoload.zsh/.zi-clear-completions
-autoload.zsh/.zi-compiled
-autoload.zsh/.zi-glance
-autoload.zsh/.zi-help
-autoload.zsh/.zi-module
-autoload.zsh/.zi-registered-ice-mods
-autoload.zsh/.zi-registered-subcommands
-autoload.zsh/.zi-self-update
-autoload.zsh/.zi-show-report
-autoload.zsh/.zi-show-zstatus
-autoload.zsh/.zi-uncompile-plugin
-autoload.zsh/.zi-uninstall-completions
-autoload.zsh/.zi-unload
-autoload.zsh/.zi-update-all-parallel
-autoload.zsh/.zi-update-or-status-all
-autoload.zsh/.zi-update-or-status
-autoload.zsh/.zi-wait-for-update-jobs
-install.zsh/.zi-compile-plugin
-install.zsh/.zi-compinit
-install.zsh/.zi-download-file-stdout
-install.zsh/.zi-download-snippet
-install.zsh/.zi-extract
-install.zsh/.zi-get-cygwin-package
-install.zsh/.zi-get-latest-gh-r-url-part
-install.zsh/.zi-get-package
-install.zsh/.zi-install-completions
-install.zsh/.zi-mirror-using-svn
-install.zsh/.zi-setup-plugin-dir
-install.zsh/.zi-update-snippet
-install.zsh/ziextract
-install.zsh/∞zi-mv-hook
-install.zsh/∞zi-ps-on-update-hook
-install.zsh/∞zi-reset-hook
-side.zsh/.zi-check-module
-side.zsh/.zi-countdown
-side.zsh/.zi-exists-physically-message</pre>
+<pre>@autoload
+`-- :zi-tmp-subst-autoload
+    |-- is-at-least
+    `-- +zi-message</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_zi_prehelp_usage_message">+zi-prehelp-usage-message</h3>
+<h3 id="_pmodload">pmodload</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>FUNCTION: +zi-prehelp-usage-message. [[[
-Prints the usage message.</pre>
+<pre>FUNCTION: pmodload. [[[
+Compatibility with Prezto. Calls can be recursive.</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 34 line(s). Calls functions:</p>
+<p>Has 15 line(s). Calls functions:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>+zi-prehelp-usage-message
-`-- +zi-message</pre>
+<pre>pmodload</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Called by:</p>
+<p>Uses feature(s): <em>zstyle</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi">zi</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: zi. [[[
+Main function directly exposed to user, obtains subcommand and its arguments, has completion.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 550 line(s). Calls functions:</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>zi
-autoload.zsh/.zi-delete</pre>
+|-- additional.zsh/.zi-clear-debug-report
+|-- additional.zsh/.zi-debug-start
+|-- additional.zsh/.zi-debug-stop
+|-- additional.zsh/.zi-debug-unload
+|-- autoload.zsh/.zi-analytics-menu
+|-- autoload.zsh/.zi-cdisable
+|-- autoload.zsh/.zi-cenable
+|-- autoload.zsh/.zi-clear-completions
+|-- autoload.zsh/.zi-compiled
+|-- autoload.zsh/.zi-compile-uncompile-all
+|-- autoload.zsh/.zi-help
+|-- autoload.zsh/.zi-list-bindkeys
+|-- autoload.zsh/.zi-list-compdef-replay
+|-- autoload.zsh/.zi-ls
+|-- autoload.zsh/.zi-module
+|-- autoload.zsh/.zi-recently
+|-- autoload.zsh/.zi-registered-ice-mods
+|-- autoload.zsh/.zi-registered-subcommands
+|-- autoload.zsh/.zi-search-completions
+|-- autoload.zsh/.zi-self-update
+|-- autoload.zsh/.zi-show-all-reports
+|-- autoload.zsh/.zi-show-completions
+|-- autoload.zsh/.zi-show-debug-report
+|-- autoload.zsh/.zi-show-registered-plugins
+|-- autoload.zsh/.zi-show-report
+|-- autoload.zsh/.zi-show-times
+|-- autoload.zsh/.zi-show-zstatus
+|-- autoload.zsh/.zi-uncompile-plugin
+|-- autoload.zsh/.zi-uninstall-completions
+|-- autoload.zsh/.zi-unload
+|-- autoload.zsh/.zi-update-or-status
+|-- autoload.zsh/.zi-update-or-status-all
+|-- compinit
+|-- install.zsh/.zi-compile-plugin
+|-- install.zsh/.zi-compinit
+|-- install.zsh/.zi-forget-completion
+|-- install.zsh/.zi-install-completions
+|-- +zi-message
+`-- +zi-prehelp-usage-message
+    `-- +zi-message</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Uses feature(s): <em>autoload</em>, <em>compinit</em>, <em>eval</em>, <em>setopt</em>, <em>source</em></p>
 </div>
-<div class="sect2">
-<h3 id="_zi_scheduler_add_sh">-zi_scheduler_add_sh</h3>
-<div class="quoteblock">
-<blockquote>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
 <div class="literalblock">
 <div class="content">
-<pre>FUNCTION: -zi_scheduler_add_sh. [[[
-Copies task into ZI_RUN array, called when a task timeouts.
-A small function ran from pattern in /-substitution as a math
-function.</pre>
+<pre>❮▼❯
+zi-turbo</pre>
 </div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 7 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-add-fpath</div>
@@ -858,8 +896,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 :zi-tmp-subst-autoload
 autoload.zsh/.zi-any-to-uspl2
 autoload.zsh/.zi-changes
-autoload.zsh/.zi-compile-uncompile-all
 autoload.zsh/.zi-compiled
+autoload.zsh/.zi-compile-uncompile-all
 autoload.zsh/.zi-create
 autoload.zsh/.zi-delete
 autoload.zsh/.zi-find-completions-of-plugin
@@ -879,6 +917,77 @@ side.zsh/.zi-exists-physically-message
 side.zsh/.zi-exists-physically
 side.zsh/.zi-first</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicdclear">zicdclear</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: zicdclear. [[[
+A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 1 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zicdclear</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicdreplay">zicdreplay</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: zicdreplay. [[[
+A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+It works like `zi cdreplay', which cannot be invoked from such hook ices.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 1 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zicdreplay</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicompdef">zicompdef</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: zicompdef. [[[
+Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
+An utility function of an undefined use case.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 1 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-compdef-clear</div>
@@ -908,8 +1017,8 @@ Implements user-exposed functionality to clear gathered compdefs.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>zi
-zicdclear
+<pre>zicdclear
+zi
 zpcdclear</pre>
 </div>
 </div>
@@ -944,9 +1053,102 @@ Runs gathered compdef calls. This allows to run `compinit' after loading plugins
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>zi
-zicdreplay
+<pre>zicdreplay
+zi
 zpcdreplay</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicompinit">zicompinit</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: zicompinit. [[[
+A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+It runs `autoload compinit; compinit' and respects
+ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 1 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zicompinit
+`-- compinit</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>autoload</em>, <em>compinit</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zicompinit_fast">zicompinit_fast</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>]]]
+FUNCTION: zicompinit_fast. [[[
+Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
+This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
+modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
+A function that can be invoked from within `atinit', `atload'</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 13 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zicompinit_fast
+`-- compinit</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>autoload</em>, <em>compinit</em>, <em>zcompile</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_deploy_message">+zi-deploy-message</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: +zi-deploy-message. [[[
+Deploys a sub-prompt message to be displayed OR a `zle
+.reset-prompt' call to be invoked</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 13 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>read</em>, <em>zle</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-load-snippet
+.zi-load
+autoload.zsh/.zi-recall</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1416,9 +1618,9 @@ $2 - plugin name, if the third format is used</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-load
-|-- +zi-deploy-message
 |-- install.zsh/.zi-get-package
-`-- install.zsh/.zi-setup-plugin-dir</pre>
+|-- install.zsh/.zi-setup-plugin-dir
+`-- +zi-deploy-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1519,10 +1721,10 @@ $3 - mode (light or load)</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-load-plugin
-|-- :zi-tmp-subst-autoload
-|   |-- +zi-message
-|   `-- is-at-least
-`-- additional.zsh/.zi-wrap-functions</pre>
+|-- additional.zsh/.zi-wrap-functions
+`-- :zi-tmp-subst-autoload
+    |-- is-at-least
+    `-- +zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1561,10 +1763,10 @@ Implements the exposed-to-user action of loading a snippet.</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-load-snippet
-|-- +zi-deploy-message
-|-- +zi-message
 |-- additional.zsh/.zi-wrap-functions
-`-- install.zsh/.zi-download-snippet</pre>
+|-- install.zsh/.zi-download-snippet
+|-- +zi-deploy-message
+`-- +zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1575,10 +1777,10 @@ Implements the exposed-to-user action of loading a snippet.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>.zi-load-object
+<pre>pmodload
+.zi-load-object
 .zi-load
 .zi-run-task
-pmodload
 additional.zsh/.zi-service</pre>
 </div>
 </div>
@@ -1600,6 +1802,79 @@ additional.zsh/.zi-service</pre>
 </div>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_message">+zi-message</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: +zi-message. [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 13 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-compdef-clear
+.zi-compdef-replay
+.zi-load-snippet
++zi-prehelp-usage-message
+.zi-register-plugin
+.zi-run
+.zi-set-m-func
+:zi-tmp-subst-autoload
+zi
+additional.zsh/.zi-debug-start
+additional.zsh/.zi-debug-unload
+additional.zsh/:zi-tmp-subst-source
+autoload.zsh/.zi-analytics-menu
+autoload.zsh/.zi-build-module
+autoload.zsh/.zi-cd
+autoload.zsh/.zi-clear-completions
+autoload.zsh/.zi-compiled
+autoload.zsh/.zi-glance
+autoload.zsh/.zi-help
+autoload.zsh/.zi-module
+autoload.zsh/.zi-registered-ice-mods
+autoload.zsh/.zi-registered-subcommands
+autoload.zsh/.zi-self-update
+autoload.zsh/.zi-show-report
+autoload.zsh/.zi-show-zstatus
+autoload.zsh/.zi-uncompile-plugin
+autoload.zsh/.zi-uninstall-completions
+autoload.zsh/.zi-unload
+autoload.zsh/.zi-update-all-parallel
+autoload.zsh/.zi-update-or-status-all
+autoload.zsh/.zi-update-or-status
+autoload.zsh/.zi-wait-for-update-jobs
+install.zsh/.zi-compile-plugin
+install.zsh/.zi-compinit
+install.zsh/.zi-download-file-stdout
+install.zsh/.zi-download-snippet
+install.zsh/.zi-extract
+install.zsh/ziextract
+install.zsh/.zi-get-cygwin-package
+install.zsh/.zi-get-latest-gh-r-url-part
+install.zsh/.zi-get-package
+install.zsh/.zi-install-completions
+install.zsh/.zi-mirror-using-svn
+install.zsh/∞zi-mv-hook
+install.zsh/∞zi-ps-on-update-hook
+install.zsh/∞zi-reset-hook
+install.zsh/.zi-setup-plugin-dir
+install.zsh/.zi-update-snippet
+side.zsh/.zi-check-module
+side.zsh/.zi-countdown
+side.zsh/.zi-exists-physically-message</pre>
+</div>
 </div>
 <div class="paragraph">
 <div class="title">zi-pack-ice</div>
@@ -1659,6 +1934,37 @@ FUNCTION: +zi-parse-opts. [[[</pre>
 autoload.zsh/.zi-delete</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_zi_prehelp_usage_message">+zi-prehelp-usage-message</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: +zi-prehelp-usage-message. [[[
+Prints the usage message.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 34 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>+zi-prehelp-usage-message
+`-- +zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zi
+autoload.zsh/.zi-delete</pre>
+</div>
+</div>
 <div class="paragraph">
 <div class="title">zi-prepare-home</div>
 <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~</p>
@@ -1685,6 +1991,55 @@ Establish all required directories.</pre>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>source</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Script-Body</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_register_annex">@zi-register-annex</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: @zi-register-annex. [[[
+Registers the z-annex inside Zi – i.e. an Zi extension</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 10 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_register_hook">@zi-register-hook</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: @zi-register-hook. [[[
+Registers the z-annex inside Zi.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 6 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
 </div>
 <div class="paragraph">
 <p>Called by:</p>
@@ -1726,6 +2081,47 @@ https://wiki.zshell.dev/community/zsh_plugin_standard).</pre>
 <div class="content">
 <pre>.zi-load</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_reload_and_run">:zi-reload-and-run</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: :zi-reload-and-run. [[[
+Marks given function ($3) for autoloading, and executes it triggering the load.
+$1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
+because using that on older Zsh versions causes problems with traps.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$1 - FPATH dedicated to function
+$2 - autoload options
+$3 - function name (one that needs autoloading)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Author: Bart Schaefer</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 9 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>autoload</em>, <em>unfunction</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-run</div>
@@ -1808,6 +2204,74 @@ $6 - the plugin-spec or snippet URL or alias name (from id-as'')</pre>
 <div class="content">
 <pre>@zi-scheduler</pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_scheduler">@zi-scheduler</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: @zi-scheduler. [[[
+Searches for timeout tasks, executes them. There's an array of tasks
+waiting for execution, this scheduler manages them, detects which ones
+should be run at current moment, decides to remove (or not) them from
+the array after execution.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$1 - if "following", then it is non-first (second and more)
+invocation of the scheduler; this results in chain of `sched'
+invocations that results in repetitive @zi-scheduler activity.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>if "burst", then all tasks are marked timeout and executed one
+by one; this is handy if e.g. a docker image starts up and
+needs to install all turbo-mode plugins without any hesitation
+(delay), i.e. "burst" allows to run package installations from
+script, not from prompt.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 72 line(s). <strong>Is a precmd hook</strong>. Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@zi-scheduler
+`-- add-zsh-hook</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>add-zsh-hook</em>, <em>sched</em>, <em>zle</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zi_scheduler_add_sh">-zi_scheduler_add_sh</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: -zi_scheduler_add_sh. [[[
+Copies task into ZI_RUN array, called when a task timeouts.
+A small function ran from pattern in /-substitution as a math
+function.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 7 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 <div class="paragraph">
 <div class="title">zi-set-m-func</div>
@@ -1899,83 +2363,20 @@ and this function adds it to internal data structures, so that
 <pre>zi</pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">zi-tmp-subst-off</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
 </div>
+<div class="sect2">
+<h3 id="_zi_substitute">@zi-substitute</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>FUNCTION: .zi-tmp-subst-off. [[[
-Turn off temporary substituting of functions completely for a given mode ("load", "light",
-"light-b" (i.e. the `trackbinds' mode) or "compdef").</pre>
+<pre>FUNCTION: @zi-substitute. [[[</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 17 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em>, <em>unfunction</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-load-plugin
-additional.zsh/.zi-debug-stop</pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">zi-tmp-subst-on</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: .zi-tmp-subst-on. [[[
-Turn on temporary substituting of functions of builtins and functions according to passed
-mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
-to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 29 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>source</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-load-plugin
-additional.zsh/.zi-debug-start</pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">zi-util-shands-path</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: .zi-util-shands-path. [[[
-Replaces parts of path with %HOME, etc.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 8 line(s). Doesn&#8217;t call other functions.</p>
+<p>Has 36 line(s). Doesn&#8217;t call other functions.</p>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>setopt</em></p>
@@ -1985,49 +2386,17 @@ Replaces parts of path with %HOME, etc.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>.zi-any-to-pid</pre>
+<pre>autoload.zsh/.zi-at-eval
+install.zsh/∞zi-atclone-hook
+install.zsh/.zi-at-eval
+install.zsh/∞zi-cp-hook
+install.zsh/∞zi-extract-hook
+install.zsh/.zi-get-package
+install.zsh/∞zi-make-ee-hook
+install.zsh/∞zi-make-e-hook
+install.zsh/∞zi-make-hook
+install.zsh/∞zi-mv-hook</pre>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_reload_and_run">:zi-reload-and-run</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: :zi-reload-and-run. [[[
-Marks given function ($3) for autoloading, and executes it triggering the load.
-$1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
-because using that on older Zsh versions causes problems with traps.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$1 - FPATH dedicated to function
-$2 - autoload options
-$3 - function name (one that needs autoloading)</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Author: Bart Schaefer</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 9 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>autoload</em>, <em>unfunction</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 </div>
 <div class="sect2">
@@ -2086,8 +2455,8 @@ run custom `autoload' function, that doesn't need FPATH.</pre>
 <div class="literalblock">
 <div class="content">
 <pre>:zi-tmp-subst-autoload
-|-- +zi-message
-`-- is-at-least</pre>
+|-- is-at-least
+`-- +zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2098,8 +2467,8 @@ run custom `autoload' function, that doesn't need FPATH.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>.zi-load-plugin
-@autoload</pre>
+<pre>@autoload
+.zi-load-plugin</pre>
 </div>
 </div>
 </div>
@@ -2163,6 +2532,67 @@ calls so that `compinit' can be called after loading plugins.</pre>
 </div>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+<div class="paragraph">
+<div class="title">zi-tmp-subst-off</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: .zi-tmp-subst-off. [[[
+Turn off temporary substituting of functions completely for a given mode ("load", "light",
+"light-b" (i.e. the `trackbinds' mode) or "compdef").</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 17 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em>, <em>unfunction</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-load-plugin
+additional.zsh/.zi-debug-stop</pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">zi-tmp-subst-on</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: .zi-tmp-subst-on. [[[
+Turn on temporary substituting of functions of builtins and functions according to passed
+mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
+to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 29 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>source</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-load-plugin
+additional.zsh/.zi-debug-start</pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2230,313 +2660,6 @@ Function defined to hijack plugin's calls to the `zstyle' builtin.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_autoload">@autoload</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: @autoload. [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>@autoload
-`-- :zi-tmp-subst-autoload
-    |-- +zi-message
-    `-- is-at-least</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_register_annex">@zi-register-annex</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zi-register-annex. [[[
-Registers the z-annex inside Zi – i.e. an Zi extension</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 10 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_register_hook">@zi-register-hook</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zi-register-hook. [[[
-Registers the z-annex inside Zi.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 6 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Script-Body</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_scheduler">@zi-scheduler</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zi-scheduler. [[[
-Searches for timeout tasks, executes them. There's an array of tasks
-waiting for execution, this scheduler manages them, detects which ones
-should be run at current moment, decides to remove (or not) them from
-the array after execution.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$1 - if "following", then it is non-first (second and more)
-invocation of the scheduler; this results in chain of `sched'
-invocations that results in repetitive @zi-scheduler activity.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>if "burst", then all tasks are marked timeout and executed one
-by one; this is handy if e.g. a docker image starts up and
-needs to install all turbo-mode plugins without any hesitation
-(delay), i.e. "burst" allows to run package installations from
-script, not from prompt.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 72 line(s). <strong>Is a precmd hook</strong>. Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>@zi-scheduler
-`-- add-zsh-hook</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>add-zsh-hook</em>, <em>sched</em>, <em>zle</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi_substitute">@zi-substitute</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zi-substitute. [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 36 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>autoload.zsh/.zi-at-eval
-install.zsh/.zi-at-eval
-install.zsh/.zi-get-package
-install.zsh/∞zi-atclone-hook
-install.zsh/∞zi-cp-hook
-install.zsh/∞zi-extract-hook
-install.zsh/∞zi-make-e-hook
-install.zsh/∞zi-make-ee-hook
-install.zsh/∞zi-make-hook
-install.zsh/∞zi-mv-hook</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zsh_plugin_run_on_unload">@zsh-plugin-run-on-unload</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zsh-plugin-run-on-update. [[[
-The Plugin Standard required mechanism, see:
-https://wiki.zshell.dev/community/zsh_plugin_standard</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 2 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>@zsh-plugin-run-on-unload</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zsh_plugin_run_on_update">@zsh-plugin-run-on-update</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: @zsh-plugin-run-on-update. [[[
-The Plugin Standard required mechanism</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 2 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>@zsh-plugin-run-on-update</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_pmodload">pmodload</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: pmodload. [[[
-Compatibility with Prezto. Calls can be recursive.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 15 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>pmodload</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>zstyle</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zi">zi</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: zi. [[[
-Main function directly exposed to user, obtains subcommand and its arguments, has completion.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 550 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zi
-|-- +zi-message
-|-- +zi-prehelp-usage-message
-|   `-- +zi-message
-|-- additional.zsh/.zi-clear-debug-report
-|-- additional.zsh/.zi-debug-start
-|-- additional.zsh/.zi-debug-stop
-|-- additional.zsh/.zi-debug-unload
-|-- autoload.zsh/.zi-analytics-menu
-|-- autoload.zsh/.zi-cdisable
-|-- autoload.zsh/.zi-cenable
-|-- autoload.zsh/.zi-clear-completions
-|-- autoload.zsh/.zi-compile-uncompile-all
-|-- autoload.zsh/.zi-compiled
-|-- autoload.zsh/.zi-help
-|-- autoload.zsh/.zi-list-bindkeys
-|-- autoload.zsh/.zi-list-compdef-replay
-|-- autoload.zsh/.zi-ls
-|-- autoload.zsh/.zi-module
-|-- autoload.zsh/.zi-recently
-|-- autoload.zsh/.zi-registered-ice-mods
-|-- autoload.zsh/.zi-registered-subcommands
-|-- autoload.zsh/.zi-search-completions
-|-- autoload.zsh/.zi-self-update
-|-- autoload.zsh/.zi-show-all-reports
-|-- autoload.zsh/.zi-show-completions
-|-- autoload.zsh/.zi-show-debug-report
-|-- autoload.zsh/.zi-show-registered-plugins
-|-- autoload.zsh/.zi-show-report
-|-- autoload.zsh/.zi-show-times
-|-- autoload.zsh/.zi-show-zstatus
-|-- autoload.zsh/.zi-uncompile-plugin
-|-- autoload.zsh/.zi-uninstall-completions
-|-- autoload.zsh/.zi-unload
-|-- autoload.zsh/.zi-update-or-status
-|-- autoload.zsh/.zi-update-or-status-all
-|-- compinit
-|-- install.zsh/.zi-compile-plugin
-|-- install.zsh/.zi-compinit
-|-- install.zsh/.zi-forget-completion
-`-- install.zsh/.zi-install-completions</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>autoload</em>, <em>compinit</em>, <em>eval</em>, <em>setopt</em>, <em>source</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zi-turbo
-❮▼❯</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_zi_turbo">zi-turbo</h3>
 <div class="quoteblock">
 <blockquote>
@@ -2557,9 +2680,6 @@ Default ices depth'3' and lucid, allowed values [0-9][a-c].</pre>
 <div class="content">
 <pre>zi-turbo
 `-- zi
-    |-- +zi-message
-    |-- +zi-prehelp-usage-message
-    |   `-- +zi-message
     |-- additional.zsh/.zi-clear-debug-report
     |-- additional.zsh/.zi-debug-start
     |-- additional.zsh/.zi-debug-stop
@@ -2568,8 +2688,8 @@ Default ices depth'3' and lucid, allowed values [0-9][a-c].</pre>
     |-- autoload.zsh/.zi-cdisable
     |-- autoload.zsh/.zi-cenable
     |-- autoload.zsh/.zi-clear-completions
-    |-- autoload.zsh/.zi-compile-uncompile-all
     |-- autoload.zsh/.zi-compiled
+    |-- autoload.zsh/.zi-compile-uncompile-all
     |-- autoload.zsh/.zi-help
     |-- autoload.zsh/.zi-list-bindkeys
     |-- autoload.zsh/.zi-list-compdef-replay
@@ -2596,145 +2716,42 @@ Default ices depth'3' and lucid, allowed values [0-9][a-c].</pre>
     |-- install.zsh/.zi-compile-plugin
     |-- install.zsh/.zi-compinit
     |-- install.zsh/.zi-forget-completion
-    `-- install.zsh/.zi-install-completions</pre>
+    |-- install.zsh/.zi-install-completions
+    |-- +zi-message
+    `-- +zi-prehelp-usage-message
+        `-- +zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
+<div class="paragraph">
+<div class="title">zi-util-shands-path</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~</p>
 </div>
-<div class="sect2">
-<h3 id="_zicdclear">zicdclear</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>]]]
-FUNCTION: zicdclear. [[[
-A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.</pre>
+<pre>FUNCTION: .zi-util-shands-path. [[[
+Replaces parts of path with %HOME, etc.</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
+<p>Has 8 line(s). Doesn&#8217;t call other functions.</p>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>zicdclear</pre>
+<pre>.zi-any-to-pid</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zicdreplay">zicdreplay</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: zicdreplay. [[[
-A function that can be invoked from within `atinit', `atload', etc. ice-mod.
-It works like `zi cdreplay', which cannot be invoked from such hook ices.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zicdreplay</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zicompdef">zicompdef</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: zicompdef. [[[
-Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
-An utility function of an undefined use case.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 1 line(s). Doesn&#8217;t call other functions.</p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zicompinit">zicompinit</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: zicompinit. [[[
-A function that can be invoked from within `atinit', `atload', etc. ice-mod.
-It runs `autoload compinit; compinit' and respects
-ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zicompinit
-`-- compinit</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>autoload</em>, <em>compinit</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_zicompinit_fast">zicompinit_fast</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>]]]
-FUNCTION: zicompinit_fast. [[[
-Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
-This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
-modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
-A function that can be invoked from within `atinit', `atload'</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 13 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zicompinit_fast
-`-- compinit</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>autoload</em>, <em>compinit</em>, <em>zcompile</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
 </div>
 <div class="sect2">
@@ -2791,67 +2808,50 @@ A function that can be invoked from within `atinit', `atload'</pre>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
-<div class="paragraph">
-<p>❮▼❯
-<sub>~</sub></p>
 </div>
+<div class="sect2">
+<h3 id="_zsh_plugin_run_on_unload">@zsh-plugin-run-on-unload</h3>
 <div class="quoteblock">
 <blockquote>
 <div class="literalblock">
 <div class="content">
-<pre>]]]
-Compatibility functions. [[[</pre>
+<pre>FUNCTION: @zsh-plugin-run-on-update. [[[
+The Plugin Standard required mechanism, see:
+https://wiki.zshell.dev/community/zsh_plugin_standard</pre>
 </div>
 </div>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 1 line(s). Calls functions:</p>
+<p>Has 2 line(s). Calls functions:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>❮▼❯
-`-- zi
-    |-- +zi-message
-    |-- +zi-prehelp-usage-message
-    |   `-- +zi-message
-    |-- additional.zsh/.zi-clear-debug-report
-    |-- additional.zsh/.zi-debug-start
-    |-- additional.zsh/.zi-debug-stop
-    |-- additional.zsh/.zi-debug-unload
-    |-- autoload.zsh/.zi-analytics-menu
-    |-- autoload.zsh/.zi-cdisable
-    |-- autoload.zsh/.zi-cenable
-    |-- autoload.zsh/.zi-clear-completions
-    |-- autoload.zsh/.zi-compile-uncompile-all
-    |-- autoload.zsh/.zi-compiled
-    |-- autoload.zsh/.zi-help
-    |-- autoload.zsh/.zi-list-bindkeys
-    |-- autoload.zsh/.zi-list-compdef-replay
-    |-- autoload.zsh/.zi-ls
-    |-- autoload.zsh/.zi-module
-    |-- autoload.zsh/.zi-recently
-    |-- autoload.zsh/.zi-registered-ice-mods
-    |-- autoload.zsh/.zi-registered-subcommands
-    |-- autoload.zsh/.zi-search-completions
-    |-- autoload.zsh/.zi-self-update
-    |-- autoload.zsh/.zi-show-all-reports
-    |-- autoload.zsh/.zi-show-completions
-    |-- autoload.zsh/.zi-show-debug-report
-    |-- autoload.zsh/.zi-show-registered-plugins
-    |-- autoload.zsh/.zi-show-report
-    |-- autoload.zsh/.zi-show-times
-    |-- autoload.zsh/.zi-show-zstatus
-    |-- autoload.zsh/.zi-uncompile-plugin
-    |-- autoload.zsh/.zi-uninstall-completions
-    |-- autoload.zsh/.zi-unload
-    |-- autoload.zsh/.zi-update-or-status
-    |-- autoload.zsh/.zi-update-or-status-all
-    |-- compinit
-    |-- install.zsh/.zi-compile-plugin
-    |-- install.zsh/.zi-compinit
-    |-- install.zsh/.zi-forget-completion
-    `-- install.zsh/.zi-install-completions</pre>
+<pre>@zsh-plugin-run-on-unload</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zsh_plugin_run_on_update">@zsh-plugin-run-on-update</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: @zsh-plugin-run-on-update. [[[
+The Plugin Standard required mechanism</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 2 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>@zsh-plugin-run-on-update</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2894,8 +2894,8 @@ function name, so any matching function will be deleted from the hook.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>@zi-scheduler
-Script-Body</pre>
+<pre>Script-Body
+@zi-scheduler</pre>
 </div>
 </div>
 </div>
@@ -2926,7 +2926,7 @@ should be done with its contents:</pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Has 549 line(s). Doesn&#8217;t call other functions.</p>
+<p>Has 573 line(s). Doesn&#8217;t call other functions.</p>
 </div>
 <div class="paragraph">
 <p>Uses feature(s): <em>autoload</em>, <em>bindkey</em>, <em>compdef</em>, <em>compdump</em>, <em>eval</em>, <em>read</em>, <em>setopt</em>, <em>unfunction</em>, <em>zle</em>, <em>zstyle</em></p>
@@ -2969,9 +2969,9 @@ considered as zeroes, eg 3 == 3.0 == 3.0.0 == 3.0.0.0 and so on.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>:zi-tmp-subst-autoload
-:zi-tmp-subst-bindkey
-Script-Body</pre>
+<pre>Script-Body
+:zi-tmp-subst-autoload
+:zi-tmp-subst-bindkey</pre>
 </div>
 </div>
 </div>
@@ -2980,7 +2980,7 @@ Script-Body</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-17 16:56:05 UTC
+Last updated 2022-11-19 04:41:40 UTC
 </div>
 </div>
 </body>
