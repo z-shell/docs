@@ -13,22 +13,16 @@ Documentation automatically generated with `zsdoc'
 FUNCTIONS
 ---------
 
- ❮▼❯
- @autoload
- pmodload
- zi
+ +zi-deploy-message
+ +zi-message
+ +zi-prehelp-usage-message
+ -zi_scheduler_add_sh
  .zi-add-fpath
  .zi-add-report
  .zi-any-to-pid
  .zi-any-to-user-plugin
- zicdclear
- zicdreplay
- zicompdef
  .zi-compdef-clear
  .zi-compdef-replay
- zicompinit
- zicompinit_fast
- +zi-deploy-message
  .zi-diff
  .zi-diff-env
  .zi-diff-functions
@@ -50,38 +44,44 @@ FUNCTIONS
  .zi-load-plugin
  .zi-load-snippet
  .zi-main-message-formatter
- +zi-message
  .zi-pack-ice
  .zi-parse-opts
- +zi-prehelp-usage-message
  .zi-prepare-home
- @zi-register-annex
- @zi-register-hook
  .zi-register-plugin
- :zi-reload-and-run
  .zi-run
  .zi-run-task
- -zi_scheduler_add_sh
  .zi-set-m-func
  .zi-setup-params
  .zi-submit-turbo
- @zi-substitute
+ .zi-tmp-subst-off
+ .zi-tmp-subst-on
+ .zi-util-shands-path
+ :zi-reload-and-run
  :zi-tmp-subst-alias
  :zi-tmp-subst-autoload
  :zi-tmp-subst-bindkey
  :zi-tmp-subst-compdef
- .zi-tmp-subst-off
- .zi-tmp-subst-on
  :zi-tmp-subst-zle
  :zi-tmp-subst-zstyle
+ @autoload
+ @zi-register-annex
+ @zi-register-hook
+ @zi-substitute
+ @zsh-plugin-run-on-unload
+ @zsh-plugin-run-on-update
+ pmodload
+ zi
  zi-turbo
- .zi-util-shands-path
+ zicdclear
+ zicdreplay
+ zicompdef
+ zicompinit
+ zicompinit_fast
  zpcdclear
  zpcdreplay
  zpcompdef
  zpcompinit
- @zsh-plugin-run-on-unload
- @zsh-plugin-run-on-update
+ ❮▼❯
 AUTOLOAD add-zsh-hook
 AUTOLOAD compinit
 AUTOLOAD is-at-least
@@ -96,163 +96,130 @@ Script Body
 Has 279 line(s). Calls functions:
 
  Script-Body
+ |-- @zi-register-hook
  |-- add-zsh-hook
  |-- is-at-least
- |-- side.zsh/.zi-check-module
- `-- @zi-register-hook
+ `-- side.zsh/.zi-check-module
 
 Uses feature(s): _add-zsh-hook_, _alias_, _autoload_, _is-at-least_, _setopt_, _source_, _zmodload_, _zstyle_
 
-❮▼❯
-~~~
++zi-deploy-message
+~~~~~~~~~~~~~~~~~~
 
 ____
  
- ]]]
- Compatibility functions. [[[
+ FUNCTION: +zi-deploy-message. [[[
+ Deploys a sub-prompt message to be displayed OR a `zle
+ .reset-prompt' call to be invoked
 ____
 
-Has 1 line(s). Calls functions:
+Has 13 line(s). Doesn't call other functions.
 
- ❮▼❯
- `-- zi
-     |-- additional.zsh/.zi-clear-debug-report
-     |-- additional.zsh/.zi-debug-start
-     |-- additional.zsh/.zi-debug-stop
-     |-- additional.zsh/.zi-debug-unload
-     |-- autoload.zsh/.zi-analytics-menu
-     |-- autoload.zsh/.zi-cdisable
-     |-- autoload.zsh/.zi-cenable
-     |-- autoload.zsh/.zi-clear-completions
-     |-- autoload.zsh/.zi-compiled
-     |-- autoload.zsh/.zi-compile-uncompile-all
-     |-- autoload.zsh/.zi-help
-     |-- autoload.zsh/.zi-list-bindkeys
-     |-- autoload.zsh/.zi-list-compdef-replay
-     |-- autoload.zsh/.zi-ls
-     |-- autoload.zsh/.zi-module
-     |-- autoload.zsh/.zi-recently
-     |-- autoload.zsh/.zi-registered-ice-mods
-     |-- autoload.zsh/.zi-registered-subcommands
-     |-- autoload.zsh/.zi-search-completions
-     |-- autoload.zsh/.zi-self-update
-     |-- autoload.zsh/.zi-show-all-reports
-     |-- autoload.zsh/.zi-show-completions
-     |-- autoload.zsh/.zi-show-debug-report
-     |-- autoload.zsh/.zi-show-registered-plugins
-     |-- autoload.zsh/.zi-show-report
-     |-- autoload.zsh/.zi-show-times
-     |-- autoload.zsh/.zi-show-zstatus
-     |-- autoload.zsh/.zi-uncompile-plugin
-     |-- autoload.zsh/.zi-uninstall-completions
-     |-- autoload.zsh/.zi-unload
-     |-- autoload.zsh/.zi-update-or-status
-     |-- autoload.zsh/.zi-update-or-status-all
-     |-- compinit
-     |-- install.zsh/.zi-compile-plugin
-     |-- install.zsh/.zi-compinit
-     |-- install.zsh/.zi-forget-completion
-     |-- install.zsh/.zi-install-completions
-     |-- +zi-message
-     `-- +zi-prehelp-usage-message
-         `-- +zi-message
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-@autoload
-~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: @autoload. [[[
-____
-
-Has 1 line(s). Calls functions:
-
- @autoload
- `-- :zi-tmp-subst-autoload
-     |-- is-at-least
-     `-- +zi-message
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-pmodload
-~~~~~~~~
-
-____
- 
- FUNCTION: pmodload. [[[
- Compatibility with Prezto. Calls can be recursive.
-____
-
-Has 15 line(s). Calls functions:
-
- pmodload
-
-Uses feature(s): _zstyle_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zi
-~~
-
-____
- 
- FUNCTION: zi. [[[
- Main function directly exposed to user, obtains subcommand and its arguments, has completion.
-____
-
-Has 550 line(s). Calls functions:
-
- zi
- |-- additional.zsh/.zi-clear-debug-report
- |-- additional.zsh/.zi-debug-start
- |-- additional.zsh/.zi-debug-stop
- |-- additional.zsh/.zi-debug-unload
- |-- autoload.zsh/.zi-analytics-menu
- |-- autoload.zsh/.zi-cdisable
- |-- autoload.zsh/.zi-cenable
- |-- autoload.zsh/.zi-clear-completions
- |-- autoload.zsh/.zi-compiled
- |-- autoload.zsh/.zi-compile-uncompile-all
- |-- autoload.zsh/.zi-help
- |-- autoload.zsh/.zi-list-bindkeys
- |-- autoload.zsh/.zi-list-compdef-replay
- |-- autoload.zsh/.zi-ls
- |-- autoload.zsh/.zi-module
- |-- autoload.zsh/.zi-recently
- |-- autoload.zsh/.zi-registered-ice-mods
- |-- autoload.zsh/.zi-registered-subcommands
- |-- autoload.zsh/.zi-search-completions
- |-- autoload.zsh/.zi-self-update
- |-- autoload.zsh/.zi-show-all-reports
- |-- autoload.zsh/.zi-show-completions
- |-- autoload.zsh/.zi-show-debug-report
- |-- autoload.zsh/.zi-show-registered-plugins
- |-- autoload.zsh/.zi-show-report
- |-- autoload.zsh/.zi-show-times
- |-- autoload.zsh/.zi-show-zstatus
- |-- autoload.zsh/.zi-uncompile-plugin
- |-- autoload.zsh/.zi-uninstall-completions
- |-- autoload.zsh/.zi-unload
- |-- autoload.zsh/.zi-update-or-status
- |-- autoload.zsh/.zi-update-or-status-all
- |-- compinit
- |-- install.zsh/.zi-compile-plugin
- |-- install.zsh/.zi-compinit
- |-- install.zsh/.zi-forget-completion
- |-- install.zsh/.zi-install-completions
- |-- +zi-message
- `-- +zi-prehelp-usage-message
-     `-- +zi-message
-
-Uses feature(s): _autoload_, _compinit_, _eval_, _setopt_, _source_
+Uses feature(s): _read_, _zle_
 
 Called by:
 
- ❮▼❯
- zi-turbo
+ .zi-load-snippet
+ .zi-load
+ autoload.zsh/.zi-recall
+
++zi-message
+~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: +zi-message. [[[
+____
+
+Has 13 line(s). Doesn't call other functions.
+
+Called by:
+
+ +zi-prehelp-usage-message
+ .zi-compdef-clear
+ .zi-compdef-replay
+ .zi-load-snippet
+ .zi-register-plugin
+ .zi-run
+ .zi-set-m-func
+ :zi-tmp-subst-autoload
+ zi
+ additional.zsh/.zi-debug-start
+ additional.zsh/.zi-debug-unload
+ additional.zsh/:zi-tmp-subst-source
+ autoload.zsh/.zi-analytics-menu
+ autoload.zsh/.zi-build-module
+ autoload.zsh/.zi-cd
+ autoload.zsh/.zi-clear-completions
+ autoload.zsh/.zi-compiled
+ autoload.zsh/.zi-glance
+ autoload.zsh/.zi-help
+ autoload.zsh/.zi-module
+ autoload.zsh/.zi-registered-ice-mods
+ autoload.zsh/.zi-registered-subcommands
+ autoload.zsh/.zi-self-update
+ autoload.zsh/.zi-show-report
+ autoload.zsh/.zi-show-zstatus
+ autoload.zsh/.zi-uncompile-plugin
+ autoload.zsh/.zi-uninstall-completions
+ autoload.zsh/.zi-unload
+ autoload.zsh/.zi-update-all-parallel
+ autoload.zsh/.zi-update-or-status-all
+ autoload.zsh/.zi-update-or-status
+ autoload.zsh/.zi-wait-for-update-jobs
+ install.zsh/.zi-compile-plugin
+ install.zsh/.zi-compinit
+ install.zsh/.zi-download-file-stdout
+ install.zsh/.zi-download-snippet
+ install.zsh/.zi-extract
+ install.zsh/.zi-get-cygwin-package
+ install.zsh/.zi-get-latest-gh-r-url-part
+ install.zsh/.zi-get-package
+ install.zsh/.zi-install-completions
+ install.zsh/.zi-mirror-using-svn
+ install.zsh/.zi-setup-plugin-dir
+ install.zsh/.zi-update-snippet
+ install.zsh/ziextract
+ install.zsh/∞zi-mv-hook
+ install.zsh/∞zi-ps-on-update-hook
+ install.zsh/∞zi-reset-hook
+ side.zsh/.zi-check-module
+ side.zsh/.zi-countdown
+ side.zsh/.zi-exists-physically-message
+
++zi-prehelp-usage-message
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: +zi-prehelp-usage-message. [[[
+ Prints the usage message.
+____
+
+Has 34 line(s). Calls functions:
+
+ +zi-prehelp-usage-message
+ `-- +zi-message
+
+Called by:
+
+ zi
+ autoload.zsh/.zi-delete
+
+-zi_scheduler_add_sh
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: -zi_scheduler_add_sh. [[[
+ Copies task into ZI_RUN array, called when a task timeouts.
+ A small function ran from pattern in /-substitution as a math
+ function.
+____
+
+Has 7 line(s). Doesn't call other functions.
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-add-fpath
 ~~~~~~~~~~~~~
@@ -343,8 +310,8 @@ Called by:
  :zi-tmp-subst-autoload
  autoload.zsh/.zi-any-to-uspl2
  autoload.zsh/.zi-changes
- autoload.zsh/.zi-compiled
  autoload.zsh/.zi-compile-uncompile-all
+ autoload.zsh/.zi-compiled
  autoload.zsh/.zi-create
  autoload.zsh/.zi-delete
  autoload.zsh/.zi-find-completions-of-plugin
@@ -364,53 +331,6 @@ Called by:
  side.zsh/.zi-exists-physically
  side.zsh/.zi-first
 
-zicdclear
-~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: zicdclear. [[[
- A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.
-____
-
-Has 1 line(s). Calls functions:
-
- zicdclear
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zicdreplay
-~~~~~~~~~~
-
-____
- 
- FUNCTION: zicdreplay. [[[
- A function that can be invoked from within `atinit', `atload', etc. ice-mod.
- It works like `zi cdreplay', which cannot be invoked from such hook ices.
-____
-
-Has 1 line(s). Calls functions:
-
- zicdreplay
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zicompdef
-~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: zicompdef. [[[
- Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
- An utility function of an undefined use case.
-____
-
-Has 1 line(s). Doesn't call other functions.
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
 .zi-compdef-clear
 ~~~~~~~~~~~~~~~~~
 
@@ -427,8 +347,8 @@ Has 3 line(s). Calls functions:
 
 Called by:
 
- zicdclear
  zi
+ zicdclear
  zpcdclear
 
 .zi-compdef-replay
@@ -449,72 +369,9 @@ Uses feature(s): _compdef_
 
 Called by:
 
- zicdreplay
  zi
+ zicdreplay
  zpcdreplay
-
-zicompinit
-~~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: zicompinit. [[[
- A function that can be invoked from within `atinit', `atload', etc. ice-mod.
- It runs `autoload compinit; compinit' and respects
- ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].
-____
-
-Has 1 line(s). Calls functions:
-
- zicompinit
- `-- compinit
-
-Uses feature(s): _autoload_, _compinit_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zicompinit_fast
-~~~~~~~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: zicompinit_fast. [[[
- Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
- This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
- modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
- A function that can be invoked from within `atinit', `atload'
-____
-
-Has 13 line(s). Calls functions:
-
- zicompinit_fast
- `-- compinit
-
-Uses feature(s): _autoload_, _compinit_, _zcompile_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-+zi-deploy-message
-~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: +zi-deploy-message. [[[
- Deploys a sub-prompt message to be displayed OR a `zle
- .reset-prompt' call to be invoked
-____
-
-Has 13 line(s). Doesn't call other functions.
-
-Uses feature(s): _read_, _zle_
-
-Called by:
-
- .zi-load-snippet
- .zi-load
- autoload.zsh/.zi-recall
 
 .zi-diff
 ~~~~~~~~
@@ -798,9 +655,9 @@ ____
 Has 78 line(s). Calls functions:
 
  .zi-load
+ |-- +zi-deploy-message
  |-- install.zsh/.zi-get-package
- |-- install.zsh/.zi-setup-plugin-dir
- `-- +zi-deploy-message
+ `-- install.zsh/.zi-setup-plugin-dir
 
 Uses feature(s): _eval_, _setopt_, _source_, _zle_
 
@@ -858,10 +715,10 @@ ____
 Has 107 line(s). Calls functions:
 
  .zi-load-plugin
- |-- additional.zsh/.zi-wrap-functions
- `-- :zi-tmp-subst-autoload
-     |-- is-at-least
-     `-- +zi-message
+ |-- :zi-tmp-subst-autoload
+ |   |-- +zi-message
+ |   `-- is-at-least
+ `-- additional.zsh/.zi-wrap-functions
 
 Uses feature(s): _eval_, _setopt_, _source_, _unfunction_, _zle_
 
@@ -883,19 +740,19 @@ ____
 Has 173 line(s). Calls functions:
 
  .zi-load-snippet
- |-- additional.zsh/.zi-wrap-functions
- |-- install.zsh/.zi-download-snippet
  |-- +zi-deploy-message
- `-- +zi-message
+ |-- +zi-message
+ |-- additional.zsh/.zi-wrap-functions
+ `-- install.zsh/.zi-download-snippet
 
 Uses feature(s): _autoload_, _eval_, _setopt_, _source_, _unfunction_, _zparseopts_, _zstyle_
 
 Called by:
 
- pmodload
  .zi-load-object
  .zi-load
  .zi-run-task
+ pmodload
  additional.zsh/.zi-service
 
 .zi-main-message-formatter
@@ -909,70 +766,6 @@ ____
 Has 18 line(s). Doesn't call other functions.
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-+zi-message
-~~~~~~~~~~~
-
-____
- 
- FUNCTION: +zi-message. [[[
-____
-
-Has 13 line(s). Doesn't call other functions.
-
-Called by:
-
- .zi-compdef-clear
- .zi-compdef-replay
- .zi-load-snippet
- +zi-prehelp-usage-message
- .zi-register-plugin
- .zi-run
- .zi-set-m-func
- :zi-tmp-subst-autoload
- zi
- additional.zsh/.zi-debug-start
- additional.zsh/.zi-debug-unload
- additional.zsh/:zi-tmp-subst-source
- autoload.zsh/.zi-analytics-menu
- autoload.zsh/.zi-build-module
- autoload.zsh/.zi-cd
- autoload.zsh/.zi-clear-completions
- autoload.zsh/.zi-compiled
- autoload.zsh/.zi-glance
- autoload.zsh/.zi-help
- autoload.zsh/.zi-module
- autoload.zsh/.zi-registered-ice-mods
- autoload.zsh/.zi-registered-subcommands
- autoload.zsh/.zi-self-update
- autoload.zsh/.zi-show-report
- autoload.zsh/.zi-show-zstatus
- autoload.zsh/.zi-uncompile-plugin
- autoload.zsh/.zi-uninstall-completions
- autoload.zsh/.zi-unload
- autoload.zsh/.zi-update-all-parallel
- autoload.zsh/.zi-update-or-status-all
- autoload.zsh/.zi-update-or-status
- autoload.zsh/.zi-wait-for-update-jobs
- install.zsh/.zi-compile-plugin
- install.zsh/.zi-compinit
- install.zsh/.zi-download-file-stdout
- install.zsh/.zi-download-snippet
- install.zsh/.zi-extract
- install.zsh/ziextract
- install.zsh/.zi-get-cygwin-package
- install.zsh/.zi-get-latest-gh-r-url-part
- install.zsh/.zi-get-package
- install.zsh/.zi-install-completions
- install.zsh/.zi-mirror-using-svn
- install.zsh/∞zi-mv-hook
- install.zsh/∞zi-ps-on-update-hook
- install.zsh/∞zi-reset-hook
- install.zsh/.zi-setup-plugin-dir
- install.zsh/.zi-update-snippet
- side.zsh/.zi-check-module
- side.zsh/.zi-countdown
- side.zsh/.zi-exists-physically-message
 
 .zi-pack-ice
 ~~~~~~~~~~~~
@@ -1012,25 +805,6 @@ Called by:
  zi
  autoload.zsh/.zi-delete
 
-+zi-prehelp-usage-message
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: +zi-prehelp-usage-message. [[[
- Prints the usage message.
-____
-
-Has 34 line(s). Calls functions:
-
- +zi-prehelp-usage-message
- `-- +zi-message
-
-Called by:
-
- zi
- autoload.zsh/.zi-delete
-
 .zi-prepare-home
 ~~~~~~~~~~~~~~~~
 
@@ -1047,38 +821,6 @@ Has 64 line(s). Calls functions:
  `-- install.zsh/.zi-compinit
 
 Uses feature(s): _source_
-
-Called by:
-
- Script-Body
-
-@zi-register-annex
-~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: @zi-register-annex. [[[
- Registers the z-annex inside Zi – i.e. an Zi extension
-____
-
-Has 10 line(s). Doesn't call other functions.
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-@zi-register-hook
-~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: @zi-register-hook. [[[
- Registers the z-annex inside Zi.
-____
-
-Has 6 line(s). Doesn't call other functions.
-
-Uses feature(s): _setopt_
 
 Called by:
 
@@ -1103,31 +845,6 @@ Has 20 line(s). Calls functions:
 Called by:
 
  .zi-load
-
-:zi-reload-and-run
-~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: :zi-reload-and-run. [[[
- Marks given function ($3) for autoloading, and executes it triggering the load.
- $1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
- because using that on older Zsh versions causes problems with traps.
- 
- So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".
- 
- $1 - FPATH dedicated to function
- $2 - autoload options
- $3 - function name (one that needs autoloading)
- 
- Author: Bart Schaefer
-____
-
-Has 9 line(s). Doesn't call other functions.
-
-Uses feature(s): _autoload_, _unfunction_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-run
 ~~~~~~~
@@ -1179,53 +896,6 @@ Uses feature(s): _eval_, _source_, _zle_, _zpty_
 Called by:
 
  @zi-scheduler
-
-@zi-scheduler
-~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: @zi-scheduler. [[[
- Searches for timeout tasks, executes them. There's an array of tasks
- waiting for execution, this scheduler manages them, detects which ones
- should be run at current moment, decides to remove (or not) them from
- the array after execution.
- 
- $1 - if "following", then it is non-first (second and more)
- invocation of the scheduler; this results in chain of `sched'
- invocations that results in repetitive @zi-scheduler activity.
- 
- if "burst", then all tasks are marked timeout and executed one
- by one; this is handy if e.g. a docker image starts up and
- needs to install all turbo-mode plugins without any hesitation
- (delay), i.e. "burst" allows to run package installations from
- script, not from prompt.
- 
-____
-
-Has 72 line(s). *Is a precmd hook*. Calls functions:
-
- @zi-scheduler
- `-- add-zsh-hook
-
-Uses feature(s): _add-zsh-hook_, _sched_, _zle_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
--zi_scheduler_add_sh
-~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: -zi_scheduler_add_sh. [[[
- Copies task into ZI_RUN array, called when a task timeouts.
- A small function ran from pattern in /-substitution as a math
- function.
-____
-
-Has 7 line(s). Doesn't call other functions.
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-set-m-func
 ~~~~~~~~~~~~~~
@@ -1283,30 +953,86 @@ Called by:
 
  zi
 
-@zi-substitute
-~~~~~~~~~~~~~~
+.zi-tmp-subst-off
+~~~~~~~~~~~~~~~~~
 
 ____
  
- FUNCTION: @zi-substitute. [[[
+ FUNCTION: .zi-tmp-subst-off. [[[
+ Turn off temporary substituting of functions completely for a given mode ("load", "light",
+ "light-b" (i.e. the `trackbinds' mode) or "compdef").
 ____
 
-Has 36 line(s). Doesn't call other functions.
+Has 17 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_, _unfunction_
+
+Called by:
+
+ .zi-load-plugin
+ additional.zsh/.zi-debug-stop
+
+.zi-tmp-subst-on
+~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-tmp-subst-on. [[[
+ Turn on temporary substituting of functions of builtins and functions according to passed
+ mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
+ to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.
+____
+
+Has 29 line(s). Doesn't call other functions.
+
+Uses feature(s): _source_
+
+Called by:
+
+ .zi-load-plugin
+ additional.zsh/.zi-debug-start
+
+.zi-util-shands-path
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-util-shands-path. [[[
+ Replaces parts of path with %HOME, etc.
+____
+
+Has 8 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_
 
 Called by:
 
- autoload.zsh/.zi-at-eval
- install.zsh/∞zi-atclone-hook
- install.zsh/.zi-at-eval
- install.zsh/∞zi-cp-hook
- install.zsh/∞zi-extract-hook
- install.zsh/.zi-get-package
- install.zsh/∞zi-make-ee-hook
- install.zsh/∞zi-make-e-hook
- install.zsh/∞zi-make-hook
- install.zsh/∞zi-mv-hook
+ .zi-any-to-pid
+
+:zi-reload-and-run
+~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: :zi-reload-and-run. [[[
+ Marks given function ($3) for autoloading, and executes it triggering the load.
+ $1 is the fpath dedicated  to the function, $2 are autoload options. This function replaces "autoload -X",
+ because using that on older Zsh versions causes problems with traps.
+ 
+ So basically one creates function stub that calls :zi-reload-and-run() instead of "autoload -X".
+ 
+ $1 - FPATH dedicated to function
+ $2 - autoload options
+ $3 - function name (one that needs autoloading)
+ 
+ Author: Bart Schaefer
+____
+
+Has 9 line(s). Doesn't call other functions.
+
+Uses feature(s): _autoload_, _unfunction_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 :zi-tmp-subst-alias
 ~~~~~~~~~~~~~~~~~~~
@@ -1342,15 +1068,15 @@ ____
 Has 105 line(s). Calls functions:
 
  :zi-tmp-subst-autoload
- |-- is-at-least
- `-- +zi-message
+ |-- +zi-message
+ `-- is-at-least
 
 Uses feature(s): _autoload_, _eval_, _is-at-least_, _setopt_, _zparseopts_
 
 Called by:
 
- @autoload
  .zi-load-plugin
+ @autoload
 
 :zi-tmp-subst-bindkey
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1391,45 +1117,6 @@ Uses feature(s): _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-.zi-tmp-subst-off
-~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-tmp-subst-off. [[[
- Turn off temporary substituting of functions completely for a given mode ("load", "light",
- "light-b" (i.e. the `trackbinds' mode) or "compdef").
-____
-
-Has 17 line(s). Doesn't call other functions.
-
-Uses feature(s): _setopt_, _unfunction_
-
-Called by:
-
- .zi-load-plugin
- additional.zsh/.zi-debug-stop
-
-.zi-tmp-subst-on
-~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-tmp-subst-on. [[[
- Turn on temporary substituting of functions of builtins and functions according to passed
- mode ("load", "light", "light-b" or "compdef"). The temporary substituting of functions is
- to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.
-____
-
-Has 29 line(s). Doesn't call other functions.
-
-Uses feature(s): _source_
-
-Called by:
-
- .zi-load-plugin
- additional.zsh/.zi-debug-start
-
 :zi-tmp-subst-zle
 ~~~~~~~~~~~~~~~~~
 
@@ -1468,6 +1155,221 @@ Uses feature(s): _setopt_, _zparseopts_, _zstyle_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
+@autoload
+~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: @autoload. [[[
+____
+
+Has 1 line(s). Calls functions:
+
+ @autoload
+ `-- :zi-tmp-subst-autoload
+     |-- +zi-message
+     `-- is-at-least
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+@zi-register-annex
+~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zi-register-annex. [[[
+ Registers the z-annex inside Zi – i.e. an Zi extension
+____
+
+Has 10 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+@zi-register-hook
+~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zi-register-hook. [[[
+ Registers the z-annex inside Zi.
+____
+
+Has 6 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ Script-Body
+
+@zi-scheduler
+~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zi-scheduler. [[[
+ Searches for timeout tasks, executes them. There's an array of tasks
+ waiting for execution, this scheduler manages them, detects which ones
+ should be run at current moment, decides to remove (or not) them from
+ the array after execution.
+ 
+ $1 - if "following", then it is non-first (second and more)
+ invocation of the scheduler; this results in chain of `sched'
+ invocations that results in repetitive @zi-scheduler activity.
+ 
+ if "burst", then all tasks are marked timeout and executed one
+ by one; this is handy if e.g. a docker image starts up and
+ needs to install all turbo-mode plugins without any hesitation
+ (delay), i.e. "burst" allows to run package installations from
+ script, not from prompt.
+ 
+____
+
+Has 72 line(s). *Is a precmd hook*. Calls functions:
+
+ @zi-scheduler
+ `-- add-zsh-hook
+
+Uses feature(s): _add-zsh-hook_, _sched_, _zle_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+@zi-substitute
+~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zi-substitute. [[[
+____
+
+Has 36 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ autoload.zsh/.zi-at-eval
+ install.zsh/.zi-at-eval
+ install.zsh/.zi-get-package
+ install.zsh/∞zi-atclone-hook
+ install.zsh/∞zi-cp-hook
+ install.zsh/∞zi-extract-hook
+ install.zsh/∞zi-make-e-hook
+ install.zsh/∞zi-make-ee-hook
+ install.zsh/∞zi-make-hook
+ install.zsh/∞zi-mv-hook
+
+@zsh-plugin-run-on-unload
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zsh-plugin-run-on-update. [[[
+ The Plugin Standard required mechanism, see:
+ https://wiki.zshell.dev/community/zsh_plugin_standard
+____
+
+Has 2 line(s). Calls functions:
+
+ @zsh-plugin-run-on-unload
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+@zsh-plugin-run-on-update
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: @zsh-plugin-run-on-update. [[[
+ The Plugin Standard required mechanism
+____
+
+Has 2 line(s). Calls functions:
+
+ @zsh-plugin-run-on-update
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+pmodload
+~~~~~~~~
+
+____
+ 
+ FUNCTION: pmodload. [[[
+ Compatibility with Prezto. Calls can be recursive.
+____
+
+Has 15 line(s). Calls functions:
+
+ pmodload
+
+Uses feature(s): _zstyle_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+zi
+~~
+
+____
+ 
+ FUNCTION: zi. [[[
+ Main function directly exposed to user, obtains subcommand and its arguments, has completion.
+____
+
+Has 550 line(s). Calls functions:
+
+ zi
+ |-- +zi-message
+ |-- +zi-prehelp-usage-message
+ |   `-- +zi-message
+ |-- additional.zsh/.zi-clear-debug-report
+ |-- additional.zsh/.zi-debug-start
+ |-- additional.zsh/.zi-debug-stop
+ |-- additional.zsh/.zi-debug-unload
+ |-- autoload.zsh/.zi-analytics-menu
+ |-- autoload.zsh/.zi-cdisable
+ |-- autoload.zsh/.zi-cenable
+ |-- autoload.zsh/.zi-clear-completions
+ |-- autoload.zsh/.zi-compile-uncompile-all
+ |-- autoload.zsh/.zi-compiled
+ |-- autoload.zsh/.zi-help
+ |-- autoload.zsh/.zi-list-bindkeys
+ |-- autoload.zsh/.zi-list-compdef-replay
+ |-- autoload.zsh/.zi-ls
+ |-- autoload.zsh/.zi-module
+ |-- autoload.zsh/.zi-recently
+ |-- autoload.zsh/.zi-registered-ice-mods
+ |-- autoload.zsh/.zi-registered-subcommands
+ |-- autoload.zsh/.zi-search-completions
+ |-- autoload.zsh/.zi-self-update
+ |-- autoload.zsh/.zi-show-all-reports
+ |-- autoload.zsh/.zi-show-completions
+ |-- autoload.zsh/.zi-show-debug-report
+ |-- autoload.zsh/.zi-show-registered-plugins
+ |-- autoload.zsh/.zi-show-report
+ |-- autoload.zsh/.zi-show-times
+ |-- autoload.zsh/.zi-show-zstatus
+ |-- autoload.zsh/.zi-uncompile-plugin
+ |-- autoload.zsh/.zi-uninstall-completions
+ |-- autoload.zsh/.zi-unload
+ |-- autoload.zsh/.zi-update-or-status
+ |-- autoload.zsh/.zi-update-or-status-all
+ |-- compinit
+ |-- install.zsh/.zi-compile-plugin
+ |-- install.zsh/.zi-compinit
+ |-- install.zsh/.zi-forget-completion
+ `-- install.zsh/.zi-install-completions
+
+Uses feature(s): _autoload_, _compinit_, _eval_, _setopt_, _source_
+
+Called by:
+
+ zi-turbo
+ ❮▼❯
+
 zi-turbo
 ~~~~~~~~
 
@@ -1483,6 +1385,9 @@ Has 1 line(s). Calls functions:
 
  zi-turbo
  `-- zi
+     |-- +zi-message
+     |-- +zi-prehelp-usage-message
+     |   `-- +zi-message
      |-- additional.zsh/.zi-clear-debug-report
      |-- additional.zsh/.zi-debug-start
      |-- additional.zsh/.zi-debug-stop
@@ -1491,8 +1396,8 @@ Has 1 line(s). Calls functions:
      |-- autoload.zsh/.zi-cdisable
      |-- autoload.zsh/.zi-cenable
      |-- autoload.zsh/.zi-clear-completions
-     |-- autoload.zsh/.zi-compiled
      |-- autoload.zsh/.zi-compile-uncompile-all
+     |-- autoload.zsh/.zi-compiled
      |-- autoload.zsh/.zi-help
      |-- autoload.zsh/.zi-list-bindkeys
      |-- autoload.zsh/.zi-list-compdef-replay
@@ -1519,29 +1424,99 @@ Has 1 line(s). Calls functions:
      |-- install.zsh/.zi-compile-plugin
      |-- install.zsh/.zi-compinit
      |-- install.zsh/.zi-forget-completion
-     |-- install.zsh/.zi-install-completions
-     |-- +zi-message
-     `-- +zi-prehelp-usage-message
-         `-- +zi-message
+     `-- install.zsh/.zi-install-completions
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-.zi-util-shands-path
-~~~~~~~~~~~~~~~~~~~~
+zicdclear
+~~~~~~~~~
 
 ____
  
- FUNCTION: .zi-util-shands-path. [[[
- Replaces parts of path with %HOME, etc.
+ ]]]
+ FUNCTION: zicdclear. [[[
+ A wrapper for `zi cdclear -q' which can be called from hook ices like the atinit'', atload'', etc. ices.
 ____
 
-Has 8 line(s). Doesn't call other functions.
+Has 1 line(s). Calls functions:
 
-Uses feature(s): _setopt_
+ zicdclear
 
-Called by:
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
- .zi-any-to-pid
+zicdreplay
+~~~~~~~~~~
+
+____
+ 
+ FUNCTION: zicdreplay. [[[
+ A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+ It works like `zi cdreplay', which cannot be invoked from such hook ices.
+____
+
+Has 1 line(s). Calls functions:
+
+ zicdreplay
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+zicompdef
+~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: zicompdef. [[[
+ Stores compdef for a replay with `zicdreplay' (turbo mode) or with `zi cdreplay' (normal mode).
+ An utility function of an undefined use case.
+____
+
+Has 1 line(s). Doesn't call other functions.
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+zicompinit
+~~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: zicompinit. [[[
+ A function that can be invoked from within `atinit', `atload', etc. ice-mod.
+ It runs `autoload compinit; compinit' and respects
+ ZI[ZCOMPDUMP_PATH] and ZI[COMPINIT_OPTS].
+____
+
+Has 1 line(s). Calls functions:
+
+ zicompinit
+ `-- compinit
+
+Uses feature(s): _autoload_, _compinit_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+zicompinit_fast
+~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: zicompinit_fast. [[[
+ Checking the cached .zcompdump file to see if it must be regenerated adds a noticable delay to zsh startup.
+ This restricts checking it once a day, determines when to regenerate, as compinit doesn't always need to
+ modify the compdump and compiles mapped to share (total mem reduction) run in background in multiple shells.
+ A function that can be invoked from within `atinit', `atload'
+____
+
+Has 13 line(s). Calls functions:
+
+ zicompinit_fast
+ `-- compinit
+
+Uses feature(s): _autoload_, _compinit_, _zcompile_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 zpcdclear
 ~~~~~~~~~
@@ -1580,34 +1555,59 @@ Uses feature(s): _autoload_, _compinit_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-@zsh-plugin-run-on-unload
-~~~~~~~~~~~~~~~~~~~~~~~~~
+❮▼❯
+~~~
 
 ____
  
- FUNCTION: @zsh-plugin-run-on-update. [[[
- The Plugin Standard required mechanism, see:
- https://wiki.zshell.dev/community/zsh_plugin_standard
+ ]]]
+ Compatibility functions. [[[
 ____
 
-Has 2 line(s). Calls functions:
+Has 1 line(s). Calls functions:
 
- @zsh-plugin-run-on-unload
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-@zsh-plugin-run-on-update
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: @zsh-plugin-run-on-update. [[[
- The Plugin Standard required mechanism
-____
-
-Has 2 line(s). Calls functions:
-
- @zsh-plugin-run-on-update
+ ❮▼❯
+ `-- zi
+     |-- +zi-message
+     |-- +zi-prehelp-usage-message
+     |   `-- +zi-message
+     |-- additional.zsh/.zi-clear-debug-report
+     |-- additional.zsh/.zi-debug-start
+     |-- additional.zsh/.zi-debug-stop
+     |-- additional.zsh/.zi-debug-unload
+     |-- autoload.zsh/.zi-analytics-menu
+     |-- autoload.zsh/.zi-cdisable
+     |-- autoload.zsh/.zi-cenable
+     |-- autoload.zsh/.zi-clear-completions
+     |-- autoload.zsh/.zi-compile-uncompile-all
+     |-- autoload.zsh/.zi-compiled
+     |-- autoload.zsh/.zi-help
+     |-- autoload.zsh/.zi-list-bindkeys
+     |-- autoload.zsh/.zi-list-compdef-replay
+     |-- autoload.zsh/.zi-ls
+     |-- autoload.zsh/.zi-module
+     |-- autoload.zsh/.zi-recently
+     |-- autoload.zsh/.zi-registered-ice-mods
+     |-- autoload.zsh/.zi-registered-subcommands
+     |-- autoload.zsh/.zi-search-completions
+     |-- autoload.zsh/.zi-self-update
+     |-- autoload.zsh/.zi-show-all-reports
+     |-- autoload.zsh/.zi-show-completions
+     |-- autoload.zsh/.zi-show-debug-report
+     |-- autoload.zsh/.zi-show-registered-plugins
+     |-- autoload.zsh/.zi-show-report
+     |-- autoload.zsh/.zi-show-times
+     |-- autoload.zsh/.zi-show-zstatus
+     |-- autoload.zsh/.zi-uncompile-plugin
+     |-- autoload.zsh/.zi-uninstall-completions
+     |-- autoload.zsh/.zi-unload
+     |-- autoload.zsh/.zi-update-or-status
+     |-- autoload.zsh/.zi-update-or-status-all
+     |-- compinit
+     |-- install.zsh/.zi-compile-plugin
+     |-- install.zsh/.zi-compinit
+     |-- install.zsh/.zi-forget-completion
+     `-- install.zsh/.zi-install-completions
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -1634,8 +1634,8 @@ Uses feature(s): _autoload_, _getopts_
 
 Called by:
 
- Script-Body
  @zi-scheduler
+ Script-Body
 
 compinit
 ~~~~~~~~
@@ -1654,7 +1654,7 @@ ____
  `#compdef <names ...>'
 ____
 
-Has 573 line(s). Doesn't call other functions.
+Has 549 line(s). Doesn't call other functions.
 
 Uses feature(s): _autoload_, _bindkey_, _compdef_, _compdump_, _eval_, _read_, _setopt_, _unfunction_, _zle_, _zstyle_
 
@@ -1686,7 +1686,7 @@ Has 56 line(s). Doesn't call other functions.
 
 Called by:
 
- Script-Body
  :zi-tmp-subst-autoload
  :zi-tmp-subst-bindkey
+ Script-Body
 
