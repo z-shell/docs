@@ -55,8 +55,8 @@ Called by:
 
  .zi-exists-physically-message
  autoload.zsh/.zi-clear-completions
- autoload.zsh/.zi-compile-uncompile-all
  autoload.zsh/.zi-compiled
+ autoload.zsh/.zi-compile-uncompile-all
  autoload.zsh/.zi-create
  autoload.zsh/.zi-exists-message
  autoload.zsh/.zi-get-completion-owner-uspl2col
@@ -132,8 +132,8 @@ Called by:
  autoload.zsh/.zi-delete
  autoload.zsh/.zi-edit
  autoload.zsh/.zi-recall
- autoload.zsh/.zi-update-or-status-snippet
  autoload.zsh/.zi-update-or-status
+ autoload.zsh/.zi-update-or-status-snippet
  install.zsh/.zi-compile-plugin
 
 .zi-countdown
@@ -159,8 +159,8 @@ Called by:
  install.zsh/∞zi-atclone-hook
  install.zsh/∞zi-atpull-e-hook
  install.zsh/∞zi-atpull-hook
- install.zsh/∞zi-make-e-hook
  install.zsh/∞zi-make-ee-hook
+ install.zsh/∞zi-make-e-hook
  install.zsh/∞zi-make-hook
 
 .zi-exists-physically
@@ -205,9 +205,9 @@ ____
 Has 22 line(s). Calls functions:
 
  .zi-exists-physically-message
- |-- zi.zsh/+zi-message
  |-- zi.zsh/.zi-any-to-pid
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 

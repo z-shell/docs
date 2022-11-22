@@ -26,8 +26,8 @@ FUNCTIONS
  .zi-check-which-completions-are-installed
  .zi-clear-completions
  .zi-clear-report-for
- .zi-compile-uncompile-all
  .zi-compiled
+ .zi-compile-uncompile-all
  .zi-confirm
  .zi-create
  .zi-delete
@@ -341,8 +341,8 @@ Uses feature(s): _setopt_
 
 Called by:
 
- zi.zsh/.zi-prepare-home
  zi.zsh/zi
+ zi.zsh/.zi-prepare-home
 
 .zi-clear-report-for
 ~~~~~~~~~~~~~~~~~~~~
@@ -365,6 +365,30 @@ Called by:
  .zi-unload
  additional.zsh/.zi-clear-debug-report
 
+.zi-compiled
+~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-compiled [[[
+ Displays list of plugins that are compiled.
+ 
+ User-action entry point.
+____
+
+Has 23 line(s). Calls functions:
+
+ .zi-compiled
+ |-- side.zsh/.zi-any-colorify-as-uspl2
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ zi.zsh/zi
+
 .zi-compile-uncompile-all
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -381,30 +405,6 @@ Has 19 line(s). Calls functions:
  .zi-compile-uncompile-all
  |-- install.zsh/.zi-compile-plugin
  |-- side.zsh/.zi-any-colorify-as-uspl2
- `-- zi.zsh/.zi-any-to-user-plugin
-
-Uses feature(s): _setopt_
-
-Called by:
-
- zi.zsh/zi
-
-.zi-compiled
-~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-compiled [[[
- Displays list of plugins that are compiled.
- 
- User-action entry point.
-____
-
-Has 23 line(s). Calls functions:
-
- .zi-compiled
- |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- zi.zsh/+zi-message
  `-- zi.zsh/.zi-any-to-user-plugin
 
 Uses feature(s): _setopt_
@@ -476,9 +476,9 @@ Has 93 line(s). Calls functions:
 
  .zi-delete
  |-- side.zsh/.zi-compute-ice
- |-- zi.zsh/+zi-prehelp-usage-message
  |-- zi.zsh/.zi-any-to-user-plugin
- `-- zi.zsh/.zi-parse-opts
+ |-- zi.zsh/.zi-parse-opts
+ `-- zi.zsh/+zi-prehelp-usage-message
 
 Uses feature(s): _setopt_
 
@@ -801,8 +801,8 @@ Has 37 line(s). Calls functions:
  .zi-glance
  |-- side.zsh/.zi-exists-physically-message
  |-- side.zsh/.zi-first
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -1115,8 +1115,8 @@ ____
 Has 43 line(s). Calls functions:
 
  .zi-self-update
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-get-mtime-into
+ |-- zi.zsh/.zi-get-mtime-into
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_, _source_, _zcompile_
 
@@ -1228,8 +1228,8 @@ ____
 Has 66 line(s). Calls functions:
 
  .zi-show-report
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
@@ -1329,8 +1329,8 @@ Has 19 line(s). Calls functions:
 
  .zi-uncompile-plugin
  |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
@@ -1394,16 +1394,16 @@ Has 380 line(s). Calls functions:
  .zi-unload
  |-- additional.zsh/.zi-clear-debug-report
  |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _alias_, _bindkey_, _eval_, _setopt_, _unalias_, _unfunction_, _zle_, _zstyle_
 
 Called by:
 
  additional.zsh/.zi-debug-unload
- zi.zsh/.zi-run-task
  zi.zsh/zi
+ zi.zsh/.zi-run-task
 
 .zi-unregister-plugin
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1436,8 +1436,8 @@ Has 63 line(s). Calls functions:
 
  .zi-update-all-parallel
  |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
@@ -1471,8 +1471,8 @@ Has 279 line(s). Calls functions:
  |-- side.zsh/.zi-exists-physically-message
  |-- side.zsh/.zi-store-ices
  |-- side.zsh/.zi-two-paths
- |-- zi.zsh/+zi-message
  |-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/+zi-message
  `-- zi.zsh/.zi-set-m-func
 
 Uses feature(s): _kill_, _setopt_, _source_, _trap_, _wait_
@@ -1501,9 +1501,9 @@ Has 103 line(s). Calls functions:
  .zi-update-or-status-all
  |-- install.zsh/.zi-compinit
  |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- zi.zsh/+zi-message
  |-- zi.zsh/.zi-any-to-user-plugin
- `-- zi.zsh/.zi-get-mtime-into
+ |-- zi.zsh/.zi-get-mtime-into
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_, _source_
 

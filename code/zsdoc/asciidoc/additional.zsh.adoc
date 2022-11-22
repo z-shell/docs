@@ -18,8 +18,8 @@ FUNCTIONS
  .zi-debug-stop
  .zi-debug-unload
  .zi-service
- .zi-wrap-functions
  :zi-tmp-subst-source
+ .zi-wrap-functions
 
 DETAILS
 -------
@@ -60,8 +60,8 @@ ____
 Has 9 line(s). Calls functions:
 
  .zi-debug-start
- |-- zi.zsh/+zi-message
  |-- zi.zsh/.zi-diff
+ |-- zi.zsh/+zi-message
  `-- zi.zsh/.zi-tmp-subst-on
 
 Called by:
@@ -132,6 +132,23 @@ Uses feature(s): _kill_, _read_, _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
+:zi-tmp-subst-source
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: :zi-tmp-subst-source [[[
+____
+
+Has 25 line(s). Calls functions:
+
+ :zi-tmp-subst-source
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _eval_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
 .zi-wrap-functions
 ~~~~~~~~~~~~~~~~~~
 
@@ -152,21 +169,4 @@ Called by:
 
  zi.zsh/.zi-load-plugin
  zi.zsh/.zi-load-snippet
-
-:zi-tmp-subst-source
-~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: :zi-tmp-subst-source [[[
-____
-
-Has 25 line(s). Calls functions:
-
- :zi-tmp-subst-source
- `-- zi.zsh/+zi-message
-
-Uses feature(s): _eval_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 

@@ -13,38 +13,38 @@ Documentation automatically generated with `zsdoc'
 FUNCTIONS
 ---------
 
+ ∞zi-atclone-hook
  .zi-at-eval
+ ∞zi-atpull-e-hook
+ ∞zi-atpull-hook
  .zi-compile-plugin
+ ∞zi-compile-plugin-hook
  .zi-compinit
+ zicp
+ ∞zi-cp-hook
  .zi-download-file-stdout
  .zi-download-snippet
  .zi-extract
+ ziextract
+ ∞zi-extract-hook
  .zi-forget-completion
  .zi-get-cygwin-package
  .zi-get-latest-gh-r-url-part
  .zi-get-package
  .zi-get-url-mtime
  .zi-install-completions
- .zi-mirror-using-svn
- .zi-parse-json
- .zi-setup-plugin-dir
- .zi-update-snippet
- zicp
- ziextract
- zimv
- zpextract
- ∞zi-atclone-hook
- ∞zi-atpull-e-hook
- ∞zi-atpull-hook
- ∞zi-compile-plugin-hook
- ∞zi-cp-hook
- ∞zi-extract-hook
- ∞zi-make-e-hook
  ∞zi-make-ee-hook
+ ∞zi-make-e-hook
  ∞zi-make-hook
+ .zi-mirror-using-svn
+ zimv
  ∞zi-mv-hook
+ .zi-parse-json
  ∞zi-ps-on-update-hook
  ∞zi-reset-hook
+ .zi-setup-plugin-dir
+ .zi-update-snippet
+ zpextract
 AUTOLOAD compinit
 
 DETAILS
@@ -56,6 +56,24 @@ Script Body
 Has 3 line(s). No functions are called (may set up e.g. a hook, a Zle widget bound to a key, etc.).
 
 Uses feature(s): _source_
+
+∞zi-atclone-hook
+~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-atclone-hook [[[
+____
+
+Has 18 line(s). Calls functions:
+
+ ∞zi-atclone-hook
+ |-- side.zsh/.zi-countdown
+ `-- zi.zsh/@zi-substitute
+
+Uses feature(s): _eval_, _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-at-eval
 ~~~~~~~~~~~
@@ -77,6 +95,40 @@ Called by:
 
  ∞zi-atpull-e-hook
  ∞zi-atpull-hook
+
+∞zi-atpull-e-hook
+~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-atpull-e-hook [[[
+____
+
+Has 17 line(s). Calls functions:
+
+ ∞zi-atpull-e-hook
+ `-- side.zsh/.zi-countdown
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+∞zi-atpull-hook
+~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-atpull-hook [[[
+____
+
+Has 16 line(s). Calls functions:
+
+ ∞zi-atpull-hook
+ `-- side.zsh/.zi-countdown
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-compile-plugin
 ~~~~~~~~~~~~~~~~~~
@@ -105,6 +157,22 @@ Called by:
  autoload.zsh/.zi-compile-uncompile-all
  zi.zsh/zi
 
+∞zi-compile-plugin-hook
+~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-compile-plugin-hook [[[
+____
+
+Has 15 line(s). Calls functions:
+
+ ∞zi-compile-plugin-hook
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
 .zi-compinit
 ~~~~~~~~~~~~
 
@@ -130,8 +198,42 @@ Called by:
  .zi-install-completions
  autoload.zsh/.zi-uninstall-completions
  autoload.zsh/.zi-update-or-status-all
- zi.zsh/.zi-prepare-home
  zi.zsh/zi
+ zi.zsh/.zi-prepare-home
+
+zicp
+~~~~
+
+____
+ 
+ ]]]
+ FUNCTION zicp [[[
+____
+
+Has 27 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ zimv
+
+∞zi-cp-hook
+~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-cp-hook [[[
+____
+
+Has 25 line(s). Calls functions:
+
+ ∞zi-cp-hook
+ `-- zi.zsh/@zi-substitute
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-download-file-stdout
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -193,15 +295,60 @@ ____
 Has 22 line(s). Calls functions:
 
  .zi-extract
- |-- zi.zsh/+zi-message
- `-- ziextract
-     `-- zi.zsh/+zi-message
+ |-- ziextract
+ |   `-- zi.zsh/+zi-message
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
 Called by:
 
  ∞zi-extract-hook
+
+ziextract
+~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: ziextract [[[
+ If the file is an archive, it is extracted by this function.
+ Next stage is scanning of files with the common utility `file',
+ to detect executables. They are given +x mode. There are also
+ messages to the user on performed actions.
+ 
+ $1 - url
+ $2 - file
+____
+
+Has 265 line(s). Calls functions:
+
+ ziextract
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_, _unfunction_, _zparseopts_
+
+Called by:
+
+ .zi-extract
+ .zi-get-package
+ .zi-setup-plugin-dir
+ zpextract
+
+∞zi-extract-hook
+~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-extract-hook [[[
+____
+
+Has 5 line(s). Calls functions:
+
+ ∞zi-extract-hook
+ `-- zi.zsh/@zi-substitute
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-forget-completion
 ~~~~~~~~~~~~~~~~~~~~~
@@ -280,10 +427,10 @@ ____
 Has 155 line(s). Calls functions:
 
  .zi-get-package
+ |-- ziextract
+ |   `-- zi.zsh/+zi-message
  |-- zi.zsh/+zi-message
- |-- zi.zsh/@zi-substitute
- `-- ziextract
-     `-- zi.zsh/+zi-message
+ `-- zi.zsh/@zi-substitute
 
 Uses feature(s): _eval_, _setopt_, _trap_
 
@@ -329,8 +476,8 @@ Has 59 line(s). Calls functions:
  .zi-install-completions
  |-- side.zsh/.zi-any-colorify-as-uspl2
  |-- side.zsh/.zi-exists-physically-message
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _setopt_
 
@@ -339,6 +486,54 @@ Called by:
  .zi-download-snippet
  .zi-setup-plugin-dir
  zi.zsh/zi
+
+∞zi-make-ee-hook
+~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-make-ee-hook [[[
+____
+
+Has 7 line(s). Calls functions:
+
+ ∞zi-make-ee-hook
+ |-- side.zsh/.zi-countdown
+ `-- zi.zsh/@zi-substitute
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+∞zi-make-e-hook
+~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-make-e-hook [[[
+____
+
+Has 7 line(s). Calls functions:
+
+ ∞zi-make-e-hook
+ |-- side.zsh/.zi-countdown
+ `-- zi.zsh/@zi-substitute
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+∞zi-make-hook
+~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: ∞zi-make-hook [[[
+____
+
+Has 6 line(s). Calls functions:
+
+ ∞zi-make-hook
+ |-- side.zsh/.zi-countdown
+ `-- zi.zsh/@zi-substitute
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-mirror-using-svn
 ~~~~~~~~~~~~~~~~~~~~
@@ -367,125 +562,6 @@ Called by:
 
  .zi-download-snippet
 
-.zi-parse-json
-~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-parse-json [[[
- Retrievies the ice-list from given profile from the JSON of the package.json.
-____
-
-Has 102 line(s). Calls functions:
-
- .zi-parse-json
-
-Uses feature(s): _setopt_
-
-Called by:
-
- .zi-get-package
-
-.zi-setup-plugin-dir
-~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-setup-plugin-dir [[[
- Clones given plugin into PLUGIN_DIR.
- Supports multiple sites (respecting `from' and `proto' ice modifiers).
- Invokes compilation of plugin's main file.
- 
- $1 - user
- $2 - plugin
-____
-
-Has 208 line(s). Calls functions:
-
- .zi-setup-plugin-dir
- |-- side.zsh/.zi-any-colorify-as-uspl2
- |-- side.zsh/.zi-store-ices
- |-- zi.zsh/+zi-message
- |-- zi.zsh/.zi-get-object-path
- `-- ziextract
-     `-- zi.zsh/+zi-message
-
-Uses feature(s): _setopt_, _trap_
-
-Called by:
-
- autoload.zsh/.zi-update-or-status
- zi.zsh/.zi-load
-
-.zi-update-snippet
-~~~~~~~~~~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: .zi-update-snippet [[[
-____
-
-Has 71 line(s). Calls functions:
-
- .zi-update-snippet
- |-- zi.zsh/+zi-message
- |-- zi.zsh/.zi-get-object-path
- `-- zi.zsh/.zi-pack-ice
-
-Uses feature(s): _eval_, _setopt_
-
-Called by:
-
- autoload.zsh/.zi-update-or-status-snippet
-
-zicp
-~~~~
-
-____
- 
- ]]]
- FUNCTION zicp [[[
-____
-
-Has 27 line(s). Doesn't call other functions.
-
-Uses feature(s): _setopt_
-
-Called by:
-
- zimv
-
-ziextract
-~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: ziextract [[[
- If the file is an archive, it is extracted by this function.
- Next stage is scanning of files with the common utility `file',
- to detect executables. They are given +x mode. There are also
- messages to the user on performed actions.
- 
- $1 - url
- $2 - file
-____
-
-Has 265 line(s). Calls functions:
-
- ziextract
- `-- zi.zsh/+zi-message
-
-Uses feature(s): _setopt_, _unfunction_, _zparseopts_
-
-Called by:
-
- .zi-extract
- .zi-get-package
- .zi-setup-plugin-dir
- zpextract
-
 zimv
 ~~~~
 
@@ -499,171 +575,6 @@ Has 3 line(s). Calls functions:
 
  zimv
  `-- zicp
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zpextract
-~~~~~~~~~
-
-____
- 
- ]]]
- FUNCTION: zpextract [[[
-____
-
-Has 1 line(s). Calls functions:
-
- zpextract
- `-- ziextract
-     `-- zi.zsh/+zi-message
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-atclone-hook
-~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-atclone-hook [[[
-____
-
-Has 18 line(s). Calls functions:
-
- ∞zi-atclone-hook
- |-- side.zsh/.zi-countdown
- `-- zi.zsh/@zi-substitute
-
-Uses feature(s): _eval_, _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-atpull-e-hook
-~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-atpull-e-hook [[[
-____
-
-Has 17 line(s). Calls functions:
-
- ∞zi-atpull-e-hook
- `-- side.zsh/.zi-countdown
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-atpull-hook
-~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-atpull-hook [[[
-____
-
-Has 16 line(s). Calls functions:
-
- ∞zi-atpull-hook
- `-- side.zsh/.zi-countdown
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-compile-plugin-hook
-~~~~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-compile-plugin-hook [[[
-____
-
-Has 15 line(s). Calls functions:
-
- ∞zi-compile-plugin-hook
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-cp-hook
-~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-cp-hook [[[
-____
-
-Has 25 line(s). Calls functions:
-
- ∞zi-cp-hook
- `-- zi.zsh/@zi-substitute
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-extract-hook
-~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-extract-hook [[[
-____
-
-Has 5 line(s). Calls functions:
-
- ∞zi-extract-hook
- `-- zi.zsh/@zi-substitute
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-make-e-hook
-~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-make-e-hook [[[
-____
-
-Has 7 line(s). Calls functions:
-
- ∞zi-make-e-hook
- |-- side.zsh/.zi-countdown
- `-- zi.zsh/@zi-substitute
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-make-ee-hook
-~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-make-ee-hook [[[
-____
-
-Has 7 line(s). Calls functions:
-
- ∞zi-make-ee-hook
- |-- side.zsh/.zi-countdown
- `-- zi.zsh/@zi-substitute
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-∞zi-make-hook
-~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-make-hook [[[
-____
-
-Has 6 line(s). Calls functions:
-
- ∞zi-make-hook
- |-- side.zsh/.zi-countdown
- `-- zi.zsh/@zi-substitute
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -684,6 +595,25 @@ Has 26 line(s). Calls functions:
 Uses feature(s): _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+.zi-parse-json
+~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-parse-json [[[
+ Retrievies the ice-list from given profile from the JSON of the package.json.
+____
+
+Has 102 line(s). Calls functions:
+
+ .zi-parse-json
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-get-package
 
 ∞zi-ps-on-update-hook
 ~~~~~~~~~~~~~~~~~~~~~
@@ -720,6 +650,76 @@ Uses feature(s): _eval_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
+.zi-setup-plugin-dir
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ FUNCTION: .zi-setup-plugin-dir [[[
+ Clones given plugin into PLUGIN_DIR.
+ Supports multiple sites (respecting `from' and `proto' ice modifiers).
+ Invokes compilation of plugin's main file.
+ 
+ $1 - user
+ $2 - plugin
+____
+
+Has 208 line(s). Calls functions:
+
+ .zi-setup-plugin-dir
+ |-- side.zsh/.zi-any-colorify-as-uspl2
+ |-- side.zsh/.zi-store-ices
+ |-- ziextract
+ |   `-- zi.zsh/+zi-message
+ |-- zi.zsh/.zi-get-object-path
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_, _trap_
+
+Called by:
+
+ autoload.zsh/.zi-update-or-status
+ zi.zsh/.zi-load
+
+.zi-update-snippet
+~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: .zi-update-snippet [[[
+____
+
+Has 71 line(s). Calls functions:
+
+ .zi-update-snippet
+ |-- zi.zsh/.zi-get-object-path
+ |-- zi.zsh/+zi-message
+ `-- zi.zsh/.zi-pack-ice
+
+Uses feature(s): _eval_, _setopt_
+
+Called by:
+
+ autoload.zsh/.zi-update-or-status-snippet
+
+zpextract
+~~~~~~~~~
+
+____
+ 
+ ]]]
+ FUNCTION: zpextract [[[
+____
+
+Has 1 line(s). Calls functions:
+
+ zpextract
+ `-- ziextract
+     `-- zi.zsh/+zi-message
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
 compinit
 ~~~~~~~~
 
@@ -737,7 +737,7 @@ ____
  `#compdef <names ...>'
 ____
 
-Has 549 line(s). Doesn't call other functions.
+Has 573 line(s). Doesn't call other functions.
 
 Uses feature(s): _autoload_, _bindkey_, _compdef_, _compdump_, _eval_, _read_, _setopt_, _unfunction_, _zle_, _zstyle_
 
