@@ -467,8 +467,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .zi-debug-stop
 .zi-debug-unload
 .zi-service
-.zi-wrap-functions
-:zi-tmp-subst-source</pre>
+:zi-tmp-subst-source
+.zi-wrap-functions</pre>
 </div>
 </div>
 </div>
@@ -533,8 +533,8 @@ Starts Dtrace, i.e. session tracking for changes in Zsh state.</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-debug-start
-|-- zi.zsh/+zi-message
 |-- zi.zsh/.zi-diff
+|-- zi.zsh/+zi-message
 `-- zi.zsh/.zi-tmp-subst-on</pre>
 </div>
 </div>
@@ -651,6 +651,33 @@ $3 - id - URL or plugin ID or alias name (from id-as'')</pre>
 <div class="paragraph">
 <p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_zi_tmp_subst_source">:zi-tmp-subst-source</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: :zi-tmp-subst-source [[[</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 25 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:zi-tmp-subst-source
+`-- zi.zsh/+zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>eval</em></p>
+</div>
+<div class="paragraph">
+<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
+</div>
 <div class="paragraph">
 <div class="title">zi-wrap-functions</div>
 <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
@@ -684,39 +711,12 @@ zi.zsh/.zi-load-snippet</pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_zi_tmp_subst_source">:zi-tmp-subst-source</h3>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: :zi-tmp-subst-source [[[</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 25 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>:zi-tmp-subst-source
-`-- zi.zsh/+zi-message</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>eval</em></p>
-</div>
-<div class="paragraph">
-<p>Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-17 16:56:12 UTC
+Last updated 2022-11-19 05:03:09 UTC
 </div>
 </div>
 </body>

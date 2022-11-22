@@ -475,8 +475,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
  .zi-check-which-completions-are-installed
  .zi-clear-completions
  .zi-clear-report-for
- .zi-compile-uncompile-all
  .zi-compiled
+ .zi-compile-uncompile-all
  .zi-confirm
  .zi-create
  .zi-delete
@@ -982,8 +982,8 @@ installed and enabled.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>zi.zsh/.zi-prepare-home
-zi.zsh/zi</pre>
+<pre>zi.zsh/zi
+zi.zsh/.zi-prepare-home</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1024,6 +1024,47 @@ additional.zsh/.zi-clear-debug-report</pre>
 </div>
 </div>
 <div class="paragraph">
+<div class="title">zi-compiled</div>
+<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="literalblock">
+<div class="content">
+<pre>FUNCTION: .zi-compiled [[[
+Displays list of plugins that are compiled.</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>User-action entry point.</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Has 23 line(s). Calls functions:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.zi-compiled
+|-- side.zsh/.zi-any-colorify-as-uspl2
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Uses feature(s): <em>setopt</em></p>
+</div>
+<div class="paragraph">
+<p>Called by:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>zi.zsh/zi</pre>
+</div>
+</div>
+<div class="paragraph">
 <div class="title">zi-compile-uncompile-all</div>
 <p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~</p>
 </div>
@@ -1050,47 +1091,6 @@ Compiles or uncompiles all existing (on disk) plugins.</pre>
 <pre>.zi-compile-uncompile-all
 |-- install.zsh/.zi-compile-plugin
 |-- side.zsh/.zi-any-colorify-as-uspl2
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Uses feature(s): <em>setopt</em></p>
-</div>
-<div class="paragraph">
-<p>Called by:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>zi.zsh/zi</pre>
-</div>
-</div>
-<div class="paragraph">
-<div class="title">zi-compiled</div>
-<p><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="literalblock">
-<div class="content">
-<pre>FUNCTION: .zi-compiled [[[
-Displays list of plugins that are compiled.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>User-action entry point.</pre>
-</div>
-</div>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Has 23 line(s). Calls functions:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>.zi-compiled
-|-- side.zsh/.zi-any-colorify-as-uspl2
-|-- zi.zsh/+zi-message
 `-- zi.zsh/.zi-any-to-user-plugin</pre>
 </div>
 </div>
@@ -1213,9 +1213,9 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <div class="content">
 <pre>.zi-delete
 |-- side.zsh/.zi-compute-ice
-|-- zi.zsh/+zi-prehelp-usage-message
 |-- zi.zsh/.zi-any-to-user-plugin
-`-- zi.zsh/.zi-parse-opts</pre>
+|-- zi.zsh/.zi-parse-opts
+`-- zi.zsh/+zi-prehelp-usage-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1766,8 +1766,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <pre>.zi-glance
 |-- side.zsh/.zi-exists-physically-message
 |-- side.zsh/.zi-first
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2297,8 +2297,8 @@ Updates ❮ Zi ❯ code (does a git pull).</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-self-update
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-get-mtime-into</pre>
+|-- zi.zsh/.zi-get-mtime-into
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2499,8 +2499,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <div class="literalblock">
 <div class="content">
 <pre>.zi-show-report
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2674,8 +2674,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <div class="content">
 <pre>.zi-uncompile-plugin
 |-- side.zsh/.zi-any-colorify-as-uspl2
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2776,8 +2776,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <pre>.zi-unload
 |-- additional.zsh/.zi-clear-debug-report
 |-- side.zsh/.zi-any-colorify-as-uspl2
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2789,8 +2789,8 @@ $2 - plugin (only when $1 - i.e. user - given)</pre>
 <div class="literalblock">
 <div class="content">
 <pre>additional.zsh/.zi-debug-unload
-zi.zsh/.zi-run-task
-zi.zsh/zi</pre>
+zi.zsh/zi
+zi.zsh/.zi-run-task</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2845,8 +2845,8 @@ zsh_loaded_plugins array (managed according to the plugin standard)</pre>
 <div class="content">
 <pre>.zi-update-all-parallel
 |-- side.zsh/.zi-any-colorify-as-uspl2
-|-- zi.zsh/+zi-message
-`-- zi.zsh/.zi-any-to-user-plugin</pre>
+|-- zi.zsh/.zi-any-to-user-plugin
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2900,8 +2900,8 @@ $3 - plugin (only when $1 - i.e. user - given)</pre>
 |-- side.zsh/.zi-exists-physically-message
 |-- side.zsh/.zi-store-ices
 |-- side.zsh/.zi-two-paths
-|-- zi.zsh/+zi-message
 |-- zi.zsh/.zi-any-to-user-plugin
+|-- zi.zsh/+zi-message
 `-- zi.zsh/.zi-set-m-func</pre>
 </div>
 </div>
@@ -2947,9 +2947,9 @@ on disk). Also updates (i.e. redownloads) snippets.</pre>
 <pre>.zi-update-or-status-all
 |-- install.zsh/.zi-compinit
 |-- side.zsh/.zi-any-colorify-as-uspl2
-|-- zi.zsh/+zi-message
 |-- zi.zsh/.zi-any-to-user-plugin
-`-- zi.zsh/.zi-get-mtime-into</pre>
+|-- zi.zsh/.zi-get-mtime-into
+`-- zi.zsh/+zi-message</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3080,7 +3080,7 @@ considered as zeroes, eg 3 == 3.0 == 3.0.0 == 3.0.0.0 and so on.</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-11-17 16:56:12 UTC
+Last updated 2022-11-19 05:03:09 UTC
 </div>
 </div>
 </body>
