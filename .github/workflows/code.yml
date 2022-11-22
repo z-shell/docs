@@ -52,7 +52,7 @@ jobs:
           name: code documentation
           path: code.tar.gz
       - name: ♻️ Cleanup
-        run: rm -rf code.tar.gz          
+        run: rm -rf code.tar.gz
       - name: "🆗 Commit"
         if: ${{ github.event_name != 'pull_request' }}
         uses: z-shell/.github/actions/commit@main
