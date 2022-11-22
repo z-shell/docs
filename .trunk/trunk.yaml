@@ -30,7 +30,7 @@ lint:
   enabled:
     - git-diff-check
     - actionlint@1.6.22
-    - gitleaks@8.15.0
+    - gitleaks@8.15.1
     - markdownlint@0.32.2
     - prettier@2.7.1
   ignore:
