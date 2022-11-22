@@ -30,8 +30,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: ⚡ Dependencies
         run: |
-          sudo apt update -yq
-          sudo apt-get install -yq zsh tree
+          sudo apt-get update -y
+          sudo apt-get install -y zsh tree
           sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
         uses: ruby/setup-ruby@c4fe7bd15ddbfcd5e07e47bf2f2cae90581d6091
@@ -51,6 +51,8 @@ jobs:
         with:
           name: code documentation
           path: code.tar.gz
+      - name: ♻️ Cleanup
+        run: rm -rf code.tar.gz          
       - name: "🆗 Commit"
         if: ${{ github.event_name != 'pull_request' }}
         uses: z-shell/.github/actions/commit@main
