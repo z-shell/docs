@@ -34,7 +34,7 @@ jobs:
           sudo apt-get install -y zsh tree
           sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
-        uses: ruby/setup-ruby@d3c9825d67b0d8720afdfdde5af56c79fdb38d16
+        uses: ruby/setup-ruby@92aece5fc9c784ab66851c1e702b1bd5885a51f2
         with:
           ruby-version: 3.1
           bundler-cache: true
