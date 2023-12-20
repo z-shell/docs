@@ -9,7 +9,8 @@ clone:
 
 adoc: clone zi/zi.zsh.zwc zi/lib/zsh/side.zsh.zwc zi/lib/zsh/install.zsh.zwc zi/lib/zsh/autoload.zsh.zwc zi/lib/zsh/additional.zsh.zwc
 	rm -f zsdoc/*.adoc
-	zsd -v --scomm --cignore '(\#*FUN(C|CTION|):*[[[*|[[:blank:]]#\#[[:blank:]]#]]]*)' \
+	zsd -v --scomm \
+	--cignore '(\#[[:blank:]]FUN(C|CTION|):[[:blank:]]*[[:blank:]]\[\[\[*|[[:blank:]]\#[[:blank:]]\]\]\]*)' \
 	zi/zi.zsh \
 	zi/lib/zsh/side.zsh \
 	zi/lib/zsh/install.zsh \
