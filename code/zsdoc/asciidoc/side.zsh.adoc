@@ -37,7 +37,6 @@ Has 1 line(s). No functions are called (may set up e.g. a hook, a Zle widget bou
 
 ____
  
- FUNCTION: .zi-any-colorify-as-uspl2 [[[
  Returns ANSI-colorified "user/plugin" string, from any supported plugin spec (user---plugin, user/plugin, user plugin, plugin).
  
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
@@ -80,7 +79,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-check-module. [[[
  Check module. Don't trust access times and verify hard stored values.
 ____
 
@@ -101,7 +99,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-compute-ice [[[
  Computes ICE array (default, it can be specified via $3) from a) input ICE, b) static ice, c) saved ice,
  taking priorities into account. Also returns path to snippet directory and optional name of snippet file
  (only valid if ICE[svn] is not set).
@@ -141,7 +138,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-countdown [[[
  Displays a countdown 5...4... etc. and returns 0 if it
  sucessfully reaches 0, or 1 if Ctrl-C will be pressed.
 ____
@@ -168,7 +164,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-exists-physically [[[
  Checks if directory of given plugin exists in PLUGIN_DIR.
  
  Testable.
@@ -193,7 +188,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-exists-physically-message [[[
  Checks if directory of given plugin exists in PLUGIN_DIR, and outputs error message if it doesn't.
  
  Testable.
@@ -225,7 +219,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-first [[[
  Finds the main file of plugin. There are multiple file name formats, they are ordered in order starting from more correct
  ones, and matched. .zi-load-plugin() has similar code parts and doesn't call .zi-first() – for performance. Obscure matching
  is done in .zi-find-other-matches, here and in .zi-load(). Obscure = non-standard main-file naming convention.
@@ -254,7 +247,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-store-ices [[[
  Saves ice mods in given hash onto disk.
  
  $1 - directory where to create / delete files
@@ -278,7 +270,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-two-paths [[[
  Obtains a snippet URL without specification if it is an SVN URL (points to directory) or regular URL (points to file),
  returns 2 possible paths for further examination
 ____

@@ -34,7 +34,6 @@ Has 1 line(s). No functions are called (may set up e.g. a hook, a Zle widget bou
 
 ____
  
- FUNCTION: .zi-clear-debug-report [[[
  Forgets dtrace repport gathered up to this moment.
 ____
 
@@ -53,7 +52,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-debug-start [[[
  Starts Dtrace, i.e. session tracking for changes in Zsh state.
 ____
 
@@ -73,7 +71,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-debug-stop [[[
  Stops Dtrace, i.e. session tracking for changes in Zsh state.
 ____
 
@@ -92,7 +89,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-debug-unload [[[
  Reverts changes detected by dtrace run.
 ____
 
@@ -114,7 +110,6 @@ Called by:
 ____
  
  ]]]
- FUNCTION: .zi-service [[[
  Handles given service, i.e. obtains lock, runs it, or waits if no lock
  
  $1 - type "p" or "s" (plugin or snippet)
@@ -137,7 +132,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-wrap-functions [[[
  Handles the wrap'…' ice-modifier which allows to extend the tracking (e.g: gathering of report and unload data) of a plugin
  beyond the moment of sourcing it's main file(s). It works by wrapping the given functions with a tracking-enabling
  and disabling snippet of code.This is useful especially with prompts, as they very often do their
@@ -155,11 +149,6 @@ Called by:
 
 :zi-tmp-subst-source
 ~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: :zi-tmp-subst-source [[[
-____
 
 Has 25 line(s). Calls functions:
 

@@ -96,7 +96,6 @@ Uses feature(s): _source_
 
 ____
  
- FUNCTION: .zi-analytics-menu [[[
  Statistics, benchmarks and information.
  
  User-action entry point.
@@ -116,7 +115,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-any-to-uspl2 [[[
  Converts given plugin-spec to format that's used in keys for hash tables.
  So basically, creates string "user/plugin" (this format is called: uspl2).
  
@@ -137,11 +135,6 @@ Called by:
 .zi-at-eval
 ~~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-at-eval [[[
-____
-
 Has 5 line(s). Calls functions:
 
  .zi-at-eval
@@ -156,7 +149,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-build-module [[[
  Performs ./configure && make on the module and displays information how to load the module in .zshrc.
 ____
 
@@ -174,7 +166,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-cd [[[
  Jumps to plugin's directory (in ❮ Zi ❯ home directory).
  
  User-action entry point.
@@ -197,7 +188,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-cdisable [[[
  Enables given installed completion.
  
  User-action entry point.
@@ -218,7 +208,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-cenable [[[
  Disables given installed completion.
  
  User-action entry point.
@@ -239,7 +228,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-changes [[[
  Shows `git log` of given plugin.
  
  User-action entry point.
@@ -261,7 +249,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-check-comp-consistency [[[
  ❮ Zi ❯ creates symlink for each installed completion.
  This function checks whether given completion (i.e. file like "_mkdir") is indeed a symlink.
  Backup file is a completion that is disabled - has the leading "_" removed.
@@ -282,7 +269,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-check-which-completions-are-enabled [[[
  For each argument that each should be a path to completion
  within a plugin's dir, it checks whether that completion
  is disabled - returns 0 or 1 on corresponding positions in reply.
@@ -303,7 +289,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-check-which-completions-are-installed [[[
  For each argument that each should be a path to completion
  within a plugin's dir, it checks whether that completion
  is installed - returns 0 or 1 on corresponding positions in reply.
@@ -322,7 +307,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-clear-completions [[[
  Delete stray and improper completions.
  
  Completions live even when plugin isn't loaded - if they are
@@ -349,7 +333,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-clear-report-for [[[
  Clears all report data for given user/plugin. This is done by resetting all related global ZI_* hashes.
  
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
@@ -370,7 +353,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-compile-uncompile-all [[[
  Compiles or uncompiles all existing (on disk) plugins.
  
  User-action entry point.
@@ -394,7 +376,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-compiled [[[
  Displays list of plugins that are compiled.
  
  User-action entry point.
@@ -418,7 +399,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-confirm [[[
  Prints given question, waits for "y" key, evals given expression if "y" obtained
  
  $1 - question
@@ -438,7 +418,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-create [[[
  Creates a plugin, also on Github (if not "_local/name" plugin).
  
  User-action entry point.
@@ -463,7 +442,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-delete [[[
  Deletes plugin's or snippet's directory (in ❮ Zi ❯ home directory).
  
  User-action entry point.
@@ -489,7 +467,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-diff-env-compute [[[
  Computes ZI_PATH, ZI_FPATH that hold (f)path components
  added by plugin. Uses data gathered earlier by .zi-diff-env().
  
@@ -510,7 +487,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-diff-functions-compute [[[
  Computes FUNCTIONS that holds new functions added by plugin.
  Uses data gathered earlier by .zi-diff-functions().
  
@@ -531,7 +507,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-diff-options-compute [[[
  Computes OPTIONS that holds options changed by plugin.
  Uses data gathered earlier by .zi-diff-options().
  
@@ -552,7 +527,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-diff-parameter-compute [[[
  Computes ZI_PARAMETERS_PRE, ZI_PARAMETERS_POST that hold
  parameters created or changed (their type) by plugin. Uses
  data gathered earlier by .zi-diff-parameter().
@@ -574,7 +548,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-edit [[[
  Runs $EDITOR on source of given plugin. If the variable is not set then defaults to `code'.
  
  User-action entry point.
@@ -595,7 +568,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-exists-message [[[
  Checks if plugin is loaded. Testable. Also outputs error message if plugin is not loaded.
  
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
@@ -617,7 +589,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-find-completions-of-plugin [[[
  Searches for completions owned by given plugin.
  Returns them in `reply' array.
  
@@ -641,7 +612,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-format-env [[[
  Creates one-column text about FPATH or PATH elements added when given plugin was loaded.
  
  $1 - user/plugin (i.e. uspl2 format of plugin-spec)
@@ -659,7 +629,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-format-functions [[[
  Creates a one or two columns text with functions created by given plugin.
  
  $1 - user/plugin (i.e. uspl2 format of plugin-spec)
@@ -676,7 +645,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-format-options [[[
  Creates one-column text about options that changed when plugin "$1" was loaded.
  
  $1 - user/plugin (i.e. uspl2 format of plugin-spec)
@@ -695,7 +663,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-format-parameter [[[
  Creates one column text that lists global parameters that changed when the given plugin was loaded.
  
  $1 - user/plugin (i.e. uspl2 format of plugin-spec)
@@ -714,7 +681,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-get-completion-owner [[[
  Returns "user---plugin" string (uspl1 format) of plugin that owns given completion.
  
  Both :A and readlink will be used, then readlink's output if results differ. Readlink might not be available.
@@ -741,7 +707,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-get-completion-owner-uspl2col [[[
  For shortening of code - returns colorized plugin name
  that owns given completion.
  
@@ -764,7 +729,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-get-path [[[
  Returns path of given ID-string, which may be a plugin-spec (like "user/plugin" or "user" "plugin"), an absolute path
  ("%" "/home/..." and also "%SNIPPETS/..." etc.), or a plugin nickname (i.e. id-as'' ice-mod), or a snippet nickname.
 ____
@@ -786,7 +750,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-glance [[[
  Shows colorized source code of plugin. Is able to use pygmentize,
  highlight, GNU source-highlight.
  
@@ -811,7 +774,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-help [[[
  Shows usage information.
  
  User-action entry point.
@@ -829,11 +791,6 @@ Called by:
 .zi-list-bindkeys
 ~~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-list-bindkeys [[[
-____
-
 Has 39 line(s). Calls functions:
 
  .zi-list-bindkeys
@@ -848,7 +805,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-list-compdef-replay [[[
  Shows recorded compdefs (called by plugins loaded earlier). Plugins often call `compdef' hoping
  for `compinit' being already ran. ❮ Zi ❯ solves this by recording compdefs.
  
@@ -864,11 +820,6 @@ Called by:
 .zi-ls
 ~~~~~~
 
-____
- 
- FUNCTION: .zi-ls [[[
-____
-
 Has 22 line(s). Doesn't call other functions.
 
 Called by:
@@ -880,7 +831,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-module [[[
  Function that has sub-commands passed as long-options (with two dashes, --).
  It's an attempt to plugin only this one function into `zi' function
  defined in zi.zsh, to not make this file longer than it's needed.
@@ -903,11 +853,6 @@ Called by:
 .zi-pager
 ~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-pager [[[
-____
-
 Has 27 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_
@@ -923,7 +868,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-prepare-readlink [[[
  Prepares readlink command, used for establishing completion's owner.
  
  $REPLY = ":" or "readlink"
@@ -943,11 +887,6 @@ Called by:
 .zi-recall
 ~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-recall [[[
-____
-
 Has 34 line(s). Calls functions:
 
  .zi-recall
@@ -963,7 +902,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-recently [[[
  Shows plugins that obtained commits in specified past time.
  
  User-action entry point.
@@ -987,7 +925,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-registered-ice-mods [[[
  Shows all registerted ice-modifiers.
  Internal and registered by annex.
  
@@ -1008,7 +945,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-registered-subcommands [[[
  Shows subcommands registered by annex.
  
  User-action entry point.
@@ -1028,7 +964,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-restore-extendedglob [[[
  Restores extendedglob-option from state saved earlier.
 ____
 
@@ -1044,11 +979,6 @@ Called by:
 .zi-run-delete-hooks
 ~~~~~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-run-delete-hooks [[[
-____
-
 Has 17 line(s). Calls functions:
 
  .zi-run-delete-hooks
@@ -1063,7 +993,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-save-set-extendedglob [[[
  Enables extendedglob-option first saving if it was already
  enabled, for restoration of this state later.
 ____
@@ -1082,7 +1011,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-search-completions [[[
  While .zi-show-completions() shows what completions are
  installed, this functions searches through all plugin dirs
  showing what's available in general (for installation).
@@ -1106,7 +1034,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-self-update [[[
  Updates ❮ Zi ❯ code (does a git pull).
  
  User-action entry point.
@@ -1130,7 +1057,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-all-reports [[[
  Displays reports of all loaded plugins.
  
  User-action entry point.
@@ -1149,7 +1075,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-completions [[[
  Display installed (enabled and disabled), completions. Detect
  stray and improper ones.
  
@@ -1175,7 +1100,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-debug-report [[[
  Displays dtrace report (data recorded in interactive session).
  
  User-action entry point.
@@ -1194,7 +1118,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-registered-plugins [[[
  Lists loaded plugins (subcommands list, loaded).
  
  User-action entry point.
@@ -1216,7 +1139,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-report [[[
  Displays report of the plugin given.
  
  User-action entry point.
@@ -1244,7 +1166,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-times [[[
  Shows loading times of all loaded plugins.
  
  User-action entry point.
@@ -1266,7 +1187,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-show-zstatus [[[
  Shows ❮ Zi ❯ status, i.e. number of loaded plugins,
  of available completions, etc.
  
@@ -1289,7 +1209,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-stress [[[
  Compiles plugin with various options on and off to see how well the code is written. The options are:
  
  NO_SHORT_LOOPS, IGNORE_BRACES, IGNORE_CLOSE_BRACES, SH_GLOB, CSH_JUNKIE_QUOTES, NO_MULTI_FUNC_DEF.
@@ -1316,7 +1235,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ____
  
- FUNCTION: .zi-uncompile-plugin [[[
  Uncompiles given plugin.
  
  User-action entry point.
@@ -1344,7 +1262,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-uninstall-completions [[[
  Removes all completions of given plugin from Zshell (i.e. from FPATH).
  The FPATH is typically `~/.zi/completions/'.
  
@@ -1370,7 +1287,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-unload [[[
  0. Call the Zsh Plugin's Standard *_plugin_unload function
  0. Call the code provided by the Zsh Plugin's Standard @zsh-plugin-run-at-update
  1. Delete bindkeys (...)
@@ -1410,7 +1326,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-unregister-plugin [[[
  Removes the plugin from ZI_REGISTERED_PLUGINS array and from the
  zsh_loaded_plugins array (managed according to the plugin standard)
 ____
@@ -1426,11 +1341,6 @@ Called by:
 
 .zi-update-all-parallel
 ~~~~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-update-in-parallel [[[
-____
 
 Has 63 line(s). Calls functions:
 
@@ -1450,7 +1360,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-update-or-status [[[
  Updates (git pull) or does `git status' for given plugin.
  
  User-action entry point.
@@ -1488,7 +1397,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-update-or-status-all [[[
  Updates (git pull) or does `git status` for all existing plugins.
  This includes also plugins that are not loaded into Zsh (but exist
  on disk). Also updates (i.e. redownloads) snippets.
@@ -1516,7 +1424,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-update-or-status-snippet [[[
  
  Implements update or status operation for snippet given by URL.
  
@@ -1544,7 +1451,6 @@ Called by:
 ____
  
  ]]]
- FUNCTION: .zi-wait-for-update-jobs [[[
 ____
 
 Has 14 line(s). Calls functions:

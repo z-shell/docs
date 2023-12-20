@@ -63,7 +63,6 @@ Uses feature(s): _source_
 ____
  
  ]]]
- FUNCTION: .zi-at-eval [[[
 ____
 
 Has 7 line(s). Calls functions:
@@ -83,7 +82,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-compile-plugin [[[
  Compiles given plugin (its main source file, and also an additional "....zsh" file if it exists).
  
  $1 - plugin spec (4 formats: user---plugin, user/plugin, user, plugin)
@@ -110,7 +108,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-compinit [[[
  User-exposed `compinit' frontend which first ensures that all completions managed by ❮ Zi ❯ are forgotten by Z-shell.
  After that it runs normal `compinit', which should more easily detect ❮ Zi ❯ completions.
  
@@ -138,7 +135,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-download-file-stdout [[[
  Downloads file to stdout.
  Supports following backend commands: curl, wget, lftp, lynx.
  Used by snippet loading.
@@ -163,7 +159,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-download-snippet [[[
  Downloads snippet – either a file – with curl, wget, lftp or lynx, or a directory,
  with Subversion – when svn-ICE is active. Github supports Subversion protocol and allows
  to clone subdirectories. This is used to provide a layer of support for Oh-My-Zsh and Prezto.
@@ -185,11 +180,6 @@ Called by:
 .zi-extract
 ~~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-extract() [[[
-____
-
 Has 22 line(s). Calls functions:
 
  .zi-extract
@@ -209,7 +199,6 @@ Called by:
 ____
  
  ]]]
- FUNCTION: .zi-forget-completion [[[
  Implements alternation of Zsh state so that already initialized
  completion stops being visible to Zsh.
  
@@ -230,11 +219,6 @@ Called by:
 .zi-get-cygwin-package
 ~~~~~~~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: .zi-get-cygwin-package [[[
-____
-
 Has 70 line(s). Calls functions:
 
  .zi-get-cygwin-package
@@ -251,7 +235,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-get-latest-gh-r-url-part [[[
  Gets version string of latest release of given Github package.
  Connects to Github releases page.
 ____
@@ -274,7 +257,6 @@ Called by:
 ____
  
  ]]]
- FUNCTION: .zi-get-package [[[
 ____
 
 Has 155 line(s). Calls functions:
@@ -296,7 +278,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-get-url-mtime [[[
  For the given URL returns the date in the Last-Modified header as a time stamp
 ____
 
@@ -313,7 +294,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-install-completions [[[
  Installs all completions of given plugin. After that they are
  visible to `compinit'. Visible completions can be selectively
  disabled and enabled. User can access completion data with
@@ -345,7 +325,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-mirror-using-svn [[[
  Used to clone subdirectories from Github.
  If in update mode (see $2), then invokes `svn update',
  in normal mode invokes `svn checkout --non-interactive -q <URL>'.
@@ -372,7 +351,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-parse-json [[[
  Retrievies the ice-list from given profile from the JSON of the package.json.
 ____
 
@@ -391,7 +369,6 @@ Called by:
 
 ____
  
- FUNCTION: .zi-setup-plugin-dir [[[
  Clones given plugin into PLUGIN_DIR.
  Supports multiple sites (respecting `from' and `proto' ice modifiers).
  Invokes compilation of plugin's main file.
@@ -423,7 +400,6 @@ Called by:
 ____
  
  ]]]
- FUNCTION: .zi-update-snippet [[[
 ____
 
 Has 71 line(s). Calls functions:
@@ -462,7 +438,6 @@ ziextract
 ____
  
  ]]]
- FUNCTION: ziextract [[[
  If the file is an archive, it is extracted by this function.
  Next stage is scanning of files with the common utility `file',
  to detect executables. They are given +x mode. There are also
@@ -508,7 +483,6 @@ zpextract
 ____
  
  ]]]
- FUNCTION: zpextract [[[
 ____
 
 Has 1 line(s). Calls functions:
@@ -521,11 +495,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-atclone-hook
 ~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-atclone-hook [[[
-____
 
 Has 18 line(s). Calls functions:
 
@@ -540,11 +509,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ∞zi-atpull-e-hook
 ~~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: ∞zi-atpull-e-hook [[[
-____
-
 Has 17 line(s). Calls functions:
 
  ∞zi-atpull-e-hook
@@ -556,11 +520,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-atpull-hook
 ~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-atpull-hook [[[
-____
 
 Has 16 line(s). Calls functions:
 
@@ -574,11 +533,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ∞zi-compile-plugin-hook
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: ∞zi-compile-plugin-hook [[[
-____
-
 Has 15 line(s). Calls functions:
 
  ∞zi-compile-plugin-hook
@@ -589,11 +543,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-cp-hook
 ~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-cp-hook [[[
-____
 
 Has 25 line(s). Calls functions:
 
@@ -607,11 +556,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ∞zi-extract-hook
 ~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: ∞zi-extract-hook [[[
-____
-
 Has 5 line(s). Calls functions:
 
  ∞zi-extract-hook
@@ -621,11 +565,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-make-e-hook
 ~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-make-e-hook [[[
-____
 
 Has 7 line(s). Calls functions:
 
@@ -638,11 +577,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ∞zi-make-ee-hook
 ~~~~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: ∞zi-make-ee-hook [[[
-____
-
 Has 7 line(s). Calls functions:
 
  ∞zi-make-ee-hook
@@ -654,11 +588,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ∞zi-make-hook
 ~~~~~~~~~~~~~
 
-____
- 
- FUNCTION: ∞zi-make-hook [[[
-____
-
 Has 6 line(s). Calls functions:
 
  ∞zi-make-hook
@@ -669,11 +598,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-mv-hook
 ~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-mv-hook [[[
-____
 
 Has 26 line(s). Calls functions:
 
@@ -687,11 +611,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 ∞zi-ps-on-update-hook
 ~~~~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: ∞zi-ps-on-update-hook [[[
-____
 
 Has 14 line(s). Calls functions:
 
@@ -708,7 +627,6 @@ Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 ____
  
  ]]]
- FUNCTION: ∞zi-reset-opt-hook [[[
 ____
 
 Has 73 line(s). Calls functions:
