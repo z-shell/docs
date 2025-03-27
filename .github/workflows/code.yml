@@ -37,9 +37,9 @@ jobs:
           sudo apt-get install -y zsh tree
           sudo make -C lib/zsdoc install
       - name: 💎 Setup Ruby
-        uses: ruby/setup-ruby@086ffb1a2090c870a3f881cc91ea83aa4243d408 # v1.195.0
+        uses: ruby/setup-ruby@v1.228.0
         with:
-          ruby-version: 3.1
+          ruby-version: 3.3
           bundler-cache: true
       - name: 📝 Install asciidoctor-pdf and rouge
         run: gem install asciidoctor-pdf rouge
