@@ -1,17 +1,18 @@
 version: 0.1
 runtimes:
   enabled:
-    - go@1.18.3
-    - node@16.14.2
+    - python@3.10.8
+    - go@1.21.0
+    - node@18.20.5
 cli:
-  version: 1.1.0
+  version: 1.22.11
   options:
     - commands: [check, fmt]
     - args: -y
 plugins:
   sources:
     - id: trunk
-      ref: v0.0.6
+      ref: v1.6.7
       uri: https://github.com/trunk-io/plugins
 repo:
   repo:
@@ -27,12 +28,16 @@ actions:
     - trunk-fmt-pre-commit
     - trunk-cache-prune
 lint:
+  disabled:
+    - yamllint
   enabled:
+    - checkov@3.2.392
+    - trufflehog@3.88.18
     - git-diff-check
-    - actionlint@1.6.22
-    - gitleaks@8.15.1
-    - markdownlint@0.32.2
-    - prettier@2.7.1
+    - actionlint@1.7.7
+    - gitleaks@8.24.2
+    - markdownlint@0.44.0
+    - prettier@3.5.3
   ignore:
     - linters: [markdownlint, prettier]
       paths:

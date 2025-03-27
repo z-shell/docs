@@ -13,6 +13,8 @@ on:
     - cron: "30 4 * * 4"
   workflow_dispatch: {}
 
+permissions: read-all
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -20,9 +22,10 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
-    environment: code
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: recursive

@@ -7,20 +7,25 @@ on:
       - "📖 Code"
     types:
       - completed
+
+permissions: read-all
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+    permissions:
+      contents: write
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        uses: actions/checkout@v4
       - name: ♻️ Prepare
         run: |
           command mkdir -p gh-pages/code gh-pages/zsh
           command cp -vrf code/zsdoc/html gh-pages/code/
       - name: 🚀 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
