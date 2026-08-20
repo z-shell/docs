@@ -82,7 +82,7 @@ ____
  Check module. Don't trust access times and verify hard stored values.
 ____
 
-Has 21 line(s). Calls functions:
+Has 22 line(s). Calls functions:
 
  .zi-check-module
  |-- autoload.zsh/.zi-module
