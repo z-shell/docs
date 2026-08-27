@@ -16,7 +16,7 @@ FUNCTIONS
  .zi-analytics-menu
  .zi-any-to-uspl2
  .zi-at-eval
- .zi-build-module
+ .zi-auto-reload
  .zi-cd
  .zi-cdisable
  .zi-cenable
@@ -62,14 +62,15 @@ FUNCTIONS
  .zi-save-set-extendedglob
  .zi-search-completions
  .zi-self-update
+ .zi-self-update-lock-path
  .zi-show-all-reports
  .zi-show-completions
  .zi-show-debug-report
  .zi-show-registered-plugins
  .zi-show-report
- .zi-show-times
  .zi-show-zstatus
  .zi-stress
+ .zi-times
  .zi-uncompile-plugin
  .zi-uninstall-completions
  .zi-unload
@@ -144,22 +145,26 @@ Uses feature(s): _eval_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-.zi-build-module
-~~~~~~~~~~~~~~~~
+.zi-auto-reload
+~~~~~~~~~~~~~~~
 
 ____
  
- Performs ./configure && make on the module and displays information how to load the module in .zshrc.
+ Recompiles and re-sources Zi when the checkout revision differs from the
+ revision loaded by this shell. Re-sourcing cannot remove definitions deleted
+ by an update; restarting the shell is required for a completely clean state.
 ____
 
-Has 40 line(s). Calls functions:
+Has 79 line(s). Calls functions:
 
- .zi-build-module
+ .zi-auto-reload
  `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_, _source_, _zcompile_, _zmodload_
 
 Called by:
 
- .zi-module
+ .zi-self-update
 
 .zi-cd
 ~~~~~~
@@ -257,7 +262,10 @@ ____
  $2 - path to backup file within plugin's directory
 ____
 
-Has 11 line(s). Doesn't call other functions.
+Has 11 line(s). Calls functions:
+
+ .zi-check-comp-consistency
+ `-- zi.zsh/+zi-message
 
 Called by:
 
@@ -405,13 +413,17 @@ ____
  $2 - expression
 ____
 
-Has 22 line(s). Doesn't call other functions.
+Has 21 line(s). Calls functions:
+
+ .zi-confirm
+ `-- zi.zsh/+zi-message
 
 Uses feature(s): _eval_, _read_
 
 Called by:
 
  .zi-delete
+ .zi-module
 
 .zi-create
 ~~~~~~~~~~
@@ -820,7 +832,12 @@ Called by:
 .zi-ls
 ~~~~~~
 
-Has 22 line(s). Doesn't call other functions.
+Has 25 line(s). Calls functions:
+
+ .zi-ls
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_
 
 Called by:
 
@@ -831,23 +848,21 @@ Called by:
 
 ____
  
- Function that has sub-commands passed as long-options (with two dashes, --).
- It's an attempt to plugin only this one function into `zi' function
- defined in zi.zsh, to not make this file longer than it's needed.
+ Builds a module from its git repository and displays information how to load the module in .zshrc,
+ performs checks, verify hard stored values, and rebuilds the module if requested.
 ____
 
-Has 33 line(s). Calls functions:
+Has 191 line(s). Calls functions:
 
  .zi-module
  |-- is-at-least
  `-- zi.zsh/+zi-message
 
-Uses feature(s): _autoload_, _is-at-least_
+Uses feature(s): _autoload_, _is-at-least_, _source_
 
 Called by:
 
- .zi-build-module
- side.zsh/.zi-check-module
+ zi.zsh/Script-Body
  zi.zsh/zi
 
 .zi-pager
@@ -1034,23 +1049,40 @@ Called by:
 
 ____
  
- Updates ❮ Zi ❯ code (does a git pull).
+ Function manages self-update of Zi codebase.
+ 
+ It will fetch the latest changes from the upstream repository and,
+ display changelog if there are any, then update the codebase and,
+ reload Zi if there are any changes.
  
  User-action entry point.
+ 
+ $1 - user given options for self-update (optional)
 ____
 
-Has 43 line(s). Calls functions:
+Has 54 line(s). Calls functions:
 
  .zi-self-update
- |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-get-mtime-into
+ `-- zi.zsh/+zi-message
 
-Uses feature(s): _setopt_, _source_, _zcompile_
+Uses feature(s): _setopt_, _zmodload_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
+.zi-self-update-lock-path
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Resolves the repository-local advisory lock used for checkout and dump changes.
+____
+
+Has 5 line(s). Doesn't call other functions.
 
 Called by:
 
- .zi-update-or-status-all
- zi.zsh/zi
+ .zi-auto-reload
+ .zi-self-update
 
 .zi-show-all-reports
 ~~~~~~~~~~~~~~~~~~~~
@@ -1161,27 +1193,6 @@ Called by:
  .zi-show-debug-report
  zi.zsh/zi
 
-.zi-show-times
-~~~~~~~~~~~~~~
-
-____
- 
- Shows loading times of all loaded plugins.
- 
- User-action entry point.
-____
-
-Has 55 line(s). Calls functions:
-
- .zi-show-times
- `-- side.zsh/.zi-any-colorify-as-uspl2
-
-Uses feature(s): _setopt_
-
-Called by:
-
- zi.zsh/zi
-
 .zi-show-zstatus
 ~~~~~~~~~~~~~~~~
 
@@ -1230,6 +1241,26 @@ Uses feature(s): _setopt_, _zcompile_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
+.zi-times
+~~~~~~~~~
+
+____
+ 
+ Shows loading times of all loaded plugins.
+ 
+ User-action entry point.
+____
+
+Has 56 line(s). Calls functions:
+
+ .zi-times
+ |-- side.zsh/.zi-any-colorify-as-uspl2
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
 .zi-uncompile-plugin
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -1269,14 +1300,14 @@ ____
  $2 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 39 line(s). Calls functions:
+Has 42 line(s). Calls functions:
 
  .zi-uninstall-completions
  |-- install.zsh/.zi-compinit
  |-- install.zsh/.zi-forget-completion
  `-- zi.zsh/+zi-message
 
-Uses feature(s): _setopt_, _source_
+Uses feature(s): _setopt_, _source_, _unfunction_
 
 Called by:
 
@@ -1290,7 +1321,7 @@ ____
  0. Call the Zsh Plugin's Standard *_plugin_unload function
  0. Call the code provided by the Zsh Plugin's Standard @zsh-plugin-run-at-update
  1. Delete bindkeys (...)
- 2. Delete Zstyles
+ 2. Delete zstyles
  3. Restore options
  4. Remove aliases
  5. Restore Zle state
@@ -1369,7 +1400,7 @@ ____
  $3 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 279 line(s). Calls functions:
+Has 281 line(s). Calls functions:
 
  .zi-update-or-status
  |-- install.zsh/.zi-get-latest-gh-r-url-part
@@ -1404,16 +1435,15 @@ ____
  User-action entry point.
 ____
 
-Has 103 line(s). Calls functions:
+Has 73 line(s). Calls functions:
 
  .zi-update-or-status-all
  |-- install.zsh/.zi-compinit
  |-- side.zsh/.zi-any-colorify-as-uspl2
  |-- zi.zsh/+zi-message
- |-- zi.zsh/.zi-any-to-user-plugin
- `-- zi.zsh/.zi-get-mtime-into
+ `-- zi.zsh/.zi-any-to-user-plugin
 
-Uses feature(s): _setopt_, _source_
+Uses feature(s): _setopt_
 
 Called by:
 
@@ -1431,13 +1461,14 @@ ____
  $2 - snippet URL
 ____
 
-Has 28 line(s). Calls functions:
+Has 37 line(s). Calls functions:
 
  .zi-update-or-status-snippet
+ |-- install.zsh/.zi-mirror-using-git
  |-- install.zsh/.zi-update-snippet
  `-- side.zsh/.zi-compute-ice
 
-Uses feature(s): _source_
+Uses feature(s): _setopt_, _source_
 
 Called by:
 

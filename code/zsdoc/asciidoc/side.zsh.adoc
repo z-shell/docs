@@ -14,7 +14,6 @@ FUNCTIONS
 ---------
 
  .zi-any-colorify-as-uspl2
- .zi-check-module
  .zi-compute-ice
  .zi-countdown
  .zi-exists-physically
@@ -64,7 +63,7 @@ Called by:
  autoload.zsh/.zi-search-completions
  autoload.zsh/.zi-show-completions
  autoload.zsh/.zi-show-registered-plugins
- autoload.zsh/.zi-show-times
+ autoload.zsh/.zi-times
  autoload.zsh/.zi-uncompile-plugin
  autoload.zsh/.zi-unload
  autoload.zsh/.zi-update-all-parallel
@@ -73,26 +72,6 @@ Called by:
  install.zsh/.zi-install-completions
  install.zsh/.zi-setup-plugin-dir
  zi.zsh/.zi-formatter-pid
-
-.zi-check-module
-~~~~~~~~~~~~~~~~
-
-____
- 
- Check module. Don't trust access times and verify hard stored values.
-____
-
-Has 22 line(s). Calls functions:
-
- .zi-check-module
- |-- autoload.zsh/.zi-module
- `-- zi.zsh/+zi-message
-
-Uses feature(s): _source_
-
-Called by:
-
- zi.zsh/Script-Body
 
 .zi-compute-ice
 ~~~~~~~~~~~~~~~
@@ -139,7 +118,7 @@ Called by:
 ____
  
  Displays a countdown 5...4... etc. and returns 0 if it
- sucessfully reaches 0, or 1 if Ctrl-C will be pressed.
+ successfully reaches 0, or 1 if Ctrl-C will be pressed.
 ____
 
 Has 14 line(s). Calls functions:
@@ -274,7 +253,7 @@ ____
  returns 2 possible paths for further examination
 ____
 
-Has 22 line(s). Calls functions:
+Has 23 line(s). Calls functions:
 
  .zi-two-paths
  `-- zi.zsh/.zi-get-object-path

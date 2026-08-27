@@ -25,14 +25,16 @@ FUNCTIONS
  .zi-get-package
  .zi-get-url-mtime
  .zi-install-completions
+ .zi-mirror-directory
+ .zi-mirror-using-git
  .zi-mirror-using-svn
+ .zi-parse-github-svn-url
  .zi-parse-json
  .zi-setup-plugin-dir
  .zi-update-snippet
  zicp
  ziextract
  zimv
- zpextract
  ∞zi-atclone-hook
  ∞zi-atpull-e-hook
  ∞zi-atpull-hook
@@ -106,24 +108,17 @@ Called by:
 .zi-compinit
 ~~~~~~~~~~~~
 
-____
- 
- User-exposed `compinit' frontend which first ensures that all completions managed by ❮ Zi ❯ are forgotten by Z-shell.
- After that it runs normal `compinit', which should more easily detect ❮ Zi ❯ completions.
- 
- No arguments.
-____
-
-Has 25 line(s). Calls functions:
+Has 10 line(s). Calls functions:
 
  .zi-compinit
  |-- compinit
  `-- zi.zsh/+zi-message
 
-Uses feature(s): _autoload_, _compinit_, _setopt_, _unfunction_
+Uses feature(s): _autoload_, _compinit_, _setopt_
 
 Called by:
 
+ .zi-forget-completion
  .zi-install-completions
  autoload.zsh/.zi-uninstall-completions
  autoload.zsh/.zi-update-or-status-all
@@ -159,12 +154,12 @@ Called by:
 
 ____
  
- Downloads snippet – either a file – with curl, wget, lftp or lynx, or a directory,
- with Subversion – when svn-ICE is active. Github supports Subversion protocol and allows
- to clone subdirectories. This is used to provide a layer of support for Oh-My-Zsh and Prezto.
+ Downloads a snippet file with curl, wget, lftp or lynx. Directory snippets
+ use Git sparse checkout on GitHub and Subversion for other servers when the
+ svn ice is active. This provides a layer of support for Oh-My-Zsh and Prezto.
 ____
 
-Has 344 line(s). Calls functions:
+Has 350 line(s). Calls functions:
 
  .zi-download-snippet
  |-- side.zsh/.zi-store-ices
@@ -205,13 +200,14 @@ ____
  $1 - completion function name, e.g. "_cp"; can also be "cp"
 ____
 
-Has 20 line(s). Doesn't call other functions.
+Has 21 line(s). Calls functions:
+
+ .zi-forget-completion
 
 Uses feature(s): _setopt_, _unfunction_
 
 Called by:
 
- .zi-compinit
  .zi-install-completions
  autoload.zsh/.zi-uninstall-completions
  zi.zsh/zi
@@ -304,7 +300,7 @@ ____
  $3 - if 1, then reinstall, otherwise only install completions that aren't there
 ____
 
-Has 59 line(s). Calls functions:
+Has 60 line(s). Calls functions:
 
  .zi-install-completions
  |-- side.zsh/.zi-any-colorify-as-uspl2
@@ -320,12 +316,58 @@ Called by:
  .zi-setup-plugin-dir
  zi.zsh/zi
 
+.zi-mirror-directory
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ Selects Git sparse checkout for GitHub trunk URLs and preserves Subversion
+ compatibility for other directory-snippet sources.
+____
+
+Has 6 line(s). Calls functions:
+
+ .zi-mirror-directory
+
+Called by:
+
+ .zi-download-snippet
+
+.zi-mirror-using-git
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ Downloads a GitHub repository directory through a shallow sparse checkout.
+ The selected directory is activated as a complete snapshot, while Zi's
+ metadata is preserved under ._zi.
+ 
+ $1 - legacy GitHub Subversion trunk URL
+ $2 - mode, "" - install, "-u" - update, "-t" - test, "-s" - status
+ $3 - installed directory
+____
+
+Has 99 line(s). Calls functions:
+
+ .zi-mirror-using-git
+ `-- zi.zsh/+zi-message
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-mirror-directory
+ autoload.zsh/.zi-update-or-status-snippet
+
 .zi-mirror-using-svn
 ~~~~~~~~~~~~~~~~~~~~
 
 ____
  
- Used to clone subdirectories from Github.
+ ]]]
+ Used to clone subdirectories from non-GitHub Subversion servers.
  If in update mode (see $2), then invokes `svn update',
  in normal mode invokes `svn checkout --non-interactive -q <URL>'.
  In test mode only compares remote and local revision and outputs true if update is needed.
@@ -335,7 +377,7 @@ ____
  $3 - subdirectory (not path) with working copy, needed for -t and -u
 ____
 
-Has 27 line(s). Calls functions:
+Has 30 line(s). Calls functions:
 
  .zi-mirror-using-svn
  `-- zi.zsh/+zi-message
@@ -344,7 +386,26 @@ Uses feature(s): _setopt_
 
 Called by:
 
- .zi-download-snippet
+ .zi-mirror-directory
+
+.zi-parse-github-svn-url
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Parses a legacy GitHub Subversion trunk URL into a Git repository URL and
+ repository-relative directory.
+ 
+ $1 - URL in https://github.com/OWNER/REPOSITORY/trunk/PATH form
+____
+
+Has 24 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-mirror-using-git
 
 .zi-parse-json
 ~~~~~~~~~~~~~~
@@ -447,7 +508,7 @@ ____
  $2 - file
 ____
 
-Has 265 line(s). Calls functions:
+Has 277 line(s). Calls functions:
 
  ziextract
  `-- zi.zsh/+zi-message
@@ -459,7 +520,7 @@ Called by:
  .zi-extract
  .zi-get-package
  .zi-setup-plugin-dir
- zpextract
+ zi.zsh/zpextract
 
 zimv
 ~~~~
@@ -474,22 +535,6 @@ Has 3 line(s). Calls functions:
 
  zimv
  `-- zicp
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-zpextract
-~~~~~~~~~
-
-____
- 
- ]]]
-____
-
-Has 1 line(s). Calls functions:
-
- zpextract
- `-- ziextract
-     `-- zi.zsh/+zi-message
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
