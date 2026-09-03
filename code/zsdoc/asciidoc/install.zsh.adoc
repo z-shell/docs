@@ -349,7 +349,7 @@ ____
  $3 - installed directory
 ____
 
-Has 99 line(s). Calls functions:
+Has 111 line(s). Calls functions:
 
  .zi-mirror-using-git
  `-- zi.zsh/+zi-message
@@ -508,7 +508,7 @@ ____
  $2 - file
 ____
 
-Has 277 line(s). Calls functions:
+Has 366 line(s). Calls functions:
 
  ziextract
  `-- zi.zsh/+zi-message

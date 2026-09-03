@@ -15,7 +15,6 @@ FUNCTIONS
 
  .zi-analytics-menu
  .zi-any-to-uspl2
- .zi-at-eval
  .zi-auto-reload
  .zi-cd
  .zi-cdisable
@@ -33,6 +32,7 @@ FUNCTIONS
  .zi-delete
  .zi-diff-env-compute
  .zi-diff-functions-compute
+ .zi-diff-hooks-compute
  .zi-diff-options-compute
  .zi-diff-parameter-compute
  .zi-edit
@@ -57,9 +57,9 @@ FUNCTIONS
  .zi-recently
  .zi-registered-ice-mods
  .zi-registered-subcommands
- .zi-restore-extendedglob
+ .zi-restore-extended_glob
  .zi-run-delete-hooks
- .zi-save-set-extendedglob
+ .zi-save-set-extended_glob
  .zi-search-completions
  .zi-self-update
  .zi-self-update-lock-path
@@ -132,18 +132,6 @@ Called by:
 
  .zi-clear-report-for
  .zi-exists-message
-
-.zi-at-eval
-~~~~~~~~~~~
-
-Has 5 line(s). Calls functions:
-
- .zi-at-eval
- `-- zi.zsh/@zi-substitute
-
-Uses feature(s): _eval_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 .zi-auto-reload
 ~~~~~~~~~~~~~~~
@@ -347,7 +335,7 @@ ____
  $2 - (optional) plugin (only when $1 - i.e. user - given)
 ____
 
-Has 23 line(s). Calls functions:
+Has 28 line(s). Calls functions:
 
  .zi-clear-report-for
 
@@ -512,6 +500,30 @@ Uses feature(s): _setopt_
 Called by:
 
  .zi-show-report
+ .zi-unload
+
+.zi-diff-hooks-compute
+~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Computes ZI[ZSH_HOOKS__…] and ZI[ZSH_HOOKS_REMOVED__…] from the snapshots
+ gathered by .zi-diff-hooks().
+ 
+ ZSH_HOOKS__ holds the entries the plugin added, which unload owns and may
+ remove. ZSH_HOOKS_REMOVED__ holds the entries that existed before the load
+ and were gone by the end of it, which unload reports but does not restore,
+ because a plugin removing a hook can be deliberate.
+ 
+ Both are stored as quoted "array:entry" pairs.
+ 
+ $1 - user/plugin
+____
+
+Has 18 line(s). Doesn't call other functions.
+
+Called by:
+
  .zi-unload
 
 .zi-diff-options-compute
@@ -974,12 +986,12 @@ Called by:
 
  zi.zsh/zi
 
-.zi-restore-extendedglob
-~~~~~~~~~~~~~~~~~~~~~~~~
+.zi-restore-extended_glob
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
  
- Restores extendedglob-option from state saved earlier.
+ Restores extended_glob-option from state saved earlier.
 ____
 
 Has 1 line(s). Doesn't call other functions.
@@ -1003,12 +1015,12 @@ Uses feature(s): _eval_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
-.zi-save-set-extendedglob
-~~~~~~~~~~~~~~~~~~~~~~~~~
+.zi-save-set-extended_glob
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ____
  
- Enables extendedglob-option first saving if it was already
+ Enables extended_glob-option first saving if it was already
  enabled, for restoration of this state later.
 ____
 
@@ -1204,7 +1216,7 @@ ____
  User-action entry point.
 ____
 
-Has 48 line(s). Calls functions:
+Has 53 line(s). Calls functions:
 
  .zi-show-zstatus
  `-- zi.zsh/+zi-message
@@ -1319,7 +1331,7 @@ Called by:
 ____
  
  0. Call the Zsh Plugin's Standard *_plugin_unload function
- 0. Call the code provided by the Zsh Plugin's Standard @zsh-plugin-run-at-update
+ 0. Call the code provided by the Zsh Plugin Standard @zsh-plugin-run-on-unload
  1. Delete bindkeys (...)
  2. Delete zstyles
  3. Restore options
@@ -1336,13 +1348,14 @@ ____
  $2 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 380 line(s). Calls functions:
+Has 401 line(s). Calls functions:
 
  .zi-unload
  |-- additional.zsh/.zi-clear-debug-report
  |-- side.zsh/.zi-any-colorify-as-uspl2
  |-- zi.zsh/+zi-message
- `-- zi.zsh/.zi-any-to-user-plugin
+ |-- zi.zsh/.zi-any-to-user-plugin
+ `-- zi.zsh/.zi-run-plugin-standard-unload-callback
 
 Uses feature(s): _alias_, _bindkey_, _eval_, _setopt_, _unalias_, _unfunction_, _zle_, _zstyle_
 
@@ -1373,14 +1386,14 @@ Called by:
 .zi-update-all-parallel
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Has 63 line(s). Calls functions:
+Has 73 line(s). Calls functions:
 
  .zi-update-all-parallel
  |-- side.zsh/.zi-any-colorify-as-uspl2
  |-- zi.zsh/+zi-message
  `-- zi.zsh/.zi-any-to-user-plugin
 
-Uses feature(s): _setopt_
+Uses feature(s): _setopt_, _trap_
 
 Called by:
 
@@ -1484,7 +1497,7 @@ ____
  ]]]
 ____
 
-Has 14 line(s). Calls functions:
+Has 30 line(s). Calls functions:
 
  .zi-wait-for-update-jobs
  `-- zi.zsh/+zi-message

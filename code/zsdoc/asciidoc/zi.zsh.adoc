@@ -16,6 +16,7 @@ FUNCTIONS
  +zi-deploy-message
  +zi-message
  +zi-prehelp-usage-message
+ +zi-progress
  -zi_scheduler_add_sh
  .zi-add-fpath
  .zi-add-report
@@ -26,15 +27,10 @@ FUNCTIONS
  .zi-diff
  .zi-diff-env
  .zi-diff-functions
+ .zi-diff-hooks
  .zi-diff-options
  .zi-diff-parameter
  .zi-find-other-matches
- .zi-formatter-auto
- .zi-formatter-bar
- .zi-formatter-bar-util
- .zi-formatter-pid
- .zi-formatter-th-bar
- .zi-formatter-url
  .zi-get-mtime-into
  .zi-get-object-path
  .zi-ice
@@ -43,12 +39,16 @@ FUNCTIONS
  .zi-load-object
  .zi-load-plugin
  .zi-load-snippet
- .zi-main-message-formatter
+ .zi-message-auto-format
+ .zi-message-color-enabled
+ .zi-message-emit
+ .zi-message-render
  .zi-pack-ice
  .zi-parse-opts
  .zi-prepare-home
  .zi-register-plugin
  .zi-run
+ .zi-run-plugin-standard-unload-callback
  .zi-run-task
  .zi-set-m-func
  .zi-setup-params
@@ -67,6 +67,7 @@ FUNCTIONS
  @zi-register-annex
  @zi-register-hook
  @zi-substitute
+ @zi-unregister-annex
  @zsh-plugin-run-on-unload
  @zsh-plugin-run-on-update
  pmodload
@@ -95,7 +96,7 @@ DETAILS
 Script Body
 ~~~~~~~~~~~
 
-Has 288 line(s). Calls functions:
+Has 367 line(s). Calls functions:
 
  Script-Body
  |-- @zi-register-hook
@@ -127,9 +128,9 @@ Called by:
 +zi-message
 ~~~~~~~~~~~
 
-Has 16 line(s). Doesn't call other functions.
+Has 1 line(s). Calls functions:
 
-Uses feature(s): _setopt_
+ +zi-message
 
 Called by:
 
@@ -208,6 +209,15 @@ Called by:
 
  zi
  autoload.zsh/.zi-delete
+
++zi-progress
+~~~~~~~~~~~~
+
+Has 1 line(s). Calls functions:
+
+ +zi-progress
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
 -zi_scheduler_add_sh
 ~~~~~~~~~~~~~~~~~~~~
@@ -367,7 +377,7 @@ ____
  Performs diff actions of all types
 ____
 
-Has 4 line(s). Calls functions:
+Has 5 line(s). Calls functions:
 
  .zi-diff
 
@@ -407,6 +417,28 @@ ____
 ____
 
 Has 3 line(s). Doesn't call other functions.
+
+Called by:
+
+ .zi-diff
+
+.zi-diff-hooks
+~~~~~~~~~~~~~~
+
+____
+ 
+ Implements detection of changes to the standard add-zsh-hook arrays.
+ Performs data gathering, computation is done in *-compute().
+ 
+ Each snapshot records every tracked array as "array:entry" pairs, so a
+ registration is attributed to the plugin that made it regardless of which
+ actor defined the underlying function.
+ 
+ $1 - user/plugin (i.e. uspl2 format)
+ $2 - command, can be "begin" or "end"
+____
+
+Has 17 line(s). Doesn't call other functions.
 
 Called by:
 
@@ -465,78 +497,6 @@ Called by:
  .zi-load-snippet
  side.zsh/.zi-first
 
-.zi-formatter-auto
-~~~~~~~~~~~~~~~~~~
-
-____
- 
- FUNCTION: .zi-formatter-auto[[[
- The automatic message formatting tool automatically detects,
- formats, and colorizes the following pieces of text:
- [URLs], [plugin IDs (user/repo) if exists on the disk], [numbers], [time], [single-word id-as plugins],
- [single word commands], [single word functions], [zi commands], [ice modifiers (e.g: mv'a -> b')],
- [single-char bits and quoted strings (`...`, ,'...', "...")].
-____
-
-Has 47 line(s). Calls functions:
-
- .zi-formatter-auto
-
-Uses feature(s): _setopt_
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-.zi-formatter-bar
-~~~~~~~~~~~~~~~~~
-
-Has 1 line(s). Calls functions:
-
- .zi-formatter-bar
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-.zi-formatter-bar-util
-~~~~~~~~~~~~~~~~~~~~~~
-
-Has 6 line(s). Doesn't call other functions.
-
-Called by:
-
- .zi-formatter-bar
- .zi-formatter-th-bar
-
-.zi-formatter-pid
-~~~~~~~~~~~~~~~~~
-
-Has 10 line(s). Calls functions:
-
- .zi-formatter-pid
- `-- side.zsh/.zi-any-colorify-as-uspl2
-
-Uses feature(s): _source_
-
-Called by:
-
- .zi-formatter-auto
-
-.zi-formatter-th-bar
-~~~~~~~~~~~~~~~~~~~~
-
-Has 1 line(s). Calls functions:
-
- .zi-formatter-th-bar
-
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
-
-.zi-formatter-url
-~~~~~~~~~~~~~~~~~
-
-Has 14 line(s). Doesn't call other functions.
-
-Called by:
-
- .zi-formatter-auto
-
 .zi-get-mtime-into
 ~~~~~~~~~~~~~~~~~~
 
@@ -591,7 +551,7 @@ ____
  $2 - plugin name, if the third format is used
 ____
 
-Has 78 line(s). Calls functions:
+Has 82 line(s). Calls functions:
 
  .zi-load
  |-- +zi-deploy-message
@@ -620,7 +580,7 @@ Called by:
 .zi-load-object
 ~~~~~~~~~~~~~~~
 
-Has 10 line(s). Calls functions:
+Has 11 line(s). Calls functions:
 
  .zi-load-object
 
@@ -640,7 +600,7 @@ ____
  $3 - mode (light or load)
 ____
 
-Has 107 line(s). Calls functions:
+Has 115 line(s). Calls functions:
 
  .zi-load-plugin
  |-- :zi-tmp-subst-autoload
@@ -664,7 +624,7 @@ ____
  $1 - url (can be local, absolute path).
 ____
 
-Has 173 line(s). Calls functions:
+Has 177 line(s). Calls functions:
 
  .zi-load-snippet
  |-- +zi-deploy-message
@@ -682,12 +642,59 @@ Called by:
  pmodload
  additional.zsh/.zi-service
 
-.zi-main-message-formatter
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.zi-message-auto-format
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Has 18 line(s). Doesn't call other functions.
+____
+ 
+ Applies byte-preserving automatic formatting to one unstyled message span.
+ Safe mode recognizes only deterministic Zi and lexical forms. Contextual mode
+ additionally consults the current shell and filesystem.
+____
 
-Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+Has 98 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-message-render
+
+.zi-message-color-enabled
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Has 13 line(s). Doesn't call other functions.
+
+Called by:
+
+ .zi-message-emit
+
+.zi-message-emit
+~~~~~~~~~~~~~~~~
+
+Has 83 line(s). Calls functions:
+
+ .zi-message-emit
+
+Uses feature(s): _zstyle_
+
+Called by:
+
+ +zi-message
+ +zi-progress
+
+.zi-message-render
+~~~~~~~~~~~~~~~~~~
+
+Has 134 line(s). Calls functions:
+
+ .zi-message-render
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-message-emit
 
 .zi-pack-ice
 ~~~~~~~~~~~~
@@ -781,6 +788,23 @@ Called by:
 
  zi
 
+.zi-run-plugin-standard-unload-callback
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Runs a persisted Plugin Standard unload callback in the current shell while
+ containing `return` to the callback frame and restoring the caller's cwd.
+____
+
+Has 8 line(s). Doesn't call other functions.
+
+Uses feature(s): _eval_, _setopt_
+
+Called by:
+
+ autoload.zsh/.zi-unload
+
 .zi-run-task
 ~~~~~~~~~~~~
 
@@ -869,7 +893,7 @@ ____
  "light-b" (i.e. the `trackbinds' mode) or "compdef").
 ____
 
-Has 17 line(s). Doesn't call other functions.
+Has 19 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_, _unfunction_
 
@@ -888,7 +912,7 @@ ____
  to gather report data, and to hijack `autoload', `bindkey' and `compdef' calls.
 ____
 
-Has 29 line(s). Doesn't call other functions.
+Has 30 line(s). Doesn't call other functions.
 
 Uses feature(s): _source_
 
@@ -966,7 +990,7 @@ ____
  run custom `autoload' function, that doesn't need FPATH.
 ____
 
-Has 105 line(s). Calls functions:
+Has 113 line(s). Calls functions:
 
  :zi-tmp-subst-autoload
  |-- +zi-message
@@ -1060,12 +1084,14 @@ ____
  ]]]
 ____
 
-Has 1 line(s). Calls functions:
+Has 11 line(s). Calls functions:
 
  @autoload
  `-- :zi-tmp-subst-autoload
      |-- +zi-message
      `-- is-at-least
+
+Uses feature(s): _setopt_
 
 Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
 
@@ -1121,7 +1147,7 @@ ____
  
 ____
 
-Has 72 line(s). *Is a precmd hook*. Calls functions:
+Has 79 line(s). *Is a precmd hook*. Calls functions:
 
  @zi-scheduler
  `-- add-zsh-hook
@@ -1139,7 +1165,6 @@ Uses feature(s): _setopt_
 
 Called by:
 
- autoload.zsh/.zi-at-eval
  install.zsh/.zi-at-eval
  install.zsh/.zi-get-package
  install.zsh/∞zi-atclone-hook
@@ -1150,6 +1175,37 @@ Called by:
  install.zsh/∞zi-make-hook
  install.zsh/∞zi-mv-hook
 
+@zi-unregister-annex
+~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Removes the registrations made by @zi-register-annex and @zi-register-hook for
+ one annex and one hook type, so an annex can remove its handler as the Zsh
+ Plugin Standard unload contract expects without leaving Zi dispatching to a
+ function that no longer exists.
+ 
+ A stale registration is not inert. The before-load dispatch calls the stored
+ handler unconditionally, a missing function returns 127, and `127 & 1' is true,
+ so Zi folds the error into its return value and shifts its argument list on
+ every later plug-in load in the session.
+ 
+ Unregistering something that was never registered is a no-op.
+ 
+ Note: the ice-modifier list each registration contributed to
+ ZI_EXTS[ice-mods] and ZI_EXTS2[ice-mods] is not unwound. Registration appends
+ to a joined string without recording which annex contributed which entry, so
+ removing one annex's share would need that association to be recorded first.
+ A leftover ice name is recognised but dispatches to nothing, which is
+ harmless; the dispatch entry removed here is the part that corrupts loads.
+____
+
+Has 22 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Not called by script or any function (may be e.g. a hook, a Zle widget, etc.).
+
 @zsh-plugin-run-on-unload
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1159,7 +1215,7 @@ ____
  https://wiki.zshell.dev/community/zsh_plugin_standard
 ____
 
-Has 2 line(s). Calls functions:
+Has 8 line(s). Calls functions:
 
  @zsh-plugin-run-on-unload
 
@@ -1173,7 +1229,7 @@ ____
  The Plugin Standard required mechanism
 ____
 
-Has 2 line(s). Calls functions:
+Has 8 line(s). Calls functions:
 
  @zsh-plugin-run-on-update
 

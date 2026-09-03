@@ -71,7 +71,6 @@ Called by:
  autoload.zsh/.zi-update-or-status
  install.zsh/.zi-install-completions
  install.zsh/.zi-setup-plugin-dir
- zi.zsh/.zi-formatter-pid
 
 .zi-compute-ice
 ~~~~~~~~~~~~~~~
