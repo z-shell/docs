@@ -30,7 +30,9 @@ FUNCTIONS
  .zi-mirror-using-svn
  .zi-parse-github-svn-url
  .zi-parse-json
+ .zi-read-package-manifest
  .zi-setup-plugin-dir
+ .zi-unescape-json-string
  .zi-update-snippet
  zicp
  ziextract
@@ -159,7 +161,7 @@ ____
  svn ice is active. This provides a layer of support for Oh-My-Zsh and Prezto.
 ____
 
-Has 350 line(s). Calls functions:
+Has 358 line(s). Calls functions:
 
  .zi-download-snippet
  |-- side.zsh/.zi-store-ices
@@ -250,12 +252,7 @@ Called by:
 .zi-get-package
 ~~~~~~~~~~~~~~~
 
-____
- 
- ]]]
-____
-
-Has 155 line(s). Calls functions:
+Has 149 line(s). Calls functions:
 
  .zi-get-package
  |-- zi.zsh/+zi-message
@@ -413,11 +410,50 @@ Called by:
 ____
  
  Retrievies the ice-list from given profile from the JSON of the package.json.
+ 
+ Provenance: this began as `@str-parse-json' in z-shell/zsh-string-lib and is
+ now a maintained fork, not a mirror of it. Known divergences, all deliberate:
+ `___pair_map' omits the `('/`)' pair, which JSON never uses; the key lookup
+ selects the smallest object declaring the key instead of one that opens with
+ it; and string bodies are unescaped as they are captured. Do not swap in the
+ library copy without re-running tests/package-manifest-parsing.zsh, which
+ fails against it.
 ____
 
-Has 102 line(s). Calls functions:
+Has 108 line(s). Calls functions:
 
  .zi-parse-json
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-get-package
+ .zi-read-package-manifest
+
+.zi-read-package-manifest
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ ]]]
+ Resolves one profile out of a package manifest. Kept separate from
+ .zi-get-package so the lookup can be exercised without the network, the
+ filesystem and the install path around it.
+ 
+ $1 - the manifest text
+ $2 - the wanted profile name
+ $3 - name of a hash to fill with the `plugin-info' fields
+ $4 - name of an array to fill with the available profile names
+ $5 - name of a hash to fill with the selected profile's ices
+ 
+ Returns 0 when the profile was found, 1 otherwise. $3 and $4 are filled either
+ way, so a caller can report what the manifest does offer.
+____
+
+Has 30 line(s). Calls functions:
+
+ .zi-read-package-manifest
 
 Uses feature(s): _setopt_
 
@@ -454,6 +490,25 @@ Called by:
 
  autoload.zsh/.zi-update-or-status
  zi.zsh/.zi-load
+
+.zi-unescape-json-string
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Translates the escapes of a JSON string body into the characters they denote
+ and returns the result in $REPLY. Handles the eight two-character escapes and
+  XXXX in the basic multilingual plane; a surrogate escape or an unrecognized
+ escape is left exactly as written, as is a malformed  .
+____
+
+Has 25 line(s). Doesn't call other functions.
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-parse-json
 
 .zi-update-snippet
 ~~~~~~~~~~~~~~~~~~

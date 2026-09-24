@@ -137,6 +137,7 @@ Called by:
  +zi-prehelp-usage-message
  .zi-compdef-clear
  .zi-compdef-replay
+ .zi-load-ices
  .zi-load-snippet
  .zi-register-plugin
  .zi-run
@@ -532,7 +533,7 @@ ____
  next command only (i.e. it "melts"), but it can then stick to plugin and activate e.g. at update.
 ____
 
-Has 12 line(s). Doesn't call other functions.
+Has 14 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_
 
@@ -551,7 +552,7 @@ ____
  $2 - plugin name, if the third format is used
 ____
 
-Has 82 line(s). Calls functions:
+Has 87 line(s). Calls functions:
 
  .zi-load
  |-- +zi-deploy-message
@@ -569,9 +570,23 @@ Called by:
 .zi-load-ices
 ~~~~~~~~~~~~~
 
-Has 22 line(s). Calls functions:
+____
+ 
+ Reads the disk-ices of an already-installed object into the ICE hash.
+ 
+ $1 - the object's effective handle-ID
+ $2 - `snippet' when the caller has already established that the object is
+ one. Anything else (including the default) means undetermined, in
+ which case an ID present in both roots is reported instead of being
+ resolved silently. There is no `plugin' counterpart: a caller never
+ knows that much up-front, because a disk-stored `is-snippet' ice is
+ itself one of the values this function loads.
+____
+
+Has 38 line(s). Calls functions:
 
  .zi-load-ices
+ `-- +zi-message
 
 Called by:
 
@@ -737,7 +752,7 @@ ____
  Establish all required directories.
 ____
 
-Has 61 line(s). Calls functions:
+Has 75 line(s). Calls functions:
 
  .zi-prepare-home
  |-- autoload.zsh/.zi-clear-completions
@@ -823,7 +838,7 @@ ____
  $6 - the plugin-spec or snippet URL or alias name (from id-as'')
 ____
 
-Has 45 line(s). Calls functions:
+Has 50 line(s). Calls functions:
 
  .zi-run-task
  `-- autoload.zsh/.zi-unload
@@ -1259,7 +1274,7 @@ ____
  Main function directly exposed to user, obtains subcommand and its arguments, has completion.
 ____
 
-Has 566 line(s). Calls functions:
+Has 573 line(s). Calls functions:
 
  zi
  |-- +zi-message
