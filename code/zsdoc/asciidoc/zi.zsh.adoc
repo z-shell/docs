@@ -19,6 +19,7 @@ FUNCTIONS
  +zi-progress
  -zi_scheduler_add_sh
  .zi-add-fpath
+ .zi-add-record
  .zi-add-report
  .zi-any-to-pid
  .zi-any-to-user-plugin
@@ -34,6 +35,7 @@ FUNCTIONS
  .zi-get-mtime-into
  .zi-get-object-path
  .zi-ice
+ .zi-keep-previous-load-functions
  .zi-load
  .zi-load-ices
  .zi-load-object
@@ -47,6 +49,9 @@ FUNCTIONS
  .zi-parse-opts
  .zi-prepare-home
  .zi-register-plugin
+ .zi-repeat-object-key
+ .zi-repeat-objects
+ .zi-repeat-taken-over
  .zi-run
  .zi-run-plugin-standard-unload-callback
  .zi-run-task
@@ -244,6 +249,24 @@ Has 10 line(s). Calls functions:
 Called by:
 
  zi
+
+.zi-add-record
+~~~~~~~~~~~~~~
+
+____
+ 
+ Appends the quoted record $2 to the $1 records (BINDKEYS or WIDGETS_DELETE)
+ of the plugin being loaded, unless they already hold it: a repeated load
+ keeps the earlier load's records, and unload must replay each one once
+ (z-shell/zi#583).
+____
+
+Has 5 line(s). Doesn't call other functions.
+
+Called by:
+
+ :zi-tmp-subst-bindkey
+ :zi-tmp-subst-zle
 
 .zi-add-report
 ~~~~~~~~~~~~~~
@@ -541,6 +564,21 @@ Called by:
 
  zi
 
+.zi-keep-previous-load-functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Adds the functions the previous load of plugin $1 created to its owned set,
+ before the next load takes a fresh function baseline.
+____
+
+Has 14 line(s). Doesn't call other functions.
+
+Called by:
+
+ .zi-register-plugin
+
 .zi-load
 ~~~~~~~~
 
@@ -774,7 +812,7 @@ ____
  https://wiki.zshell.dev/community/zsh_plugin_standard).
 ____
 
-Has 20 line(s). Calls functions:
+Has 26 line(s). Calls functions:
 
  .zi-register-plugin
  `-- +zi-message
@@ -782,6 +820,60 @@ Has 20 line(s). Calls functions:
 Called by:
 
  .zi-load
+
+.zi-repeat-object-key
+~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Sets REPLY to a comparable identity for record $2 of kind $1 (widget-saved,
+ widget-delete or bindkey): "widget NAME", or "bindkey MAP KEY". The default
+ keymap, also when it is named main, is given as $main_map: the keymap main
+ is linked to, set by the caller. Fails for a record without such an object.
+____
+
+Has 19 line(s). Doesn't call other functions.
+
+Uses feature(s): _bindkey_
+
+Called by:
+
+ .zi-repeat-objects
+
+.zi-repeat-objects
+~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Sets reply to the widget and bindkey identities plugin $1 has recorded.
+____
+
+Has 11 line(s). Calls functions:
+
+ .zi-repeat-objects
+
+Called by:
+
+ .zi-repeat-taken-over
+
+.zi-repeat-taken-over
+~~~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Succeeds when a plugin loaded after the newest load of plugin $1 recorded
+ one of the widgets or bindings $1 recorded, i.e. took it over in between.
+____
+
+Has 23 line(s). Calls functions:
+
+ .zi-repeat-taken-over
+
+Uses feature(s): _setopt_
+
+Called by:
+
+ .zi-register-plugin
 
 .zi-run
 ~~~~~~~

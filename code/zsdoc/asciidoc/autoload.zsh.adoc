@@ -335,7 +335,7 @@ ____
  $2 - (optional) plugin (only when $1 - i.e. user - given)
 ____
 
-Has 28 line(s). Calls functions:
+Has 29 line(s). Calls functions:
 
  .zi-clear-report-for
 
@@ -1348,7 +1348,7 @@ ____
  $2 - plugin (only when $1 - i.e. user - given)
 ____
 
-Has 401 line(s). Calls functions:
+Has 417 line(s). Calls functions:
 
  .zi-unload
  |-- additional.zsh/.zi-clear-debug-report

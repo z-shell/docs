@@ -24,6 +24,7 @@ FUNCTIONS
  .zi-get-latest-gh-r-url-part
  .zi-get-package
  .zi-get-url-mtime
+ .zi-has-musl-loader
  .zi-install-completions
  .zi-mirror-directory
  .zi-mirror-using-git
@@ -237,7 +238,7 @@ ____
  Connects to Github releases page.
 ____
 
-Has 109 line(s). Calls functions:
+Has 106 line(s). Calls functions:
 
  .zi-get-latest-gh-r-url-part
  `-- zi.zsh/+zi-message
@@ -281,6 +282,20 @@ Uses feature(s): _read_, _setopt_, _trap_, _type_
 Called by:
 
  .zi-download-snippet
+
+.zi-has-musl-loader
+~~~~~~~~~~~~~~~~~~~
+
+____
+ 
+ Succeeds when DIR ($1) holds a musl dynamic loader (ld-musl-<arch>.so.1).
+____
+
+Has 3 line(s). Doesn't call other functions.
+
+Called by:
+
+ .zi-get-latest-gh-r-url-part
 
 .zi-install-completions
 ~~~~~~~~~~~~~~~~~~~~~~~
