@@ -101,7 +101,7 @@ DETAILS
 Script Body
 ~~~~~~~~~~~
 
-Has 367 line(s). Calls functions:
+Has 377 line(s). Calls functions:
 
  Script-Body
  |-- @zi-register-hook
@@ -677,7 +677,7 @@ ____
  $1 - url (can be local, absolute path).
 ____
 
-Has 177 line(s). Calls functions:
+Has 178 line(s). Calls functions:
 
  .zi-load-snippet
  |-- +zi-deploy-message
@@ -1366,7 +1366,7 @@ ____
  Main function directly exposed to user, obtains subcommand and its arguments, has completion.
 ____
 
-Has 573 line(s). Calls functions:
+Has 579 line(s). Calls functions:
 
  zi
  |-- +zi-message

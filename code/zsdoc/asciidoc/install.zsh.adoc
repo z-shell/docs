@@ -430,12 +430,12 @@ ____
  now a maintained fork, not a mirror of it. Known divergences, all deliberate:
  `___pair_map' omits the `('/`)' pair, which JSON never uses; the key lookup
  selects the smallest object declaring the key instead of one that opens with
- it; and string bodies are unescaped as they are captured. Do not swap in the
- library copy without re-running tests/package-manifest-parsing.zsh, which
- fails against it.
+ it; string bodies are unescaped as they are captured; and input holding a raw
+ NUL byte is refused. Do not swap in the library copy without re-running
+ tests/package-manifest-parsing.zsh, which fails against it.
 ____
 
-Has 108 line(s). Calls functions:
+Has 109 line(s). Calls functions:
 
  .zi-parse-json
 
@@ -513,11 +513,15 @@ ____
  
  Translates the escapes of a JSON string body into the characters they denote
  and returns the result in $REPLY. Handles the eight two-character escapes and
-  XXXX in the basic multilingual plane; a surrogate escape or an unrecognized
- escape is left exactly as written, as is a malformed  .
+  XXXX in the basic multilingual plane; a surrogate escape, an escape whose
+ character would hold a NUL byte, or an unrecognized escape is left exactly as
+ written, as is a malformed  . The NUL case is   and, outside a multibyte
+ locale, where ${(#)...} keeps only the low byte, every multiple of 256: it
+ stays escaped because .zi-parse-json marks nested objects with a
+ NUL-delimited sentinel, which decoded text must never be able to spell (#530).
 ____
 
-Has 25 line(s). Doesn't call other functions.
+Has 26 line(s). Doesn't call other functions.
 
 Uses feature(s): _setopt_
 
